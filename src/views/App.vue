@@ -20,7 +20,7 @@
       </div>
 
       <div class="sidebar-bottom-section">
-        <router-link to="/feedback" class="report-error-button">
+        <router-link to="/report" class="report-error-button">
           Fehler melden
         </router-link>
       </div>
