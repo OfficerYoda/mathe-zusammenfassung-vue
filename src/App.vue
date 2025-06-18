@@ -22,9 +22,14 @@
       <h3 class="subsection-title">Beispiel</h3>
       <div class="example-layout">
         <div class="example-text">
-          <MathDisplay latex="f''(-0.5) = 0"/>
-          <MathDisplay latex="f''(-1) < 0"/>
-          <MathDisplay latex="f''(0) > 0"/>
+          <MathDisplay>
+            \begin{align*}
+            f''(-0{,}5) &= 0 \\
+            f''(-1) &< 0 \\
+            f''(0) &> 0
+            \end{align*}
+          </MathDisplay>
+
 
           <p v-mathjax>
             $f''$ hat bei $x = -0,5$ ihre einzige Nullstelle. <br>

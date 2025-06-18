@@ -3,7 +3,6 @@
 </template>
 
 <script lang="ts">
-
 import {defineComponent, watch, ref, nextTick, getCurrentInstance} from 'vue';
 
 declare global {
@@ -17,15 +16,27 @@ export default defineComponent({
   props: {
     latex: {
       type: String,
-      required: true,
+      required: false,
     },
   },
-  setup(props) {
+  setup(props, { slots }) {
     const processedLatex = ref('');
     const instance = getCurrentInstance();
 
     const renderMath = async () => {
-      processedLatex.value = `$$${props.latex}$$`;
+      if (props.latex !== undefined) {
+        processedLatex.value = `$$${props.latex}$$`;
+      } else if (slots.default) {
+        // Join all slot VNodes as a string
+        const slotContent = slots.default().map(vnode => {
+          if (typeof vnode.children === 'string') return vnode.children;
+          return '';
+        }).join('');
+        console.log(slotContent)
+        processedLatex.value = `$$${slotContent}$$`;
+      } else {
+        processedLatex.value = '';
+      }
       await nextTick();
       if (window.MathJax && instance?.proxy) {
         window.MathJax.typesetPromise([instance.proxy.$el]);
@@ -33,6 +44,7 @@ export default defineComponent({
     };
 
     watch(() => props.latex, renderMath, {immediate: true});
+    watch(() => slots.default && slots.default(), renderMath);
 
     return {processedLatex};
   },
