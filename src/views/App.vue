@@ -71,7 +71,8 @@ body {
 
 /* --- NEW LAYOUT STYLES --- */
 #app-layout {
-  display: flex;
+  /* Remove flex, use block layout for fixed sidebar */
+  display: block;
   min-height: 100vh;
 }
 
@@ -79,19 +80,27 @@ body {
   width: 250px;
   background-color: #1a1a1a;
   color: #e0e0e0;
-  padding: 1.5rem;
+  padding-top: 1rem;
+  padding-right: 1rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Pushes top content to top, bottom to bottom */
+  justify-content: space-between;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
-  flex-shrink: 0; /* Prevents sidebar from shrinking */
+  flex-shrink: 0;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  overflow: hidden; /* Prevent sidebar from scrolling */
+  z-index: 100;
 }
 
 .content-area {
-  flex-grow: 1;
+  margin-left: 250px; /* Offset by sidebar width */
   padding: 2rem;
   background-color: #0f0f0f;
-  overflow-y: auto; /* Allows content to scroll */
+  overflow-y: auto;
+  height: 100vh;
 }
 
 #app-container {
@@ -152,7 +161,7 @@ body {
 
 .sidebar-bottom-section {
   margin-top: auto;
-  padding-top: 1.5rem;
+  padding: 1.5rem;
   border-top: 1px solid #333;
   text-align: center;
 }
@@ -259,10 +268,12 @@ ul.math-list li::before {
   }
 
   .sidebar {
+    position: static;
     width: 100%; /* Full width sidebar */
     height: auto; /* Height adapts to content */
     padding: 1rem;
     order: -1; /* Place sidebar on top when stacked */
+    z-index: auto;
   }
 
   .sidebar-top-section {
@@ -298,7 +309,10 @@ ul.math-list li::before {
   }
 
   .content-area {
+    margin-left: 0;
     padding: 1rem;
+    height: auto;
+    overflow-y: visible;
   }
 }
 </style>
