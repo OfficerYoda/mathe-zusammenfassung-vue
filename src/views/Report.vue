@@ -48,35 +48,6 @@ const availableMinors = computed(() => {
 })
 
 // Reset minor chapter if major changes
-watch(majorChapter, () => {
-  minorChapter.value = ''
-})
-
-const githubRepo = 'officeryoda/mathe-zusammenfassung-vue'
-
-const issueTitle = computed(() =>
-    `Fehler in Kapitel: ${majorChapter.value}${minorChapter.value ? ' - ' + minorChapter.value : ''}`
-)
-
-const issueBody = computed(() => {
-  let body = `**Major Chapter:** ${majorChapter.value}\n`
-  if (minorChapter.value) body += `**Minor Chapter:** ${minorChapter.value}\n`
-  if (name.value) body += `**Name:** ${name.value}\n`
-  body += `**Description:**\n${description.value}\n`
-  if (minorChapter.value) {
-    body += `\n[Zurück zum gemeldeten Unterkapitel](#${encodeURIComponent(minorChapter.value)})`
-  }
-  return body
-})
-
-const githubIssueUrl = computed(() => {
-  const params = new URLSearchParams({
-    title: issueTitle.value,
-    body: issueBody.value
-  })
-  return `https://github.com/${githubRepo}/issues/new?${params.toString()}`
-})
-
 const submitted = ref(false)
 
 function submit() {
@@ -105,7 +76,8 @@ function submit() {
         // Firebase callable functions return data in a specific structure
         console.log('GitHub issue created:', result)
         // The actual data is in result.data
-        issueUrl.value = result.data.issueUrl
+        // issueUrl.value = result.data.issueUrl
+        issueUrl.value = 'https://www.youtube.com'
         submitted.value = true
         isLoading.value = false
       })
