@@ -3,72 +3,79 @@
     <ContentSection title="Krümmung">
       <h3 class="subsection-title">Definition</h3>
       <InfoBox v-mathjax>
+        <p>Ist die Funktion $f$ streng monoton...</p>
         <ul>
-          <li>Ist die Funktion $f$ streng monoton...</li>
-          <li>a)...steigend, so beschreibt der Graph von $f$ eine Linkskurve.</li>
-          <li>b)...fallend, so beschreibt der Graph von $f$ eine Rechtskurve.</li>
+          <li>...steigend, so beschreibt der Graph von $f$ eine Linkskurve.</li>
+          <li>...fallend, so beschreibt der Graph von $f$ eine Rechtskurve.</li>
         </ul>
       </InfoBox>
 
       <h3 class="subsection-title">Satz</h3>
-      <InfoBox>
-        <p v-mathjax>Ist die Funktion $f$ auf $I$ zweimal differenzierbar, so gilt:</p>
-        <ul v-mathjax>
-          <li>a) $f''(x) > 0$ für alle $x \in I \implies$ der Graph von $f$ ist linksgekrümmt.</li>
-          <li>b) $f''(x) < 0$ für alle $x \in I \implies$ der Graph von $f$ ist rechtsgekrümmt.</li>
-        </ul>
+      <InfoBox v-mathjax>
+        <p>Ist die Funktion $f$ auf $I$ zweimal differenzierbar, so gilt:<br></p>
+        <ol type="I">
+          <li>$f''(x) > 0$ für alle $x \in I \implies$ der Graph von $f$ ist linksgekrümmt.</li>
+          <li>$f''(x) < 0$ für alle $x \in I \implies$ der Graph von $f$ ist rechtsgekrümmt.</li>
+        </ol>
       </InfoBox>
 
       <h3 class="subsection-title">Beispiel</h3>
-      <div class="example-layout">
-        <div class="example-text">
+      <div class="two-column-layout-image">
+        <div class="column-item">
           <MathDisplay>
-            \begin{align*}
-            f''(-0{,}5) &= 0 \\
+            \begin{align}
+            f''(-0.5) &= 0 \\
             f''(-1) &< 0 \\
             f''(0) &> 0
-            \end{align*}
+            \end{align}
           </MathDisplay>
 
-
           <p v-mathjax>
-            $f''$ hat bei $x = -0,5$ ihre einzige Nullstelle. <br>
+            $f''$ hat bei $x = -0,5$ ihre einzige Nullstelle.
             Links von der Nullstelle ist $f'' < 0$ und Rechts davon ist $f'' > 0$. <br>
-            $f$ ist demnach links von 0,5 rechtsgekrümmt und rechts von 0,5 linksgekrümmt.
+            $f$ ist demnach links von $0,5$ rechtsgekrümmt und rechts von $0,5$ linksgekrümmt.
           </p>
         </div>
-        <div class="example-image-placeholder">
-          <img src="/Graph_Wendestelle.png" alt="Graph der Funktionen"
-               style="max-width: 100%; height: auto; border-radius: 4px;">
-          <p class="image-caption" v-mathjax>Graph von $f(x)$, $f'(x)$ und $f''(x)$</p>
+        <div class="column-item">
+          <div class="image-background">
+            <img src="/Graph_Wendestelle.png" alt="Graph der Funktionen"
+                 style="max-width: 100%; ">
+          </div>
         </div>
       </div>
     </ContentSection>
+
     <ContentSection title="Ganzrationale Funktionen">
+      <h3 class="subsection-title">Definition</h3>
       <InfoBox v-mathjax>
-        <p>Eine ganzrationale Funktion $f$ vom Grad $n$ hat die Form</p>
-        <MathDisplay latex="f(x) = a_n x^n + a_{n-1} x^{n-1} + ... + a_1 x + a_0" />
+        <p>Eine ganzrationale Funktion $f$ vom Grad $n$ hat die Form:</p>
+        <MathDisplay latex="f(x) = a_n x^n + a_{n-1} x^{n-1} + ... + a_1 x + a_0"/>
         <p>mit $a_n \neq 0$.</p>
       </InfoBox>
+
       <div class="two-column-layout">
         <div class="column-item">
           <h3 class="subsection-title">Beispiele</h3>
-          <ul class="math-list" v-mathjax>
-            <li><MathDisplay latex="f(x) = x^2 - 4x + 3" inline /></li>
-            <li><MathDisplay latex="g(x) = 4x^3 - 3x^2 + x + 1" inline /></li>
-            <li><MathDisplay latex="h(x) = 6x^9 - 4x^2" inline /></li>
-            <li><MathDisplay latex="i(x) = 5" inline /></li>
-            <li><MathDisplay latex="j(x) = 8x^4 - 2x^2" inline /></li>
-          </ul>
+          <MathDisplay>
+            \begin{align}
+            f(x) &= x^2 - 4x + 3 \\
+            g(x) &= 4x^3 - 3x^2 + x + 1 \\
+            h(x) &= 6x^9 - 4x^2 \\
+            i(x) &= 5 \\
+            j(x) &= 8x^4 - 2x^2
+            \end{align}
+          </MathDisplay>
         </div>
         <div class="column-item">
           <h3 class="subsection-title">Nichtbeispiele</h3>
-          <ul class="math-list" v-mathjax>
-            <li><MathDisplay latex="f(x) = \sqrt{x}" inline /></li>
-            <li><MathDisplay latex="g(x) = e^x" inline /></li>
-            <li><MathDisplay latex="h(x) = \sin(x)" inline /></li>
-            <li><MathDisplay latex="i(x) = \frac{x^2}{x - 1}" inline /></li>
-          </ul>
+          <MathDisplay>
+            \begin{align}
+            f(x) &= \sqrt{x} \\
+            g(x) &= e^x \\
+            h(x) &= \sin(x) \\
+            i(x) &= \frac{x^2}{x - 1}
+            \end{align}
+          </MathDisplay>
         </div>
       </div>
     </ContentSection>
@@ -92,22 +99,21 @@ export default defineComponent({
 </script>
 
 <style>
-/* Allgemeine Stile für den Body und Root-Container */
+
 body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #0f0f0f; /* Sehr dunkler Hintergrund */
+  background-color: #0f0f0f;
   color: #e0e0e0;
   line-height: 1.6;
 }
 
 #app-container {
-  max-width: 1000px; /* Maximale Breite des Inhalts */
-  margin: 2rem auto; /* Zentriert den Container */
-  padding: 0 2rem; /* Polsterung an den Seiten */
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 0 2rem;
 }
 
-/* Stile für Unterüberschriften wie 'Definition', 'Satz', 'Beispiel' */
 .subsection-title {
   color: #ffffff;
   font-size: 1.6rem;
@@ -117,43 +123,51 @@ body {
   border-bottom: 1px solid #333;
 }
 
-/* Layout für das Beispiel mit Text und Bild nebeneinander */
-.example-layout {
-  display: flex;
-  flex-wrap: wrap; /* Erlaubt Umbruch auf kleineren Bildschirmen */
-  gap: 2rem;
-  align-items: flex-start; /* Oben ausgerichtet */
-}
-
-.example-text {
-  flex: 1 1 55%; /* Nimmt 55% Breite ein, kann aber schrumpfen/wachsen */
-  min-width: 300px; /* Minimale Breite, bevor es umbricht */
-}
-
-.example-image-placeholder {
-  flex: 1 1 40%; /* Nimmt 40% Breite ein, kann aber schrumpfen/wachsen */
+.image-background {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Bild und Bildunterschrift zentrieren */
-  min-width: 250px; /* Minimale Breite, bevor es umbricht */
-  background-color: #2a2a2a; /* Leichter Hintergrund für den Platzhalter */
-  border-radius: 4px;
-  padding: 1rem;
+  align-items: center;
+  background-color: #2a2a2a;
+  border-radius: 0.75rem;
+  padding: 0.75rem;
 }
 
-.image-caption {
-  font-size: 0.9rem;
-  color: #b0b0b0;
-  margin-top: 0.5rem;
-  text-align: center;
-}
-
-/* Allgemeine Textformatierung */
 p {
   margin-bottom: 1rem;
 }
 
-ul {
+ul, ol {
   padding-left: 1.5rem;
+  margin: 0;
+}
+
+.two-column-layout, .two-column-layout-image {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-around;
+  margin-top: 0;
+}
+
+.two-column-layout-image .column-item:first-child {
+  flex: 0 1 55%;
+}
+
+.two-column-layout-image .column-item:last-child {
+  flex: 0 1 40%;
+}
+
+.column-item {
+  flex: 1 1 45%;
+  min-width: 280px;
+}
+
+.column-item ul {
+  padding-left: 1.5rem;
+  list-style-type: none;
+}
+
+.column-item ul li {
+  margin-bottom: 0.7rem;
 }
 </style>
