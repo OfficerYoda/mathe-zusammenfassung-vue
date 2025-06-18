@@ -32,7 +32,6 @@ export default defineComponent({
           if (typeof vnode.children === 'string') return vnode.children;
           return '';
         }).join('');
-        console.log(slotContent)
         processedLatex.value = `$$${slotContent}$$`;
       } else {
         processedLatex.value = '';
