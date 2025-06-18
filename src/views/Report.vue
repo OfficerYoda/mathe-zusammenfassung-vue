@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, computed, watch } from 'vue'
+import {ref, computed, watch} from 'vue'
 import ContentSection from '../components/ContentSection.vue'
 
 // Hardcoded chapters and their minors
@@ -36,6 +36,7 @@ const chapters = [
 const majorChapter = ref('')
 const minorChapter = ref('')
 const description = ref('')
+const name = ref('') // Optional name field
 
 const availableMinors = computed(() => {
   const found = chapters.find(c => c.name === majorChapter.value)
@@ -47,7 +48,7 @@ watch(majorChapter, () => {
   minorChapter.value = ''
 })
 
-const githubRepo = 'officeryoda/mathe-zusammenfassung-vue' // Change if needed
+const githubRepo = 'officeryoda/mathe-zusammenfassung-vue'
 
 const issueTitle = computed(() =>
     `Fehler in Kapitel: ${majorChapter.value}${minorChapter.value ? ' - ' + minorChapter.value : ''}`
@@ -56,6 +57,7 @@ const issueTitle = computed(() =>
 const issueBody = computed(() => {
   let body = `**Major Chapter:** ${majorChapter.value}\n`
   if (minorChapter.value) body += `**Minor Chapter:** ${minorChapter.value}\n`
+  if (name.value) body += `**Name:** ${name.value}\n`
   body += `**Description:**\n${description.value}\n`
   if (minorChapter.value) {
     body += `\n[Zurück zum gemeldeten Unterkapitel](#${encodeURIComponent(minorChapter.value)})`
@@ -74,6 +76,7 @@ const githubIssueUrl = computed(() => {
 const submitted = ref(false)
 
 function submit() {
+  console.log(`Trying to create issue with params: \n${majorChapter.value} | ${minorChapter.value} \n${description.value} \nfound by:${name.value}`);
   submitted.value = true
 }
 </script>
@@ -103,12 +106,17 @@ function submit() {
         <span>Beschreibung:</span>
         <textarea v-model="description" required placeholder="Beschreibe den Fehler..."></textarea>
       </label>
-      <button type="submit">GitHub Issue erstellen</button>
+      <label>
+        <span>Name (optional):</span>
+        <input v-model="name" placeholder="Nicht deinen ganzen oder echten Namen"
+               title="Dieser Name wird öffentlich im Internet stehen!"/>
+      </label>
+      <button type="submit">Fehler melden</button>
     </form>
     <div v-else class="report-success">
       <p>
         <a :href="githubIssueUrl" target="_blank" rel="noopener" class="github-link">
-          Klicke hier, um dein Issue auf GitHub zu erstellen
+          Klicke hier, um dein Issue auf GitHub zu sehen
         </a>
       </p>
       <div v-if="minorChapter">

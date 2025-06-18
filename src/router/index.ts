@@ -7,10 +7,10 @@ import ReportView from '../views/Report.vue';
 
 const routes = [
     { path: '/', name: 'home', component: HomeView },
-    { path: '/notation', name: 'notation', component: NotationView },
-    { path: '/gleichungen', name: 'gleichungen', component: GleichungenView },
-    { path: '/analysis', name: 'analysis', component: AnalysisView},
-    { path: '/report', name: 'report', component: ReportView },
+    { path: '/Notation', name: 'notation', component: NotationView },
+    { path: '/Gleichungen', name: 'gleichungen', component: GleichungenView },
+    { path: '/Analysis', name: 'analysis', component: AnalysisView},
+    { path: '/Report', name: 'report', component: ReportView },
 ];
 
 const router = createRouter({
