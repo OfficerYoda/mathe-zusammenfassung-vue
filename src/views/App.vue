@@ -4,7 +4,7 @@
       <div class="sidebar-top-section">
         <div class="search-icon-wrapper">
           <button class="search-button">
-            <font-awesome-icon icon="magnifying-glass" />
+            <font-awesome-icon icon="fa-solid fa-magnifying-glass"/>
           </button>
         </div>
 
@@ -21,7 +21,7 @@
 
       <div class="sidebar-bottom-section">
         <router-link to="/feedback" class="report-error-button">
-          Report Error
+          Fehler melden
         </router-link>
       </div>
     </aside>
@@ -94,7 +94,6 @@ body {
   overflow-y: auto; /* Allows content to scroll */
 }
 
-/* Ensure #app-container is wide within content-area */
 #app-container {
   max-width: 100%; /* Adjust if your content still needs a max-width within this area */
   margin: 0 auto;
@@ -102,10 +101,6 @@ body {
 }
 
 /* --- SIDEBAR COMPONENT STYLES --- */
-.sidebar-top-section {
-  /* Groups search and navigation */
-}
-
 .search-icon-wrapper {
   text-align: center;
   margin-bottom: 2rem;
@@ -117,12 +112,12 @@ body {
   color: #ffffff;
   cursor: pointer;
   padding: 0.5rem;
-  font-size: 1.5rem; /* Adjust icon size */
+  font-size: 1.5rem;
   transition: color 0.3s ease;
 }
 
 .search-button:hover {
-  color: #6ab04c; /* Highlight color */
+  color: #6ab04c;
 }
 
 .chapter-navigation ul {
@@ -149,7 +144,6 @@ body {
   color: #ffffff;
 }
 
-/* Style for active router link */
 .chapter-link.router-link-active {
   background-color: #6ab04c;
   color: #fff;
@@ -157,15 +151,15 @@ body {
 }
 
 .sidebar-bottom-section {
-  margin-top: auto; /* Pushes this section to the bottom */
+  margin-top: auto;
   padding-top: 1.5rem;
   border-top: 1px solid #333;
-  text-align: center; /* Center the button */
+  text-align: center;
 }
 
 .report-error-button {
-  display: inline-block; /* Allow padding */
-  background-color: #ff6347; /* Tomato red, visually distinct */
+  display: inline-block;
+  background-color: #ff6347;
   color: #fff;
   padding: 0.75rem 1.25rem;
   border-radius: 4px;
@@ -178,12 +172,6 @@ body {
   background-color: #e55335;
 }
 
-/* --- Existing Content Styles (from your original App.vue style block) --- */
-/* You would keep all your ContentSection, InfoBox, subsection-title,
-   example-layout, example-text, example-image-placeholder, image-caption,
-   p, ul, ul li, math-list styles here as well */
-
-/* Stile für Unterüberschriften wie 'Definition', 'Satz', 'Beispiel' */
 .subsection-title {
   color: #ffffff;
   font-size: 1.6rem;
@@ -193,6 +181,15 @@ body {
   border-bottom: 1px solid #333;
 }
 
+.image-background {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #2a2a2a;
+  border-radius: 0.75rem;
+  padding: 0.75rem;
+}
+
 .image-caption {
   font-size: 0.9rem;
   color: #b0b0b0;
@@ -200,52 +197,55 @@ body {
   text-align: center;
 }
 
-/* Allgemeine Textformatierung */
 p {
   margin-bottom: 1rem;
 }
 
 ul {
-  padding-left: 1.5rem; /* Standardpolsterung wieder hinzufügen */
-  list-style: none; /* Entfernt die Standardpunkte */
-  margin: 0; /* Entfernt Standard-Margin von ul */
+  padding-left: 1.5rem;
+  list-style: none;
+  margin: 0;
 }
 
 ul li {
-  margin-bottom: 0.5rem; /* Abstand zwischen Listenelementen */
-  padding-left: 1em; /* Für manuelles Einrücken, falls keine Bullets */
+  margin-bottom: 0.5rem;
+  padding-left: 1em;
   position: relative;
 }
 
-/* Stil für benutzerdefinierte List-Bullets */
 ul.math-list li::before {
-  content: "•"; /* Verwende einen Punkt als Bullet */
-  color: #6ab04c; /* Farbe des Punktes */
+  content: "•";
+  color: #6ab04c;
   font-size: 1em;
   position: absolute;
   left: 0;
-  top: 0; /* Anpassung für vertikale Ausrichtung */
+  top: 0;
 }
 
-
-/* NEUE STILE FÜR ZWEI NEBENEINANDER LIEGENDE SPALTEN */
-.two-column-layout {
+.two-column-layout, .two-column-layout-image {
   display: flex;
-  flex-wrap: wrap; /* Ermöglicht den Umbruch auf kleineren Bildschirmen */
-  gap: 2rem; /* Abstand zwischen den Spalten */
-  justify-content: space-around; /* Verteilt die Spalten gleichmäßig */
-  margin-top: 2rem;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-around;
+  margin-top: 0;
+}
+
+.two-column-layout-image .column-item:first-child {
+  flex: 0 1 55%;
+}
+
+.two-column-layout-image .column-item:last-child {
+  flex: 0 1 40%;
 }
 
 .column-item {
-  flex: 1 1 45%; /* Nimmt 45% der Breite ein, kann aber schrumpfen/wachsen */
-  min-width: 280px; /* Mindestbreite, bevor es umbricht */
+  flex: 1 1 45%;
+  min-width: 280px;
 }
 
-/* Anpassungen für die Listen in den Spalten */
 .column-item ul {
-  padding-left: 1.5rem; /* Standardpolsterung für die Liste */
-  list-style-type: none; /* Entfernt die Standard-Bullets, da wir MathDisplay inline verwenden */
+  padding-left: 1.5rem;
+  list-style-type: none;
 }
 
 .column-item ul li {
