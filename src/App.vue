@@ -2,7 +2,7 @@
   <div id="app-container">
     <ContentSection title="Krümmung">
       <h3 class="subsection-title">Definition</h3>
-      <InfoBox>
+      <InfoBox v-mathjax>
         <ul>
           <li>Ist die Funktion $f$ streng monoton...</li>
           <li>a)...steigend, so beschreibt der Graph von $f$ eine Linkskurve.</li>
@@ -12,8 +12,8 @@
 
       <h3 class="subsection-title">Satz</h3>
       <InfoBox>
-        <p>Ist die Funktion $f$ auf $I$ zweimal differenzierbar, so gilt:</p>
-        <ul>
+        <p v-mathjax>Ist die Funktion $f$ auf $I$ zweimal differenzierbar, so gilt:</p>
+        <ul v-mathjax>
           <li>a) $f''(x) > 0$ für alle $x \in I \implies$ der Graph von $f$ ist linksgekrümmt.</li>
           <li>b) $f''(x) < 0$ für alle $x \in I \implies$ der Graph von $f$ ist rechtsgekrümmt.</li>
         </ul>
@@ -26,22 +26,22 @@
           <MathDisplay latex="f''(-1) < 0"/>
           <MathDisplay latex="f''(0) > 0"/>
 
-          <p>
+          <p v-mathjax>
             $f''$ hat bei $x = -0,5$ ihre einzige Nullstelle. <br>
             Links von der Nullstelle ist $f'' < 0$ und Rechts davon ist $f'' > 0$. <br>
             $f$ ist demnach links von 0,5 rechtsgekrümmt und rechts von 0,5 linksgekrümmt.
           </p>
         </div>
         <div class="example-image-placeholder">
-          <img src="/src/assets/Graph_Wendestelle.png" alt="Graph der Funktionen"
+          <img src="/Graph_Wendestelle.png" alt="Graph der Funktionen"
                style="max-width: 100%; height: auto; border-radius: 4px;">
-          <p class="image-caption">Graph von $f(x)$, $f'(x)$ und $f''(x)$</p>
+          <p class="image-caption" v-mathjax>Graph von $f(x)$, $f'(x)$ und $f''(x)$</p>
         </div>
       </div>
     </ContentSection>
     <ContentSection title="Andere Überschrift">
-      <InfoBox>
-        Was passiert wenn ich hier schreibe
+      <InfoBox v-mathjax>
+        Was passiert wenn ich hier schreibe mit $a^2 + b^2 = c^2$
       </InfoBox>
     </ContentSection>
   </div>

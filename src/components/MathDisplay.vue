@@ -3,7 +3,8 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, watch, ref, nextTick, onMounted} from 'vue';
+
+import {defineComponent, watch, ref, nextTick, getCurrentInstance} from 'vue';
 
 declare global {
   interface Window {
@@ -21,16 +22,16 @@ export default defineComponent({
   },
   setup(props) {
     const processedLatex = ref('');
+    const instance = getCurrentInstance();
 
     const renderMath = async () => {
-      processedLatex.value = `$$${props.latex}$$`; // Umschließt den LaTeX-String für Display-Modus
-      await nextTick(); // Warten, bis das DOM aktualisiert ist
-      if (window.MathJax) {
-        window.MathJax.typesetPromise([document.querySelector('.math-display')]);
+      processedLatex.value = `$$${props.latex}$$`;
+      await nextTick();
+      if (window.MathJax && instance?.proxy) {
+        window.MathJax.typesetPromise([instance.proxy.$el]);
       }
     };
 
-    // Beobachte Änderungen an der Latex-Prop und rendere neu
     watch(() => props.latex, renderMath, {immediate: true});
 
     return {processedLatex};
@@ -40,9 +41,9 @@ export default defineComponent({
 
 <style scoped>
 .math-display {
-  text-align: center; /* Zentriert die Formeln */
-  margin: 1.5rem 0; /* Abstand über und unter der Formel */
-  color: #d0d0d0; /* Farbe des Textes, falls MathJax Text rendert */
+  text-align: center;
+  margin: 0;
+  color: #d0d0d0;
 }
 
 /* MathJax rendert standardmäßig SVGs, die ihre eigene Farbe haben. */
