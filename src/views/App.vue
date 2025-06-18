@@ -1,6 +1,6 @@
 <template>
   <div id="app-layout">
-    <aside class="sidebar">
+    <aside class="sidebar" ref="sidebarRef">
       <div class="sidebar-top-section">
         <div class="search-icon-wrapper">
           <button class="search-button">
@@ -30,11 +30,17 @@
         <router-view></router-view>
       </div>
     </main>
+    <div class="right-placeholder">
+      <!-- Placeholder for future subchapter overview -->
+      <div class="placeholder-content">
+        <span>Subchapter Overview (coming soon)</span>
+      </div>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import {defineComponent, ref} from 'vue';
+import {defineComponent, ref, onMounted, onBeforeUnmount} from 'vue';
 import ContentSection from '../components/ContentSection.vue';
 import InfoBox from '../components/InfoBox.vue';
 import MathDisplay from '../components/MathDisplay.vue';
@@ -54,7 +60,28 @@ export default defineComponent({
       {name: 'Gleichungen', path: '/gleichungen'},
       {name: 'Analysis', path: '/analysis'},
     ]);
-    return {chapters};
+    const sidebarRef = ref<HTMLElement|null>(null);
+
+    // Prevent scroll events on sidebar
+    const preventScroll = (e: Event) => {
+      e.preventDefault();
+    };
+
+    onMounted(() => {
+      if (sidebarRef.value) {
+        sidebarRef.value.addEventListener('wheel', preventScroll, { passive: false });
+        sidebarRef.value.addEventListener('touchmove', preventScroll, { passive: false });
+      }
+    });
+
+    onBeforeUnmount(() => {
+      if (sidebarRef.value) {
+        sidebarRef.value.removeEventListener('wheel', preventScroll);
+        sidebarRef.value.removeEventListener('touchmove', preventScroll);
+      }
+    });
+
+    return {chapters, sidebarRef};
   }
 });
 </script>
@@ -71,42 +98,64 @@ body {
 
 /* --- NEW LAYOUT STYLES --- */
 #app-layout {
-  /* Remove flex, use block layout for fixed sidebar */
-  display: block;
+  display: flex;
+  flex-direction: row;
   min-height: 100vh;
 }
 
 .sidebar {
-  width: 250px;
+  width: 15vw;
+  min-width: 180px;
+  max-width: 320px;
   background-color: #1a1a1a;
   color: #e0e0e0;
-  padding-top: 1rem;
+  padding-top: 0.5rem;
   padding-right: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
   flex-shrink: 0;
-  position: fixed;
+  position: relative;
   left: 0;
   top: 0;
   height: 100vh;
   overflow: hidden; /* Prevent sidebar from scrolling */
+  /* Prevent keyboard scroll (tab/arrow) and pointer scroll */
+  overscroll-behavior: contain;
+  /* Prevent touch scrolling on mobile */
+  touch-action: none;
   z-index: 100;
 }
 
 .content-area {
-  margin-left: 250px; /* Offset by sidebar width */
+  width: 70vw;
+  min-width: 300px;
+  max-width: 100vw;
   padding: 2rem;
   background-color: #0f0f0f;
   overflow-y: auto;
   height: 100vh;
 }
 
-#app-container {
-  max-width: 100%; /* Adjust if your content still needs a max-width within this area */
-  margin: 0 auto;
-  padding: 0; /* Remove padding here if content-area already has it */
+.right-placeholder {
+  width: 15vw;
+  min-width: 180px;
+  max-width: 320px;
+  background: #181818;
+  border-left: 1px solid #222;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.placeholder-content {
+  color: #888;
+  font-size: 1.1rem;
+  text-align: center;
+  padding: 1rem;
+  opacity: 0.7;
 }
 
 /* --- SIDEBAR COMPONENT STYLES --- */
@@ -262,24 +311,38 @@ ul.math-list li::before {
 }
 
 /* Responsive adjustments for smaller screens */
+@media (max-width: 900px) {
+  .right-placeholder {
+    display: none;
+  }
+
+  .content-area {
+    width: 64vw;
+  }
+}
+
 @media (max-width: 768px) {
   #app-layout {
-    flex-direction: column; /* Stack sidebar and content vertically */
+    flex-direction: column;
   }
 
   .sidebar {
     position: static;
-    width: 100%; /* Full width sidebar */
-    height: auto; /* Height adapts to content */
-    padding: 1rem;
-    order: -1; /* Place sidebar on top when stacked */
-    z-index: auto;
+    width: 100%;
+    max-width: none;
+    height: auto;
+    order: -1;
   }
 
   .sidebar-top-section {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center items horizontally when sidebar is full width */
+    align-items: center;
+  }
+
+  .sidebar-bottom-section {
+    margin-top: 1.5rem;
+    align-items: center;
   }
 
   .chapter-navigation {
@@ -298,21 +361,16 @@ ul.math-list li::before {
     margin-bottom: 0; /* Remove vertical margin */
   }
 
-  .chapter-link {
-    padding: 0.5rem 0.75rem; /* Smaller padding for smaller links */
-    font-size: 0.9rem;
-  }
-
-  .sidebar-bottom-section {
-    margin-top: 1.5rem; /* Add some space if it's not pushed by auto-margin */
-    text-align: center;
-  }
-
   .content-area {
-    margin-left: 0;
+    width: 100%;
+    margin: 1rem;
     padding: 1rem;
     height: auto;
     overflow-y: visible;
+  }
+
+  .right-placeholder {
+    display: none;
   }
 }
 </style>
