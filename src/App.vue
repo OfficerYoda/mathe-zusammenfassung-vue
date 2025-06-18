@@ -44,10 +44,33 @@
         </div>
       </div>
     </ContentSection>
-    <ContentSection title="Andere Überschrift">
+    <ContentSection title="Ganzrationale Funktionen">
       <InfoBox v-mathjax>
-        Was passiert wenn ich hier schreibe mit $a^2 + b^2 = c^2$
+        <p>Eine ganzrationale Funktion $f$ vom Grad $n$ hat die Form</p>
+        <MathDisplay latex="f(x) = a_n x^n + a_{n-1} x^{n-1} + ... + a_1 x + a_0" />
+        <p>mit $a_n \neq 0$.</p>
       </InfoBox>
+      <div class="two-column-layout">
+        <div class="column-item">
+          <h3 class="subsection-title">Beispiele</h3>
+          <ul class="math-list" v-mathjax>
+            <li><MathDisplay latex="f(x) = x^2 - 4x + 3" inline /></li>
+            <li><MathDisplay latex="g(x) = 4x^3 - 3x^2 + x + 1" inline /></li>
+            <li><MathDisplay latex="h(x) = 6x^9 - 4x^2" inline /></li>
+            <li><MathDisplay latex="i(x) = 5" inline /></li>
+            <li><MathDisplay latex="j(x) = 8x^4 - 2x^2" inline /></li>
+          </ul>
+        </div>
+        <div class="column-item">
+          <h3 class="subsection-title">Nichtbeispiele</h3>
+          <ul class="math-list" v-mathjax>
+            <li><MathDisplay latex="f(x) = \sqrt{x}" inline /></li>
+            <li><MathDisplay latex="g(x) = e^x" inline /></li>
+            <li><MathDisplay latex="h(x) = \sin(x)" inline /></li>
+            <li><MathDisplay latex="i(x) = \frac{x^2}{x - 1}" inline /></li>
+          </ul>
+        </div>
+      </div>
     </ContentSection>
   </div>
 </template>
