@@ -1,10 +1,51 @@
 <script setup lang="ts">
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 import ContentSection from '../components/ContentSection.vue'
+
+// Hardcoded chapters and their minors
+const chapters = [
+  {
+    name: 'Analysis',
+    minors: [
+      'Ableitungen',
+      'Integrale',
+      'Kurvendiskussion',
+      'Grenzwerte'
+    ]
+  },
+  {
+    name: 'Geometrie',
+    minors: [
+      'Vektoren',
+      'Geraden',
+      'Ebenen',
+      'Abstände'
+    ]
+  },
+  {
+    name: 'Stochastik',
+    minors: [
+      'Wahrscheinlichkeiten',
+      'Kombinatorik',
+      'Zufallsvariablen',
+      'Verteilungen'
+    ]
+  }
+]
 
 const majorChapter = ref('')
 const minorChapter = ref('')
 const description = ref('')
+
+const availableMinors = computed(() => {
+  const found = chapters.find(c => c.name === majorChapter.value)
+  return found ? found.minors : []
+})
+
+// Reset minor chapter if major changes
+watch(majorChapter, () => {
+  minorChapter.value = ''
+})
 
 const githubRepo = 'officeryoda/mathe-zusammenfassung-vue' // Change if needed
 
@@ -42,11 +83,21 @@ function submit() {
     <form @submit.prevent="submit" v-if="!submitted" class="report-form">
       <label>
         <span>Hauptkapitel:</span>
-        <input v-model="majorChapter" required placeholder="z.B. Analysis"/>
+        <select v-model="majorChapter" required>
+          <option value="" disabled>Bitte wählen…</option>
+          <option v-for="chapter in chapters" :key="chapter.name" :value="chapter.name">
+            {{ chapter.name }}
+          </option>
+        </select>
       </label>
       <label>
-        <span>Unterkapitel (optional):</span>
-        <input v-model="minorChapter" placeholder="z.B. Ableitungen"/>
+        <span>Unterkapitel:</span>
+        <select v-model="minorChapter" :disabled="!majorChapter" required>
+          <option value="" disabled>Bitte wählen…</option>
+          <option v-for="minor in availableMinors" :key="minor" :value="minor">
+            {{ minor }}
+          </option>
+        </select>
       </label>
       <label>
         <span>Beschreibung:</span>
@@ -89,7 +140,7 @@ label {
   gap: 0.5rem;
 }
 
-input, textarea {
+input, textarea, select {
   width: 100%;
   margin-top: 0.1rem;
   padding: 0.7rem 1rem;
@@ -99,9 +150,10 @@ input, textarea {
   color: #e0e0e0;
   font-size: 1rem;
   transition: border 0.2s;
+  box-sizing: border-box; /* Ensure consistent sizing */
 }
 
-input:focus, textarea:focus {
+input:focus, textarea:focus, select:focus {
   border: 2px solid #6ab04c;
   outline: none;
   background: #222;
