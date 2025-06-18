@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import {ref, computed, watch} from 'vue'
 import ContentSection from '../components/ContentSection.vue'
+import {createGithubIssue} from '../firebase'
 
 // Hardcoded chapters and their minors
 const chapters = [
@@ -37,6 +38,9 @@ const majorChapter = ref('')
 const minorChapter = ref('')
 const description = ref('')
 const name = ref('') // Optional name field
+const isLoading = ref(false)
+const error = ref('')
+const issueUrl = ref('')
 
 const availableMinors = computed(() => {
   const found = chapters.find(c => c.name === majorChapter.value)
@@ -76,8 +80,41 @@ const githubIssueUrl = computed(() => {
 const submitted = ref(false)
 
 function submit() {
-  console.log(`Trying to create issue with params: \n${majorChapter.value} | ${minorChapter.value} \n${description.value} \nfound by:${name.value}`);
-  submitted.value = true
+  if (!majorChapter.value || !description.value) {
+    error.value = 'Bitte fülle alle erforderlichen Felder aus.'
+    return
+  }
+
+  isLoading.value = true
+  error.value = ''
+
+  // Create the issue title and body
+  const title = `Fehler in Kapitel: ${majorChapter.value}${minorChapter.value ? ' - ' + minorChapter.value : ''}`
+
+  let body = `**Major Chapter:** ${majorChapter.value}\n`
+  if (minorChapter.value) body += `**Minor Chapter:** ${minorChapter.value}\n`
+  if (name.value) body += `**Name:** ${name.value}\n`
+  body += `**Description:**\n${description.value}\n`
+  if (minorChapter.value) {
+    body += `\n[Zurück zum gemeldeten Unterkapitel](#${encodeURIComponent(minorChapter.value)})`
+  }
+
+  // Call the Firebase function
+  createGithubIssue({title, body})
+      .then((result) => {
+        // Firebase callable functions return data in a specific structure
+        console.log('GitHub issue created:', result)
+        // The actual data is in result.data
+        issueUrl.value = result.data.issueUrl
+        submitted.value = true
+        isLoading.value = false
+      })
+      .catch((err) => {
+        console.error('Error creating GitHub issue:', err)
+        // Firebase error objects have a message property
+        error.value = `Fehler beim Erstellen des Issues: ${err.message}`
+        isLoading.value = false
+      })
 }
 </script>
 
@@ -85,8 +122,8 @@ function submit() {
   <ContentSection title="Fehler melden">
     <form @submit.prevent="submit" v-if="!submitted" class="report-form">
       <label>
-        <span>Hauptkapitel:</span>
-        <select v-model="majorChapter" required>
+        <span>Großkapitel:</span>
+        <select v-model="majorChapter">
           <option value="" disabled>Bitte wählen…</option>
           <option v-for="chapter in chapters" :key="chapter.name" :value="chapter.name">
             {{ chapter.name }}
@@ -95,7 +132,7 @@ function submit() {
       </label>
       <label>
         <span>Unterkapitel:</span>
-        <select v-model="minorChapter" :disabled="!majorChapter" required>
+        <select v-model="minorChapter" :disabled="!majorChapter">
           <option value="" disabled>Bitte wählen…</option>
           <option v-for="minor in availableMinors" :key="minor" :value="minor">
             {{ minor }}
@@ -104,18 +141,22 @@ function submit() {
       </label>
       <label>
         <span>Beschreibung:</span>
-        <textarea v-model="description" required placeholder="Beschreibe den Fehler..."></textarea>
+        <textarea v-model="description" placeholder="Beschreibe den Fehler..."></textarea>
       </label>
       <label>
         <span>Name (optional):</span>
         <input v-model="name" placeholder="Nicht deinen ganzen oder echten Namen"
                title="Dieser Name wird öffentlich im Internet stehen!"/>
       </label>
-      <button type="submit">Fehler melden</button>
+      <button type="submit" :disabled="isLoading">
+        <span v-if="isLoading">Wird gesendet...</span>
+        <span v-else>Fehler melden</span>
+      </button>
+      <div v-if="error" class="error-message">{{ error }}</div>
     </form>
     <div v-else class="report-success">
       <p>
-        <a :href="githubIssueUrl" target="_blank" rel="noopener" class="github-link">
+        <a :href="issueUrl" target="_blank" rel="noopener" class="github-link">
           Klicke hier, um dein Issue auf GitHub zu sehen
         </a>
       </p>
@@ -218,5 +259,14 @@ button:hover {
 
 .chapter-link:hover {
   color: #8fdc6a;
+}
+
+.error-message {
+  color: #e74c3c;
+  background-color: rgba(231, 76, 60, 0.1);
+  padding: 0.7rem;
+  border-radius: 4px;
+  text-align: center;
+  margin-top: 0.5rem;
 }
 </style>
