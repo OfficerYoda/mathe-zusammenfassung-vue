@@ -129,7 +129,7 @@ export default defineComponent({
 .content-area {
   width: 70vw;
   min-width: 300px;
-  max-width: 100vw;
+  max-width: 1024px;
   padding: 2rem;
   background-color: #0f0f0f;
   overflow-y: auto;
@@ -201,12 +201,6 @@ export default defineComponent({
 .chapter-link:hover {
   background-color: #2a2a2a;
   color: #ffffff;
-}
-
-.chapter-link.router-link-active {
-  background-color: #6ab04c;
-  color: #fff;
-  font-weight: bold;
 }
 
 .sidebar-bottom-section {

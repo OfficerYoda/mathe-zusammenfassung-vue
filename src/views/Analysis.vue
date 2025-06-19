@@ -43,10 +43,7 @@ import InfoBox from "../components/InfoBox.vue";
         </p>
       </div>
       <div class="column-item">
-        <div class="image-background">
-          <img src="/Graph_Wendestelle.png" alt="Graph der Funktionen"
-               style="max-width: 100%; ">
-        </div>
+        <img src="/Graph_Wendestelle.png" alt="Graph der Funktionen">
       </div>
     </div>
   </ContentSection>
