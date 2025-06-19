@@ -10,8 +10,9 @@
     "logs": "firebase functions:log"
   },
   "engines": {
-    "node": "22"
+    "node": "18"
   },
+  "type": "module",
   "main": "lib/index.js",
   "dependencies": {
     "@octokit/rest": "^22.0.0",

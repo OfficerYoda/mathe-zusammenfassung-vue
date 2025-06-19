@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {ref, computed, watch} from 'vue'
+import {ref, computed} from 'vue'
 import ContentSection from '../components/ContentSection.vue'
 import {createGithubIssue} from '../firebase'
 
@@ -73,17 +73,14 @@ function submit() {
   // Call the Firebase function
   createGithubIssue({title, body})
       .then((result) => {
-        // Firebase callable functions return data in a specific structure
         console.log('GitHub issue created:', result)
-        // The actual data is in result.data
-        // issueUrl.value = result.data.issueUrl
-        issueUrl.value = 'https://www.youtube.com'
+        // With Functions v2, the data is directly in the result
+        issueUrl.value = result.data.issueUrl
         submitted.value = true
         isLoading.value = false
       })
       .catch((err) => {
         console.error('Error creating GitHub issue:', err)
-        // Firebase error objects have a message property
         error.value = `Fehler beim Erstellen des Issues: ${err.message}`
         isLoading.value = false
       })
