@@ -2,14 +2,8 @@
   <section class="content-section" :id="sectionId">
     <h2 class="section-title" @click="handleTitleClick" tabindex="0">
       {{ title }}
-      <img
-        src="/link.svg"
-        class="section-indicator"
-        :class="{ 'clicked': indicatorClicked }"
-        alt=""
-        aria-hidden="true"
-        style="color: #535bf2;"
-      />
+      <img src="/link.svg" class="section-indicator" :class="{ 'clicked': indicatorClicked }"
+           alt="" aria-hidden="true"/>
     </h2>
     <div class="section-content">
       <slot></slot>
@@ -18,7 +12,7 @@
 </template>
 
 <script lang="ts">
-import {computed, defineComponent, ref} from 'vue';
+import {computed, defineComponent, onMounted, ref} from 'vue';
 import {kebabUriCase} from "../utils/string.ts";
 
 export default defineComponent({
@@ -33,14 +27,37 @@ export default defineComponent({
     const sectionId = computed(() => kebabUriCase(props.title));
     const indicatorClicked = ref(false);
 
-    const handleTitleClick = () => {
-      // Change the URL to link to the chapter
-      window.location.hash = `#${sectionId.value}`;
+    // Smooth scroll to element with given id
+    const smoothScrollToSection = (id: string) => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({behavior: 'smooth'});
+      }
+    };
+
+    const handleTitleClick = (event: MouseEvent) => {
+      event.preventDefault();
+      // Change the URL hash without jumping
+      const newUrl = `#${sectionId.value}`;
+      history.replaceState(null, '', newUrl);
+      navigator.clipboard?.writeText(window.location.origin + window.location.pathname + newUrl);
+
+      smoothScrollToSection(sectionId.value);
       indicatorClicked.value = true;
       setTimeout(() => {
         indicatorClicked.value = false;
-      }, 180); // Duration of the click effect in ms
+      }, 100);
     };
+
+    onMounted(() => {
+      // On initial load, if hash exists, smooth scroll
+      if (window.location.hash) {
+        setTimeout(() => {
+          smoothScrollToSection(window.location.hash.slice(1));
+        }, 0);
+      }
+    });
+
     return {sectionId, handleTitleClick, indicatorClicked};
   },
 });
@@ -48,7 +65,7 @@ export default defineComponent({
 
 <style scoped>
 .content-section {
-  background-color: #1a1a1a; /* Sehr dunkler Hintergrund für die Sektion */
+  background-color: #1a1a1a;
   padding: 2rem;
   margin-bottom: 2rem;
   border-radius: 8px;
@@ -56,11 +73,11 @@ export default defineComponent({
 }
 
 .section-title {
-  color: #ffffff; /* Weißer Titel */
+  color: #ffffff;
   font-size: 2.2rem;
   margin-top: 0;
   margin-bottom: 1.5rem;
-  border-bottom: 2px solid #333; /* Trennlinie unter dem Titel */
+  border-bottom: 2px solid #333; /* Line under the title */
   padding-bottom: 0.8rem;
   letter-spacing: 0.05em;
   display: flex;
@@ -69,29 +86,31 @@ export default defineComponent({
 }
 
 .section-indicator {
-  display: none;
   margin-right: 0.7em;
   margin-top: 1rem;
   flex-shrink: 0;
   align-items: center;
-  transition: opacity 0.2s, filter 0.15s;
   width: 1em;
   height: 1em;
-  /* Default filter */
   filter: brightness(0) saturate(100%) invert(55%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
-}
-
-.section-indicator.clicked {
-  /* Change filter on click */
-  filter: brightness(2) saturate(200%) invert(20%) sepia(80%) hue-rotate(220deg) contrast(150%);
-}
-
-.section-title:hover .section-indicator {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1), filter 0.15s;
   display: inline-flex;
 }
 
+.section-indicator.clicked {
+  filter: brightness(2) saturate(200%) invert(20%) sepia(80%) hue-rotate(220deg) contrast(150%);
+}
+
+.section-title:hover .section-indicator,
+.section-title:focus .section-indicator {
+  opacity: 1;
+  pointer-events: auto;
+}
+
 .section-title:hover {
-  border-bottom: 2px solid #c2c2c2;
+  border-bottom: 2px solid #b6b6b6;
   outline: none;
 }
 
