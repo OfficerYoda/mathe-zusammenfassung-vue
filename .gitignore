@@ -48,12 +48,7 @@ $RECYCLE.BIN/
 
 # Test output
 test-results/
-coverage/
-
-# Windows system files
-Thumbs.db
-ehthumbs.db
 
 # IDE files
-.idea/
 *.iml
+/.firebase/hosting.ZGlzdA.cache

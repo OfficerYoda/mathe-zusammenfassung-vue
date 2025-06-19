@@ -1,5 +1,18 @@
 {
   "projects": {
     "default": "mathe-zusammenfassung"
-  }
+  },
+  "targets": {
+    "mathe-zusammenfassung": {
+      "hosting": {
+        "your-new-dev-site-local-name": [
+          "mz-vue"
+        ],
+        "mz-vue": [
+          "mathe-zusammenfassung-vue"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }
