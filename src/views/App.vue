@@ -1,6 +1,6 @@
 <template>
   <div id="app-layout">
-    <aside class="sidebar" ref="sidebarLeftRef">
+    <aside class="sidebar">
       <div class="sidebar-top-section">
         <div class="search-icon-wrapper">
           <button class="search-button">
@@ -25,13 +25,14 @@
         </router-link>
       </div>
     </aside>
-    <main class="content-area">
-      <div id="app-container">
-        <router-view></router-view>
-      </div>
-    </main>
-    <div class="right-placeholder" ref="sidebarRightRef">
-      <!-- Placeholder for future subchapter overview -->
+    <div class="center-area">
+      <main class="content-area">
+        <div id="app-container">
+          <router-view></router-view>
+        </div>
+      </main>
+    </div>
+    <div class="right-placeholder">
       <div class="placeholder-content">
         <span>Subchapter Overview (coming soon)</span>
       </div>
@@ -40,7 +41,7 @@
 </template>
 
 <script lang="ts">
-import {defineComponent, ref, onMounted, onBeforeUnmount} from 'vue';
+import {defineComponent, ref} from 'vue';
 import ContentSection from '../components/ContentSection.vue';
 import InfoBox from '../components/InfoBox.vue';
 import MathDisplay from '../components/MathDisplay.vue';
@@ -60,37 +61,8 @@ export default defineComponent({
       {name: 'Gleichungen', path: '/gleichungen'},
       {name: 'Analysis', path: '/analysis'},
     ]);
-    const sidebarLeftRef = ref<HTMLElement | null>(null);
-    const sidebarRightRef = ref<HTMLElement | null>(null);
 
-    // Prevent scroll events on sidebar
-    const preventScroll = (e: Event) => {
-      e.preventDefault();
-    };
-
-    onMounted(() => {
-      if (sidebarLeftRef.value) {
-        sidebarLeftRef.value.addEventListener('wheel', preventScroll, {passive: false});
-        sidebarLeftRef.value.addEventListener('touchmove', preventScroll, {passive: false});
-      }
-      if (sidebarRightRef.value) {
-        sidebarRightRef.value.addEventListener('wheel', preventScroll, {passive: false});
-        sidebarRightRef.value.addEventListener('touchmove', preventScroll, {passive: false});
-      }
-    });
-
-    onBeforeUnmount(() => {
-      if (sidebarLeftRef.value) {
-        sidebarLeftRef.value.removeEventListener('wheel', preventScroll);
-        sidebarLeftRef.value.removeEventListener('touchmove', preventScroll);
-      }
-      if (sidebarRightRef.value) {
-        sidebarRightRef.value.removeEventListener('wheel', preventScroll);
-        sidebarRightRef.value.removeEventListener('touchmove', preventScroll);
-      }
-    });
-
-    return {chapters, sidebarLeftRef: sidebarLeftRef, sidebarRightRef: sidebarRightRef};
+    return {chapters};
   }
 });
 </script>
@@ -102,61 +74,45 @@ export default defineComponent({
   min-height: 100vh;
 }
 
-
 .sidebar {
   width: 15vw;
   min-width: 180px;
   max-width: 320px;
   background-color: #1a1a1a;
   color: #e0e0e0;
-  padding-top: 0.5rem;
-  padding-right: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
   flex-shrink: 0;
   position: relative;
-  left: 0;
-  top: 0;
   height: 100vh;
-  overflow: hidden;
-  overscroll-behavior: contain;
   touch-action: none;
-  z-index: 100;
+}
+
+.center-area {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-width: 0;
 }
 
 .content-area {
-  width: 70vw;
   min-width: 300px;
   max-width: 1024px;
+  width: 100%;
   padding: 2rem;
   background-color: #0f0f0f;
   overflow-y: auto;
   height: 100vh;
 }
 
-.right-placeholder {
-  width: 15vw;
-  min-width: 180px;
-  max-width: 320px;
-  background: #181818;
-  border-left: 1px solid #222;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  overscroll-behavior: contain;
-  touch-action: none;
-}
-
-.placeholder-content {
-  color: #888;
-  font-size: 1.1rem;
-  text-align: center;
-  padding: 1rem;
-  opacity: 0.7;
+/* Hide the scrollbar */
+.content-area::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
 }
 
 .search-icon-wrapper {
@@ -192,6 +148,8 @@ export default defineComponent({
 .chapter-link {
   display: block;
   padding: 0.75rem 1rem;
+  margin-left: 0.75rem;
+  margin-right: 0.75rem;
   color: #e0e0e0;
   text-decoration: none;
   border-radius: 4px;
@@ -222,7 +180,30 @@ export default defineComponent({
 }
 
 .report-error-button:hover {
-  background-color: #e55335;
+  background-color: #d5462a;
+  color: #fff;
+}
+
+.right-placeholder {
+  width: 15vw;
+  min-width: 180px;
+  max-width: 320px;
+  background: #181818;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  overscroll-behavior: contain;
+  touch-action: none;
+}
+
+.placeholder-content {
+  color: #888;
+  font-size: 1.1rem;
+  text-align: center;
+  padding: 1rem;
+  opacity: 0.7;
 }
 
 @media (max-width: 768px) {
@@ -263,6 +244,10 @@ export default defineComponent({
 
   .chapter-navigation li {
     margin-bottom: 0;
+  }
+
+  .center-area {
+    width: 100%;
   }
 
   .content-area {
