@@ -2,6 +2,7 @@
 import {ref, computed} from 'vue'
 import ContentSection from '../components/ContentSection.vue'
 import {createGithubIssue} from '../firebase'
+import {kebabUriCase} from "../utils/string.ts";
 
 // Hardcoded chapters and their minors
 const chapters = [
@@ -11,7 +12,8 @@ const chapters = [
       'Ableitungen',
       'Integrale',
       'Kurvendiskussion',
-      'Grenzwerte'
+      'Grenzwerte',
+      'Ganzrationale Funktionen'
     ]
   },
   {
@@ -67,7 +69,7 @@ function submit() {
        ### Beschreibung
        ${description.value}
 
-       [Zum gemeldeten Kapitel](https://officeryoda.dev/${encodeURIComponent(majorChapter.value)}#${encodeURIComponent(minorChapter.value)})
+       [Zum gemeldeten Kapitel](https://officeryoda.dev/${kebabUriCase(majorChapter.value)}#${kebabUriCase(minorChapter.value)})
 
        ${name.value ? `Gefunden von **${name.value}**` : ''}
        `.replace(/^[ \t]+/gm, ''); // Remove leading indentation

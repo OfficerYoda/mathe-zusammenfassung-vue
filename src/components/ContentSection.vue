@@ -1,13 +1,15 @@
 <template>
-  <section class="content-section">
+  <section class="content-section" :id="sectionId">
     <h2 class="section-title">{{ title }}</h2>
     <div class="section-content">
-      <slot></slot> </div>
+      <slot></slot>
+    </div>
   </section>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import {computed, defineComponent} from 'vue';
+import {kebabUriCase} from "../utils/string.ts";
 
 export default defineComponent({
   name: 'ContentSection',
@@ -16,6 +18,10 @@ export default defineComponent({
       type: String,
       required: true,
     },
+  },
+  setup(props) {
+    const sectionId = computed(() => kebabUriCase(props.title));
+    return {sectionId};
   },
 });
 </script>

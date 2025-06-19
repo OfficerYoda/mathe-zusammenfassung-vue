@@ -56,9 +56,9 @@ export default defineComponent({
   },
   setup() {
     const chapters = ref([
-      {name: 'Notation', path: '/Notation'},
-      {name: 'Gleichungen', path: '/Gleichungen'},
-      {name: 'Analysis', path: '/Analysis'},
+      {name: 'Notation', path: '/notation'},
+      {name: 'Gleichungen', path: '/gleichungen'},
+      {name: 'Analysis', path: '/analysis'},
     ]);
     const sidebarLeftRef = ref<HTMLElement | null>(null);
     const sidebarRightRef = ref<HTMLElement | null>(null);
