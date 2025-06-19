@@ -96,21 +96,12 @@ export default defineComponent({
 </script>
 
 <style>
-/* --- Global Styles (from your existing App.vue style block) --- */
-body {
-  margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: #0f0f0f; /* Very dark background */
-  color: #e0e0e0;
-  line-height: 1.6;
-}
-
-/* --- NEW LAYOUT STYLES --- */
 #app-layout {
   display: flex;
   flex-direction: row;
   min-height: 100vh;
 }
+
 
 .sidebar {
   width: 15vw;
@@ -129,9 +120,9 @@ body {
   left: 0;
   top: 0;
   height: 100vh;
-  overflow: hidden; /* Prevent sidebar from scrolling */
-  overscroll-behavior: contain; /* Prevent keyboard scroll (tab/arrow) and pointer scroll */
-  touch-action: none; /* Prevent touch scrolling on mobile */;
+  overflow: hidden;
+  overscroll-behavior: contain;
+  touch-action: none;
   z-index: 100;
 }
 
@@ -155,9 +146,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden; /* Prevent sidebar from scrolling */
-  overscroll-behavior: contain; /* Prevent keyboard scroll (tab/arrow) and pointer scroll */
-  touch-action: none; /* Prevent touch scrolling on mobile */;
+  overflow: hidden;
+  overscroll-behavior: contain;
+  touch-action: none;
 }
 
 .placeholder-content {
@@ -168,7 +159,6 @@ body {
   opacity: 0.7;
 }
 
-/* --- SIDEBAR COMPONENT STYLES --- */
 .search-icon-wrapper {
   text-align: center;
   margin-top: 1rem;
@@ -200,7 +190,7 @@ body {
 }
 
 .chapter-link {
-  display: block; /* Make the whole area clickable */
+  display: block;
   padding: 0.75rem 1rem;
   color: #e0e0e0;
   text-decoration: none;
@@ -241,97 +231,6 @@ body {
   background-color: #e55335;
 }
 
-.subsection-title {
-  color: #ffffff;
-  font-size: 1.6rem;
-  margin-top: 2rem;
-  margin-bottom: 1rem;
-  padding-bottom: 0.5rem;
-  border-bottom: 1px solid #333;
-}
-
-.image-background {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: #2a2a2a;
-  border-radius: 0.75rem;
-  padding: 0.75rem;
-}
-
-.image-caption {
-  font-size: 0.9rem;
-  color: #b0b0b0;
-  margin-top: 0.5rem;
-  text-align: center;
-}
-
-p {
-  margin-bottom: 1rem;
-}
-
-ul {
-  padding-left: 1.5rem;
-  list-style: none;
-  margin: 0;
-}
-
-ul li {
-  margin-bottom: 0.5rem;
-  padding-left: 1em;
-  position: relative;
-}
-
-ul.math-list li::before {
-  content: "•";
-  color: #6ab04c;
-  font-size: 1em;
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-
-.two-column-layout, .two-column-layout-image {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 2rem;
-  justify-content: space-around;
-  margin-top: 0;
-}
-
-.two-column-layout-image .column-item:first-child {
-  flex: 0 1 55%;
-}
-
-.two-column-layout-image .column-item:last-child {
-  flex: 0 1 40%;
-}
-
-.column-item {
-  flex: 1 1 45%;
-  min-width: 280px;
-}
-
-.column-item ul {
-  padding-left: 1.5rem;
-  list-style-type: none;
-}
-
-.column-item ul li {
-  margin-bottom: 0.7rem;
-}
-
-/* Responsive adjustments for smaller screens */
-@media (max-width: 900px) {
-  .right-placeholder {
-    display: none;
-  }
-
-  .content-area {
-    width: 64vw;
-  }
-}
-
 @media (max-width: 768px) {
   #app-layout {
     flex-direction: column;
@@ -357,19 +256,19 @@ ul.math-list li::before {
   }
 
   .chapter-navigation {
-    width: 100%; /* Ensure nav takes full width */
-    text-align: center; /* Center links in nav */
+    width: 100%;
+    text-align: center;
   }
 
   .chapter-navigation ul {
-    display: flex; /* Make chapter links inline/flex for horizontal scroll or wrap */
+    display: flex;
     flex-wrap: wrap;
-    justify-content: center; /* Center the chapter links */
-    gap: 0.5rem; /* Spacing between wrapped links */
+    justify-content: center;
+    gap: 0.5rem;
   }
 
   .chapter-navigation li {
-    margin-bottom: 0; /* Remove vertical margin */
+    margin-bottom: 0;
   }
 
   .content-area {
@@ -382,6 +281,16 @@ ul.math-list li::before {
 
   .right-placeholder {
     display: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .right-placeholder {
+    display: none;
+  }
+
+  .content-area {
+    width: 64vw;
   }
 }
 </style>
