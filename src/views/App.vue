@@ -1,6 +1,6 @@
 <template>
   <div id="app-layout">
-    <aside class="sidebar" ref="sidebarRef">
+    <aside class="sidebar" ref="sidebarLeftRef">
       <div class="sidebar-top-section">
         <div class="search-icon-wrapper">
           <button class="search-button">
@@ -30,7 +30,7 @@
         <router-view></router-view>
       </div>
     </main>
-    <div class="right-placeholder">
+    <div class="right-placeholder" ref="sidebarRightRef">
       <!-- Placeholder for future subchapter overview -->
       <div class="placeholder-content">
         <span>Subchapter Overview (coming soon)</span>
@@ -60,7 +60,8 @@ export default defineComponent({
       {name: 'Gleichungen', path: '/Gleichungen'},
       {name: 'Analysis', path: '/Analysis'},
     ]);
-    const sidebarRef = ref<HTMLElement|null>(null);
+    const sidebarLeftRef = ref<HTMLElement | null>(null);
+    const sidebarRightRef = ref<HTMLElement | null>(null);
 
     // Prevent scroll events on sidebar
     const preventScroll = (e: Event) => {
@@ -68,20 +69,28 @@ export default defineComponent({
     };
 
     onMounted(() => {
-      if (sidebarRef.value) {
-        sidebarRef.value.addEventListener('wheel', preventScroll, { passive: false });
-        sidebarRef.value.addEventListener('touchmove', preventScroll, { passive: false });
+      if (sidebarLeftRef.value) {
+        sidebarLeftRef.value.addEventListener('wheel', preventScroll, {passive: false});
+        sidebarLeftRef.value.addEventListener('touchmove', preventScroll, {passive: false});
+      }
+      if (sidebarRightRef.value) {
+        sidebarRightRef.value.addEventListener('wheel', preventScroll, {passive: false});
+        sidebarRightRef.value.addEventListener('touchmove', preventScroll, {passive: false});
       }
     });
 
     onBeforeUnmount(() => {
-      if (sidebarRef.value) {
-        sidebarRef.value.removeEventListener('wheel', preventScroll);
-        sidebarRef.value.removeEventListener('touchmove', preventScroll);
+      if (sidebarLeftRef.value) {
+        sidebarLeftRef.value.removeEventListener('wheel', preventScroll);
+        sidebarLeftRef.value.removeEventListener('touchmove', preventScroll);
+      }
+      if (sidebarRightRef.value) {
+        sidebarRightRef.value.removeEventListener('wheel', preventScroll);
+        sidebarRightRef.value.removeEventListener('touchmove', preventScroll);
       }
     });
 
-    return {chapters, sidebarRef};
+    return {chapters, sidebarLeftRef: sidebarLeftRef, sidebarRightRef: sidebarRightRef};
   }
 });
 </script>
@@ -121,10 +130,8 @@ body {
   top: 0;
   height: 100vh;
   overflow: hidden; /* Prevent sidebar from scrolling */
-  /* Prevent keyboard scroll (tab/arrow) and pointer scroll */
-  overscroll-behavior: contain;
-  /* Prevent touch scrolling on mobile */
-  touch-action: none;
+  overscroll-behavior: contain; /* Prevent keyboard scroll (tab/arrow) and pointer scroll */
+  touch-action: none; /* Prevent touch scrolling on mobile */;
   z-index: 100;
 }
 
@@ -148,6 +155,9 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden; /* Prevent sidebar from scrolling */
+  overscroll-behavior: contain; /* Prevent keyboard scroll (tab/arrow) and pointer scroll */
+  touch-action: none; /* Prevent touch scrolling on mobile */;
 }
 
 .placeholder-content {
