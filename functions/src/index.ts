@@ -65,6 +65,7 @@ export const createGithubIssue = onCall(
                 repo: GITHUB_REPO_NAME,
                 title: title,
                 body: body,
+                labels: ['fehler'],
             });
 
             logger.info('GitHub issue created successfully!', {

@@ -161,7 +161,8 @@ body {
 /* --- SIDEBAR COMPONENT STYLES --- */
 .search-icon-wrapper {
   text-align: center;
-  margin-bottom: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 }
 
 .search-button {

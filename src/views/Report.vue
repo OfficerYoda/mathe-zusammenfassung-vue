@@ -55,26 +55,28 @@ function submit() {
     error.value = 'Bitte fülle alle erforderlichen Felder aus.'
     return
   }
-
   isLoading.value = true
   error.value = ''
 
   // Create the issue title and body
-  const title = `Fehler in Kapitel: ${majorChapter.value}${minorChapter.value ? ' - ' + minorChapter.value : ''}`
+  const title = `Fehler in "${majorChapter.value} - ${minorChapter.value}`
+  const body =
+      `### Kapitel
+       ${majorChapter.value} - ${minorChapter.value}
 
-  let body = `**Major Chapter:** ${majorChapter.value}\n`
-  if (minorChapter.value) body += `**Minor Chapter:** ${minorChapter.value}\n`
-  if (name.value) body += `**Name:** ${name.value}\n`
-  body += `**Description:**\n${description.value}\n`
-  if (minorChapter.value) {
-    body += `\n[Zurück zum gemeldeten Unterkapitel](#${encodeURIComponent(minorChapter.value)})`
-  }
+       ### Beschreibung
+       ${description.value}
+
+       [Zum gemeldeten Kapitel](https://officeryoda.dev/${encodeURIComponent(majorChapter.value)}#${encodeURIComponent(minorChapter.value)})
+
+       ${name.value ? `Gefunden von **${name.value}**` : ''}
+       `.replace(/^[ \t]+/gm, ''); // Remove leading indentation
 
   // Call the Firebase function
   createGithubIssue({title, body})
       .then((result) => {
         console.log('GitHub issue created:', result)
-        // With Functions v2, the data is directly in the result
+        // @ts-expect-error: result.data is typed as unknown but works at runtime
         issueUrl.value = result.data.issueUrl
         submitted.value = true
         isLoading.value = false
@@ -126,7 +128,7 @@ function submit() {
     <div v-else class="report-success">
       <p>
         <a :href="issueUrl" target="_blank" rel="noopener" class="github-link">
-          Klicke hier, um dein Issue auf GitHub zu sehen
+          Klicke hier, um deinen Fehlerbericht auf GitHub zu sehen
         </a>
       </p>
       <div v-if="minorChapter">
