@@ -103,10 +103,6 @@ export default defineComponent({
   z-index: 2;
 }
 
-.sidebar-top-section {
-
-}
-
 .search-icon-wrapper {
   text-align: center;
   margin-top: 1rem;
@@ -125,6 +121,10 @@ export default defineComponent({
 
 .search-button:hover {
   color: #6ab04c;
+}
+
+.search-button:focus {
+  outline: none;
 }
 
 .chapter-navigation ul {
@@ -153,7 +153,7 @@ export default defineComponent({
   color: #ffffff;
 }
 
-/* Highlight active chapter link in green */
+/* Used dynamically as active-class by Vue Router */
 .chapter-link--active {
   background-color: #6ab04c !important;
 }
@@ -238,7 +238,6 @@ export default defineComponent({
     max-width: none;
     height: auto;
     position: static;
-    border-bottom: 1px solid #333;
     z-index: 2;
   }
 
@@ -266,10 +265,7 @@ export default defineComponent({
   }
 
   .sidebar-bottom-section {
-    margin-top: auto;
-    padding: 1rem;
-    border-top: 1px solid #333;
-    text-align: center;
+    display: none;
   }
 
   .content-area {
