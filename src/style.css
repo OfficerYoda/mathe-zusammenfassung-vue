@@ -70,14 +70,6 @@ body, html {
     box-sizing: border-box;
 }
 
-.subsection-title {
-    color: #ffffff;
-    font-size: 1.6rem;
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid #333;
-}
 
 .two-column-layout, .two-column-layout-image {
     display: flex;
