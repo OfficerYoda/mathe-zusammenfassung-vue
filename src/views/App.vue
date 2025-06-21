@@ -1,45 +1,3 @@
-<template>
-  <div id="app-layout">
-    <aside class="sidebar">
-      <div class="sidebar-top-section">
-        <div class="search-icon-wrapper">
-          <button class="search-button">
-            <font-awesome-icon icon="fa-solid fa-magnifying-glass"/>
-          </button>
-        </div>
-
-        <nav class="chapter-navigation">
-          <ul>
-            <li v-for="chapter in chapters" :key="chapter.path">
-              <router-link :to="chapter.path" class="chapter-link">
-                {{ chapter.name }}
-              </router-link>
-            </li>
-          </ul>
-        </nav>
-      </div>
-
-      <div class="sidebar-bottom-section">
-        <router-link to="/report" class="report-error-button">
-          Fehler melden
-        </router-link>
-      </div>
-    </aside>
-    <div class="center-area">
-      <main class="content-area">
-        <div id="app-container">
-          <router-view></router-view>
-        </div>
-      </main>
-    </div>
-    <div class="right-placeholder">
-      <div class="placeholder-content">
-        <span>Subchapter Overview (coming soon)</span>
-      </div>
-    </div>
-  </div>
-</template>
-
 <script lang="ts">
 import {defineComponent, ref} from 'vue';
 import ContentSection from '../components/ContentSection.vue';
@@ -67,52 +25,71 @@ export default defineComponent({
 });
 </script>
 
-<style>
-#app-layout {
+<template>
+  <div class="app-layout">
+    <aside class="sidebar left-sidebar">
+      <div class="sidebar-top-section">
+        <div class="search-icon-wrapper">
+          <button class="search-button">
+            <font-awesome-icon icon="fa-solid fa-magnifying-glass"/>
+          </button>
+        </div>
+        <nav class="chapter-navigation">
+          <ul>
+            <li v-for="chapter in chapters" :key="chapter.path">
+              <router-link
+                  :to="chapter.path"
+                  class="chapter-link"
+                  active-class="chapter-link--active"
+                  exact-active-class="chapter-link--active"
+              >
+                {{ chapter.name }}
+              </router-link>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="sidebar-bottom-section">
+        <router-link to="/report" class="report-error-button">
+          Fehler melden
+        </router-link>
+      </div>
+    </aside>
+    <main class="main-content">
+      <div id="app-container">
+        <router-view></router-view>
+      </div>
+    </main>
+    <aside class="sidebar right-sidebar">
+      <div class="placeholder-content">
+        <span>Chapter Overview (coming soon)</span>
+      </div>
+    </aside>
+  </div>
+</template>
+
+<style scoped>
+.app-layout {
   display: flex;
-  flex-direction: row;
-  min-height: 100vh;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
 }
 
+/* ---Left Sidebar--- */
 .sidebar {
   width: 15vw;
   min-width: 180px;
   max-width: 320px;
-  background-color: #1a1a1a;
-  color: #e0e0e0;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
-  flex-shrink: 0;
-  position: relative;
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+  /* Make sidebar fixed */
   height: 100vh;
-  touch-action: none;
-}
-
-.center-area {
-  flex: 1 1 auto;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  min-width: 0;
-}
-
-.content-area {
-  min-width: 300px;
-  max-width: 1024px;
-  width: 100%;
-  padding: 2rem;
-  background-color: #0f0f0f;
-  overflow-y: auto;
-  height: 100vh;
-}
-
-/* Hide the scrollbar */
-.content-area::-webkit-scrollbar {
-  display: none;
-  width: 0;
-  height: 0;
+  position: sticky;
+  top: 0;
+  z-index: 2;
 }
 
 .search-icon-wrapper {
@@ -161,6 +138,11 @@ export default defineComponent({
   color: #ffffff;
 }
 
+/* Highlight active chapter link in green */
+.chapter-link--active {
+  background-color: #6ab04c !important;
+}
+
 .sidebar-bottom-section {
   margin-top: auto;
   padding: 1.5rem;
@@ -180,22 +162,31 @@ export default defineComponent({
 }
 
 .report-error-button:hover {
-  background-color: #d5462a;
+  background-color: #ce3f22;
   color: #fff;
 }
 
-.right-placeholder {
-  width: 15vw;
-  min-width: 180px;
-  max-width: 320px;
-  background: #181818;
-  height: 100vh;
+/* ---Center Area--- */
+.main-content {
+  flex: 1 1 auto;
   display: flex;
-  align-items: center;
   justify-content: center;
-  overflow: hidden;
-  overscroll-behavior: contain;
-  touch-action: none;
+  align-items: flex-start;
+  padding: 2rem 0;
+  min-width: 0;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.main-content > * {
+  max-width: 1024px;
+  width: 100%;
+  height: 100%;
+}
+
+/* ---Right Sidebar--- */
+.right-sidebar {
+  justify-content: center;
 }
 
 .placeholder-content {
@@ -204,72 +195,5 @@ export default defineComponent({
   text-align: center;
   padding: 1rem;
   opacity: 0.7;
-}
-
-@media (max-width: 768px) {
-  #app-layout {
-    flex-direction: column;
-  }
-
-  .sidebar {
-    position: static;
-    width: 100%;
-    max-width: none;
-    height: auto;
-    order: -1;
-  }
-
-  .sidebar-top-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .sidebar-bottom-section {
-    margin-top: 1.5rem;
-    align-items: center;
-  }
-
-  .chapter-navigation {
-    width: 100%;
-    text-align: center;
-  }
-
-  .chapter-navigation ul {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.5rem;
-  }
-
-  .chapter-navigation li {
-    margin-bottom: 0;
-  }
-
-  .center-area {
-    width: 100%;
-  }
-
-  .content-area {
-    width: 100%;
-    margin: 1rem;
-    padding: 1rem;
-    height: auto;
-    overflow-y: visible;
-  }
-
-  .right-placeholder {
-    display: none;
-  }
-}
-
-@media (max-width: 900px) {
-  .right-placeholder {
-    display: none;
-  }
-
-  .content-area {
-    width: 64vw;
-  }
 }
 </style>
