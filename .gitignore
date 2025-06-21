@@ -52,3 +52,4 @@ test-results/
 # IDE files
 *.iml
 /.firebase/hosting.ZGlzdA.cache
+/src/firebase/firebaseConfig.private.ts
