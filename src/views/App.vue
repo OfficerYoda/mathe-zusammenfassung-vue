@@ -66,7 +66,7 @@ export default defineComponent({
         </router-link>
       </div>
     </aside>
-    <main class="main-content">
+    <main class="content-area">
       <div id="app-container">
         <router-view></router-view>
       </div>
@@ -101,6 +101,10 @@ export default defineComponent({
   position: sticky;
   top: 0;
   z-index: 2;
+}
+
+.sidebar-top-section {
+
 }
 
 .search-icon-wrapper {
@@ -165,7 +169,7 @@ export default defineComponent({
   display: inline-block;
   background-color: #ff6347;
   color: #fff;
-  padding: 0.75rem 1.25rem;
+  padding: 0.75rem 1rem;
   border-radius: 4px;
   text-decoration: none;
   font-weight: bold;
@@ -177,18 +181,18 @@ export default defineComponent({
 }
 
 /* ---Center Area--- */
-.main-content {
+.content-area {
   flex: 1 1 auto;
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding: 2rem 0;
+  padding: 2rem;
   min-width: 0;
   height: 100vh;
   overflow-y: auto;
 }
 
-.main-content > * {
+.content-area > * {
   max-width: 1024px;
   width: 100%;
   height: 100%;
@@ -205,5 +209,73 @@ export default defineComponent({
   text-align: center;
   padding: 1rem;
   opacity: 0.7;
+}
+
+/* --- Responsive Design --- */
+
+/* Hide right sidebar below 1100px */
+@media (max-width: 1100px) {
+  .right-sidebar {
+    display: none;
+  }
+}
+
+/* Stack left sidebar on top and content below at 700px and below */
+@media (max-width: 700px) {
+  .app-layout {
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .sidebar-top-section {
+    padding-bottom: 1rem;
+  }
+
+  .sidebar.left-sidebar {
+    width: 100vw;
+    min-width: 0;
+    max-width: none;
+    height: auto;
+    position: static;
+    border-bottom: 1px solid #333;
+    z-index: 2;
+  }
+
+  .chapter-navigation ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0;
+    margin: 0;
+    justify-content: center;
+  }
+
+  .chapter-navigation li {
+    margin-bottom: 0;
+    margin-right: 0;
+  }
+
+  .chapter-link {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    margin: 0;
+    min-width: 0;
+    width: auto;
+    white-space: nowrap;
+  }
+
+  .sidebar-bottom-section {
+    margin-top: auto;
+    padding: 1rem;
+    border-top: 1px solid #333;
+    text-align: center;
+  }
+
+  .content-area {
+    padding: 1rem;
+    height: auto;
+    min-height: 0;
+  }
 }
 </style>
