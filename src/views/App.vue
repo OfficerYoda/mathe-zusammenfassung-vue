@@ -190,6 +190,13 @@ export default defineComponent({
   min-width: 0;
   height: 100vh;
   overflow-y: auto;
+  /* Hide scrollbar for Webkit browsers */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+}
+
+.content-area::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }
 
 .content-area > * {
