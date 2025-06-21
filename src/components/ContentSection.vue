@@ -1,9 +1,23 @@
 <template>
   <section class="content-section" :id="sectionId">
-    <h2 class="section-title" @click="handleTitleClick" tabindex="0">
+    <h2
+      class="section-title"
+      @click="handleTitleClick"
+      @mouseenter="hovered = true"
+      @mouseleave="hovered = false"
+      @focus="hovered = true"
+      @blur="hovered = false"
+      tabindex="0"
+    >
       {{ title }}
-      <img src="/link.svg" class="section-indicator" :class="{ 'clicked': indicatorClicked }"
-           alt="" aria-hidden="true"/>
+      <img
+        src="/link.svg"
+        class="section-indicator"
+        :class="{ 'clicked': indicatorClicked }"
+        :style="{ opacity: (hovered || indicatorClicked) ? 1 : 0 }"
+        alt=""
+        aria-hidden="true"
+      />
     </h2>
     <div class="section-content">
       <slot></slot>
@@ -26,6 +40,7 @@ export default defineComponent({
   setup(props) {
     const sectionId = computed(() => kebabUriCase(props.title));
     const indicatorClicked = ref(false);
+    const hovered = ref(false);
 
     // Smooth scroll to element with given id
     const smoothScrollToSection = (id: string) => {
@@ -58,7 +73,7 @@ export default defineComponent({
       }
     });
 
-    return {sectionId, handleTitleClick, indicatorClicked};
+    return {sectionId, handleTitleClick, indicatorClicked, hovered};
   },
 });
 </script>
@@ -93,20 +108,12 @@ export default defineComponent({
   width: 1em;
   height: 1em;
   filter: brightness(0) saturate(100%) invert(55%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(100%) contrast(100%);
-  opacity: 0;
-  pointer-events: none;
   transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1), filter 0.15s;
   display: inline-flex;
 }
 
 .section-indicator.clicked {
   filter: brightness(2) saturate(200%) invert(20%) sepia(80%) hue-rotate(220deg) contrast(150%);
-}
-
-.section-title:hover .section-indicator,
-.section-title:focus .section-indicator {
-  opacity: 1;
-  pointer-events: auto;
 }
 
 .section-title:hover {
