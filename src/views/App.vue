@@ -4,6 +4,7 @@ import ContentSection from '../components/ContentSection.vue';
 import InfoBox from '../components/InfoBox.vue';
 import MathDisplay from '../components/MathDisplay.vue';
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
+import {useRoute} from "vue-router";
 
 export default defineComponent({
   name: 'App',
@@ -20,7 +21,17 @@ export default defineComponent({
       {name: 'Analysis', path: '/analysis'},
     ]);
 
-    return {chapters};
+    const route = useRoute();
+
+    // reload page when already on /report
+    function handleReportClick(event: MouseEvent) {
+      if (route.path === '/report') {
+        event.preventDefault();
+        window.location.reload();
+      }
+    }
+
+    return {chapters, handleReportClick};
   }
 });
 </script>
@@ -50,7 +61,7 @@ export default defineComponent({
         </nav>
       </div>
       <div class="sidebar-bottom-section">
-        <router-link to="/report" class="report-error-button">
+        <router-link to="/report" class="report-error-button" @click="handleReportClick">
           Fehler melden
         </router-link>
       </div>
@@ -163,7 +174,6 @@ export default defineComponent({
 
 .report-error-button:hover {
   background-color: #ce3f22;
-  color: #fff;
 }
 
 /* ---Center Area--- */

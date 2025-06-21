@@ -41,16 +41,16 @@ const minorChapter = ref('')
 const description = ref('')
 const name = ref('') // Optional name field
 const isLoading = ref(false)
+const submitted = ref(false)
 const error = ref('')
 const issueUrl = ref('')
 
+// Reset minor chapter if major changes
 const availableMinors = computed(() => {
   const found = chapters.find(c => c.name === majorChapter.value)
   return found ? found.minors : []
 })
 
-// Reset minor chapter if major changes
-const submitted = ref(false)
 
 function submit() {
   if (!majorChapter.value || !description.value) {
@@ -89,6 +89,18 @@ function submit() {
         isLoading.value = false
       })
 }
+
+function resetForm() {
+  majorChapter.value = ''
+  minorChapter.value = ''
+  description.value = ''
+  name.value = ''
+  isLoading.value = false
+  error.value = ''
+  issueUrl.value = ''
+  submitted.value = false
+}
+
 </script>
 
 <template>
@@ -118,7 +130,7 @@ function submit() {
       </label>
       <label>
         <span>Name (optional):</span>
-        <input v-model="name" placeholder="Nicht deinen ganzen oder echten Namen"
+        <input v-model="name" placeholder="Vorname oder Synonym reicht (nicht deinen vollen Namen)"
                title="Dieser Name wird öffentlich im Internet stehen!"/>
       </label>
       <button type="submit" :disabled="isLoading">
@@ -130,16 +142,19 @@ function submit() {
     <div v-else class="report-success">
       <p>
         <a :href="issueUrl" target="_blank" rel="noopener" class="github-link">
-          Klicke hier, um deinen Fehlerbericht auf GitHub zu sehen
+          Fehlerbericht auf Github öffnen
         </a>
       </p>
-      <div v-if="minorChapter">
-        <p>
-          <a :href="'#' + encodeURIComponent(minorChapter)" class="chapter-link">
-            Zurück zum gemeldeten Unterkapitel (Anker)
-          </a>
-        </p>
-      </div>
+      <p>
+        <button @click="resetForm" class="report-another-btn" type="button">
+          Weiteren Fehler melden
+        </button>
+      </p>
+      <p>
+        <a :href="'/' + kebabUriCase(majorChapter) + '#' + kebabUriCase(minorChapter)" class="chapter-link">
+          Zurück zum gemeldeten Kapitel
+        </a>
+      </p>
     </div>
   </ContentSection>
 </template>
@@ -204,6 +219,9 @@ button:hover {
 }
 
 .report-success {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
   text-align: center;
   color: #e0e0e0;
 }
@@ -216,7 +234,6 @@ button:hover {
   border-radius: 5px;
   font-weight: bold;
   text-decoration: none;
-  margin-bottom: 1.5rem;
   transition: background 0.2s;
 }
 
@@ -241,5 +258,21 @@ button:hover {
   border-radius: 4px;
   text-align: center;
   margin-top: 0.5rem;
+}
+
+.report-another-btn {
+  padding: 0.7rem 1.5rem;
+  border: none;
+  background: #ff6347;
+  color: #fff;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.1rem;
+  transition: background 0.2s;
+}
+
+.report-another-btn:hover {
+  background: #ce3f22;
 }
 </style>
