@@ -9,7 +9,7 @@ import SubsectionTitle from "../components/SubsectionTitle.vue";
 <template>
   <ContentSection title="Krümmung">
     <SubsectionTitle text="Definition"/>
-    <InfoBox v-mathjax>
+    <InfoBox type="green" v-mathjax>
       <p>Ist die Funktion $f$ streng monoton...</p>
       <ul>
         <li>...steigend, so beschreibt der Graph von $f$ eine Linkskurve.</li>
@@ -18,7 +18,7 @@ import SubsectionTitle from "../components/SubsectionTitle.vue";
     </InfoBox>
 
     <SubsectionTitle text="Satz"/>
-    <InfoBox v-mathjax>
+    <InfoBox type="green" v-mathjax>
       <p>Ist die Funktion $f$ auf $I$ zweimal differenzierbar, so gilt:<br></p>
       <ol type="I">
         <li>$f''(x) > 0$ für alle $x \in I \implies$ der Graph von $f$ ist linksgekrümmt.</li>
@@ -51,7 +51,7 @@ import SubsectionTitle from "../components/SubsectionTitle.vue";
 
   <ContentSection title="Ganzrationale Funktionen">
     <SubsectionTitle text="Definition"/>
-    <InfoBox v-mathjax>
+    <InfoBox type="green" v-mathjax>
       <p>Eine ganzrationale Funktion $f$ vom Grad $n$ hat die Form:</p>
       <MathDisplay latex="f(x) = a_n x^n + a_{n-1} x^{n-1} + ... + a_1 x + a_0"/>
       <p>mit $a_n \neq 0$.</p>

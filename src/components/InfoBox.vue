@@ -54,8 +54,9 @@ export default defineComponent({
 <style scoped>
 /* Base styles for all boxes */
 .info-box {
-  padding: 1rem;
-  margin-bottom: 1.5rem;
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
   border-radius: 4px;
   display: flex;
   align-items: flex-start;
@@ -71,8 +72,13 @@ export default defineComponent({
 }
 
 .info-content {
+  padding: 0;
   flex-grow: 1;
   color: #e0e0e0;
+}
+
+.info-content * {
+  margin: 0;
 }
 
 /* Color styles for each box type */
