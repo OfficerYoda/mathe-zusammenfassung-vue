@@ -11,33 +11,57 @@
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
+    /* --- Base & Text Colors --- */
+    /* The main background for the page */
+    --color-background: #1E1E1E;
+    /* Darker background for elements like tables or code blocks */
+    --color-background-secondary: #252525;
+    /* The darkest shade, for borders or subtle UI elements */
+    --color-surface: #333333;
+
+    /* Primary text color for paragraphs */
+    --color-text-primary: #CCCCCC;
+    /* Secondary text color for less important details or placeholders */
+    --color-text-secondary: #888888;
+    /* Brightest text color for main headings */
+    --color-text-headings: #E0E0E0;
+
+    /* --- Accent Colors --- */
+    /* The main brand/accent color (muted green) */
+    --color-accent: #72b758;
+
+    /* --- Semantic Colors --- */
+    /* For informational messages and alerts (calm blue) */
+    --color-info: #4A85A4;
+    /* For warnings that need attention (golden yellow) */
+    --color-warning: #D1A74D;
+    /* For success messages (uses the main accent for consistency) */
+    --color-success: #5D9977;
+    /* For errors and danger actions (muted red) */
+    --color-error: #B85C5C;
 }
 
 a {
     font-weight: 500;
-    color: #646cff;
+    color: var(--color-accent);
     text-decoration: inherit;
 }
 
 a:hover {
-    color: #535bf2;
+    color: var(--color-info);
 }
 
 body {
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #0f0f0f;
-    color: #e0e0e0;
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
     line-height: 1.6;
     display: flex;
     place-items: center;
     min-width: 320px;
     min-height: 100vh;
-}
-
-h1 {
-    font-size: 3.2em;
-    line-height: 1.1;
 }
 
 button {
@@ -47,17 +71,18 @@ button {
     font-size: 1em;
     font-weight: 500;
     font-family: inherit;
-    background-color: #1a1a1a;
+    background-color: var(--color-background-secondary);
+    color: var(--color-text-primary);
     cursor: pointer;
     transition: border-color 0.25s;
 }
 
 button:hover {
-    border-color: #646cff;
+    border-color: var(--color-accent);
 }
 
 button:focus, button:focus-visible {
-    outline: 4px auto -webkit-focus-ring-color;
+    outline: 4px auto var(--color-accent);
 }
 
 /* Disable small padding to prevent small scrolling */

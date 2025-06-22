@@ -30,25 +30,25 @@ const props = defineProps<{
   width: 100%;
   border-collapse: collapse;
   margin-top: 1rem;
-  background-color: #2d2d2d;
-  color: #e0e0e0;
+  background-color: var(--color-background-secondary);
+  color: var(--color-text-primary);
 }
 
 .definition-table th,
 .definition-table td {
-  border: 1px solid #444;
+  border: 1px solid var(--color-surface);
   padding: 0.3rem 1rem;
   text-align: left;
   vertical-align: middle;
 }
 
 .definition-table th {
-  background-color: #353535;
+  background-color: var(--color-background);
   font-weight: bold;
 }
 
 .definition-table tr:nth-child(even) {
-  background-color: #333;
+  background-color: var(--color-background-secondary);
 }
 
 .notation-cell {

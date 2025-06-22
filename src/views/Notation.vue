@@ -10,6 +10,7 @@ import {mathIntervalsContent} from "../data/tableIntervalsConent.ts";
 
 <template>
   <ChapterTitle title="Notation"/>
+
   <ContentSection title="Mengen">
     <p>
       Eine Menge ist eine Zusammenfassung von einzelnen Objekten (meist Zahlen)

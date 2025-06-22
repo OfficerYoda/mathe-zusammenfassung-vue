@@ -130,7 +130,7 @@ function resetForm() {
       </label>
       <label>
         <span>Name (optional):</span>
-        <input v-model="name" placeholder="Vorname oder Synonym reicht (nicht deinen vollen Namen)"
+        <input v-model="name" placeholder="Vorname oder Alias reicht (nicht deinen vollen Namen)"
                title="Dieser Name wird öffentlich im Internet stehen!"/>
       </label>
       <button type="submit" :disabled="isLoading">
@@ -172,7 +172,7 @@ function resetForm() {
 label {
   display: flex;
   flex-direction: column;
-  color: #e0e0e0;
+  color: var(--color-text-primary);
   font-size: 1.1rem;
   gap: 0.5rem;
 }
@@ -182,18 +182,18 @@ input, textarea, select {
   margin-top: 0.1rem;
   padding: 0.7rem 1rem;
   border-radius: 6px;
-  border: 1px solid #333;
-  background: #181818;
-  color: #e0e0e0;
+  border: 1px solid var(--color-surface);
+  background: var(--color-background-secondary);
+  color: var(--color-text-primary);
   font-size: 1rem;
   transition: border 0.2s;
   box-sizing: border-box; /* Ensure consistent sizing */
 }
 
 input:focus, textarea:focus, select:focus {
-  border: 2px solid #6ab04c;
+  border: 2px solid var(--color-accent);
   outline: none;
-  background: #222;
+  background: var(--color-background);
 }
 
 textarea {
@@ -204,18 +204,19 @@ textarea {
 button {
   padding: 0.7rem 1.5rem;
   border: none;
-  background: #6ab04c;
-  color: #fff;
+  background: color-mix(in srgb, var(--color-accent) 80%, transparent);
+  color: var(--color-text-primary);
   border-radius: 4px;
   cursor: pointer;
   font-weight: bold;
   font-size: 1.1rem;
   margin-top: 0.5rem;
-  transition: background 0.2s;
+  transition: background-color 0.2s, color 0.2s;
 }
 
 button:hover {
-  background: #4e8c36;
+  background: var(--color-accent);
+  color: var(--color-text-headings);
 }
 
 .report-success {
@@ -223,37 +224,37 @@ button:hover {
   flex-direction: column;
   gap: 1.5rem;
   text-align: center;
-  color: #e0e0e0;
 }
 
 .github-link {
   display: inline-block;
   background: #24292f;
-  color: #fff;
+  color: var(--color-text-primary);
   padding: 0.8rem 1.5rem;
   border-radius: 5px;
   font-weight: bold;
   text-decoration: none;
-  transition: background 0.2s;
+  transition: background 0.2s, color 0.2s;
 }
 
 .github-link:hover {
   background: #444d56;
+  color: var(--color-text-headings);
 }
 
 .chapter-link {
-  color: #6ab04c;
+  color: color-mix(in srgb, var(--color-accent) 80%, transparent);
   text-decoration: underline;
   font-size: 1.05rem;
 }
 
 .chapter-link:hover {
-  color: #8fdc6a;
+  color: var(--color-accent);
 }
 
 .error-message {
-  color: #e74c3c;
-  background-color: rgba(231, 76, 60, 0.1);
+  color: color-mix(in srgb, var(--color-error) 80%, #fff 20%); /* A slightly brighter red */
+  background-color: color-mix(in srgb, var(--color-error) 40%, transparent);
   padding: 0.7rem;
   border-radius: 4px;
   text-align: center;
@@ -261,18 +262,18 @@ button:hover {
 }
 
 .report-another-btn {
-  padding: 0.7rem 1.5rem;
-  border: none;
-  background: #ff6347;
-  color: #fff;
+  display: inline-block;
+  background-color: color-mix(in srgb, var(--color-error) 80%, transparent);
+  color: var(--color-text-primary);
+  padding: 0.75rem 1rem;
   border-radius: 4px;
-  cursor: pointer;
+  text-decoration: none;
   font-weight: bold;
-  font-size: 1.1rem;
-  transition: background 0.2s;
+  transition: background-color 0.2s, color 0.2s;
 }
 
 .report-another-btn:hover {
-  background: #ce3f22;
+  background-color: var(--color-error);
+  color: var(--color-text-headings);
 }
 </style>

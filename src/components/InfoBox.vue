@@ -8,7 +8,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, PropType } from 'vue';
+import { defineComponent, computed } from 'vue';
+import type { PropType } from 'vue';
 
 // Define the allowed types for the info box
 type BoxType = 'blue' | 'green' | 'yellow' | 'red';
@@ -74,7 +75,7 @@ export default defineComponent({
 .info-content {
   padding: 0;
   flex-grow: 1;
-  color: #e0e0e0;
+  color: var(--color-text-primary);
 }
 
 .info-content * {
@@ -84,22 +85,22 @@ export default defineComponent({
 /* Color styles for each box type */
 
 .info-box-blue {
-  background-color: #2c3e50;
-  border-left-color: #3498db;
+  background-color: color-mix(in srgb, var(--color-info) 40%, transparent);
+  border-left-color: var(--color-info);
 }
 
 .info-box-green {
-  background-color: #2e3b33;
-  border-left-color: #6ab04c;
+  background-color: color-mix(in srgb, var(--color-success) 40%, transparent);
+  border-left-color: var(--color-success);
 }
 
 .info-box-yellow {
-  background-color: #4d3d20;
-  border-left-color: #f39c12;
+  background-color: color-mix(in srgb, var(--color-warning) 40%, transparent);
+  border-left-color: var(--color-warning);
 }
 
 .info-box-red {
-  background-color: #4a2c2c;
-  border-left-color: #e74c3c;
+  background-color: color-mix(in srgb, var(--color-error) 40%, transparent);
+  border-left-color: var(--color-error);
 }
 </style>

@@ -112,7 +112,7 @@ export default defineComponent({
 .search-button {
   background: none;
   border: none;
-  color: #ffffff;
+  color: var(--color-text-headings);
   cursor: pointer;
   padding: 0.5rem;
   font-size: 1.5rem;
@@ -120,7 +120,7 @@ export default defineComponent({
 }
 
 .search-button:hover {
-  color: #6ab04c;
+  color: var(--color-accent);
 }
 
 .search-button:focus {
@@ -142,42 +142,44 @@ export default defineComponent({
   padding: 0.75rem 1rem;
   margin-left: 0.75rem;
   margin-right: 0.75rem;
-  color: #e0e0e0;
+  color: var(--color-text-primary);
   text-decoration: none;
   border-radius: 4px;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .chapter-link:hover {
-  background-color: #2a2a2a;
-  color: #ffffff;
+  background-color: var(--color-surface);
+  color: var(--color-text-headings);
 }
 
 /* Used dynamically as active-class by Vue Router */
 .chapter-link--active {
-  background-color: #6ab04c !important;
+  background-color: var(--color-accent) !important;
+  color: var(--color-background) !important;
 }
 
 .sidebar-bottom-section {
   margin-top: auto;
   padding: 1.5rem;
-  border-top: 1px solid #333;
+  border-top: 1px solid var(--color-surface);
   text-align: center;
 }
 
 .report-error-button {
   display: inline-block;
-  background-color: #ff6347;
-  color: #fff;
+  background-color: color-mix(in srgb, var(--color-error) 80%, transparent);
+  color: var(--color-text-primary);
   padding: 0.75rem 1rem;
   border-radius: 4px;
   text-decoration: none;
   font-weight: bold;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.2s, color 0.2s;
 }
 
 .report-error-button:hover {
-  background-color: #ce3f22;
+  background-color: var(--color-error);
+  color: var(--color-text-headings);
 }
 
 /* ---Center Area--- */
@@ -190,13 +192,12 @@ export default defineComponent({
   min-width: 0;
   height: 100vh;
   overflow-y: auto;
-  /* Hide scrollbar for Webkit browsers */
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .content-area::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
+  display: none;
 }
 
 .content-area > * {
@@ -211,7 +212,7 @@ export default defineComponent({
 }
 
 .placeholder-content {
-  color: #888;
+  color: var(--color-text-secondary);
   font-size: 1.1rem;
   text-align: center;
   padding: 1rem;

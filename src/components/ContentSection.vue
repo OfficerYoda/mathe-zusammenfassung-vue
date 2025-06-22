@@ -80,7 +80,7 @@ export default defineComponent({
 
 <style scoped>
 .content-section {
-  background-color: #1a1a1a;
+  background-color: var(--color-background-secondary);
   padding: 2rem;
   margin-bottom: 2rem;
   border-radius: 8px;
@@ -88,11 +88,11 @@ export default defineComponent({
 }
 
 .section-title {
-  color: #ffffff;
+  color: var(--color-text-headings);
   font-size: 2.2rem;
   margin-top: 0;
   margin-bottom: 1.5rem;
-  border-bottom: 2px solid #333; /* Line under the title */
+  border-bottom: 2px solid var(--color-surface);
   padding-bottom: 0.8rem;
   letter-spacing: 0.05em;
   display: flex;
@@ -117,12 +117,12 @@ export default defineComponent({
 }
 
 .section-title:hover {
-  border-bottom: 2px solid #b6b6b6;
+  border-bottom: 2px solid var(--color-text-secondary);
   outline: none;
 }
 
 .section-content {
-  color: #d0d0d0; /* Hellerer Text für den Inhalt */
+  color: var(--color-text-primary);
   line-height: 1.8;
   font-size: 1.1rem;
 }
