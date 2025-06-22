@@ -3,12 +3,12 @@
 import ContentSection from "../components/ContentSection.vue";
 import MathDisplay from "../components/MathDisplay.vue";
 import InfoBox from "../components/InfoBox.vue";
-import SubsectionTitle from "../components/SubsectionTitle.vue";
+import Subsection from "../components/Subsection.vue";
 </script>
 
 <template>
   <ContentSection title="Krümmung">
-    <SubsectionTitle text="Definition"/>
+    <Subsection title="Definition"/>
     <InfoBox type="green" v-mathjax>
       <p>Ist die Funktion $f$ streng monoton...</p>
       <ul>
@@ -17,7 +17,7 @@ import SubsectionTitle from "../components/SubsectionTitle.vue";
       </ul>
     </InfoBox>
 
-    <SubsectionTitle text="Satz"/>
+    <Subsection title="Satz"/>
     <InfoBox type="green" v-mathjax>
       <p>Ist die Funktion $f$ auf $I$ zweimal differenzierbar, so gilt:<br></p>
       <ol type="I">
@@ -26,7 +26,7 @@ import SubsectionTitle from "../components/SubsectionTitle.vue";
       </ol>
     </InfoBox>
 
-    <SubsectionTitle text="Beispiel"/>
+    <Subsection title="Beispiel"/>
     <div class="two-column-layout-image">
       <div class="column-item">
         <MathDisplay>
@@ -50,7 +50,7 @@ import SubsectionTitle from "../components/SubsectionTitle.vue";
   </ContentSection>
 
   <ContentSection title="Ganzrationale Funktionen">
-    <SubsectionTitle text="Definition"/>
+    <Subsection title="Definition"/>
     <InfoBox type="green" v-mathjax>
       <p>Eine ganzrationale Funktion $f$ vom Grad $n$ hat die Form:</p>
       <MathDisplay latex="f(x) = a_n x^n + a_{n-1} x^{n-1} + ... + a_1 x + a_0"/>
@@ -59,7 +59,7 @@ import SubsectionTitle from "../components/SubsectionTitle.vue";
 
     <div class="two-column-layout">
       <div class="column-item">
-        <SubsectionTitle text="Beispiel"/>
+        <Subsection title="Beispiel"/>
         <MathDisplay>
           \begin{align}
           f(x) &= x^2 - 4x + 3 \\
@@ -71,7 +71,7 @@ import SubsectionTitle from "../components/SubsectionTitle.vue";
         </MathDisplay>
       </div>
       <div class="column-item">
-        <SubsectionTitle text="Nichtbeispiel"/>
+        <Subsection title="Nichtbeispiel"/>
         <MathDisplay>
           \begin{align}
           f(x) &= \sqrt{x} \\

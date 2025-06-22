@@ -1,9 +1,10 @@
 <script setup lang="ts">
-defineProps<{ text: string }>();
+defineProps<{ title: string }>();
 </script>
 
 <template>
-  <h3 class="subsection-title">{{ text }}</h3>
+  <h3 class="subsection-title">{{ title }}</h3>
+  <slot/>
 </template>
 
 <style scoped>

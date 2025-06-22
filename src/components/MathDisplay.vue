@@ -56,7 +56,4 @@ export default defineComponent({
   margin: 0;
   color: var(--color-text-primary);
 }
-
-/* MathJax rendert standardmäßig SVGs, die ihre eigene Farbe haben. */
-/* Du könntest hier die Farbe der SVGs anpassen, falls nötig (komplexer). */
 </style>

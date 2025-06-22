@@ -1,11 +1,17 @@
 <script setup lang="ts">
 import ContentSection from "../components/ContentSection.vue";
 import ChapterTitle from "../components/ChapterTitle.vue";
-import SubsectionTitle from "../components/SubsectionTitle.vue";
+import Subsection from "../components/Subsection.vue";
 import DefinitionTable from "../components/DefinitionTable.vue";
 import InfoBox from "../components/InfoBox.vue";
-import {mathSetsContent} from "../data/tableSetsContent.ts";
-import {mathIntervalsContent} from "../data/tableIntervalsConent.ts";
+import {
+  definitionsContent,
+  intervalsContent,
+  limesContent,
+  setNotationContent,
+  setsContent
+} from "../data/notationTableContents.ts";
+import MathDisplay from "../components/MathDisplay.vue";
 </script>
 
 <template>
@@ -13,15 +19,9 @@ import {mathIntervalsContent} from "../data/tableIntervalsConent.ts";
 
   <ContentSection title="Mengen">
     <p>
-      Eine Menge ist eine Zusammenfassung von einzelnen Objekten (meist Zahlen)
-      ohne bestimmte Reihenfolge.
-    </p>
-
-    <SubsectionTitle text="Beispiele"/>
-    <p>
       Jeder dieser Beispielmengen enthält alle Elemente der Mengen, die in der Tabelle darüber liegen.
     </p>
-    <DefinitionTable :items="mathSetsContent"/>
+    <DefinitionTable :items="setsContent"/>
     <InfoBox type="yellow">
       <p v-mathjax>
         Ob bei $\mathbb{N}/\mathbb{R}^+$ die $0$ enthalten ist, ist nicht klar definiert. Ich werde daher immer
@@ -39,7 +39,118 @@ import {mathIntervalsContent} from "../data/tableIntervalsConent.ts";
   </ContentSection>
 
   <ContentSection title="Intervalle">
-    <DefinitionTable :items="mathIntervalsContent"/>
+    <p v-mathjax>
+      Intervalle sind ebenfalls Mengen. So enthält $[0; 1]$ alle reellen Zahlen von $0$ bis $1$.
+    </p>
+    <DefinitionTable :items="intervalsContent"/>
+  </ContentSection>
+
+  <ContentSection title="Mengennotation">
+    <DefinitionTable :items="setNotationContent"/>
+  </ContentSection>
+
+  <ContentSection title="Definitionsbereiche">
+    <DefinitionTable :items="definitionsContent"/>
+  </ContentSection>
+
+  <ContentSection title="Limes">
+    <DefinitionTable :items="limesContent"/>
+  </ContentSection>
+
+  <ContentSection title="Summenzeichen">
+    <Subsection title="Beispiele">
+      <MathDisplay>
+        \sum_{k=1}^n a_k =
+        a_1 + a_2 +...+ a_n
+      </MathDisplay>
+      <MathDisplay>
+        \sum_{i=1}^n i \cdot \ln(i) =
+        1 \cdot \ln(1) +
+        2 \cdot \ln(2) +
+        ... +
+        n \cdot \ln(n)
+      </MathDisplay>
+    </Subsection>
+  </ContentSection>
+
+  <ContentSection title="Vektoren">
+    <div class="two-column-layout">
+      <div class="column-item">
+        <Subsection title="Schreibweise">
+          <MathDisplay>
+            \vec a =
+            \begin{pmatrix}
+            a_1 \\ a_2 \\ a_3
+            \end{pmatrix}
+            \qquad
+            \vec b =
+            \begin{pmatrix}
+            b_1 \\ b_2 \\ b_3
+            \end{pmatrix}
+          </MathDisplay>
+        </Subsection>
+      </div>
+      <div class="column-item">
+        <Subsection title="Addition">
+          <MathDisplay>
+            \vec{a} + \vec{b}
+            = \begin{pmatrix} a_1 \\ a_2 \\ a_3 \end{pmatrix} + \begin{pmatrix} b_1 \\ b_2 \\ b_3 \end{pmatrix}
+            = \begin{pmatrix} a_1 + b_1 \\ a_2 + b_2 \\ a_3 + b_3 \end{pmatrix}
+          </MathDisplay>
+        </Subsection>
+      </div>
+    </div>
+    <div class="two-column-layout">
+      <div class="column-item">
+        <Subsection title="Skalarprodukt">
+          <MathDisplay>
+            \vec a \circ \vec b =
+            \begin{pmatrix}
+            a_1 \\ a_2 \\ a_3
+            \end{pmatrix}
+            \circ
+            \begin{pmatrix}
+            b_1 \\ b_2 \\ b_3
+            \end{pmatrix}
+          </MathDisplay>
+        </Subsection>
+      </div>
+      <div class="column-item">
+        <Subsection title="Kreuzprodukt">
+          <MathDisplay>
+            \vec a \times \vec b =
+            \begin{pmatrix}
+            a_1 \\ a_2 \\ a_3
+            \end{pmatrix}
+            \times
+            \begin{pmatrix}
+            b_1 \\ b_2 \\ b_3
+            \end{pmatrix}
+          </MathDisplay>
+        </Subsection>
+      </div>
+    </div>
+    <div class="two-column-layout">
+      <div class="column-item">
+        <Subsection title="Länge">
+          <MathDisplay>
+            |\vec a| = \sqrt{ {a_1}^2 + {a_2}^2 + {a_3}^2 }
+          </MathDisplay>
+        </Subsection>
+      </div>
+      <div class="column-item">
+        <Subsection title="Einheitsvektor">
+          <MathDisplay>
+            \vec a_0 =
+            \frac 1{|\vec a|}
+            \cdot
+            \begin{pmatrix}
+            a_1 \\ a_2 \\ a_3
+            \end{pmatrix}
+          </MathDisplay>
+        </Subsection>
+      </div>
+    </div>
   </ContentSection>
 </template>
 

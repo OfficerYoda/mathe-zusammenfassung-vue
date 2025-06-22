@@ -39,7 +39,7 @@
     /* For success messages (uses the main accent for consistency) */
     --color-success: #5D9977;
     /* For errors and danger actions (muted red) */
-    --color-error: #B85C5C;
+    --color-error: #be4a4a;
 }
 
 a {
