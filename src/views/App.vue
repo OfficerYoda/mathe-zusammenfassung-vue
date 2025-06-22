@@ -19,6 +19,8 @@ export default defineComponent({
       {name: 'Notation', path: '/notation'},
       {name: 'Gleichungen', path: '/gleichungen'},
       {name: 'Analysis', path: '/analysis'},
+      {name: 'Geometrie', path: '/geometrie'},
+      {name: 'Stochastik', path: '/stochastik'},
     ]);
 
     const route = useRoute();

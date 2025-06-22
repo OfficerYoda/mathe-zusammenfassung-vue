@@ -4,9 +4,12 @@ import ContentSection from "../components/ContentSection.vue";
 import MathDisplay from "../components/MathDisplay.vue";
 import InfoBox from "../components/InfoBox.vue";
 import Subsection from "../components/Subsection.vue";
+import ChapterTitle from "../components/ChapterTitle.vue";
 </script>
 
 <template>
+  <ChapterTitle title="Analysis"/>
+
   <ContentSection title="Krümmung">
     <Subsection title="Definition"/>
     <InfoBox type="green" v-mathjax>
