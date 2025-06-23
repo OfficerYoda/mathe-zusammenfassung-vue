@@ -6,6 +6,7 @@ import ChapterTitle from "../components/ChapterTitle.vue";
 import InfoBox from "../components/InfoBox.vue";
 import Subsection from "../components/Subsection.vue";
 import TwoColumnLayout from "../components/TwoColumnLayout.vue";
+import MultiColumnLayout from "../components/MultiColumnLayout.vue";
 </script>
 
 <template>
@@ -149,8 +150,8 @@ import TwoColumnLayout from "../components/TwoColumnLayout.vue";
 
   <ContentSection title="Bruchgleichungen">
     <Subsection title="Beispiele">
-      <TwoColumnLayout>
-        <template #left>
+      <MultiColumnLayout>
+        <template #col-1>
           <MathDisplay>
             \begin{align*}
             \frac{x+5}{x-3}-3&=0 \quad|\cdot(x-3)\\
@@ -160,7 +161,7 @@ import TwoColumnLayout from "../components/TwoColumnLayout.vue";
             \end{align*}
           </MathDisplay>
         </template>
-        <template #right>
+        <template #col-2>
           <MathDisplay>
             \begin{align*}
             \frac{1}{x^2}++\frac{5}{x}&=0
@@ -171,7 +172,7 @@ import TwoColumnLayout from "../components/TwoColumnLayout.vue";
             \end{align*}
           </MathDisplay>
         </template>
-      </TwoColumnLayout>
+      </MultiColumnLayout>
       <InfoBox type="red">
         Probe machen
       </InfoBox>
@@ -192,6 +193,63 @@ import TwoColumnLayout from "../components/TwoColumnLayout.vue";
       <InfoBox type="red">
         Probe machen
       </InfoBox>
+    </Subsection>
+  </ContentSection>
+
+  <ContentSection title="Exponentialgleichungen">
+    <Subsection title="Allgemein">
+      <MultiColumnLayout :columns="3">
+        <template #col-1>
+          <MathDisplay>
+            \begin{align*}
+            a^x&=c \\
+            x&=\log_a(c) \\
+            \end{align*}
+          </MathDisplay>
+        </template>
+        <template #col-2>
+          <MathDisplay>
+            b^0 = 1, \quad b \neq 0
+          </MathDisplay>
+        </template>
+        <template #col-3>
+          <MathDisplay>
+            \log_e(x) = \ln(x)
+          </MathDisplay>
+        </template>
+      </MultiColumnLayout>
+    </Subsection>
+    <Subsection title="Beispiele">
+      <MultiColumnLayout :columns="3">
+        <template #col-1>
+          <MathDisplay>
+            \begin{align*}
+            2^x&=64 \\
+            x&=\log_2(64) \\
+            x&=6
+            \end{align*}
+          </MathDisplay>
+        </template>
+        <template #col-2>
+          <MathDisplay>
+            \begin{align*}
+            4^x&=42 \\
+            x&=\log_4(42) \\
+            x&\approx2.696
+            \end{align*}
+          </MathDisplay>
+        </template>
+        <template #col-3>
+          <MathDisplay>
+            \begin{align*}
+            e^{2x} - 3e^x &= 0 \\
+            (e^x)^2 - 3e^x &= 0 \\
+            e^x \cdot (e^x-3) &= 0 \\
+            \Rightarrow x &= \ln(3)
+            \end{align*}
+          </MathDisplay>
+        </template>
+      </MultiColumnLayout>
     </Subsection>
   </ContentSection>
 </template>
