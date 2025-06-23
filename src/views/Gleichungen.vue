@@ -5,7 +5,6 @@ import MathDisplay from "../components/MathDisplay.vue";
 import ChapterTitle from "../components/ChapterTitle.vue";
 import InfoBox from "../components/InfoBox.vue";
 import Subsection from "../components/Subsection.vue";
-import TwoColumnLayout from "../components/TwoColumnLayout.vue";
 import MultiColumnLayout from "../components/MultiColumnLayout.vue";
 </script>
 
@@ -72,8 +71,8 @@ import MultiColumnLayout from "../components/MultiColumnLayout.vue";
 
   <ContentSection title="(spezielle) kubische Gleichungen">
     <Subsection title="Beispiele">
-      <TwoColumnLayout>
-        <template #left>
+      <MultiColumnLayout :columns="2">
+        <template #col-1>
           <MathDisplay>
             \begin{align}
             x^3+27&=0 \\
@@ -83,7 +82,7 @@ import MultiColumnLayout from "../components/MultiColumnLayout.vue";
             \end{align}
           </MathDisplay>
         </template>
-        <template #right>
+        <template #col-2>
           <MathDisplay>
             \begin{align*}
             4x^3-12x^2-40x&=0\\
@@ -92,22 +91,22 @@ import MultiColumnLayout from "../components/MultiColumnLayout.vue";
             \end{align*}
           </MathDisplay>
         </template>
-      </TwoColumnLayout>
+      </MultiColumnLayout>
     </Subsection>
     <Subsection title="Nicht (analytisch) Lösbar">
-      <TwoColumnLayout>
-        <template #left>
+      <MultiColumnLayout :columns="1">
+        <template #col-1>
           <MathDisplay>
             x^3-7x^2+5=0
           </MathDisplay>
         </template>
-      </TwoColumnLayout>
+      </MultiColumnLayout>
     </Subsection>
   </ContentSection>
 
   <ContentSection title="Biquadratische Gleichungen">
-    <TwoColumnLayout style="margin-top: -1.5rem">
-      <template #left>
+    <MultiColumnLayout :columns="2" style="margin-top: -1.5rem">
+      <template #col-1>
         <Subsection title="Substitution">
           <MathDisplay>
             \begin{align*}
@@ -119,10 +118,10 @@ import MultiColumnLayout from "../components/MultiColumnLayout.vue";
           </MathDisplay>
         </Subsection>
       </template>
-      <template #right>
+      <template #col-2>
         <Subsection title="Rücksubstitution">
-          <TwoColumnLayout>
-            <template #left>
+          <MultiColumnLayout :columns="2">
+            <template #col-1>
               <MathDisplay>
                 \begin{align*}
                 x^2&=z_1\\
@@ -132,7 +131,7 @@ import MultiColumnLayout from "../components/MultiColumnLayout.vue";
                 \end{align*}
               </MathDisplay>
             </template>
-            <template #right>
+            <template #col-2>
               <MathDisplay>
                 \begin{align*}
                 x^2&=z_2\\
@@ -142,10 +141,10 @@ import MultiColumnLayout from "../components/MultiColumnLayout.vue";
                 \end{align*}
               </MathDisplay>
             </template>
-          </TwoColumnLayout>
+          </MultiColumnLayout>
         </Subsection>
       </template>
-    </TwoColumnLayout>
+    </MultiColumnLayout>
   </ContentSection>
 
   <ContentSection title="Bruchgleichungen">

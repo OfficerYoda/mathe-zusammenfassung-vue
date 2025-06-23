@@ -5,7 +5,7 @@ import MathDisplay from "../components/MathDisplay.vue";
 import InfoBox from "../components/InfoBox.vue";
 import Subsection from "../components/Subsection.vue";
 import ChapterTitle from "../components/ChapterTitle.vue";
-import TwoColumnLayout from "../components/TwoColumnLayout.vue";
+import MultiColumnLayout from "../components/MultiColumnLayout.vue";
 </script>
 
 <template>
@@ -31,8 +31,8 @@ import TwoColumnLayout from "../components/TwoColumnLayout.vue";
     </InfoBox>
 
     <Subsection title="Beispiel"/>
-    <TwoColumnLayout image-layout>
-      <template #left>
+    <MultiColumnLayout :columns="2" image-layout>
+      <template #col-1>
         <MathDisplay>
           \begin{align}
           f''(-0.5) &= 0 \\
@@ -47,10 +47,10 @@ import TwoColumnLayout from "../components/TwoColumnLayout.vue";
           $f$ ist demnach links von $0,5$ rechtsgekrümmt und rechts von $0,5$ linksgekrümmt.
         </p>
       </template>
-      <template #right>
+      <template #col-2>
         <img src="/Graph_Wendestelle.png" alt="Graph der Funktionen">
       </template>
-    </TwoColumnLayout>
+    </MultiColumnLayout>
   </ContentSection>
 
   <ContentSection title="Ganzrationale Funktionen">
@@ -61,8 +61,8 @@ import TwoColumnLayout from "../components/TwoColumnLayout.vue";
       <p>mit $a_n \neq 0$.</p>
     </InfoBox>
 
-    <TwoColumnLayout>
-      <template #left>
+    <MultiColumnLayout :columns="2">
+      <template #col-1>
         <Subsection title="Beispiel"/>
         <MathDisplay>
           \begin{align}
@@ -74,7 +74,7 @@ import TwoColumnLayout from "../components/TwoColumnLayout.vue";
           \end{align}
         </MathDisplay>
       </template>
-      <template #right>
+      <template #col-2>
         <Subsection title="Nichtbeispiel"/>
         <MathDisplay>
           \begin{align}
@@ -85,7 +85,7 @@ import TwoColumnLayout from "../components/TwoColumnLayout.vue";
           \end{align}
         </MathDisplay>
       </template>
-    </TwoColumnLayout>
+    </MultiColumnLayout>
   </ContentSection>
 </template>
 

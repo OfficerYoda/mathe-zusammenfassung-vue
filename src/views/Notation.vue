@@ -12,7 +12,7 @@ import {
   setsContent
 } from "../data/notationTableContents.ts";
 import MathDisplay from "../components/MathDisplay.vue";
-import TwoColumnLayout from "../components/TwoColumnLayout.vue";
+import MultiColumnLayout from "../components/MultiColumnLayout.vue";
 </script>
 
 <template>
@@ -75,8 +75,8 @@ import TwoColumnLayout from "../components/TwoColumnLayout.vue";
   </ContentSection>
 
   <ContentSection title="Vektoren">
-    <TwoColumnLayout>
-      <template #left>
+    <MultiColumnLayout>
+      <template #col-1>
         <Subsection title="Schreibweise">
           <MathDisplay>
             \vec a =
@@ -91,7 +91,7 @@ import TwoColumnLayout from "../components/TwoColumnLayout.vue";
           </MathDisplay>
         </Subsection>
       </template>
-      <template #right>
+      <template #col-2>
         <Subsection title="Addition">
           <MathDisplay>
             \vec{a} + \vec{b}
@@ -100,10 +100,10 @@ import TwoColumnLayout from "../components/TwoColumnLayout.vue";
           </MathDisplay>
         </Subsection>
       </template>
-    </TwoColumnLayout>
+    </MultiColumnLayout>
 
-    <TwoColumnLayout>
-      <template #left>
+    <MultiColumnLayout>
+      <template #col-1>
         <Subsection title="Skalarprodukt">
           <MathDisplay>
             \vec a \circ \vec b =
@@ -117,7 +117,7 @@ import TwoColumnLayout from "../components/TwoColumnLayout.vue";
           </MathDisplay>
         </Subsection>
       </template>
-      <template #right>
+      <template #col-2>
         <Subsection title="Kreuzprodukt">
           <MathDisplay>
             \vec a \times \vec b =
@@ -131,17 +131,17 @@ import TwoColumnLayout from "../components/TwoColumnLayout.vue";
           </MathDisplay>
         </Subsection>
       </template>
-    </TwoColumnLayout>
+    </MultiColumnLayout>
 
-    <TwoColumnLayout>
-      <template #left>
+    <MultiColumnLayout>
+      <template #col-1>
         <Subsection title="Länge">
           <MathDisplay>
             |\vec a| = \sqrt{ {a_1}^2 + {a_2}^2 + {a_3}^2 }
           </MathDisplay>
         </Subsection>
       </template>
-      <template #right>
+      <template #col-2>
         <Subsection title="Einheitsvektor">
           <MathDisplay>
             \vec a_0 =
@@ -153,7 +153,7 @@ import TwoColumnLayout from "../components/TwoColumnLayout.vue";
           </MathDisplay>
         </Subsection>
       </template>
-    </TwoColumnLayout>
+    </MultiColumnLayout>
   </ContentSection>
 </template>
 
