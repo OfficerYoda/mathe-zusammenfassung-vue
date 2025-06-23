@@ -125,6 +125,6 @@ export default defineComponent({
   color: var(--color-text-primary);
   line-height: 1.8;
   font-size: 1.1rem;
-  margin-top: 2rem;
+  margin-top: 1rem;
 }
 </style>

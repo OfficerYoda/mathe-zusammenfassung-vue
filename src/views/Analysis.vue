@@ -5,6 +5,7 @@ import MathDisplay from "../components/MathDisplay.vue";
 import InfoBox from "../components/InfoBox.vue";
 import Subsection from "../components/Subsection.vue";
 import ChapterTitle from "../components/ChapterTitle.vue";
+import TwoColumnLayout from "../components/TwoColumnLayout.vue";
 </script>
 
 <template>
@@ -30,8 +31,8 @@ import ChapterTitle from "../components/ChapterTitle.vue";
     </InfoBox>
 
     <Subsection title="Beispiel"/>
-    <div class="two-column-layout-image">
-      <div class="column-item">
+    <TwoColumnLayout image-layout>
+      <template #left>
         <MathDisplay>
           \begin{align}
           f''(-0.5) &= 0 \\
@@ -45,11 +46,11 @@ import ChapterTitle from "../components/ChapterTitle.vue";
           Links von der Nullstelle ist $f'' < 0$ und Rechts davon ist $f'' > 0$. <br>
           $f$ ist demnach links von $0,5$ rechtsgekrümmt und rechts von $0,5$ linksgekrümmt.
         </p>
-      </div>
-      <div class="column-item">
+      </template>
+      <template #right>
         <img src="/Graph_Wendestelle.png" alt="Graph der Funktionen">
-      </div>
-    </div>
+      </template>
+    </TwoColumnLayout>
   </ContentSection>
 
   <ContentSection title="Ganzrationale Funktionen">
@@ -60,8 +61,8 @@ import ChapterTitle from "../components/ChapterTitle.vue";
       <p>mit $a_n \neq 0$.</p>
     </InfoBox>
 
-    <div class="two-column-layout">
-      <div class="column-item">
+    <TwoColumnLayout>
+      <template #left>
         <Subsection title="Beispiel"/>
         <MathDisplay>
           \begin{align}
@@ -72,8 +73,8 @@ import ChapterTitle from "../components/ChapterTitle.vue";
           j(x) &= 8x^4 - 2x^2
           \end{align}
         </MathDisplay>
-      </div>
-      <div class="column-item">
+      </template>
+      <template #right>
         <Subsection title="Nichtbeispiel"/>
         <MathDisplay>
           \begin{align}
@@ -83,8 +84,8 @@ import ChapterTitle from "../components/ChapterTitle.vue";
           i(x) &= \frac{x^2}{x - 1}
           \end{align}
         </MathDisplay>
-      </div>
-    </div>
+      </template>
+    </TwoColumnLayout>
   </ContentSection>
 </template>
 

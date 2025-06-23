@@ -55,9 +55,7 @@ export default defineComponent({
 <style scoped>
 /* Base styles for all boxes */
 .info-box {
-  padding: 1.5rem;
-  margin-top: 1.5rem;
-  margin-bottom: 0.75rem;
+  padding: 1rem;
   border-radius: 4px;
   display: flex;
   align-items: flex-start;

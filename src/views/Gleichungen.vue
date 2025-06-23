@@ -70,23 +70,129 @@ import TwoColumnLayout from "../components/TwoColumnLayout.vue";
   </ContentSection>
 
   <ContentSection title="(spezielle) kubische Gleichungen">
-    <Subsection title="Beispiele"></Subsection>
-    <TwoColumnLayout>
+    <Subsection title="Beispiele">
+      <TwoColumnLayout>
+        <template #left>
+          <MathDisplay>
+            \begin{align}
+            x^3+27&=0 \\
+            x^3&=-27 \\
+            x &= {\color{red}-}\sqrt[3]{27} \\
+            x&=-3
+            \end{align}
+          </MathDisplay>
+        </template>
+        <template #right>
+          <MathDisplay>
+            \begin{align*}
+            4x^3-12x^2-40x&=0\\
+            4x\cdot (x^2-3x-10)&=0\\
+            \Rightarrow x_1=0 \quad x_2=5 \quad& x_3=-2
+            \end{align*}
+          </MathDisplay>
+        </template>
+      </TwoColumnLayout>
+    </Subsection>
+    <Subsection title="Nicht (analytisch) Lösbar">
+      <TwoColumnLayout>
+        <template #left>
+          <MathDisplay>
+            x^3-7x^2+5=0
+          </MathDisplay>
+        </template>
+      </TwoColumnLayout>
+    </Subsection>
+  </ContentSection>
+
+  <ContentSection title="Biquadratische Gleichungen">
+    <TwoColumnLayout style="margin-top: -1.5rem">
       <template #left>
-        <MathDisplay>
-          \begin{align}
-          x^3+27&=0 \\
-          x^3&=-27 \\
-          x &= \color{red}{-}\sqrt[3]{27} \\
-          x&=-3
-          \end{align}
-        </MathDisplay>
-        <p v-mathjax>$\color{red} x} + {\color{blue} y$</p>
+        <Subsection title="Substitution">
+          <MathDisplay>
+            \begin{align*}
+            x^4-13x^2+36&=0 \\
+            \textsf{Substitution: } x^2=z \\
+            \Rightarrow z^2-13z+36&=0 \\
+            \Rightarrow z_1=9 \quad z_2=4
+            \end{align*}
+          </MathDisplay>
+        </Subsection>
       </template>
       <template #right>
-
+        <Subsection title="Rücksubstitution">
+          <TwoColumnLayout>
+            <template #left>
+              <MathDisplay>
+                \begin{align*}
+                x^2&=z_1\\
+                x^2&=9 \quad |\sqrt{} \\
+                \Rightarrow \ &x_1=3\\
+                &x_2=-3
+                \end{align*}
+              </MathDisplay>
+            </template>
+            <template #right>
+              <MathDisplay>
+                \begin{align*}
+                x^2&=z_2\\
+                x^2&=4 \quad |\sqrt{} \\
+                \Rightarrow \ &x_3=2\\
+                &x_4=-2
+                \end{align*}
+              </MathDisplay>
+            </template>
+          </TwoColumnLayout>
+        </Subsection>
       </template>
     </TwoColumnLayout>
+  </ContentSection>
+
+  <ContentSection title="Bruchgleichungen">
+    <Subsection title="Beispiele">
+      <TwoColumnLayout>
+        <template #left>
+          <MathDisplay>
+            \begin{align*}
+            \frac{x+5}{x-3}-3&=0 \quad|\cdot(x-3)\\
+            5+x-3\cdot(x-3)&=0\\
+            &...\\
+            x&=7 \ \checkmark
+            \end{align*}
+          </MathDisplay>
+        </template>
+        <template #right>
+          <MathDisplay>
+            \begin{align*}
+            \frac{1}{x^2}++\frac{5}{x}&=0
+            \qquad|\cdot x^2\\
+            1+5x&=0
+            \qquad|-1 \quad|:5\\
+            x&=-\frac{1}{5} \ \checkmark
+            \end{align*}
+          </MathDisplay>
+        </template>
+      </TwoColumnLayout>
+      <InfoBox type="red">
+        Probe machen
+      </InfoBox>
+    </Subsection>
+  </ContentSection>
+
+  <ContentSection title="Wurzelgleichungen">
+    <Subsection title="Beispiel">
+      <MathDisplay>
+        \begin{align*}
+        \sqrt{3x-5} + 4 &= 2x
+        &|-4 \quad |^2\\
+        3x-5&=(2x-4)^2 \quad\\
+        &...\\
+        x_1 = 3 \ \checkmark&\quad x_2 = \frac{7}{4} \ \times
+        \end{align*}
+      </MathDisplay>
+      <InfoBox type="red">
+        Probe machen
+      </InfoBox>
+    </Subsection>
   </ContentSection>
 </template>
 

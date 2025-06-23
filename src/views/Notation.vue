@@ -12,6 +12,7 @@ import {
   setsContent
 } from "../data/notationTableContents.ts";
 import MathDisplay from "../components/MathDisplay.vue";
+import TwoColumnLayout from "../components/TwoColumnLayout.vue";
 </script>
 
 <template>
@@ -74,8 +75,8 @@ import MathDisplay from "../components/MathDisplay.vue";
   </ContentSection>
 
   <ContentSection title="Vektoren">
-    <div class="two-column-layout">
-      <div class="column-item">
+    <TwoColumnLayout>
+      <template #left>
         <Subsection title="Schreibweise">
           <MathDisplay>
             \vec a =
@@ -89,8 +90,8 @@ import MathDisplay from "../components/MathDisplay.vue";
             \end{pmatrix}
           </MathDisplay>
         </Subsection>
-      </div>
-      <div class="column-item">
+      </template>
+      <template #right>
         <Subsection title="Addition">
           <MathDisplay>
             \vec{a} + \vec{b}
@@ -98,10 +99,11 @@ import MathDisplay from "../components/MathDisplay.vue";
             = \begin{pmatrix} a_1 + b_1 \\ a_2 + b_2 \\ a_3 + b_3 \end{pmatrix}
           </MathDisplay>
         </Subsection>
-      </div>
-    </div>
-    <div class="two-column-layout">
-      <div class="column-item">
+      </template>
+    </TwoColumnLayout>
+
+    <TwoColumnLayout>
+      <template #left>
         <Subsection title="Skalarprodukt">
           <MathDisplay>
             \vec a \circ \vec b =
@@ -114,8 +116,8 @@ import MathDisplay from "../components/MathDisplay.vue";
             \end{pmatrix}
           </MathDisplay>
         </Subsection>
-      </div>
-      <div class="column-item">
+      </template>
+      <template #right>
         <Subsection title="Kreuzprodukt">
           <MathDisplay>
             \vec a \times \vec b =
@@ -128,17 +130,18 @@ import MathDisplay from "../components/MathDisplay.vue";
             \end{pmatrix}
           </MathDisplay>
         </Subsection>
-      </div>
-    </div>
-    <div class="two-column-layout">
-      <div class="column-item">
+      </template>
+    </TwoColumnLayout>
+
+    <TwoColumnLayout>
+      <template #left>
         <Subsection title="Länge">
           <MathDisplay>
             |\vec a| = \sqrt{ {a_1}^2 + {a_2}^2 + {a_3}^2 }
           </MathDisplay>
         </Subsection>
-      </div>
-      <div class="column-item">
+      </template>
+      <template #right>
         <Subsection title="Einheitsvektor">
           <MathDisplay>
             \vec a_0 =
@@ -149,8 +152,8 @@ import MathDisplay from "../components/MathDisplay.vue";
             \end{pmatrix}
           </MathDisplay>
         </Subsection>
-      </div>
-    </div>
+      </template>
+    </TwoColumnLayout>
   </ContentSection>
 </template>
 

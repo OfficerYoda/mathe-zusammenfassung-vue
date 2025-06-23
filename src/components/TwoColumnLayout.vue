@@ -31,6 +31,7 @@ const layoutClass = computed(() =>
   gap: 2rem;
   justify-content: space-around;
   margin-top: 0;
+  padding-top: 0;
 }
 
 .two-column-layout-image .column-item:first-child {
@@ -59,7 +60,6 @@ const layoutClass = computed(() =>
 
 .column-item {
   flex: 1 1 45%;
-  min-width: 280px;
 }
 
 .column-item ul {
