@@ -40,7 +40,7 @@ const layoutClass = computed(() =>
 }
 
 .two-column-layout-image .column-item:last-child {
-  flex: 0 0 auto;
+  flex: 0 0 40%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -48,10 +48,11 @@ const layoutClass = computed(() =>
   max-height: 400px;
 }
 
-.two-column-layout-image .column-item:last-child img {
+.two-column-layout-image .column-item:last-child img,
+.two-column-layout-image .column-item:last-child :deep(img) {
   max-width: 100%;
-  max-height: 400px;
-  width: auto;
+  max-height: 100%;
+  width: 100%;
   height: auto;
   object-fit: contain;
   display: block;
@@ -88,11 +89,12 @@ const layoutClass = computed(() =>
     max-height: 400px;
   }
 
-  .two-column-layout-image .column-item:last-child img {
+  .two-column-layout-image .column-item:last-child :deep(img) {
     max-width: 100%;
     height: auto;
     max-height: 400px;
     margin: 0 auto;
+    width: 100%;
   }
 }
 </style>
