@@ -58,6 +58,7 @@ export default defineComponent({
   padding: 1rem;
   border-radius: 4px;
   display: flex;
+  margin-top: 1rem;
   align-items: flex-start;
   gap: 1rem;
   border-left-width: 5px;

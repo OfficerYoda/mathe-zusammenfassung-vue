@@ -52,8 +52,7 @@ import MultiColumnLayout from "../components/MultiColumnLayout.vue";
     </InfoBox>
     <Subsection title="Beispiel">
       <MathDisplay>
-        \begin{align*}
-        (x-5)\cdot(x^2-x+4) &= 0
+        (x-5)\cdot(x^2-x+4) = 0
         \quad\Rightarrow\quad
         \begin{cases}
         x-5=0 \\
@@ -64,7 +63,6 @@ import MultiColumnLayout from "../components/MultiColumnLayout.vue";
         x_1 = 5 \\
         \text{keine Lösung}
         \end{cases}
-        \end{align*}
       </MathDisplay>
     </Subsection>
   </ContentSection>
@@ -250,6 +248,106 @@ import MultiColumnLayout from "../components/MultiColumnLayout.vue";
         </template>
       </MultiColumnLayout>
     </Subsection>
+  </ContentSection>
+
+  <ContentSection title="Betragsgleichungen">
+    <Subsection title="Beispiele">
+      <MathDisplay>
+        |2x-5| = 3
+        \quad\Rightarrow\quad
+        \begin{cases}
+        2x-5 = 3 \\
+        -(2x-5) = 3
+        \end{cases}
+        \quad\Rightarrow\quad
+        \begin{cases}
+        x_1 = 4 \\
+        x_2 = 1
+        \end{cases}
+      </MathDisplay>
+      <MathDisplay>
+        |x-4| = 2x-11
+        \quad\Rightarrow\quad
+        \begin{cases}
+        x-4 = 2x-11 \\
+        x-4 = -(2x-11)
+        \end{cases}
+        \quad\Rightarrow\quad
+        \begin{cases}
+        x_1 = 7 \ \checkmark \\
+        x_2 = 5 \ \times
+        \end{cases}
+      </MathDisplay>
+    </Subsection>
+    <InfoBox type="red">
+      <p>
+        Bei Betragsgleichungen mit einer Variablen außerhalb der Betragsstriche: Probe machen.
+      </p>
+    </InfoBox>
+  </ContentSection>
+
+  <ContentSection title="Ungleichungen">
+    <InfoBox type="green">
+      Lässt sich wie eine normale Gleichung lösen, mit der Ausnahme, dass beim Multiplizieren/Dividieren mit einer
+      negativen Zahl oder bei Logarithmen mit einer Basis kleiner als 1 das Ungleichheitszeichen umgedreht wird.
+    </InfoBox>
+    <Subsection title="Beispiele">
+      <MultiColumnLayout>
+        <template #col-1>
+          <MathDisplay>
+            \begin{align*}
+            2x + 5 &> 1 \quad | -5 \\
+            2x &> -4 \quad |:2 \\
+            x &> -2
+            \end{align*}
+          </MathDisplay>
+        </template>
+        <template #col-2>
+          <MathDisplay>
+            \begin{align*}
+            4 - x &\leq 8 \quad |-4 \\
+            -x &\leq 4 \quad
+            |{\color{red} \cdot (-1)} \\
+            x & \; {\color{red}\geq} \ {-4}
+            \end{align*}
+          </MathDisplay>
+        </template>
+      </MultiColumnLayout>
+      <MultiColumnLayout>
+        <template #col-1>
+          <MathDisplay>
+            \begin{alignat*} {3}
+            1-\left(\frac56\right)^x & > 0{,}9 \quad &|&-1 \\
+            -\left(\frac56\right)^x & > -0{,}1
+            \quad &|&\cdot (-1) \\
+            \left(\frac56\right)^x & < 0{,}1
+            \quad &| &\log_{\color{red}\frac56} \\
+            x \ &\;{\color{red}>} \ \log_{\frac56}(0{,}1) \\
+            x &\approx 12{,}63
+            \\
+            \frac56 < 1, \text{des}&\text{halb '<' umdrehen}
+            \end{alignat*}
+          </MathDisplay>
+        </template>
+        <template #col-2>
+          <MathDisplay>
+            \begin{align*}
+            x^2+x-6 &< 0 \\
+            \Rightarrow x^2+x-6 &= 0 \\
+            \Rightarrow x_1 = -3 \quad &x_2 = 2 \\
+            \\
+            \text{Parabel nach oben}&\text{ geöffnet } \\
+            \text{mit Nullstellen -3}&\text{ und 2:} \\
+            \Rightarrow L =  {]}{-3}; &2[
+            \end{align*}
+          </MathDisplay>
+        </template>
+      </MultiColumnLayout>
+    </Subsection>
+  </ContentSection>
+  
+  <ContentSection title="Trigonometrische Gleichungen">
+    <p>TODO</p>
   </ContentSection>
 </template>
 
