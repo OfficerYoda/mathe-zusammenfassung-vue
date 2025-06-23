@@ -18,4 +18,5 @@ jobs:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_MATHE_ZUSAMMENFASSUNG }}
           projectId: mathe-zusammenfassung
+          channelId: '${{ github.ref_name }}'
           target: mz-vue
