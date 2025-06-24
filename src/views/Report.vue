@@ -3,38 +3,13 @@ import {ref, computed} from 'vue'
 import ContentSection from '../components/ContentSection.vue'
 import {createGithubIssue} from '../firebase'
 import {kebabUriCase} from "../utils/string.ts";
+import chaptersJson from '../data/chapters.json'
 
-// Hardcoded chapters and their minors
-const chapters = [
-  {
-    name: 'Analysis',
-    minors: [
-      'Ableitungen',
-      'Integrale',
-      'Kurvendiskussion',
-      'Grenzwerte',
-      'Ganzrationale Funktionen'
-    ]
-  },
-  {
-    name: 'Geometrie',
-    minors: [
-      'Vektoren',
-      'Geraden',
-      'Ebenen',
-      'Abstände'
-    ]
-  },
-  {
-    name: 'Stochastik',
-    minors: [
-      'Wahrscheinlichkeiten',
-      'Kombinatorik',
-      'Zufallsvariablen',
-      'Verteilungen'
-    ]
-  }
-]
+// Transform chaptersJson to the structure expected by the form
+const chapters = Object.entries(chaptersJson).map(([filename, minors]) => ({
+  name: filename,
+  minors
+}));
 
 const majorChapter = ref('')
 const minorChapter = ref('')
@@ -48,6 +23,10 @@ const issueUrl = ref('')
 // Reset minor chapter if major changes
 const availableMinors = computed(() => {
   const found = chapters.find(c => c.name === majorChapter.value)
+  // Reset minorChapter if the major chapter changes and the current minor is not valid
+  if (minorChapter.value && (!found || !found.minors.includes(minorChapter.value))) {
+    minorChapter.value = ''
+  }
   return found ? found.minors : []
 })
 

@@ -70,7 +70,8 @@ function main() {
         const allTitles = {};
         vueFiles.forEach(file => {
             const titles = extractTitlesFromFile(file);
-            allTitles[path.basename(file)] = titles;
+            const baseName = path.basename(file, '.vue');
+            allTitles[baseName] = titles;
         });
 
         writeTitlesToJsonFile(allTitles);
