@@ -42,15 +42,6 @@ const columnArray = computed(() => Array.from({ length: props.columns }, (_, i) 
   padding-top: 0;
 }
 
-.multi-column-layout-image .column-item.image-column {
-  flex: 0 0 40%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  max-width: 40%;
-  max-height: 400px;
-}
-
 .multi-column-layout-image .column-item.image-column img,
 .multi-column-layout-image .column-item.image-column :deep(img) {
   max-width: 100%;
@@ -59,7 +50,7 @@ const columnArray = computed(() => Array.from({ length: props.columns }, (_, i) 
   height: auto;
   object-fit: contain;
   display: block;
-  border-radius: 4px;
+  border-radius: 5px;
 }
 
 .column-item {

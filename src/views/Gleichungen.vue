@@ -338,16 +338,83 @@ import MultiColumnLayout from "../components/MultiColumnLayout.vue";
             \\
             \text{Parabel nach oben}&\text{ geöffnet } \\
             \text{mit Nullstellen -3}&\text{ und 2:} \\
-            \Rightarrow L =  {]}{-3}; &2[
+            \Rightarrow L = {]}{-3}; &2[
             \end{align*}
           </MathDisplay>
         </template>
       </MultiColumnLayout>
     </Subsection>
   </ContentSection>
-  
+
   <ContentSection title="Trigonometrische Gleichungen">
-    <p>TODO</p>
+    <MultiColumnLayout image-layout>
+      <template #col-1>
+        <Subsection title="Beispiele">
+          <MathDisplay>
+            \begin{align*}
+            \sin(x) + 2 &= 1\,,
+            \ \ x \in [0; 4\pi]\\
+            \sin(x) &= -1\\
+            x &= \sin^{-1}(-1) \\
+            x &= \frac{3}{2}\pi \\
+            \Rightarrow L &= \{\frac{3}{2}\pi ; \frac{7}{2}\pi\} \\
+            \end{align*}
+          </MathDisplay>
+        </Subsection>
+      </template>
+      <template #col-2>
+        <Img src="/Graph_SinCos.png" alt="Graph von Sinus und Cosinus"/>
+      </template>
+    </MultiColumnLayout>
+    <MathDisplay>
+      \sin(\pi x) = -1\,,
+      \ \ x \in \mathbb{R}
+    </MathDisplay>
+    <MathDisplay>
+      \begin{align*}
+      \\
+      \text{Substitution}
+      \end{align*}
+    </MathDisplay>
+    <MathDisplay>
+      \begin{align*}
+      u &= \pi x \\
+      \Rightarrow \sin(u) &= -1 \\
+      \Rightarrow u &= \frac{3}{2}\pi + k\cdot2\pi,
+      \ \ k \in \mathbb{Z}
+      \end{align*}
+    </MathDisplay>
+    <MathDisplay>
+      \begin{align*}
+      \\
+      \text{Rücksubstitution}
+      \end{align*}
+    </MathDisplay>
+    <MathDisplay>
+      \begin{align*}
+      \pi x &= \frac{3}{2}\pi + k\cdot2\pi
+      \quad | {: \pi}\\
+      x &= \frac{3}{2} + 2k
+      \end{align*}
+    </MathDisplay>
+    <MathDisplay>
+      \begin{gather*}
+      \Rightarrow L =
+      \{x \in \mathbb R \ | \
+      x = \frac32 + 2k,\
+      k \in \mathbb Z
+      \} \\
+      \Rightarrow
+      \text{unendlich viele Lösungen }(\frac32;\frac72;-\frac12,...)
+      \end{gather*}
+    </MathDisplay>
+    <InfoBox type="yellow">
+      Bei Trigonometrischen Funktionen auf den Definitionsbereich achten.
+    </InfoBox>
+    <InfoBox type="blue">
+      Ich weiß, das zweite Beispiel kann erstmal überwältigend sein, aber versucht, es zu verstehen.
+      Es kann sein, dass im Abi eine Aufgabe mit einer "komplizierten" Lösungsmenge vorkommt.
+    </InfoBox>
   </ContentSection>
 </template>
 
