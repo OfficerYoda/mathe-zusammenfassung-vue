@@ -1,10 +1,11 @@
 <script lang="ts">
-import {defineComponent, ref} from 'vue';
+import {defineComponent, ref, computed} from 'vue';
 import ContentSection from '../components/ContentSection.vue';
 import InfoBox from '../components/InfoBox.vue';
 import MathDisplay from '../components/MathDisplay.vue';
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 import {useRoute} from "vue-router";
+import chaptersData from '../data/chapters.json';
 
 export default defineComponent({
   name: 'App',
@@ -25,7 +26,6 @@ export default defineComponent({
 
     const route = useRoute();
 
-    // reload page when already on /report
     function handleReportClick(event: MouseEvent) {
       if (route.path === '/report') {
         event.preventDefault();
@@ -33,7 +33,18 @@ export default defineComponent({
       }
     }
 
-    return {chapters, handleReportClick};
+    // Find current major chapter by route
+    const currentChapter = computed(() => {
+      return chapters.value.find(ch => route.path.startsWith(ch.path));
+    });
+
+    // Get minor chapters for current major chapter
+    const currentTopics = computed(() => {
+      if (!currentChapter.value) return [];
+      return chaptersData[currentChapter.value.name as keyof typeof chaptersData] || [];
+    });
+
+    return {chapters, handleReportClick, currentChapter, currentTopics};
   }
 });
 </script>
@@ -74,8 +85,13 @@ export default defineComponent({
       </div>
     </main>
     <aside class="sidebar right-sidebar">
-      <div class="placeholder-content">
-        <span>Chapter Overview (coming soon)</span>
+      <div v-if="currentChapter" class="chapter-overview">
+        <ul>
+          <li v-for="topic in currentTopics" :key="topic">{{ topic }}</li>
+        </ul>
+      </div>
+      <div v-else class="placeholder-content">
+        <span>Chapter Overview (select a chapter)</span>
       </div>
     </aside>
   </div>
@@ -211,6 +227,15 @@ export default defineComponent({
 /* ---Right Sidebar--- */
 .right-sidebar {
   justify-content: center;
+  padding: 1rem;
+  text-align: right;
+  color: var(--color-text-primary);
+}
+
+.chapter-overview ul {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
 }
 
 .placeholder-content {

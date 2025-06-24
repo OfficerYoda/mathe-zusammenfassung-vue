@@ -1,22 +1,22 @@
 <template>
   <section class="content-section" :id="sectionId">
     <h2
-      class="section-title"
-      @click="handleTitleClick"
-      @mouseenter="hovered = true"
-      @mouseleave="hovered = false"
-      @focus="hovered = true"
-      @blur="hovered = false"
-      tabindex="0"
+        class="section-title"
+        @click="handleTitleClick"
+        @mouseenter="hovered = true"
+        @mouseleave="hovered = false"
+        @focus="hovered = true"
+        @blur="hovered = false"
+        tabindex="0"
     >
       {{ title }}
       <img
-        src="/link.svg"
-        class="section-indicator"
-        :class="{ 'clicked': indicatorClicked }"
-        :style="{ opacity: (hovered || indicatorClicked) ? 1 : 0 }"
-        alt=""
-        aria-hidden="true"
+          src="/link.svg"
+          class="section-indicator"
+          :class="{ 'clicked': indicatorClicked }"
+          :style="{ opacity: (hovered || indicatorClicked) ? 1 : 0 }"
+          alt=""
+          aria-hidden="true"
       />
     </h2>
     <div class="section-content">
