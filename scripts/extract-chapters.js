@@ -6,15 +6,22 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const viewsDir = path.join(__dirname, '../src/views');
+const dataDir = path.join(__dirname, '../src/data');
+const chaptersJsonPath = path.join(dataDir, 'chapters.json');
 
 const vueFilePattern = /\.vue$/;
 const contentSectionPattern = /<ContentSection[^>]*title\s*=\s*['"]([^'"]+)['"]/g;
+
+const excludedFiles = [
+    'App.vue',
+    'Report.vue'
+];
 
 function getAllVueFiles(dir) {
     try {
         const files = fs.readdirSync(dir);
         const vueFiles = files
-            .filter(f => vueFilePattern.test(f))
+            .filter(f => vueFilePattern.test(f) && !excludedFiles.includes(f))
             .map(f => path.join(dir, f));
         return vueFiles;
     } catch (error) {
@@ -38,6 +45,19 @@ function extractTitlesFromFile(filePath) {
     }
 }
 
+function writeTitlesToJsonFile(allTitles) {
+    try {
+        if (!fs.existsSync(dataDir)) {
+            fs.mkdirSync(dataDir, { recursive: true });
+        }
+        fs.writeFileSync(chaptersJsonPath, JSON.stringify(allTitles, null, 2), 'utf-8');
+        console.log(`Wrote chapters to ${chaptersJsonPath}`);
+    } catch (error) {
+        console.error(`Error writing chapters JSON:`, error.message);
+        throw error;
+    }
+}
+
 function main() {
     try {
         const vueFiles = getAllVueFiles(viewsDir);
@@ -53,7 +73,7 @@ function main() {
             allTitles[path.basename(file)] = titles;
         });
 
-        console.log(JSON.stringify(allTitles, null, 2))
+        writeTitlesToJsonFile(allTitles);
     } catch (error) {
         console.error('An unhandled error occurred in main:', error.message);
         if (error.stack) {

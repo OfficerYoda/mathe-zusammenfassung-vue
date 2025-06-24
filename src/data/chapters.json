@@ -1,0 +1,33 @@
+{
+  "Analysis.vue": [
+    "Krümmung",
+    "Ganzrationale Funktionen"
+  ],
+  "Geometrie.vue": [
+    "Volumen von Vektoren"
+  ],
+  "Gleichungen.vue": [
+    "Gleichungen",
+    "Satz vom Nullprodukt",
+    "(spezielle) kubische Gleichungen",
+    "Biquadratische Gleichungen",
+    "Bruchgleichungen",
+    "Wurzelgleichungen",
+    "Exponentialgleichungen",
+    "Betragsgleichungen",
+    "Ungleichungen",
+    "Trigonometrische Gleichungen"
+  ],
+  "Notation.vue": [
+    "Mengen",
+    "Intervalle",
+    "Mengennotation",
+    "Definitionsbereiche",
+    "Limes",
+    "Summenzeichen",
+    "Vektoren"
+  ],
+  "Stochastik.vue": [
+    "Gambling"
+  ]
+}
