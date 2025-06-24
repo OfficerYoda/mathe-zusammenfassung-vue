@@ -6,9 +6,11 @@ import MathDisplay from '../components/MathDisplay.vue';
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 import {useRoute} from "vue-router";
 import chaptersData from '../data/chapters.json';
+import {kebabUriCase} from "../utils/string.ts";
 
 export default defineComponent({
   name: 'App',
+  methods: {kebabUriCase},
   components: {
     FontAwesomeIcon,
     ContentSection,
@@ -44,7 +46,30 @@ export default defineComponent({
       return chaptersData[currentChapter.value.name as keyof typeof chaptersData] || [];
     });
 
-    return {chapters, handleReportClick, currentChapter, currentTopics};
+    // Generate link for a topic
+    function getTopicLink(topic: string) {
+      if (!currentChapter.value) return '#';
+      return `${currentChapter.value.path}#${kebabUriCase(topic)}`;
+    }
+
+    // Smooth scroll to element by hash
+    function smoothScrollToHash(hash: string) {
+      if (!hash) return;
+      const id = hash.replace(/^#/, '');
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({behavior: 'smooth', block: 'start'});
+      }
+    }
+
+    return {
+      chapters,
+      handleReportClick,
+      currentChapter,
+      currentTopics,
+      getTopicLink,
+      smoothScrollToHash
+    };
   }
 });
 </script>
@@ -86,9 +111,16 @@ export default defineComponent({
     </main>
     <aside class="sidebar right-sidebar">
       <div v-if="currentChapter" class="chapter-overview">
-        <ul>
-          <li v-for="topic in currentTopics" :key="topic">{{ topic }}</li>
-        </ul>
+        <h2 class="chapter-overview-title">Unterkapitel</h2>
+        <router-link
+            v-for="topic in currentTopics"
+            :key="topic"
+            :to="getTopicLink(topic)"
+            class="chapter-overview-link"
+            @click.native.prevent="smoothScrollToHash(getTopicLink(topic).split('#')[1] ? '#' + getTopicLink(topic).split('#')[1] : '')"
+        >
+          {{ topic }}
+        </router-link>
       </div>
       <div v-else class="placeholder-content">
         <span>Chapter Overview (select a chapter)</span>
@@ -226,16 +258,36 @@ export default defineComponent({
 
 /* ---Right Sidebar--- */
 .right-sidebar {
-  justify-content: center;
-  padding: 1rem;
-  text-align: right;
+  text-align: left;
   color: var(--color-text-primary);
+  padding: 1rem;
 }
 
-.chapter-overview ul {
-  list-style: none;
-  padding-left: 0;
-  margin: 0;
+.chapter-overview-title {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.chapter-overview-link {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+  transition: color 0.2s, padding-right 0.2s, padding-left 0.2s;
+  padding: 0.25rem 0.75rem 0.25rem 1.5rem;
+  border-radius: 4px;
+  display: block;
+  text-align: right;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chapter-overview-link:hover {
+  color: var(--color-text-primary);
+  padding-right: 1.75rem;
+  padding-left: 0.5rem;
+  background-color: var(--color-surface);
 }
 
 .placeholder-content {

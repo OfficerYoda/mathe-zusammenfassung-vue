@@ -11,7 +11,7 @@ import MultiColumnLayout from "../components/MultiColumnLayout.vue";
 <template>
   <ChapterTitle title="Gleichungen"/>
 
-  <ContentSection title="Gleichungen">
+  <ContentSection title="Lösungsmenge">
     <InfoBox type="green">
       <p v-mathjax>
         Die Lösungsmenge $L$ einer (Un-)Gleichung enthält alle Werte der Variablen, welche die (Un-)Gleichung erfüllen.
