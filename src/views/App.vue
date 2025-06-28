@@ -40,10 +40,23 @@ export default defineComponent({
       return chapters.value.find(ch => route.path.startsWith(ch.path));
     });
 
-    // Get minor chapters for current major chapter
+    // Get minor chapters for current major chapter, including all subfiles (e.g., Analysis_*)
     const currentTopics = computed(() => {
       if (!currentChapter.value) return [];
-      return chaptersData[currentChapter.value.name as keyof typeof chaptersData] || [];
+      const chapterName = currentChapter.value.name;
+      // Collect topics from the main chapter
+      let topics: string[] = [];
+      if (chaptersData[chapterName as keyof typeof chaptersData]) {
+        topics = topics.concat(chaptersData[chapterName as keyof typeof chaptersData]);
+      }
+      // Collect topics from all subchapter keys starting with the main chapterName
+      Object.keys(chaptersData).forEach(key => {
+        if (key.startsWith(chapterName)) {
+          topics = topics.concat(chaptersData[key as keyof typeof chaptersData]);
+        }
+      });
+      // Remove duplicates and falsy values
+      return Array.from(new Set(topics.filter(Boolean)));
     });
 
     // Generate link for a topic

@@ -1,13 +1,16 @@
 {
-  "Analysis": [
-    "Krümmung",
+  "Analysis": [],
+  "AnalysisFunktionen": [
     "Ganzrationale Funktionen"
+  ],
+  "AnalysisIntegrale": [
+    "Krümmung"
   ],
   "Geometrie": [
     "Volumen von Vektoren"
   ],
   "Gleichungen": [
-    "Gleichungen",
+    "Lösungsmenge",
     "Satz vom Nullprodukt",
     "(spezielle) kubische Gleichungen",
     "Biquadratische Gleichungen",
