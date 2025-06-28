@@ -78,7 +78,8 @@ export default defineComponent({
 }
 
 .info-content * {
-  margin: 0;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 /* Color styles for each box type */

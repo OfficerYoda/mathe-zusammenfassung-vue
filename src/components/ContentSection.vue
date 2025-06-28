@@ -20,13 +20,13 @@
       />
     </h2>
     <div class="section-content">
-      <slot></slot>
+      <component :is="mathjaxSlot" />
     </div>
   </section>
 </template>
 
 <script lang="ts">
-import {computed, defineComponent, onMounted, ref} from 'vue';
+import {computed, defineComponent, onMounted, ref, h, useSlots} from 'vue';
 import {kebabUriCase} from "../utils/string.ts";
 
 export default defineComponent({
@@ -41,6 +41,35 @@ export default defineComponent({
     const sectionId = computed(() => kebabUriCase(props.title));
     const indicatorClicked = ref(false);
     const hovered = ref(false);
+
+    // Always patch slot content to add v-mathjax to every <p>
+    const slots = useSlots();
+    const children = slots.default ? slots.default() : [];
+    const patchMathjax = (vnodes: any[]): any[] =>
+      vnodes.map(node => {
+        if (node.type === 'p') {
+          return h(
+            node.type,
+            {
+              ...node.props,
+              'v-mathjax': ''
+            },
+            node.children
+          );
+        } else if (Array.isArray(node.children)) {
+          return h(
+            node.type,
+            node.props,
+            patchMathjax(node.children)
+          );
+        }
+        return node;
+      });
+    const mathjaxSlot = {
+      render() {
+        return h('div', {}, patchMathjax(children));
+      }
+    };
 
     // Smooth scroll to element with given id
     const smoothScrollToSection = (id: string) => {
@@ -73,7 +102,7 @@ export default defineComponent({
       }
     });
 
-    return {sectionId, handleTitleClick, indicatorClicked, hovered};
+    return {sectionId, handleTitleClick, indicatorClicked, hovered, mathjaxSlot};
   },
 });
 </script>

@@ -69,7 +69,7 @@ import MultiColumnLayout from "../components/MultiColumnLayout.vue";
 
   <ContentSection title="(spezielle) kubische Gleichungen">
     <Subsection title="Beispiele">
-      <MultiColumnLayout :columns="2">
+      <MultiColumnLayout :columns=2>
         <template #col-1>
           <MathDisplay>
             \begin{align}
@@ -92,18 +92,14 @@ import MultiColumnLayout from "../components/MultiColumnLayout.vue";
       </MultiColumnLayout>
     </Subsection>
     <Subsection title="Nicht (analytisch) Lösbar">
-      <MultiColumnLayout :columns="1">
-        <template #col-1>
           <MathDisplay>
             x^3-7x^2+5=0
           </MathDisplay>
-        </template>
-      </MultiColumnLayout>
     </Subsection>
   </ContentSection>
 
   <ContentSection title="Biquadratische Gleichungen">
-    <MultiColumnLayout :columns="2" style="margin-top: -1.5rem">
+    <MultiColumnLayout :columns=2 style="margin-top: -1.5rem">
       <template #col-1>
         <Subsection title="Substitution">
           <MathDisplay>
@@ -118,7 +114,7 @@ import MultiColumnLayout from "../components/MultiColumnLayout.vue";
       </template>
       <template #col-2>
         <Subsection title="Rücksubstitution">
-          <MultiColumnLayout :columns="2">
+          <MultiColumnLayout :columns=2>
             <template #col-1>
               <MathDisplay>
                 \begin{align*}
@@ -195,7 +191,7 @@ import MultiColumnLayout from "../components/MultiColumnLayout.vue";
 
   <ContentSection title="Exponentialgleichungen">
     <Subsection title="Allgemein">
-      <MultiColumnLayout :columns="3">
+      <MultiColumnLayout :columns=3>
         <template #col-1>
           <MathDisplay>
             \begin{align*}
@@ -217,7 +213,7 @@ import MultiColumnLayout from "../components/MultiColumnLayout.vue";
       </MultiColumnLayout>
     </Subsection>
     <Subsection title="Beispiele">
-      <MultiColumnLayout :columns="3">
+      <MultiColumnLayout :columns=3>
         <template #col-1>
           <MathDisplay>
             \begin{align*}

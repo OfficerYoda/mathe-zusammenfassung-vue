@@ -11,15 +11,15 @@ import ContentSection from "../components/ContentSection.vue";
 
   <ContentSection title="Ganzrationale Funktionen">
     <Subsection title="Definition"/>
-    <InfoBox type="green" v-mathjax>
+    <InfoBox type="green">
       <p>Eine ganzrationale Funktion $f$ vom Grad $n$ hat die Form:</p>
-      <MathDisplay latex="f(x) = a_n x^n + a_{n-1} x^{n-1} + ... + a_1 x + a_0"/>
+      <MathDisplay>f(x) = a_n x^n + a_{n-1} x^{n-1} + ... + a_1 x + a_0</MathDisplay>
       <p>mit $a_n \neq 0$.</p>
     </InfoBox>
 
-    <MultiColumnLayout :columns="2">
+    <MultiColumnLayout :columns=2>
       <template #col-1>
-        <Subsection title="Beispiel"/>
+        <Subsection title="Beispiele"/>
         <MathDisplay>
           \begin{align}
           f(x) &= x^2 - 4x + 3 \\
@@ -42,6 +42,110 @@ import ContentSection from "../components/ContentSection.vue";
         </MathDisplay>
       </template>
     </MultiColumnLayout>
+  </ContentSection>
+
+  <ContentSection title="Definitions- und Wertemenge">
+    <InfoBox type="green">
+      <h3>Definitionsmenge</h3>
+      <p>Die Definitionsmenge $D_f$ einer Funktion $f$ enthält alle Werte von $x$, für die $f(x)$ definiert ist.</p>
+    </InfoBox>
+    <InfoBox type="green">
+      <h3>Wertemenge</h3>
+      <p>Die Wertemenge $W_f$ einer Funktion $f$ enthält alle Werte, die $f(x)$ annehmen kann.</p>
+    </InfoBox>
+    <Subsection title="Beispiele">
+      <MultiColumnLayout :columns=3>
+        <template #col-1>
+          <MathDisplay>
+            \begin{align*}
+            f(x) &= x^2 \\
+            D_f &= \mathbb{R} \\
+            W_f &= [0; \infty[
+            \end{align*}
+          </MathDisplay>
+        </template>
+        <template #col-2>
+          <MathDisplay>
+            \begin{align*}
+            g(x) &= \ln(x) \\
+            D_g &= \ ]0; \infty[ \\
+            W_g &= \mathbb{R}
+            \end{align*}
+          </MathDisplay>
+        </template>
+        <template #col-3>
+          <MathDisplay>
+            \begin{align*}
+            h(x) &= \frac1x \\
+            D_h &= \mathbb{R} \setminus \{0\} \\
+            W_h &= \mathbb{R} \setminus \{0\}
+            \end{align*}
+          </MathDisplay>
+        </template>
+      </MultiColumnLayout>
+    </Subsection>
+  </ContentSection>
+
+  <ContentSection title="Potenzregel">
+    <InfoBox type="green">
+      <MathDisplay>
+        f(x) = a \cdot x^n
+        \quad\Rightarrow\quad
+        f'(x) = n \cdot a \cdot x^{n-1}
+      </MathDisplay>
+    </InfoBox>
+    <Subsection title="Beispiele">
+      <MultiColumnLayout :columns=3>
+        <template #col-1>
+          <MathDisplay>
+            \begin{align*}
+            f(x) &= x^2\\
+            f'(x) &= 2x
+            \end{align*}
+          </MathDisplay>
+        </template>
+        <template #col-2>
+          <MathDisplay>
+            \begin{align*}
+            g(x) &= 3x^2\\
+            g'(x) &= 6x
+            \end{align*}
+          </MathDisplay>
+        </template>
+        <template #col-3>
+          <MathDisplay>
+            \begin{align*}
+            h(x) &= \frac1x = x^{-1}\\
+            h'(x) &= -\frac1{x^2} = -x^{-2}
+            \end{align*}
+          </MathDisplay>
+        </template>
+      </MultiColumnLayout>
+    </Subsection>
+  </ContentSection>
+
+  <ContentSection title="Verkettung von Funktionen">
+    <InfoBox type="green">
+      <MathDisplay>
+        u(v(x)) = u \circ v
+      </MathDisplay>
+      <p>
+        Die äußere Funktion $u$ wird mit der inneren Funktion $v$ verkettet.
+      </p>
+    </InfoBox>
+    <Subsection title="Beispiel">
+      <MathDisplay>
+        \begin{array}{l}
+        u(x) = 1 - x^2 \\
+        v(x) = 2x + 1
+        \end{array}
+        \quad\Rightarrow\quad
+        \begin{array}{l}
+        u \circ v(x) = 1 - (2x + 1)^2 \\
+        v \circ u(x) = 2(1 - x^2) + 1
+        \end{array}
+      </MathDisplay>
+    </Subsection>
   </ContentSection>
 </template>
 

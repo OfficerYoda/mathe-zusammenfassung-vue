@@ -42,6 +42,10 @@
     --color-error: #be4a4a;
 }
 
+h1, h2, h3, h4, h5, h6 {
+    color: var(--color-text-headings);
+}
+
 a {
     font-weight: 500;
     color: var(--color-accent);
