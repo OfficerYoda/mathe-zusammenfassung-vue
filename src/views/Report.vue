@@ -40,7 +40,7 @@ function submit() {
   error.value = ''
 
   // Create the issue title and body
-  const title = `Fehler in "${majorChapter.value} - ${minorChapter.value}`
+  const title = `Fehler in "${majorChapter.value} - ${minorChapter.value}"`
   const body =
       `### Kapitel
        ${majorChapter.value} - ${minorChapter.value}

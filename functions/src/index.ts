@@ -1,14 +1,17 @@
 import {HttpsError, onCall} from 'firebase-functions/v2/https';
-import {defineSecret} from 'firebase-functions/params'; // Import defineSecret
+import {defineSecret} from 'firebase-functions/params';
 import {logger} from 'firebase-functions';
 import {Octokit} from '@octokit/rest';
+import nodemailer from 'nodemailer';
 
 // --- Configuration Parameters ---
 // Define your GitHub Personal Access Token (PAT) as a secret
-const githubPat = defineSecret('GITHUB_TOKEN'); // Matches the name set via CLI
+const githubPat = defineSecret('GITHUB_TOKEN');
+const smtpUser = defineSecret('SMTP_USER');
+const smtpPass = defineSecret('SMTP_PASS');
 
-const GITHUB_REPO_OWNER = 'officeryoda'; // Your GitHub username or organization
-const GITHUB_REPO_NAME = 'mathe-zusammenfassung-vue'; // The name of your repository
+const GITHUB_REPO_OWNER = 'officeryoda';
+const GITHUB_REPO_NAME = 'mathe-zusammenfassung-vue';
 
 /**
  * Callable Cloud Function to create a GitHub issue.
@@ -25,7 +28,7 @@ const GITHUB_REPO_NAME = 'mathe-zusammenfassung-vue'; // The name of your reposi
  */
 export const createGithubIssue = onCall(
     {
-        secrets: [githubPat], // Declare that this function needs access to the secret
+        secrets: [githubPat, smtpUser, smtpPass], // Declare that this function needs access to the secret
     },
     async (request) => {
         // Validate incoming data
@@ -72,6 +75,43 @@ export const createGithubIssue = onCall(
                 issueUrl: response.data.html_url,
                 issueNumber: response.data.number,
             });
+
+            // Send email with mistake report
+            // Configure the transporter (replace with your SMTP/email provider details)
+            const transporter = nodemailer.createTransport({
+                host: 'smtp.gmail.com',
+                port: 587,
+                secure: false, // true for 465, false for other ports
+                auth: {
+                    user: smtpUser.value(),
+                    pass: smtpPass.value(),
+                },
+            });
+
+// Extract description from the body (everything after "### Beschreibung")
+            const descriptionMatch = body.match(/### Beschreibung\s*([\s\S]*)/);
+            const descriptionText = descriptionMatch ? descriptionMatch[1].trim() : '';
+
+            const mailOptions = {
+                from: 'notifications@officeryoda.dev',
+                to: 'reports@officeryoda.dev',
+                subject: `Zusammenfassung Fehler in ${title}`,
+                text: `A new mistake was reported.
+
+**Title:** ${title}
+**GitHub Issue:** ${response.data.html_url}
+
+**Beschreibung:**
+${descriptionText}`,
+            };
+
+            try {
+                await transporter.sendMail(mailOptions);
+                logger.info('Report email sent successfully.');
+            } catch (emailError) {
+                logger.error('Failed to send report email.', emailError);
+                // Do not throw here to avoid failing the whole function
+            }
 
             // Return the URL of the newly created issue
             return {
