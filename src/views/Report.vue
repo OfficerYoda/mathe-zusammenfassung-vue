@@ -138,7 +138,7 @@ function resetForm() {
   </ContentSection>
 </template>
 
-<style scoped>
+<style>
 .report-form {
   display: flex;
   flex-direction: column;

@@ -54,15 +54,15 @@ import MultiColumnLayout from "../components/MultiColumnLayout.vue";
       <MathDisplay>
         (x-5)\cdot(x^2-x+4) = 0
         \quad\Rightarrow\quad
-        \begin{cases}
+        \begin{array}{l}
         x-5=0 \\
         x^2-x+4=0
-        \end{cases}
+        \end{array}
         \quad\Rightarrow\quad
-        \begin{cases}
+        \begin{array}{l}
         x_1 = 5 \\
         \text{keine Lösung}
-        \end{cases}
+        \end{array}
       </MathDisplay>
     </Subsection>
   </ContentSection>

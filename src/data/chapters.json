@@ -1,10 +1,15 @@
 {
   "Analysis": [],
   "AnalysisFunktionen": [
-    "Ganzrationale Funktionen"
+    "Ganzrationale Funktionen",
+    "Definitions- und Wertemenge",
+    "Potenzregel",
+    "Verkettung von Funktionen",
+    "Kettenregel",
+    "Produktregel"
   ],
   "AnalysisIntegrale": [
-    "Krümmung"
+    "Integrale"
   ],
   "Geometrie": [
     "Volumen von Vektoren"

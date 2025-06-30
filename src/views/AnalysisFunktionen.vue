@@ -135,14 +135,67 @@ import ContentSection from "../components/ContentSection.vue";
     </InfoBox>
     <Subsection title="Beispiel">
       <MathDisplay>
-        \begin{array}{l}
-        u(x) = 1 - x^2 \\
+        u(x) = 1 - x^2
+        \quad\quad
         v(x) = 2x + 1
-        \end{array}
-        \quad\Rightarrow\quad
+      </MathDisplay>
+      <MathDisplay>
         \begin{array}{l}
         u \circ v(x) = 1 - (2x + 1)^2 \\
         v \circ u(x) = 2(1 - x^2) + 1
+        \end{array}
+      </MathDisplay>
+    </Subsection>
+  </ContentSection>
+
+  <ContentSection title="Kettenregel">
+    <InfoBox type="green">
+      <MathDisplay>
+        f(x) = u(v(x)) \quad\Rightarrow\quad f’(x) = u’(v(x)) \cdot v’(x)
+      </MathDisplay>
+    </InfoBox>
+    <Subsection title="Beispiel">
+      <MathDisplay>
+        \begin{array}{l}
+        f(x) = (5-3x)^4\\
+        f'(x) = -12(5-3x)^3
+        \end{array}
+        \quad
+        \begin{array}{l}
+        u(x) = x^4\\
+        u'(x) = 4x^3
+        \end{array}
+        \quad
+        \begin{array}{l}
+        v(x) = 5-3x\\
+        v'(x) = -3
+        \end{array}
+      </MathDisplay>
+    </Subsection>
+  </ContentSection>
+
+  <ContentSection title="Produktregel">
+    <InfoBox type="green">
+      <MathDisplay>
+        f = u \cdot v \quad\Rightarrow\quad
+        f’ = u' \cdot v + u \cdot v'
+      </MathDisplay>
+    </InfoBox>
+    <Subsection title="Beispiel">
+      <MathDisplay>
+        \begin{array}{l}
+        f(x) = 2x \cdot \sqrt{x^2+1}\\
+        f'(x) = 2\sqrt{x^2+1}+\frac{2x^2}{\sqrt{x^2+1}}
+        \end{array}
+        \qquad
+        \begin{array}{l}
+        u(x) = 2x\\
+        u'(x) = 2
+        \end{array}
+        \qquad
+        \begin{array}{l}
+        v(x) = \sqrt{x^2+1}\\
+        v'(x) = \frac{x}{\sqrt{x^2+1}}
         \end{array}
       </MathDisplay>
     </Subsection>
