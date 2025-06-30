@@ -32,7 +32,7 @@ const availableMinors = computed(() => {
 
 
 function submit() {
-  if (!majorChapter.value || !description.value) {
+  if (!majorChapter.value || !minorChapter.value || !description.value) {
     error.value = 'Bitte fülle alle erforderlichen Felder aus.'
     return
   }
@@ -131,7 +131,7 @@ function resetForm() {
       </p>
       <p>
         <a :href="'/' + kebabUriCase(majorChapter) + '#' + kebabUriCase(minorChapter)" class="chapter-link">
-          Zurück zum gemeldeten Kapitel
+          Zum gemeldeten Kapitel
         </a>
       </p>
     </div>
@@ -165,6 +165,7 @@ input, textarea, select {
   background: var(--color-background-secondary);
   color: var(--color-text-primary);
   font-size: 1rem;
+  font-family: inherit;
   transition: border 0.2s;
   box-sizing: border-box; /* Ensure consistent sizing */
 }
@@ -183,7 +184,7 @@ textarea {
 button {
   padding: 0.7rem 1.5rem;
   border: none;
-  background: color-mix(in srgb, var(--color-accent) 80%, transparent);
+  background: color-mix(in srgb, var(--color-accent) 85%, transparent);
   color: var(--color-text-primary);
   border-radius: 4px;
   cursor: pointer;
