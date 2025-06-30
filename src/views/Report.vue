@@ -8,7 +8,7 @@ import chaptersJson from '../data/chapters.json'
 // Transform chaptersJson to the structure expected by the form
 const chapters = Object.entries(chaptersJson).map(([filename, minors]) => ({
   name: filename,
-  minors
+  minors: minors as string[]
 }));
 
 const majorChapter = ref('')

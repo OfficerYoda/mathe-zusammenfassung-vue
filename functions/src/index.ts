@@ -3,6 +3,7 @@ import {defineSecret} from 'firebase-functions/params';
 import {logger} from 'firebase-functions';
 import {Octokit} from '@octokit/rest';
 import nodemailer from 'nodemailer';
+import {marked} from 'marked';
 
 // --- Configuration Parameters ---
 // Define your GitHub Personal Access Token (PAT) as a secret
@@ -88,21 +89,14 @@ export const createGithubIssue = onCall(
                 },
             });
 
-// Extract description from the body (everything after "### Beschreibung")
-            const descriptionMatch = body.match(/### Beschreibung\s*([\s\S]*)/);
-            const descriptionText = descriptionMatch ? descriptionMatch[1].trim() : '';
+            // Render the markdown body as HTML
+            const htmlBody = marked.parse(body);
 
             const mailOptions = {
                 from: 'notifications@officeryoda.dev',
                 to: 'reports@officeryoda.dev',
-                subject: `Zusammenfassung Fehler in ${title}`,
-                text: `A new mistake was reported.
-
-**Title:** ${title}
-**GitHub Issue:** ${response.data.html_url}
-
-**Beschreibung:**
-${descriptionText}`,
+                subject: `${title}`,
+                html: `<h3><a href="${response.data.html_url}">GitHub Issue</a></h3>${htmlBody}`
             };
 
             try {
