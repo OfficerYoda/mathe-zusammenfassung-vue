@@ -9,6 +9,10 @@ const props = defineProps({
   imageLayout: {
     type: Boolean,
     default: false
+  },
+  imageWidth: {
+    type: Number,
+    default: 100
   }
 });
 
@@ -20,7 +24,13 @@ const columnArray = computed(() => Array.from({length: props.columns}, (_, i) =>
 </script>
 
 <template>
-  <div :class="layoutClass" :style="{ '--columns': props.columns }">
+  <div
+    :class="layoutClass"
+    :style="{
+      '--columns': props.columns,
+      '--image-width': props.imageWidth + '%',
+    }"
+  >
     <div
         v-for="col in columnArray"
         :key="col"
@@ -44,9 +54,9 @@ const columnArray = computed(() => Array.from({length: props.columns}, (_, i) =>
 
 .multi-column-layout-image .column-item.image-column img,
 .multi-column-layout-image .column-item.image-column :deep(img) {
-  max-width: 70%;
+  max-width: 100%;
   max-height: 100%;
-  width: 100%;
+  width: auto;
   height: auto;
   object-fit: contain;
   display: block;
@@ -57,6 +67,10 @@ const columnArray = computed(() => Array.from({length: props.columns}, (_, i) =>
 
 .column-item {
   flex: 1 1 calc(100% / var(--columns, 2) - 2rem);
+}
+
+.multi-column-layout-image .column-item.image-column {
+  flex: 0 1 calc(var(--image-width) / var(--columns, 2) - 2rem);
 }
 
 .column-item ul {
@@ -73,6 +87,11 @@ const columnArray = computed(() => Array.from({length: props.columns}, (_, i) =>
   .multi-column-layout-image {
     flex-direction: column;
     align-items: stretch;
+  }
+
+  /* Reset flex-basis for column layout on smaller screens */
+  .multi-column-layout-image .column-item.image-column {
+    flex-basis: auto;
   }
 
   .column-item {

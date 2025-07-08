@@ -280,7 +280,7 @@ import ContentSection from "../components/ContentSection.vue";
       </p>
     </InfoBox>
     <Subsection title="Beispiel">
-      <MultiColumnLayout image-layout :columns=2>
+      <MultiColumnLayout image-layout :image-width=70>
         <template #col-1>
           <MathDisplay>
             \begin{align*}
