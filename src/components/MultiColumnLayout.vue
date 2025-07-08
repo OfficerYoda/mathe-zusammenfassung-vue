@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineProps, computed } from 'vue';
+import {defineProps, computed} from 'vue';
 
 const props = defineProps({
   columns: {
@@ -13,19 +13,19 @@ const props = defineProps({
 });
 
 const layoutClass = computed(() =>
-  props.imageLayout ? 'multi-column-layout-image' : 'multi-column-layout'
+    props.imageLayout ? 'multi-column-layout-image' : 'multi-column-layout'
 );
 
-const columnArray = computed(() => Array.from({ length: props.columns }, (_, i) => i + 1));
+const columnArray = computed(() => Array.from({length: props.columns}, (_, i) => i + 1));
 </script>
 
 <template>
   <div :class="layoutClass" :style="{ '--columns': props.columns }">
     <div
-      v-for="col in columnArray"
-      :key="col"
-      class="column-item"
-      :class="{ 'image-column': props.imageLayout && col === props.columns }"
+        v-for="col in columnArray"
+        :key="col"
+        class="column-item"
+        :class="{ 'image-column': props.imageLayout && col === props.columns }"
     >
       <slot :name="`col-${col}`"></slot>
     </div>
@@ -44,13 +44,15 @@ const columnArray = computed(() => Array.from({ length: props.columns }, (_, i) 
 
 .multi-column-layout-image .column-item.image-column img,
 .multi-column-layout-image .column-item.image-column :deep(img) {
-  max-width: 100%;
+  max-width: 70%;
   max-height: 100%;
   width: 100%;
   height: auto;
   object-fit: contain;
   display: block;
   border-radius: 5px;
+  margin-left: auto;
+  margin-right: 0;
 }
 
 .column-item {
@@ -72,13 +74,16 @@ const columnArray = computed(() => Array.from({ length: props.columns }, (_, i) 
     flex-direction: column;
     align-items: stretch;
   }
+
   .column-item {
     max-width: 100%;
   }
+
   .multi-column-layout-image .column-item.image-column {
     justify-content: flex-start;
     max-height: 400px;
   }
+
   .multi-column-layout-image .column-item.image-column :deep(img) {
     max-width: 100%;
     height: auto;

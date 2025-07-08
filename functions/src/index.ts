@@ -78,7 +78,6 @@ export const createGithubIssue = onCall(
             });
 
             // Send email with mistake report
-            // Configure the transporter (replace with your SMTP/email provider details)
             const transporter = nodemailer.createTransport({
                 host: 'smtp.gmail.com',
                 port: 587,
