@@ -8,15 +8,13 @@ import ContentSection from "../components/ContentSection.vue";
 </script>
 
 <template>
-
   <ContentSection title="Ganzrationale Funktionen">
     <Subsection title="Definition"/>
     <InfoBox type="green">
-      <p>Eine ganzrationale Funktion $f$ vom Grad $n$ hat die Form:</p>
+      <p v-mathjax>Eine ganzrationale Funktion $f$ vom Grad $n$ hat die Form:</p>
       <MathDisplay>f(x) = a_n x^n + a_{n-1} x^{n-1} + ... + a_1 x + a_0</MathDisplay>
-      <p>mit $a_n \neq 0$.</p>
+      <p v-mathjax>mit $a_n \neq 0$.</p>
     </InfoBox>
-
     <MultiColumnLayout :columns=2>
       <template #col-1>
         <Subsection title="Beispiele"/>
@@ -45,14 +43,20 @@ import ContentSection from "../components/ContentSection.vue";
   </ContentSection>
 
   <ContentSection title="Definitions- und Wertemenge">
-    <InfoBox type="green">
-      <h3>Definitionsmenge</h3>
-      <p>Die Definitionsmenge $D_f$ einer Funktion $f$ enthält alle Werte von $x$, für die $f(x)$ definiert ist.</p>
-    </InfoBox>
-    <InfoBox type="green">
-      <h3>Wertemenge</h3>
-      <p>Die Wertemenge $W_f$ einer Funktion $f$ enthält alle Werte, die $f(x)$ annehmen kann.</p>
-    </InfoBox>
+    <MultiColumnLayout :columns=2>
+      <template #col-1>
+        <InfoBox type="green">
+          <h3>Definitionsmenge</h3>
+          <p>Die Definitionsmenge $D_f$ einer Funktion $f$ enthält alle Werte von $x$, für die $f(x)$ definiert ist.</p>
+        </InfoBox>
+      </template>
+      <template #col-2>
+        <InfoBox type="green">
+          <h3>Wertemenge</h3>
+          <p>Die Wertemenge $W_f$ einer Funktion $f$ enthält alle Werte, die $f(x)$ mit $x \in D_f$ annehmen kann.</p>
+        </InfoBox>
+      </template>
+    </MultiColumnLayout>
     <Subsection title="Beispiele">
       <MultiColumnLayout :columns=3>
         <template #col-1>
@@ -302,6 +306,293 @@ import ContentSection from "../components/ContentSection.vue";
     </Subsection>
   </ContentSection>
 
+  <ContentSection title="Extremstellen">
+    <Subsection title="Definition">
+      <InfoBox type="green">
+        <p v-mathjax>
+          Ist $f$ eine auf dem Inteval $I$ zweimal differenzierbare Funktion, so muss für eine
+          <strong>innere Extremstelle</strong> $x_0 \in I$ von $f$ gelten:
+        </p>
+        <h3>notwendige Bedingung</h3>
+        <MathDisplay>f'(x_0) = 0</MathDisplay>
+        <h3>hinreichend Bedingung</h3>
+        <ul v-mathjax>
+          <li>
+            $x_0$ ist ein <strong>Maximum</strong>, wenn $f''(x_0) < 0$ ist
+            <strong>oder</strong> wenn $f'$ bei $x_0$ das Vorzeichen von + nach - wechselt.
+          </li>
+          <li>
+            $x_0$ ist ein <strong>Minimum</strong>, wenn $f''(x_0) > 0$ ist
+            <strong>oder</strong> wenn $f'$ bei $x_0$ das Vorzeichen von - nach + wechselt.
+          </li>
+        </ul>
+      </InfoBox>
+      <InfoBox type="yellow">
+        <p v-mathjax>
+          Ist $f''(x_0) = 0$, so muss man über das Vorzeichen von $f'$ argumentieren.<br>
+          Nur wenn die notwendige <strong>und</strong> die hinreichende Bedingung erfüllt sind, ist $x_0$ eine
+          Extremstelle.
+        </p>
+      </InfoBox>
+      <InfoBox type="red">
+        <p>
+          Wenn eine Funktion nur auf einem bestimmten Intervall definiert ist, muss man zusätzlich die Ränder des
+          Integrals auf <strong>äußere Extremstellen</strong> untersuchen.
+        </p>
+      </InfoBox>
+    </Subsection>
+    <info-box type="blue">
+      🚦🔄
+    </info-box>
+  </ContentSection>
+
+  <ContentSection title="Wendestellen">
+    <Subsection title="Definition">
+      <InfoBox type="green">
+        <p v-mathjax>
+          Ist $f$ eine auf dem Intervall $I$ dreimal differenzierbare Funktion, so ist $x_0 \in I$ eine <strong>Wendestelle</strong>
+          von $f$ falls gilt:
+
+          $f''(x_0) = 0$ und $f''(x)$ hat an der Stelle $x_0$ einen Vorzeichenwechsel
+        </p>
+        <MathDisplay>
+          f''(x_0)=0
+          \quad\textsf{und}\quad
+          f'''(x_0) \neq 0
+        </MathDisplay>
+        <p style="text-align: center;"><strong>oder</strong></p>
+        <MathDisplay>
+          f''(x_0)=0
+          \quad\textsf{und}\quad
+          f''(x_0) \textsf{ hat an der Stelle } x_0 \textsf{ einen Vorzeichenwechsel}
+        </MathDisplay>
+      </InfoBox>
+      <InfoBox type="yellow">
+        <p v-mathjax>
+          Ähnlich wie bei den Extremstellen muss man den Vorzeichenwechsel nur überprüfen, wenn $f'''(x_0) = 0$ ist.
+        </p>
+      </InfoBox>
+    </Subsection>
+    <Subsection title="Beispiele">
+      <MultiColumnLayout image-layout :image-width=70>
+        <template #col-1>
+          <p v-mathjax>$f'''$ ist eine Konstante und außerhalb des sichtbaren Bereichs der Grafik.</p>
+          <MathDisplay>
+            \begin{align*}
+            f''(-0{,}5) &= 0 \\
+            f'''(-0{,}5) &\neq 0 \\
+            \Rightarrow
+            \textsf{Wendestelle } & \textsf{bei } x = 0{,}5
+            \end{align*}
+          </MathDisplay>
+          <br>
+          <MathDisplay>
+            \begin{align*}
+            h(x) = x^4 \qquad
+            h'(x) = 4x^3 \\
+            h''(x) = 12x^2 \quad
+            h'''(x) = 24x\\
+            \end{align*}
+          </MathDisplay>
+          <MathDisplay>
+            \begin{align*}
+            \\h''(x) &= 0 \ \ \Rightarrow \ \
+            x = 0\\
+            h'''(0) &= 0 \\\\
+            \textsf{Vorzeichen }& \textsf{überprüfen:} \\
+            h''(-1) &= 12 \\
+            h''(1) &= 12 \\
+            \Rightarrow
+            \textsf{+ zu +: }&
+            \textsf{kein Wendepunkt}
+            \end{align*}
+          </MathDisplay>
+        </template>
+        <template #col-2>
+          <img src="../../public/Graph_Wendestelle.png" alt="Graph_Wendestelle.png"/>
+        </template>
+      </MultiColumnLayout>
+    </Subsection>
+  </ContentSection>
+
+  <ContentSection title="Tangenten- und Normalengleichung">
+    <InfoBox type="green">
+      <h3>Tangentengleichung</h3>
+      <p v-mathjax>für die Tangente $t$ and der Stelle $u$ des Funktionsgraphen von $f$ gilt:</p>
+      <MathDisplay>
+        t: y = f'(u) \cdot (x-u) + f(u)
+      </MathDisplay>
+    </InfoBox>
+    <InfoBox type="green">
+      <h3>Normalengleichung</h3>
+      <p v-mathjax>für die Normale $n$ and der Stelle $u$ des Funktionsgraphen von $f$ gilt:</p>
+      <MathDisplay>
+        n: y = -\frac{1}{f'(u)} \cdot (x-u) + f(u)
+      </MathDisplay>
+    </InfoBox>
+    <Subsection title="Beispiel">
+      <MultiColumnLayout image-layout>
+        <template #col-1>
+          <MathDisplay>
+            \begin{array}{}
+            f(x) = x^2 \quad f'(x) = 2x \\
+            u=-1
+            \end{array}
+          </MathDisplay>
+          <MathDisplay>
+            \begin{align*}
+            f(u)&=f(-1) = 1\\
+            f'(u)&=f'(-1) = -2\\
+            \end{align*}
+          </MathDisplay>
+          <MathDisplay>
+            \begin{align*}
+            \\
+            t: y &= f'(u) \cdot (x-u) + f(u)\\
+            &= -2 \cdot (x-(-1))+1\\
+            &=-2x-1
+            \end{align*}
+          </MathDisplay>
+          <MathDisplay>
+            \begin{align*}
+            \\
+            n: y &= -\frac{1}{f'(u)} \cdot (x-u) + f(u)\\
+            &= -\frac{1}{-2} \cdot (x+1)+1\\
+            &=\frac12x+\frac32
+            \end{align*}
+          </MathDisplay>
+        </template>
+        <template #col-2>
+          <img src="../../public/Graph_Tangente+Normale.png" alt="Graph_Tangente+Normale.png"/>
+        </template>
+      </MultiColumnLayout>
+    </Subsection>
+  </ContentSection>
+
+  <ContentSection title="Berührpunkte von Funktionsgraphen">
+    <Subsection title="Definition">
+      <InfoBox type="green">
+        <p v-mathjax>
+          Die Graphen der Funktionen $f$ und $g$ berühren sich ad der Stelle $u$, wenn gilt:
+        </p>
+        <MathDisplay>
+          f(u) = g(u) \quad \textsf{und} \quad f'(u) = g'(u)
+        </MathDisplay>
+      </InfoBox>
+    </Subsection>
+    <Subsection title="Beispiel">
+
+      <MultiColumnLayout image-layout :image-width=70>
+        <template #col-1>
+          <MultiColumnLayout>
+            <template #col-1>
+              <MathDisplay>
+                \begin{align*}
+                f(x) &= x^3-3x \\
+                f'(x) &= 3x^2-3
+                \end{align*}
+              </MathDisplay>
+            </template>
+            <template #col-2>
+              <MathDisplay>
+                \begin{align*}
+                g(x) &= x^2 - 2x -1 \\
+                g'(x) &= 2x - 2
+                \end{align*}
+              </MathDisplay>
+            </template>
+          </MultiColumnLayout>
+          <MathDisplay>
+            \begin{array}{c}
+            f(x) = g(x) \\
+            \Rightarrow x_1 = 1 \quad x_2 = -1
+            \end{array}
+          </MathDisplay>
+          <MathDisplay>
+            \begin{array}{c}
+            \\
+            x_1: \\
+            f(1) = -2 = g(1) = -2
+            \ \checkmark \\
+            f'(1) = 0 = g'(1) = 0
+            \ \checkmark \\
+            \Rightarrow \textsf{Die Graphen von } f \textsf{ und } g \textsf{ berühren sich bei } x = 1
+            \end{array}
+          </MathDisplay>
+          <MathDisplay>
+            \begin{array}{c}
+            x_2: \\
+            f(-1) = 2 = g(-1) = 2
+            \ \checkmark \\
+            f'(-1) = 0 = g'(-1) = -4
+            \ \times \\
+            \Rightarrow \textsf{Die Graphen von } f \textsf{ und } g \textsf{ schneiden sich bei } x = -1
+            \end{array}
+          </MathDisplay>
+        </template>
+        <template #col-2>
+          <img src="../../public/Graph_Berührpunkte.png" alt="Graph_Berührpunkte.png"/>
+        </template>
+      </MultiColumnLayout>
+    </Subsection>
+  </ContentSection>
+
+  <ContentSection title="Extremwertprobleme">
+    <Subsection title="Beispiel">
+      <MultiColumnLayout image-layout>
+        <template #col-1>
+          <p v-mathjax>
+            Eine Sportstadion mit einer Laufbahn von 400m Länge soll so angelegt werden, dass die Fläche $A$ für das
+            Fußballfeld möglichst groß wird.
+          </p>
+        </template>
+        <template #col-2>
+          <img src="../../public/Diagram_Stadion.png" alt="Diagram_Stadion.png"/>
+        </template>
+      </MultiColumnLayout>
+      <p>1. Aufstellen eines Terms der möglichst groß/klein werden soll</p>
+      <MathDisplay>\text{Fläche Fußballfeld:}</MathDisplay>
+      <MathDisplay> A = x \cdot2y</MathDisplay>
+      <p>2. Formulieren von Nebenbedingungen</p>
+      <MathDisplay>\text{Länge Laufbahn:}</MathDisplay>
+      <MathDisplay>
+        \begin{align}
+        2x+2\pi y &= 400
+        \qquad\quad |-2\pi y \quad |:2
+        \\
+        x &= 200 - \pi y
+        \end{align}
+      </MathDisplay>
+      <p>3. Aufstellen der Zielfunktion und Angeben ihrer Definitionsmenge</p>
+      <MathDisplay>
+        \begin{align*}
+        A(y) &= (200 - \pi y) \cdot 2y
+        = 400y - 2\pi y^2
+        \\
+        D_A &= [0; 200] \\
+        &\text{für } y \notin D_A \text{ ist die Fläche negativ}
+        \end{align*}
+      </MathDisplay>
+      <p>4. Untersuchen der Zielfunktion nach Maxima/Minima unter Betrachtung der Randextrema</p>
+      <MathDisplay>
+        \begin{align*}
+        A(0) &= A(200) = 0 \\
+        \\
+        A'(x) &= \frac{-4}{\pi}x + \frac{400}{\pi} \\
+        A'(x) &= 0 \\
+        0 &= \frac{-4}{\pi}x + \frac{400}{\pi}
+        \quad |\cdot \frac{\pi}4 \\
+        0 &= -x + 100 \qquad |+x \\
+        x &= 100
+        \end{align*}
+      </MathDisplay>
+      <MathDisplay>
+        \Rightarrow
+        y \approx 31{,8}m \quad
+        A \approx 6366m^2
+      </MathDisplay>
+    </Subsection>
+  </ContentSection>
 </template>
 
 <style scoped>

@@ -7,7 +7,13 @@
     "Verkettung von Funktionen",
     "Kettenregel",
     "Produktregel",
-    "Monotonie"
+    "Monotonie",
+    "Krümmung",
+    "Extremstellen",
+    "Wendestellen",
+    "Tangenten- und Normalengleichung",
+    "Berührpunkte von Funktionsgraphen",
+    "Extremwertprobleme"
   ],
   "AnalysisIntegrale": [
     "Integrale"
