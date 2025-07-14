@@ -46,14 +46,18 @@ import ContentSection from "../components/ContentSection.vue";
     <MultiColumnLayout :columns=2>
       <template #col-1>
         <InfoBox type="green">
-          <h3>Definitionsmenge</h3>
-          <p>Die Definitionsmenge $D_f$ einer Funktion $f$ enthält alle Werte von $x$, für die $f(x)$ definiert ist.</p>
+          <Subsection title="Definitionsmenge">
+            <p v-mathjax>
+              Die Definitionsmenge $D_f$ einer Funktion $f$ enthält alle Werte von $x$, für die $f(x)$ definiert ist.
+            </p>
+          </Subsection>
         </InfoBox>
       </template>
       <template #col-2>
         <InfoBox type="green">
-          <h3>Wertemenge</h3>
-          <p>Die Wertemenge $W_f$ einer Funktion $f$ enthält alle Werte, die $f(x)$ mit $x \in D_f$ annehmen kann.</p>
+          <Subsection title="Wertemenge">
+            <p v-mathjax>Die Wertemenge $W_f$ einer Funktion $f$ enthält alle Werte, die $f(x)$ mit $x \in D_f$ annehmen kann.</p>
+          </Subsection>
         </InfoBox>
       </template>
     </MultiColumnLayout>
@@ -133,7 +137,7 @@ import ContentSection from "../components/ContentSection.vue";
       <MathDisplay>
         u(v(x)) = u \circ v
       </MathDisplay>
-      <p>
+      <p v-mathjax>
         Die äußere Funktion $u$ wird mit der inneren Funktion $v$ verkettet.
       </p>
     </InfoBox>
@@ -216,7 +220,7 @@ import ContentSection from "../components/ContentSection.vue";
         <ul v-mathjax>
           <li>
             ...<strong>streng monoton wachsend</strong> auf $I$, wenn für alle $x_1, x_2 \in I$ gilt:
-            <MathDisplay>h
+            <MathDisplay>
               x_1 < x_2 \quad\Rightarrow\quad f(x_1) < f(x_2)
             </MathDisplay>
           </li>
@@ -300,7 +304,7 @@ import ContentSection from "../components/ContentSection.vue";
           </p>
         </template>
         <template #col-2>
-          <img src="../../public/Graph_Wendestelle.png" alt="Graph_Wendestelle.png"/>
+          <img src="/Graph_Wendestelle.png" alt="Graph_Wendestelle.png"/>
         </template>
       </MultiColumnLayout>
     </Subsection>
@@ -313,19 +317,21 @@ import ContentSection from "../components/ContentSection.vue";
           Ist $f$ eine auf dem Inteval $I$ zweimal differenzierbare Funktion, so muss für eine
           <strong>innere Extremstelle</strong> $x_0 \in I$ von $f$ gelten:
         </p>
-        <h3>notwendige Bedingung</h3>
-        <MathDisplay>f'(x_0) = 0</MathDisplay>
-        <h3>hinreichend Bedingung</h3>
-        <ul v-mathjax>
-          <li>
-            $x_0$ ist ein <strong>Maximum</strong>, wenn $f''(x_0) < 0$ ist
-            <strong>oder</strong> wenn $f'$ bei $x_0$ das Vorzeichen von + nach - wechselt.
-          </li>
-          <li>
-            $x_0$ ist ein <strong>Minimum</strong>, wenn $f''(x_0) > 0$ ist
-            <strong>oder</strong> wenn $f'$ bei $x_0$ das Vorzeichen von - nach + wechselt.
-          </li>
-        </ul>
+        <Subsection title="notwendige Bedingung">
+          <MathDisplay>f'(x_0) = 0</MathDisplay>
+        </Subsection>
+        <Subsection title="hinreichend Bedingung">
+          <ul v-mathjax>
+            <li>
+              $x_0$ ist ein <strong>Maximum</strong>, wenn $f''(x_0) < 0$ ist
+              <strong>oder</strong> wenn $f'$ bei $x_0$ das Vorzeichen von + nach - wechselt.
+            </li>
+            <li>
+              $x_0$ ist ein <strong>Minimum</strong>, wenn $f''(x_0) > 0$ ist
+              <strong>oder</strong> wenn $f'$ bei $x_0$ das Vorzeichen von - nach + wechselt.
+            </li>
+          </ul>
+        </Subsection>
       </InfoBox>
       <InfoBox type="yellow">
         <p v-mathjax>
@@ -409,7 +415,7 @@ import ContentSection from "../components/ContentSection.vue";
           </MathDisplay>
         </template>
         <template #col-2>
-          <img src="../../public/Graph_Wendestelle.png" alt="Graph_Wendestelle.png"/>
+          <img src="/Graph_Wendestelle.png" alt="Graph_Wendestelle.png"/>
         </template>
       </MultiColumnLayout>
     </Subsection>
@@ -417,18 +423,20 @@ import ContentSection from "../components/ContentSection.vue";
 
   <ContentSection title="Tangenten- und Normalengleichung">
     <InfoBox type="green">
-      <h3>Tangentengleichung</h3>
-      <p v-mathjax>für die Tangente $t$ and der Stelle $u$ des Funktionsgraphen von $f$ gilt:</p>
-      <MathDisplay>
-        t: y = f'(u) \cdot (x-u) + f(u)
-      </MathDisplay>
+      <Subsection title="Tangentengleichung">
+        <p v-mathjax>für die Tangente $t$ and der Stelle $u$ des Funktionsgraphen von $f$ gilt:</p>
+        <MathDisplay>
+          t: y = f'(u) \cdot (x-u) + f(u)
+        </MathDisplay>
+      </Subsection>
     </InfoBox>
     <InfoBox type="green">
-      <h3>Normalengleichung</h3>
-      <p v-mathjax>für die Normale $n$ and der Stelle $u$ des Funktionsgraphen von $f$ gilt:</p>
-      <MathDisplay>
-        n: y = -\frac{1}{f'(u)} \cdot (x-u) + f(u)
-      </MathDisplay>
+      <Subsection title="Normalengleichung">
+        <p v-mathjax>für die Normale $n$ and der Stelle $u$ des Funktionsgraphen von $f$ gilt:</p>
+        <MathDisplay>
+          n: y = -\frac{1}{f'(u)} \cdot (x-u) + f(u)
+        </MathDisplay>
+      </Subsection>
     </InfoBox>
     <Subsection title="Beispiel">
       <MultiColumnLayout image-layout>
@@ -463,7 +471,7 @@ import ContentSection from "../components/ContentSection.vue";
           </MathDisplay>
         </template>
         <template #col-2>
-          <img src="../../public/Graph_Tangente+Normale.png" alt="Graph_Tangente+Normale.png"/>
+          <img src="/Graph_Tangente+Normale.png" alt="Graph_Tangente+Normale.png"/>
         </template>
       </MultiColumnLayout>
     </Subsection>
@@ -531,7 +539,7 @@ import ContentSection from "../components/ContentSection.vue";
           </MathDisplay>
         </template>
         <template #col-2>
-          <img src="../../public/Graph_Berührpunkte.png" alt="Graph_Berührpunkte.png"/>
+          <img src="/Graph_Berührpunkte.png" alt="Graph_Berührpunkte.png"/>
         </template>
       </MultiColumnLayout>
     </Subsection>
@@ -547,7 +555,7 @@ import ContentSection from "../components/ContentSection.vue";
           </p>
         </template>
         <template #col-2>
-          <img src="../../public/Diagram_Stadion.png" alt="Diagram_Stadion.png"/>
+          <img src="/Diagram_Stadion.png" alt="Diagram_Stadion.png"/>
         </template>
       </MultiColumnLayout>
       <p>1. Aufstellen eines Terms der möglichst groß/klein werden soll</p>

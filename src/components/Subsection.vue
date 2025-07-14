@@ -1,9 +1,14 @@
 <script setup lang="ts">
+import {inject} from 'vue';
+
 defineProps<{ title: string }>();
+
+const insideInfoBox = inject('insideInfoBox', false);
 </script>
 
 <template>
-  <h3 class="subsection-title">{{ title }}</h3>
+  <!-- Only use subsection-title class when outside an InfoBox. This is because it makes the parsing from Notion easier -->
+  <h3 :class="!insideInfoBox ? 'subsection-title' : ''">{{ title }}</h3>
   <slot/>
 </template>
 

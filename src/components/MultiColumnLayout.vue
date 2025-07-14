@@ -13,6 +13,10 @@ const props = defineProps({
   imageWidth: {
     type: Number,
     default: 100
+  },
+  firstColumnWidth: {
+    type: Number,
+    default: null
   }
 });
 
@@ -29,13 +33,17 @@ const columnArray = computed(() => Array.from({length: props.columns}, (_, i) =>
     :style="{
       '--columns': props.columns,
       '--image-width': props.imageWidth + '%',
+      ...(props.firstColumnWidth && !props.imageLayout ? {'--first-column-width': props.firstColumnWidth + '%'} : {})
     }"
   >
     <div
         v-for="col in columnArray"
         :key="col"
         class="column-item"
-        :class="{ 'image-column': props.imageLayout && col === props.columns }"
+        :class="{
+          'image-column': props.imageLayout && col === props.columns,
+          'first-column': !props.imageLayout && col === 1 && props.firstColumnWidth
+        }"
     >
       <slot :name="`col-${col}`"></slot>
     </div>
@@ -69,6 +77,11 @@ const columnArray = computed(() => Array.from({length: props.columns}, (_, i) =>
   flex: 1 1 calc(100% / var(--columns, 2) - 2rem);
 }
 
+.column-item.first-column {
+  flex: 0 1 calc(var(--first-column-width, 0%) - 2rem);
+  max-width: var(--first-column-width, none);
+}
+
 .multi-column-layout-image .column-item.image-column {
   flex: 0 1 calc(var(--image-width) / var(--columns, 2) - 2rem);
 }
@@ -94,8 +107,10 @@ const columnArray = computed(() => Array.from({length: props.columns}, (_, i) =>
     flex-basis: auto;
   }
 
-  .column-item {
+  .column-item,
+  .column-item.first-column {
     max-width: 100%;
+    flex-basis: auto;
   }
 
   .multi-column-layout-image .column-item.image-column {

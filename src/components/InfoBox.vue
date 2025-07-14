@@ -8,7 +8,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue';
+import { defineComponent, computed, provide } from 'vue';
 import type { PropType } from 'vue';
 
 // Define the allowed types for the info box
@@ -25,6 +25,8 @@ export default defineComponent({
     },
   },
   setup(props) {
+    provide('insideInfoBox', true);
+
     // Computes the CSS class based on the type prop
     const boxClass = computed(() => `info-box-${props.type}`);
 
