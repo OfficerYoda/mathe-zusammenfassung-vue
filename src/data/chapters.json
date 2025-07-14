@@ -13,13 +13,19 @@
     "Wendestellen",
     "Tangenten- und Normalengleichung",
     "Berührpunkte von Funktionsgraphen",
-    "Extremwertprobleme"
+    "Extremwertprobleme",
+    "Definitions- und Wertemenge"
   ],
   "AnalysisIntegrale": [
     "Integrale"
   ],
-  "Geometrie": [
-    "Volumen von Vektoren"
+  "Geometrie": [],
+  "GeometrieLGS": [
+    "Gauß-Verfahren",
+    "Lösungsmenge von LGS",
+    "Unterbestimmtes LGS",
+    "Überbestimmtes LGS",
+    "LGS mit Parameter auf der rechten Seite"
   ],
   "Gleichungen": [
     "Lösungsmenge",
