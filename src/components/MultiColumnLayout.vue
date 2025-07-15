@@ -132,36 +132,4 @@ const otherColumnsWidth = computed(() => {
 .column-item ul li {
   margin-bottom: 0.7rem;
 }
-
-@media (max-width: 900px) {
-  .multi-column-layout,
-  .multi-column-layout-image {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  /* Reset flex-basis for column layout on smaller screens */
-  .multi-column-layout-image .column-item.image-column {
-    flex-basis: auto;
-  }
-
-  .column-item,
-  .column-item.first-column {
-    max-width: 100%;
-    flex-basis: auto;
-  }
-
-  .multi-column-layout-image .column-item.image-column {
-    justify-content: flex-start;
-    max-height: 400px;
-  }
-
-  .multi-column-layout-image .column-item.image-column :deep(img) {
-    max-width: 100%;
-    height: auto;
-    max-height: 400px;
-    margin: 0 auto;
-    width: 100%;
-  }
-}
 </style>

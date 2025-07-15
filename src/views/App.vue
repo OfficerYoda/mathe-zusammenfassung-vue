@@ -361,7 +361,6 @@ export default defineComponent({
   .chapter-navigation ul {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.5rem;
     padding: 0;
     margin: 0;
     justify-content: center;
@@ -370,6 +369,7 @@ export default defineComponent({
   .chapter-navigation li {
     margin-bottom: 0;
     margin-right: 0;
+    padding: 0.5rem;
   }
 
   .chapter-link {
@@ -379,6 +379,7 @@ export default defineComponent({
     min-width: 0;
     width: auto;
     white-space: nowrap;
+    font-size: 1.5rem;
   }
 
   .sidebar-bottom-section {
@@ -392,13 +393,11 @@ export default defineComponent({
   }
 
   .report-error-button {
-    padding: 0.5rem 0.75rem;
     margin-top: 0.5rem;
-    font-size: 0.9rem;
   }
 
   .content-area {
-    padding: 1rem;
+    padding: 0.8rem;
     height: auto;
     min-height: 0;
   }
