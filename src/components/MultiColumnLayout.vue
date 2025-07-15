@@ -25,6 +25,16 @@ const layoutClass = computed(() =>
 );
 
 const columnArray = computed(() => Array.from({length: props.columns}, (_, i) => i + 1));
+
+// Add computed for other columns width if imageLayout and imageWidth > 100
+const otherColumnsWidth = computed(() => {
+  if (props.imageLayout && props.imageWidth > 100 && props.columns > 1) {
+    // Remaining width divided by other columns
+    const remaining = Math.max(0, 100 - props.imageWidth);
+    return (remaining / (props.columns - 1));
+  }
+  return null;
+});
 </script>
 
 <template>
@@ -33,7 +43,8 @@ const columnArray = computed(() => Array.from({length: props.columns}, (_, i) =>
     :style="{
       '--columns': props.columns,
       '--image-width': props.imageWidth + '%',
-      ...(props.firstColumnWidth && !props.imageLayout ? {'--first-column-width': props.firstColumnWidth + '%'} : {})
+      ...(props.firstColumnWidth && !props.imageLayout ? {'--first-column-width': props.firstColumnWidth + '%'} : {}),
+      ...(otherColumnsWidth !== null ? {'--other-columns-width': otherColumnsWidth + '%'} : {})
     }"
   >
     <div
@@ -42,7 +53,8 @@ const columnArray = computed(() => Array.from({length: props.columns}, (_, i) =>
         class="column-item"
         :class="{
           'image-column': props.imageLayout && col === props.columns,
-          'first-column': !props.imageLayout && col === 1 && props.firstColumnWidth
+          'first-column': !props.imageLayout && col === 1 && props.firstColumnWidth,
+          'other-image-column': props.imageLayout && col !== props.columns
         }"
     >
       <slot :name="`col-${col}`"></slot>
@@ -84,6 +96,17 @@ const columnArray = computed(() => Array.from({length: props.columns}, (_, i) =>
 
 .multi-column-layout-image .column-item.image-column {
   flex: 0 1 calc(var(--image-width) / var(--columns, 2) - 2rem);
+}
+
+/* shrink other columns if image width > 100% */
+.multi-column-layout-image .column-item.other-image-column {
+  flex: 1 1
+    clamp(
+      0%,
+      var(--other-columns-width, calc((100% - var(--image-width, 100%)) / max(1, calc(var(--columns, 2) - 1)))),
+      100%
+    );
+  min-width: 0;
 }
 
 .column-item ul {
