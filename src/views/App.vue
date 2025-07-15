@@ -328,10 +328,6 @@ export default defineComponent({
     min-height: 100vh;
   }
 
-  .sidebar-top-section {
-    padding-bottom: 1rem;
-  }
-
   .sidebar.left-sidebar {
     width: 100vw;
     min-width: 0;
@@ -339,6 +335,27 @@ export default defineComponent({
     height: auto;
     position: static;
     z-index: 2;
+    padding: 0.5rem 1rem;
+  }
+
+  .sidebar-top-section {
+    padding-bottom: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .search-icon-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .search-button {
+    margin: 0;
   }
 
   .chapter-navigation ul {
@@ -365,7 +382,19 @@ export default defineComponent({
   }
 
   .sidebar-bottom-section {
-    display: none;
+    margin-top: 0;
+    padding: 0;
+    border-top: none;
+    text-align: center;
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+  }
+
+  .report-error-button {
+    padding: 0.5rem 0.75rem;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
   }
 
   .content-area {
