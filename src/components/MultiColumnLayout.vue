@@ -17,6 +17,10 @@ const props = defineProps({
   firstColumnWidth: {
     type: Number,
     default: null
+  },
+  imageColumns: {
+    type: Array,
+    default: () => []
   }
 });
 
@@ -26,12 +30,17 @@ const layoutClass = computed(() =>
 
 const columnArray = computed(() => Array.from({length: props.columns}, (_, i) => i + 1));
 
-// Add computed for other columns width if imageLayout and imageWidth > 100
+// Calculate widths for image columns if imageLayout is true and imageColumns is set
+const imageColumnCount = computed(() =>
+  props.imageLayout && Array.isArray(props.imageColumns) && props.imageColumns.length > 0
+    ? props.imageColumns.length
+    : (props.imageLayout ? 1 : 0)
+);
+
 const otherColumnsWidth = computed(() => {
-  if (props.imageLayout && props.imageWidth > 100 && props.columns > 1) {
-    // Remaining width divided by other columns
-    const remaining = Math.max(0, 100 - props.imageWidth);
-    return (remaining / (props.columns - 1));
+  if (props.imageLayout && props.imageWidth > 100 && props.columns > imageColumnCount.value) {
+    const remaining = Math.max(0, 100 - props.imageWidth * imageColumnCount.value);
+    return (remaining / (props.columns - imageColumnCount.value));
   }
   return null;
 });
@@ -52,9 +61,15 @@ const otherColumnsWidth = computed(() => {
         :key="col"
         class="column-item"
         :class="{
-          'image-column': props.imageLayout && col === props.columns,
+          'image-column': props.imageLayout && (
+            (Array.isArray(props.imageColumns) && props.imageColumns.includes(col)) ||
+            (!Array.isArray(props.imageColumns) || props.imageColumns.length === 0) && col === props.columns
+          ),
           'first-column': !props.imageLayout && col === 1 && props.firstColumnWidth,
-          'other-image-column': props.imageLayout && col !== props.columns
+          'other-image-column': props.imageLayout && !(
+            (Array.isArray(props.imageColumns) && props.imageColumns.includes(col)) ||
+            (!Array.isArray(props.imageColumns) || props.imageColumns.length === 0) && col === props.columns
+          )
         }"
     >
       <slot :name="`col-${col}`"></slot>

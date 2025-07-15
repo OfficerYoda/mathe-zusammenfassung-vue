@@ -13,8 +13,7 @@
     "Wendestellen",
     "Tangenten- und Normalengleichung",
     "Berührpunkte von Funktionsgraphen",
-    "Extremwertprobleme",
-    "Definitions- und Wertemenge"
+    "Extremwertprobleme"
   ],
   "AnalysisIntegrale": [
     "Integrale"
@@ -26,6 +25,18 @@
     "Unterbestimmtes LGS",
     "Überbestimmtes LGS",
     "LGS mit Parameter auf der rechten Seite"
+  ],
+  "GeometrieGeradenUndEbenen": [
+    "Skalarprodukt",
+    "Kreuzprodukt",
+    "Geradengleichung",
+    "Ebenengleichung: Parametergleichung",
+    "Ebenengleichung: Normalengleichung",
+    "Ebenengleichung: Koordinatengleichung",
+    "Spurpunkte und Spurgeraden",
+    "Achsenabschnittsform",
+    "Gegenseitige Lage von Ebenen und Geraden",
+    "Gegenseitige Lage von Ebenen"
   ],
   "Gleichungen": [
     "Lösungsmenge",

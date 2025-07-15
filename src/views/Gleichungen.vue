@@ -359,7 +359,7 @@ import MultiColumnLayout from "../components/MultiColumnLayout.vue";
         </Subsection>
       </template>
       <template #col-2>
-        <Img src="/Graph_SinCos.png" alt="Graph von Sinus und Cosinus"/>
+        <img src="/images/Graph_SinCos.png" alt="Graph von Sinus und Cosinus">
       </template>
     </MultiColumnLayout>
     <MathDisplay>

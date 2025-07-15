@@ -85,7 +85,6 @@ export default defineComponent({
 }
 
 /* Color styles for each box type */
-
 .info-box-blue {
   background-color: color-mix(in srgb, var(--color-info) 40%, transparent);
   border-left-color: var(--color-info);

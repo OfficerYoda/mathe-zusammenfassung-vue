@@ -304,7 +304,7 @@ import ContentSection from "../components/ContentSection.vue";
           </p>
         </template>
         <template #col-2>
-          <img src="/Graph_Wendestelle.png" alt="Graph_Wendestelle.png"/>
+          <img src="/images/Graph_Wendestelle.png" alt="Graph_Wendestelle.png">
         </template>
       </MultiColumnLayout>
     </Subsection>
@@ -391,7 +391,6 @@ import ContentSection from "../components/ContentSection.vue";
             \textsf{Wendestelle } & \textsf{bei } x = 0{,}5
             \end{align*}
           </MathDisplay>
-          <br>
           <MathDisplay>
             \begin{align*}
             h(x) = x^4 \qquad
@@ -402,7 +401,7 @@ import ContentSection from "../components/ContentSection.vue";
           </MathDisplay>
           <MathDisplay>
             \begin{align*}
-            \\h''(x) &= 0 \ \ \Rightarrow \ \
+            h''(x) &= 0 \ \ \Rightarrow \ \
             x = 0\\
             h'''(0) &= 0 \\\\
             \textsf{Vorzeichen }& \textsf{überprüfen:} \\
@@ -415,7 +414,7 @@ import ContentSection from "../components/ContentSection.vue";
           </MathDisplay>
         </template>
         <template #col-2>
-          <img src="/Graph_Wendestelle.png" alt="Graph_Wendestelle.png"/>
+          <img src="/images/Graph_Wendestelle.png" alt="Graph_Wendestelle.png">
         </template>
       </MultiColumnLayout>
     </Subsection>
@@ -471,7 +470,7 @@ import ContentSection from "../components/ContentSection.vue";
           </MathDisplay>
         </template>
         <template #col-2>
-          <img src="/Graph_Tangente+Normale.png" alt="Graph_Tangente+Normale.png"/>
+          <img src="/images/Graph_Tangente+Normale.png" alt="Graph_Tangente+Normale.png">
         </template>
       </MultiColumnLayout>
     </Subsection>
@@ -539,7 +538,7 @@ import ContentSection from "../components/ContentSection.vue";
           </MathDisplay>
         </template>
         <template #col-2>
-          <img src="/Graph_Berührpunkte.png" alt="Graph_Berührpunkte.png"/>
+          <img src="/images/Graph_Berührpunkte.png" alt="Graph_Berührpunkte.png">
         </template>
       </MultiColumnLayout>
     </Subsection>
@@ -555,7 +554,7 @@ import ContentSection from "../components/ContentSection.vue";
           </p>
         </template>
         <template #col-2>
-          <img src="/Diagram_Stadion.png" alt="Diagram_Stadion.png"/>
+          <img src="/images/Diagram_Stadion.png" alt="Diagram_Stadion.png">
         </template>
       </MultiColumnLayout>
       <p>1. Aufstellen eines Terms der möglichst groß/klein werden soll</p>

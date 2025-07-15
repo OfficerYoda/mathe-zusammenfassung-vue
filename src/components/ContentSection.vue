@@ -17,7 +17,7 @@
           :style="{ opacity: (hovered || indicatorClicked) ? 1 : 0 }"
           alt=""
           aria-hidden="true"
-      />
+      >
     </h2>
     <div class="section-content">
       <slot/>
