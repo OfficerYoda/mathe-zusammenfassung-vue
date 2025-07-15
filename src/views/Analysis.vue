@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import ChapterTitle from "../components/ChapterTitle.vue";
-import AnalysisFunktionen from "./AnalysisFunktionen.vue";
-import AnalysisIntegrale from "./AnalysisIntegrale.vue";
+import Analysis2Funktionen from "./Analysis1Funktionen.vue";
+import Analysis2Integrale from "./Analysis2Integrale.vue";
 </script>
 
 <template>
   <ChapterTitle title="Analysis"/>
-  <AnalysisFunktionen/>
-  <AnalysisIntegrale/>
+  <Analysis2Funktionen/>
+  <Analysis2Integrale/>
 </template>
 
 <style scoped>

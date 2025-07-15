@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { fileURLToPath } from 'url';
+import {fileURLToPath} from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -48,7 +48,7 @@ function extractTitlesFromFile(filePath) {
 function writeTitlesToJsonFile(allTitles) {
     try {
         if (!fs.existsSync(dataDir)) {
-            fs.mkdirSync(dataDir, { recursive: true });
+            fs.mkdirSync(dataDir, {recursive: true});
         }
         fs.writeFileSync(chaptersJsonPath, JSON.stringify(allTitles, null, 2), 'utf-8');
         console.log(`Wrote chapters to ${chaptersJsonPath}`);
@@ -74,7 +74,18 @@ function main() {
             allTitles[baseName] = titles;
         });
 
-        writeTitlesToJsonFile(allTitles);
+        const finalTitles = {};
+        const majorChapters = ["Notation", "Gleichungen", "Analysis", "Geometrie", "Stochastik"];
+        for (const mj of majorChapters) {
+            // Find all minor chapters whose name starts with mj
+            const minorChapters = Object.keys(allTitles)
+                .filter(ch => ch.startsWith(mj))
+                .sort();
+            // Concatenate all titles from sorted minor chapters
+            finalTitles[mj] = minorChapters.flatMap(ch => allTitles[ch]);
+        }
+
+        writeTitlesToJsonFile(finalTitles);
     } catch (error) {
         console.error('An unhandled error occurred in main:', error.message);
         if (error.stack) {

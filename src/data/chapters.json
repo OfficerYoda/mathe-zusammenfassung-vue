@@ -1,42 +1,12 @@
 {
-  "Analysis": [],
-  "AnalysisFunktionen": [
-    "Ganzrationale Funktionen",
-    "Definitions- und Wertemenge",
-    "Potenzregel",
-    "Verkettung von Funktionen",
-    "Kettenregel",
-    "Produktregel",
-    "Monotonie",
-    "Krümmung",
-    "Extremstellen",
-    "Wendestellen",
-    "Tangenten- und Normalengleichung",
-    "Berührpunkte von Funktionsgraphen",
-    "Extremwertprobleme"
-  ],
-  "AnalysisIntegrale": [
-    "Integrale"
-  ],
-  "Geometrie": [],
-  "GeometrieLGS": [
-    "Gauß-Verfahren",
-    "Lösungsmenge von LGS",
-    "Unterbestimmtes LGS",
-    "Überbestimmtes LGS",
-    "LGS mit Parameter auf der rechten Seite"
-  ],
-  "GeometrieGeradenUndEbenen": [
-    "Skalarprodukt",
-    "Kreuzprodukt",
-    "Geradengleichung",
-    "Ebenengleichung: Parametergleichung",
-    "Ebenengleichung: Normalengleichung",
-    "Ebenengleichung: Koordinatengleichung",
-    "Spurpunkte und Spurgeraden",
-    "Achsenabschnittsform",
-    "Gegenseitige Lage von Ebenen und Geraden",
-    "Gegenseitige Lage von Ebenen"
+  "Notation": [
+    "Mengen",
+    "Intervalle",
+    "Mengennotation",
+    "Definitionsbereiche",
+    "Limes",
+    "Summenzeichen",
+    "Vektoren"
   ],
   "Gleichungen": [
     "Lösungsmenge",
@@ -50,14 +20,38 @@
     "Ungleichungen",
     "Trigonometrische Gleichungen"
   ],
-  "Notation": [
-    "Mengen",
-    "Intervalle",
-    "Mengennotation",
-    "Definitionsbereiche",
-    "Limes",
-    "Summenzeichen",
-    "Vektoren"
+  "Analysis": [
+    "Ganzrationale Funktionen",
+    "Definitions- und Wertemenge",
+    "Potenzregel",
+    "Verkettung von Funktionen",
+    "Kettenregel",
+    "Produktregel",
+    "Monotonie",
+    "Krümmung",
+    "Extremstellen",
+    "Wendestellen",
+    "Tangenten- und Normalengleichung",
+    "Berührpunkte von Funktionsgraphen",
+    "Extremwertprobleme",
+    "Integrale"
+  ],
+  "Geometrie": [
+    "Gauß-Verfahren",
+    "Lösungsmenge von LGS",
+    "Unterbestimmtes LGS",
+    "Überbestimmtes LGS",
+    "LGS mit Parameter auf der rechten Seite",
+    "Skalarprodukt",
+    "Kreuzprodukt",
+    "Geradengleichung",
+    "Ebenengleichung: Parametergleichung",
+    "Ebenengleichung: Normalengleichung",
+    "Ebenengleichung: Koordinatengleichung",
+    "Spurpunkte und Spurgeraden",
+    "Achsenabschnittsform",
+    "Gegenseitige Lage von Ebenen und Geraden",
+    "Gegenseitige Lage von Ebenen"
   ],
   "Stochastik": [
     "Gambling"

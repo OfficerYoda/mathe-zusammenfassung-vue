@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import ChapterTitle from "../components/ChapterTitle.vue";
-import GeometrieLGS from "./GeometrieLGS.vue";
-import GeometrieGeradenUndEbenen from "./GeometrieGeradenUndEbenen.vue";
+import Geometrie1Lgs from "./Geometrie1LGS.vue";
+import Geometrie2GeradenUndEbenen from "./Geometrie2GeradenUndEbenen.vue";
 </script>
 
 <template>
   <ChapterTitle title="Geometrie"/>
 
-  <GeometrieLGS/>
-  <GeometrieGeradenUndEbenen/>
+  <Geometrie1Lgs/>
+  <Geometrie2GeradenUndEbenen/>
 </template>
 
 <style scoped>

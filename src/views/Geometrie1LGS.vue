@@ -28,11 +28,9 @@ import InfoBox from "../components/InfoBox.vue";
         1{,}5 &x_1+ &5 &x_2- &5 &x_3= -9
         \end{alignat*}
       </MathDisplay>
+      <h4 v-mathjax><strong>Schritt 1:</strong></h4>
       <MultiColumnLayout :columns=2 :first-column-width=30>
         <template #col-1>
-          <p v-mathjax>
-            <strong>Schritt 1:</strong>
-          </p>
           <p v-mathjax>
             $\color{orange}x_1$ eliminieren
           </p>
@@ -51,15 +49,12 @@ import InfoBox from "../components/InfoBox.vue";
             {\color{orange}{1{,}5}} & 5 & -5 & -9
             \end{array}
             \right)
-
           </MathDisplay>
         </template>
       </MultiColumnLayout>
+      <h4><strong>Schritt 2:</strong></h4>
       <MultiColumnLayout :columns=2 :first-column-width=30>
         <template #col-1>
-          <p v-mathjax>
-            <strong>Schritt 2:</strong>
-          </p>
           <p v-mathjax>
             $\color{orange}x_2$ eliminieren
           </p>
@@ -82,11 +77,9 @@ import InfoBox from "../components/InfoBox.vue";
           </MathDisplay>
         </template>
       </MultiColumnLayout>
+      <h4><strong>Schritt 3:</strong></h4>
       <MultiColumnLayout :columns=2 :first-column-width=30>
         <template #col-1>
-          <p v-mathjax>
-            <strong>Schritt 3:</strong>
-          </p>
           <p v-mathjax>
             $\color{orange}\textsf{Stufenform}$ auflösen
           </p>
@@ -108,12 +101,12 @@ import InfoBox from "../components/InfoBox.vue";
           </MathDisplay>
         </template>
       </MultiColumnLayout>
+      <h4><strong>Lösung:</strong></h4>
       <MultiColumnLayout :columns=2 :first-column-width=30>
         <template #col-1>
-          <p v-mathjax><strong>Lösung:</strong></p>
           <MathDisplay>
             \boxed{
-            \Rightarrow L = \{(-1; 0{,}5;2)\}
+            \Rightarrow L = \{({\color{lightblue}-1}; {\color{purple}0{,}5};{\color{darkgreen}2})\}
             }
           </MathDisplay>
         </template>
@@ -131,7 +124,7 @@ import InfoBox from "../components/InfoBox.vue";
             \begin{array}{}
             \Rightarrow &x_3 = {\color{darkgreen}2} \\
             \Rightarrow &x_2 = {\color{purple}0{,}5} \\
-            \Rightarrow &x_1 = -1
+            \Rightarrow &x_1 = {\color{lightblue}-1}
             \end{array}
             \end{array}
           </MathDisplay>
