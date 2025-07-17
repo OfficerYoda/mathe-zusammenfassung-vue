@@ -56,7 +56,8 @@ import ContentSection from "../components/ContentSection.vue";
       <template #col-2>
         <InfoBox type="green">
           <Subsection title="Wertemenge">
-            <p v-mathjax>Die Wertemenge $W_f$ einer Funktion $f$ enthält alle Werte, die $f(x)$ mit $x \in D_f$ annehmen kann.</p>
+            <p v-mathjax>Die Wertemenge $W_f$ einer Funktion $f$ enthält alle Werte, die $f(x)$ mit $x \in D_f$ annehmen
+              kann.</p>
           </Subsection>
         </InfoBox>
       </template>
@@ -350,6 +351,46 @@ import ContentSection from "../components/ContentSection.vue";
     <info-box type="blue">
       🚦🔄
     </info-box>
+    <Subsection title="Beispiele">
+      <MultiColumnLayout :columns=2 image-layout :image-width=80>
+        <template #col-1>
+          <MathDisplay>
+            \begin{array}{r}
+            f'(-1) = 0 \quad\Rightarrow\quad\\
+            f'(0) = 0 \quad\Rightarrow\quad
+            \end{array}
+            \begin{array}{r}
+            f''(-1) < 0 \quad\Rightarrow\quad\\
+            f''(0) > 0 \quad\Rightarrow\quad
+            \end{array}
+            \begin{array}{c}
+            \textsf{Maximum}\\
+            \textsf{Minimum}
+            \end{array}
+          </MathDisplay>
+          <MathDisplay>
+            \begin{array}{c}
+            g(x) = x^4 \quad
+            g'(x) = 4x^3 \quad
+            g''(x) = 12x^2\\
+            \begin{align*}
+            \\g'(x) &= 0 \ \ \Rightarrow \ \
+            x = 0\\
+            g''(0) &= 0 \\\\
+            \textsf{Vorzeichen }& \textsf{überprüfen:} \\
+            g'(-1) &= -4 \\
+            g'(1) &= 4 \\
+            \Rightarrow
+            \textsf{- zu +: }&\textsf{Minimum}
+            \end{align*}
+            \end{array}
+          </MathDisplay>
+        </template>
+        <template #col-2>
+          <img src="/images/Graph_Extremstellen.png" alt="Graph_Extremstellen">
+        </template>
+      </MultiColumnLayout>
+    </Subsection>
   </ContentSection>
 
   <ContentSection title="Wendestellen">
@@ -488,7 +529,6 @@ import ContentSection from "../components/ContentSection.vue";
       </InfoBox>
     </Subsection>
     <Subsection title="Beispiel">
-
       <MultiColumnLayout image-layout :image-width=70>
         <template #col-1>
           <MultiColumnLayout>

@@ -307,7 +307,7 @@ import Subsection from "../components/Subsection.vue";
   </ContentSection>
 
   <ContentSection title="Abstand Gerade-Gerade (Parallel)">
-    <MultiColumnLayout :columns=2 image-layout :image-width=45>
+    <MultiColumnLayout :columns=2 image-layout :image-width=59>
       <template #col-1>
         <InfoBox type="green">
           <p v-mathjax>
@@ -320,7 +320,6 @@ import Subsection from "../components/Subsection.vue";
         </InfoBox>
       </template>
       <template #col-2>
-        <p/> <!-- Padding paragraph -->
         <img src="/images/Graph_Abstand-Geraden-Parallel.png" alt="Graph_Abstand-Geraden-Parallel">
       </template>
     </MultiColumnLayout>
@@ -642,7 +641,6 @@ import Subsection from "../components/Subsection.vue";
         </InfoBox>
       </template>
       <template #col-2>
-        <p/> <!-- Padding paragraph -->
         <img src="/images/Winkel_Vektoren.png" alt="Winkel_Vektoren">
       </template>
     </MultiColumnLayout>
@@ -711,7 +709,6 @@ import Subsection from "../components/Subsection.vue";
         </InfoBox>
       </template>
       <template #col-2>
-        <p/> <!-- Padding paragraph -->
         <img src="/images/Winkel_Gerade-Gerade.png" alt="Winkel_Gerade-Gerade">
       </template>
     </MultiColumnLayout>
@@ -782,7 +779,6 @@ import Subsection from "../components/Subsection.vue";
         </InfoBox>
       </template>
       <template #col-2>
-        <p/> <!-- Padding paragraph -->
         <img src="/images/Winkel_Ebene-Ebene.png" alt="Winkel_Ebene-Ebene">
       </template>
     </MultiColumnLayout>
@@ -809,7 +805,6 @@ import Subsection from "../components/Subsection.vue";
         </InfoBox>
       </template>
       <template #col-2>
-        <p/> <!-- Padding paragraph -->
         <img src="/images/Winkel_Ebene-Gerade.png" alt="Winkel_Ebene-Gerade">
       </template>
     </MultiColumnLayout>
@@ -879,7 +874,6 @@ import Subsection from "../components/Subsection.vue";
         </InfoBox>
       </template>
       <template #col-2>
-        <p/> <!-- Padding paragraph -->
         <img src="/images/Fläche_Parallelogramm.png" alt="Winkel_Parallelogram">
       </template>
     </MultiColumnLayout>
@@ -932,7 +926,6 @@ import Subsection from "../components/Subsection.vue";
         </InfoBox>
       </template>
       <template #col-2>
-        <p/> <!-- Padding paragraph -->
         <img src="/images/Fläche_Dreieck.png" alt="Winkel_Dreieck">
       </template>
     </MultiColumnLayout>
@@ -990,7 +983,6 @@ import Subsection from "../components/Subsection.vue";
         </InfoBox>
       </template>
       <template #col-2>
-        <p/> <!-- Padding paragraph -->
         <img src="/images/Volumen_Spat.png" alt="Volumen_Spat">
       </template>
     </MultiColumnLayout>
@@ -1061,7 +1053,6 @@ import Subsection from "../components/Subsection.vue";
         </InfoBox>
       </template>
       <template #col-2>
-        <p/> <!-- Padding paragraph -->
         <img src="/images/Volumen_Pyramide_Viereckig.png" alt="Volumen_Pyramide_Viereckig">
       </template>
     </MultiColumnLayout>
@@ -1135,7 +1126,6 @@ import Subsection from "../components/Subsection.vue";
         </InfoBox>
       </template>
       <template #col-2>
-        <p/> <!-- Padding paragraph -->
         <img src="/images/Volumen_Pyramide.png" alt="Volumen_Pyramide_Dreieckig">
       </template>
     </MultiColumnLayout>
@@ -1209,7 +1199,6 @@ import Subsection from "../components/Subsection.vue";
         </InfoBox>
       </template>
       <template #col-2>
-        <p/> <!-- Padding paragraph -->
         <img src="/images/Spiegelung_Punkt.png" alt="Spiegelung_Punkt">
       </template>
     </MultiColumnLayout>
@@ -1229,7 +1218,6 @@ import Subsection from "../components/Subsection.vue";
         </InfoBox>
       </template>
       <template #col-2>
-        <p/> <!-- Padding paragraph -->
         <img src="/images/Spiegelung_Gerade.png" alt="Spiegelung_Gerade">
       </template>
     </MultiColumnLayout>
@@ -1249,7 +1237,6 @@ import Subsection from "../components/Subsection.vue";
         </InfoBox>
       </template>
       <template #col-2>
-        <p/> <!-- Padding paragraph -->
         <img src="/images/Spiegelung_Ebene.png" alt="Spiegelung_Ebene">
       </template>
     </MultiColumnLayout>
@@ -1269,7 +1256,6 @@ import Subsection from "../components/Subsection.vue";
         </InfoBox>
       </template>
       <template #col-2>
-        <p/> <!-- Padding paragraph -->
         <img src="/images/Spiegelung_Symmetrieebene.png" alt="Spiegelung_Symmetrieebene">
       </template>
     </MultiColumnLayout>

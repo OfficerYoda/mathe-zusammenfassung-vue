@@ -112,8 +112,6 @@ import Subsection from "../components/Subsection.vue";
         </InfoBox>
       </template>
       <template #col-2>
-        <!-- Empty Paragraph is just for better formatting -->
-        <p/>
         <img src="/images/Kreuzprodukt-Eselsbrücke.png" alt="Kreuzprodukt-Eselsbrücke">
       </template>
     </MultiColumnLayout>
@@ -520,6 +518,7 @@ import Subsection from "../components/Subsection.vue";
         C(3 \, | \ 4 \, | \, 2)
       </MathDisplay>
       <MathDisplay>
+        \begin{array}{c}
         \overrightarrow{AB} = \left(\begin{matrix}
         -8 \\ 2 \\ -3
         \end{matrix}\right)
@@ -545,6 +544,7 @@ import Subsection from "../components/Subsection.vue";
         \left(\begin{matrix}
         4 \\ -5 \\ -14
         \end{matrix}\right)
+        \end{array}
       </MathDisplay>
       <InfoBox type="red">
         <p v-mathjax>
@@ -553,6 +553,7 @@ import Subsection from "../components/Subsection.vue";
         </p>
       </InfoBox>
       <MathDisplay>
+        \begin{array}{c}
         E: 4x_1-5x_2-14x_3=
         \underbrace{-26}
         \\
@@ -560,6 +561,7 @@ import Subsection from "../components/Subsection.vue";
         4 \cdot (-3) -
         5 \cdot 0 -
         14 \cdot 1 = -26
+        \end{array}
       </MathDisplay>
     </Subsection>
     <Subsection title="Punktprobe">
@@ -611,24 +613,25 @@ import Subsection from "../components/Subsection.vue";
         <h2>Drei Spurpunkte</h2>
       </template>
       <template #col-2>
+        <p/>
         <img src="/images/3D_Spurpunkte-3.png" alt="3D_Spurpunkte-3">
       </template>
     </MultiColumnLayout>
-    <p/> <!-- spacing paragraph -->
     <MultiColumnLayout :columns=2 image-layout :image-width=130>
       <template #col-1>
         <h2>Zwei Spurpunkte</h2>
       </template>
       <template #col-2>
+        <p/>
         <img src="/images/3D_Spurpunkte-2.png" alt="3D_Spurpunkte-2">
       </template>
     </MultiColumnLayout>
-    <p/> <!-- spacing paragraph -->
     <MultiColumnLayout :columns=2 image-layout :image-width=130>
       <template #col-1>
         <h2>Ein Spurpunkte</h2>
       </template>
       <template #col-2>
+        <p/>
         <img src="/images/3D_Spurpunkte-1.png" alt="3D_Spurpunkte-1">
       </template>
     </MultiColumnLayout>
@@ -718,7 +721,7 @@ import Subsection from "../components/Subsection.vue";
   <ContentSection title="Gegenseitige Lage von Ebenen">
     <MultiColumnLayout :columns=2 image-layout :image-columns="[1, 2]">
       <template #col-1>
-        <Subsection title="Identisch">
+        <Subsection title="Identisch" style="padding-top: 0rem; margin-top: 0">
           <img src="/images/3D_Ebenen-Identisch.png" alt="3D_Ebenen-Identisch">
           <p v-mathjax>
             Normalenvektoren und Koordinatengleichungen sind Vielfache voneinander.

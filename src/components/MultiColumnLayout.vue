@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {defineProps, computed} from 'vue';
+import {defineProps, computed, ref, onMounted, watch, nextTick} from 'vue';
 
 const props = defineProps({
   columns: {
@@ -44,10 +44,37 @@ const otherColumnsWidth = computed(() => {
   }
   return null;
 });
+
+const root = ref<HTMLElement | null>(null);
+
+const isMultiImageColumns = computed(() =>
+  props.imageLayout &&
+  Array.isArray(props.imageColumns) &&
+  props.imageColumns.length > 1
+);
+
+watch(isMultiImageColumns, (val) => {
+  nextTick(() => {
+    if (root.value) {
+      if (val) {
+        root.value.classList.add('multi-image-columns');
+      } else {
+        root.value.classList.remove('multi-image-columns');
+      }
+    }
+  });
+});
+
+onMounted(() => {
+  if (root.value && isMultiImageColumns.value) {
+    root.value.classList.add('multi-image-columns');
+  }
+});
 </script>
 
 <template>
   <div
+    ref="root"
     :class="layoutClass"
     :style="{
       '--columns': props.columns,
@@ -100,6 +127,11 @@ const otherColumnsWidth = computed(() => {
   margin-right: 0;
 }
 
+/* Only apply top padding to image column if not a multi-image column layout */
+.multi-column-layout-image:not(.multi-image-columns) .column-item.image-column {
+  padding-top: 1rem;
+}
+
 .column-item {
   flex: 1 1 calc(100% / var(--columns, 2) - 2rem);
 }
@@ -110,6 +142,7 @@ const otherColumnsWidth = computed(() => {
 }
 
 .multi-column-layout-image .column-item.image-column {
+  /* Remove padding-top here, now handled conditionally above */
   flex: 0 1 calc(var(--image-width) / var(--columns, 2) - 2rem);
 }
 
