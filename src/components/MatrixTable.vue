@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import {defineProps, computed} from "vue";
-import type { MatrixTableData } from "@/data/matrixTableContents";
+import type { MatrixTableData } from "../data/matrixTableContents";
 
 const props = defineProps<{
-  // Option 1: Direct props (existing way)
+  // Option 1: Direct props
   columnHeaders?: Array<string>;
   rowHeaders?: Array<string>;
   data?: Array<Array<string>>;

@@ -5,41 +5,44 @@ import MultiColumnLayout from "../components/MultiColumnLayout.vue";
 import MathDisplay from "../components/MathDisplay.vue";
 import Subsection from "../components/Subsection.vue";
 import ContentSection from "../components/ContentSection.vue";
-import { trigonometricMatrix } from '../data/matrixTableContents';
+import {behaviorInTheInfinite} from '../data/matrixTableContents';
 import MatrixTable from "../components/MatrixTable.vue";
 </script>
 
 <template>
   <ContentSection title="Ganzrationale Funktionen">
-    <Subsection title="Definition"/>
-    <InfoBox type="green">
-      <p v-mathjax>Eine ganzrationale Funktion $f$ vom Grad $n$ hat die Form:</p>
-      <MathDisplay>f(x) = a_n x^n + a_{n-1} x^{n-1} + ... + a_1 x + a_0</MathDisplay>
-      <p v-mathjax>mit $a_n \neq 0$.</p>
-    </InfoBox>
+    <Subsection title="Definition">
+      <InfoBox type="green">
+        <p v-mathjax>Eine ganzrationale Funktion $f$ vom Grad $n$ hat die Form:</p>
+        <MathDisplay>f(x) = a_n x^n + a_{n-1} x^{n-1} + ... + a_1 x + a_0</MathDisplay>
+        <p v-mathjax>mit $a_n \neq 0$.</p>
+      </InfoBox>
+    </Subsection>
     <MultiColumnLayout :columns=2>
       <template #col-1>
-        <Subsection title="Beispiele"/>
-        <MathDisplay>
-          \begin{align}
-          f(x) &= x^2 - 4x + 3 \\
-          g(x) &= 4x^3 - 3x^2 + x + 1 \\
-          h(x) &= 6x^9 - 4x^2 \\
-          i(x) &= 5 \\
-          j(x) &= 8x^4 - 2x^2
-          \end{align}
-        </MathDisplay>
+        <Subsection title="Beispiele">
+          <MathDisplay>
+            \begin{align}
+            f(x) &= x^2 - 4x + 3 \\
+            g(x) &= 4x^3 - 3x^2 + x + 1 \\
+            h(x) &= 6x^9 - 4x^2 \\
+            i(x) &= 5 \\
+            j(x) &= 8x^4 - 2x^2
+            \end{align}
+          </MathDisplay>
+        </Subsection>
       </template>
       <template #col-2>
-        <Subsection title="Nichtbeispiel"/>
-        <MathDisplay>
-          \begin{align}
-          f(x) &= \sqrt{x} \\
-          g(x) &= e^x \\
-          h(x) &= \sin(x) \\
-          i(x) &= \frac{x^2}{x - 1}
-          \end{align}
-        </MathDisplay>
+        <Subsection title="Nichtbeispiel">
+          <MathDisplay>
+            \begin{align}
+            f(x) &= \sqrt{x} \\
+            g(x) &= e^x \\
+            h(x) &= \sin(x) \\
+            i(x) &= \frac{x^2}{x - 1}
+            \end{align}
+          </MathDisplay>
+        </Subsection>
       </template>
     </MultiColumnLayout>
   </ContentSection>
@@ -480,6 +483,18 @@ import MatrixTable from "../components/MatrixTable.vue";
         </MathDisplay>
       </Subsection>
     </InfoBox>
+    <InfoBox type="blue">
+      <p v-mathjax>
+        Als kleine Erinnerung, die allgemeine Geradengleichung ist:
+      </p>
+      <MathDisplay>
+        y = m \cdot x + c
+      </MathDisplay>
+      <p v-mathjax>
+        $m$: Steigung<br>
+        $c$: y-Achsenabschnitt
+      </p>
+    </InfoBox>
     <Subsection title="Beispiel">
       <MultiColumnLayout image-layout>
         <template #col-1>
@@ -700,31 +715,31 @@ import MatrixTable from "../components/MatrixTable.vue";
       </p>
     </InfoBox>
     <Subsection title="Beispiele">
+      <MultiColumnLayout :columns=2>
+        <template #col-1>
+          <MathDisplay>
+            \begin{align*}
+            \ln(\frac1e) &= \ln(1)-\ln(e) = -1
+            \\ \\
+            \ln(e^4 \cdot e^2)
+            &= \ln(e^4) + \ln(e^2) = 6\\
+            &= \ln(e^6) = 6
+            \end{align*}
+          </MathDisplay>
+        </template>
+        <template #col-2>
+          <MathDisplay>
+            \begin{align*}
+            \frac{8^{16}}{8^{6}} &= 8^6
+            \\ \\
+            e^{-2 \cdot \ln(4)}
+            &= (e^{\ln(4)})^{-2} &= 4^{-2} &= \frac1{16} \\
+            &= e^{\ln(4^{-2})} &= 4^{-2} &= \frac1{16}
+            \end{align*}
+          </MathDisplay>
+        </template>
+      </MultiColumnLayout>
     </Subsection>
-    <MultiColumnLayout :columns=2>
-      <template #col-1>
-        <MathDisplay>
-          \begin{align*}
-          \ln(\frac1e) &= \ln(1)-\ln(e) = -1
-          \\ \\
-          \ln(e^4 \cdot e^2)
-          &= \ln(e^4) + \ln(e^2) = 6\\
-          &= \ln(e^6) = 6
-          \end{align*}
-        </MathDisplay>
-      </template>
-      <template #col-2>
-        <MathDisplay>
-          \begin{align*}
-          \frac{8^{16}}{8^{6}} &= 8^6
-          \\ \\
-          e^{-2 \cdot \ln(4)}
-          &= (e^{\ln(4)})^{-2} &= 4^{-2} &= \frac1{16} \\
-          &= e^{\ln(4^{-2})} &= 4^{-2} &= \frac1{16}
-          \end{align*}
-        </MathDisplay>
-      </template>
-    </MultiColumnLayout>
   </ContentSection>
 
   <ContentSection title="Verhalten von Exponentialfunktionen im Unendlichen">
@@ -735,6 +750,7 @@ import MatrixTable from "../components/MatrixTable.vue";
       </p>
     </InfoBox>
     <Subsection title="Beispiele">
+      <MatrixTable :matrix-data="behaviorInTheInfinite"/>
     </Subsection>
   </ContentSection>
 
@@ -747,52 +763,50 @@ import MatrixTable from "../components/MatrixTable.vue";
         Der Graph von $f$ ist <strong>punksymmetrisch um Ursprung</strong>, wenn für alle $x \in D_f : f(-x) = -f(x)$
       </p>
     </InfoBox>
-    <MultiColumnLayout :columns=2>
-      <template #col-1>
-        <Subsection title="Beispiele">
-        </Subsection>
-        <MathDisplay>
-          \begin{align*}
-          f(x) &= e^{x^2} + 4 \\
-          f(-x) &= e^{(-x)^2} + 4 \\
-          &= e^{x^2}+4 \\
-          &= f(x) \\
-          \Rightarrow
-          \textsf{Der Graph von } &f
-          \textsf{ ist achsensymmetrisch zur y-Achse}
-          \end{align*}
-        </MathDisplay>
-        <MathDisplay>
-          \begin{align*}
-          g(x) &=
-          \frac15 x \cdot e^{x^2} \\
-          g(-x) &=
-          \frac15 (-x) \cdot e^{(-x)^2} \\
-          &= -\frac15 x \cdot e^{x^2} \\
-          &= -g(x) \\
-          \Rightarrow
-          \textsf{Der Graph von } &f
-          \textsf{ ist punktsymmetrisch zum Ursprung}
-          \end{align*}
-        </MathDisplay>
-      </template>
-      <template #col-2>
-        <p v-mathjax>
-
-        </p>
-        <MathDisplay>
-          \begin{align*}
-          h(x) &= -x^2 \cdot e^x + 1 \\
-          h(-x) &= -(-x)^2 \cdot e^{-x} + 1 \\
-          &= -x^2 \cdot e^{-x} + 1\\
-          \Rightarrow
-          \textsf{keine Sy}
-          &\textsf{mmetrie \underline{erkennbar}}
-          \end{align*}
-        </MathDisplay>
-      </template>
-    </MultiColumnLayout>
-    <InfoBox type="green">
+    <Subsection title="Beispiele">
+      <MultiColumnLayout :columns=2 image-layout :image-width=85>
+        <template #col-1>
+          <MathDisplay>
+            \begin{align*}
+            f(x) &= e^{x^2} - 2 \\
+            f(-x) &= e^{(-x)^2} - 2 \\
+            &= e^{x^2} - 2 \\
+            &= f(x) \\
+            \Rightarrow
+            \textsf{Der Graph von } &f
+            \textsf{ ist achsensymmetrisch zur y-Achse}
+            \end{align*}
+          </MathDisplay>
+          <MathDisplay>
+            \begin{align*}
+            g(x) &=
+            \frac15 x \cdot e^{x^2} \\
+            g(-x) &=
+            \frac15 (-x) \cdot e^{(-x)^2} \\
+            &= -\frac15 x \cdot e^{x^2} \\
+            &= -g(x) \\
+            \Rightarrow
+            \textsf{Der Graph von } &f
+            \textsf{ ist punktsymmetrisch zum Ursprung}
+            \end{align*}
+          </MathDisplay>
+          <MathDisplay>
+            \begin{align*}
+            h(x) &= -x^2 \cdot e^x + 1 \\
+            h(-x) &= -(-x)^2 \cdot e^{-x} + 1 \\
+            &= -x^2 \cdot e^{-x} + 1\\
+            \Rightarrow
+            \textsf{keine Sy}
+            &\textsf{mmetrie erkennbar}
+            \end{align*}
+          </MathDisplay>
+        </template>
+        <template #col-2>
+          <img src="/images/Graph_Symmetrie.png" alt="Graph_Symmetrie">
+        </template>
+      </MultiColumnLayout>
+    </Subsection>
+    <InfoBox type="yellow">
       <p v-mathjax>
         Diese Methode funktioniert nur, um die Symmetrie zur y-Achse oder zum Ursprung zu bestimmen.
       </p>
@@ -801,9 +815,12 @@ import MatrixTable from "../components/MatrixTable.vue";
         Es wäre also keine Symmetrie bei $f$ erkennbar.
       </p>
     </InfoBox>
-    <p v-mathjax>
-
-    </p>
+    <InfoBox type="blue">
+      <p v-mathjax>
+        Es ist eine gute Idee, mit $f(-x)$ zu beginnen und diesen Ausdruck zu vereinfachen. Dadurch kommt man oft
+        relativ schnell zu einer Lösung.
+      </p>
+    </InfoBox>
   </ContentSection>
 
   <ContentSection title="Funktionsschar">
@@ -813,102 +830,102 @@ import MatrixTable from "../components/MatrixTable.vue";
         so gehört zu jedem $k$ eine Funktion $f_k$ - Alle Funktionen $f_k$ bilden eine <strong>Funktionsschar</strong>.
       </p>
     </InfoBox>
-    <MultiColumnLayout :columns=2>
-      <template #col-1>
-        <Subsection title="Beispiel">
-        </Subsection>
-        <MathDisplay>
-          \begin{align*}
-          f_k(x) = e^x + k \qquad
-          f'_k(x) = e^x \\
-          \\
-          f_0(x) = e^x \qquad f_1(x) = e^x + 1 \quad\textsf{usw.}
-          \end{align*}
-        </MathDisplay>
-        <p v-mathjax>
-          <strong>Nullstellen in Abhängigkeit von </strong>$k$<strong>:</strong>
-        </p>
-        <MathDisplay>
-          \begin{align*}
-          f_k(x) &= 0 \\
-          0 &= e^x + k \quad|-k \\
-          -k &= e^x \qquad \ \ \ |\ln, k < 0 \\
-          x &= \ln(-k), \quad k < 0
-
-          \end{align*}
-        </MathDisplay>
-      </template>
-      <template #col-2>
-      </template>
-    </MultiColumnLayout>
-    <p v-mathjax>
-
-    </p>
+    <Subsection title="Beispiel">
+      <MultiColumnLayout :columns=2 image-layout :image-width=85>
+        <template #col-1>
+          <MathDisplay>
+            \begin{align*}
+            f_k(x) = e^x + k \qquad
+            f'_k(x) = e^x \\
+            \\
+            f_0(x) = e^x \qquad f_1(x) = e^x + 1 \quad\textsf{usw.}
+            \end{align*}
+          </MathDisplay>
+          <p v-mathjax>
+            <strong>Nullstellen in Abhängigkeit von $k$:</strong>
+          </p>
+          <MathDisplay>
+            \begin{align*}
+            f_k(x) &= 0 \\
+            0 &= e^x + k \quad|-k \\
+            -k &= e^x \qquad \ \ \ |\ln, k < 0 \\
+            x &= \ln(-k), \quad k < 0
+            \end{align*}
+          </MathDisplay>
+        </template>
+        <template #col-2>
+          <img src="/images/Graph_Funktionsschar.png" alt="Graph_Funktionsschar">
+        </template>
+      </MultiColumnLayout>
+    </Subsection>
   </ContentSection>
 
   <ContentSection title="Umkehrfunktion">
     <Subsection title="Definition">
+      <InfoBox type="green">
+        <p v-mathjax>
+          Eine Funktion $f$ mit der Definitionsmenge $D_f$ und der Wertemenge $W_f$ heißt <strong>umkehrbar</strong>,
+          wenn
+          es für jedes $y \in W_f$ <strong>genau ein</strong> $x \in D_f$ gibt, mit $f(x) = y$. Bei einer umkehrbaren
+          Funktion $f$ heißt die Funktion $\bar f$ mit $\bar f(y)=x$ die <strong>Umkehrfunktion</strong> von $f$.
+        </p>
+        <p v-mathjax>
+          Es gilt:
+        </p>
+        <MathDisplay>
+          \begin{array}{c}
+          D_{\bar f} = W_f \\
+          W_{\bar f} = D_f
+          \end{array}
+          \qquad
+          \begin{align*}
+          f(\bar f(x)) &= x,
+          \textsf{ für alle }
+          x \in D_{\bar f}\\
+          \bar f(f(x)) &= x,
+          \textsf{ für alle }
+          x \in D_f
+          \end{align*}
+        </MathDisplay>
+        <p v-mathjax>
+          Die Graphen von $f$ und $\bar f$ sind achsensymmetrisch zur ersten Winkelhalbierenden ($y = x$).
+        </p>
+      </InfoBox>
+      <InfoBox type="blue">
+        <p v-mathjax>
+          Das Wichtige, was man aus dieser Definition mitnehmen sollte, ist: Wenn $f(x) = y$, dann ist $\bar f(y) = x$.
+          Sowie, dass Definitions- und Wertemenge vertauscht sind.
+        </p>
+      </InfoBox>
     </Subsection>
-    <InfoBox type="green">
-      <p v-mathjax>
-        Eine Funktion $f$ mit der Definitionsmenge $D_f$ und der Wertemenge $W_f$ heißt <strong>umkehrbar</strong>, wenn
-        es für jedes $y \in W_f$ genau <strong>ein</strong> $x \in D_f$ gibt, mit $f(x) = y$. Bei einer umkehrbaren
-        Funktion $f$ heißt die Funktion $\bar f$ mit $\bar f(y)=x$ die <strong>Umkehrfunktion</strong> von $f$.
-      </p>
-      <p v-mathjax>
-        Es gilt:
-      </p>
+    <Subsection title="Satz">
+      <InfoBox type="green">
+        <p v-mathjax>
+          Ist eine Funktion $f$ streng monoton steigend oder fallend, so ist $f$ umkehrbar.
+        </p>
+      </InfoBox>
+    </Subsection>
+    <Subsection title="Beispiel">
       <MathDisplay>
         \begin{align*}
-        D_{\bar f} &= W_f \\
-        W_{\bar f} &= D_f
-        \end{align*}
-        \qquad
-        \begin{align*}
-        f(\bar f(x)) &= x,
-        \textsf{ für alle }
-        x \in D_{\bar f}\\
-        \bar f(f(x)) &= x,
-        \textsf{ für alle }
-        x \in D_f
+        f(x) &= \sqrt{4x-2}+1 \\\\
+        y &= f(x) \\
+        y &= \sqrt{4x-2}+1
+        \qquad{|-1} \quad |^2 \\
+        (y-1)^2 &= 4x-2
+        \quad \qquad \quad \ \ |+2 \quad |\cdot \frac14 \\
+        x &= \frac14(y-1)^2+\frac12 \\
+        \\
+        \Rightarrow \bar f(x) &= \frac14(x-1)^2+\frac12 \\
+        \\
+        D_f = W_{\bar f} = [1; \infty[ &
+        \quad W_f = D_{\bar f} = [\frac 12; \infty[
         \end{align*}
       </MathDisplay>
       <p v-mathjax>
-        Die Graphen von $f$ und $\bar f$ sind achsensymmetrisch zur ersten Winkelhalbierenden ($y = x$).
+        Obwohl man bei $\bar f$ jedes $x$ einsetzen könnte, wird $\bar f$ nur auf den Wertebereich von $f$ definiert.
       </p>
-    </InfoBox>
-    <InfoBox type="green">
-      <p v-mathjax>
-        Das Wichtige, was man aus dieser Definition mitnehmen sollte, ist: Wenn $f(x) = y$, dann ist $\bar f(y) = x$.
-        Sowie, dass Definitions- und Wertemenge vertauscht sind.
-      </p>
-    </InfoBox>
-    <Subsection title="Satz">
     </Subsection>
-    <InfoBox type="green">
-      <p v-mathjax>
-        Ist eine Funktion $f$ streng monoton steigend oder fallend, so ist $f$ umkehrbar.
-      </p>
-    </InfoBox>
-    <Subsection title="Beispiel">
-    </Subsection>
-    <MathDisplay>
-      \begin{align*}
-      f(x) &= \sqrt{4x-2}+1 \\\\
-      y &= f(x) \\
-      y &= \sqrt{4x-2}+1
-      \qquad{|-1} \quad |^2 \\
-      (y-1)^2 &= 4x-2
-      \quad \qquad \quad \ \ |+2 \quad |\cdot \frac14 \\
-      x &= \frac14(y-1)^2+\frac12 \\
-      \\
-      \Rightarrow \bar f(x) &= \frac14(x-1)^2+\frac12 \\
-      \\
-      D_f = W_{\bar f} = [1; \infty[ &
-      \quad W_f = D_{\bar f} = [\frac 12; \infty[
-      \end{align*}
-    </MathDisplay>
-    <MatrixTable :matrixData="trigonometricMatrix" />
   </ContentSection>
 </template>
 
