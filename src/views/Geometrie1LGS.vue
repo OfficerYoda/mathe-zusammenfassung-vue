@@ -10,7 +10,7 @@ import InfoBox from "../components/InfoBox.vue";
 <template>
   <ContentSection title="Gauß-Verfahren">
     <Subsection title="Vorgehen">
-      <InfoBox type="green">
+      <InfoBox color="green">
         <ol v-mathjax>
           <li>
             Man eliminiert mithilfe <strong>einer Gleichung</strong> die Variable $x_1$ aus allen anderen Gleichungen.
@@ -134,7 +134,7 @@ import InfoBox from "../components/InfoBox.vue";
   </ContentSection>
 
   <ContentSection title="Lösungsmenge von LGS">
-    <InfoBox type="green">
+    <InfoBox color="green">
       <p v-mathjax>
         Lineare Gleichungssysteme können…
       </p>
@@ -196,7 +196,7 @@ import InfoBox from "../components/InfoBox.vue";
   </ContentSection>
 
   <ContentSection title="Unterbestimmtes LGS">
-    <InfoBox type="green">
+    <InfoBox color="green">
       <p v-mathjax>
         Ein unterbestimmtes LGS hat weniger Gleichungen als Unbekannte.
       </p>
@@ -229,7 +229,7 @@ import InfoBox from "../components/InfoBox.vue";
   </ContentSection>
 
   <ContentSection title="Überbestimmtes LGS">
-    <InfoBox type="green">
+    <InfoBox color="green">
       <p v-mathjax>
         Ein überbestimmtes LGS hat mehr Gleichungen als Unbekannte.
       </p>
@@ -319,7 +319,7 @@ import InfoBox from "../components/InfoBox.vue";
   </ContentSection>
 
   <ContentSection title="LGS mit Parameter auf der rechten Seite">
-    <InfoBox type="green">
+    <InfoBox color="green">
       <p v-mathjax>
         Stehen bei einem LGS auf der rechten Seite ein oder mehrere <strong>Parameter</strong>, so wird das LGS auf
         Stufenform gebracht und schrittweise nach $x_n, x_{n-1}, …, x_1$ aufgelöst.

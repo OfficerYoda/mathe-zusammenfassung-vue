@@ -12,7 +12,7 @@ import MatrixTable from "../components/MatrixTable.vue";
 <template>
   <ContentSection title="Ganzrationale Funktionen">
     <Subsection title="Definition">
-      <InfoBox type="green">
+      <InfoBox color="green">
         <p v-mathjax>Eine ganzrationale Funktion $f$ vom Grad $n$ hat die Form:</p>
         <MathDisplay>f(x) = a_n x^n + a_{n-1} x^{n-1} + ... + a_1 x + a_0</MathDisplay>
         <p v-mathjax>mit $a_n \neq 0$.</p>
@@ -50,7 +50,7 @@ import MatrixTable from "../components/MatrixTable.vue";
   <ContentSection title="Definitions- und Wertemenge">
     <MultiColumnLayout :columns=2>
       <template #col-1>
-        <InfoBox type="green">
+        <InfoBox color="green">
           <Subsection title="Definitionsmenge">
             <p v-mathjax>
               Die Definitionsmenge $D_f$ einer Funktion $f$ enthält alle Werte von $x$, für die $f(x)$ definiert ist.
@@ -59,7 +59,7 @@ import MatrixTable from "../components/MatrixTable.vue";
         </InfoBox>
       </template>
       <template #col-2>
-        <InfoBox type="green">
+        <InfoBox color="green">
           <Subsection title="Wertemenge">
             <p v-mathjax>Die Wertemenge $W_f$ einer Funktion $f$ enthält alle Werte, die $f(x)$ mit $x \in D_f$ annehmen
               kann.</p>
@@ -101,7 +101,7 @@ import MatrixTable from "../components/MatrixTable.vue";
   </ContentSection>
 
   <ContentSection title="Potenzregel">
-    <InfoBox type="green">
+    <InfoBox color="green">
       <MathDisplay>
         f(x) = a \cdot x^n
         \quad\Rightarrow\quad
@@ -139,7 +139,7 @@ import MatrixTable from "../components/MatrixTable.vue";
   </ContentSection>
 
   <ContentSection title="Verkettung von Funktionen">
-    <InfoBox type="green">
+    <InfoBox color="green">
       <MathDisplay>
         u(v(x)) = u \circ v
       </MathDisplay>
@@ -163,7 +163,7 @@ import MatrixTable from "../components/MatrixTable.vue";
   </ContentSection>
 
   <ContentSection title="Kettenregel">
-    <InfoBox type="green">
+    <InfoBox color="green">
       <MathDisplay>
         f(x) = u(v(x)) \quad\Rightarrow\quad f’(x) = u’(v(x)) \cdot v’(x)
       </MathDisplay>
@@ -189,7 +189,7 @@ import MatrixTable from "../components/MatrixTable.vue";
   </ContentSection>
 
   <ContentSection title="Produktregel">
-    <InfoBox type="green">
+    <InfoBox color="green">
       <MathDisplay>
         f = u \cdot v \quad\Rightarrow\quad
         f’ = u' \cdot v + u \cdot v'
@@ -217,7 +217,7 @@ import MatrixTable from "../components/MatrixTable.vue";
 
   <ContentSection title="Monotonie">
     <Subsection title="Definition">
-      <InfoBox type="green">
+      <InfoBox color="green">
         <p v-mathjax>
           Gegeben ist eine Funktion $f$ auf dem Intervall $I$.
           <br>
@@ -239,7 +239,7 @@ import MatrixTable from "../components/MatrixTable.vue";
         </ul>
       </InfoBox>
       <Subsection title="Satz">
-        <InfoBox type="green">
+        <InfoBox color="green">
           <p v-mathjax>Ist die Funktion $f$ auf $I$ differenzierbar, so gilt:</p>
           <ul v-mathjax>
             <li>
@@ -256,7 +256,7 @@ import MatrixTable from "../components/MatrixTable.vue";
           </p>
         </InfoBox>
       </Subsection>
-      <InfoBox type="yellow">
+      <InfoBox color="yellow">
         <p v-mathjax>
           Der Monotoniesatz kann irreführende Ergebnisse liefern. Zum Beispiel ist $f(x) = x^3$ streng monoton wachsend,
           obwohl $f'(0) = 0$ ist. Der Monotoniesatz liefert allerdings weder streng monoton wachsend noch fallend.
@@ -267,7 +267,7 @@ import MatrixTable from "../components/MatrixTable.vue";
 
   <ContentSection title="Krümmung">
     <Subsection title="Definition">
-      <InfoBox type="green">
+      <InfoBox color="green">
         <p v-mathjax>Ist die Funktion $f$ auf dem Intervall $I$ streng monoton...</p>
         <ul v-mathjax>
           <li>...steigend, so beschreibt der Graph von $f$ auf $I$ eine <strong>Links</strong>kurve.</li>
@@ -276,7 +276,7 @@ import MatrixTable from "../components/MatrixTable.vue";
       </InfoBox>
     </Subsection>
     <Subsection title="Satz">
-      <InfoBox type="green">
+      <InfoBox color="green">
         <p v-mathjax>Ist die Funktion $f$ auf $i$ zweimal differenzierbar, so gilt:</p>
         <ul v-mathjax>
           <li>
@@ -288,7 +288,7 @@ import MatrixTable from "../components/MatrixTable.vue";
         </ul>
       </InfoBox>
     </Subsection>
-    <InfoBox type="blue">
+    <InfoBox color="blue">
       <p v-mathjax>
         Ob eine Funktion $f$ auf $I$ linksgekrümmt ist oder eine Linkskurve beschreibt, ist das gleiche.
       </p>
@@ -318,7 +318,7 @@ import MatrixTable from "../components/MatrixTable.vue";
 
   <ContentSection title="Extremstellen">
     <Subsection title="Definition">
-      <InfoBox type="green">
+      <InfoBox color="green">
         <p v-mathjax>
           Ist $f$ eine auf dem Inteval $I$ zweimal differenzierbare Funktion, so muss für eine
           <strong>innere Extremstelle</strong> $x_0 \in I$ von $f$ gelten:
@@ -339,21 +339,21 @@ import MatrixTable from "../components/MatrixTable.vue";
           </ul>
         </Subsection>
       </InfoBox>
-      <InfoBox type="yellow">
+      <InfoBox color="yellow">
         <p v-mathjax>
           Ist $f''(x_0) = 0$, so muss man über das Vorzeichen von $f'$ argumentieren.<br>
           Nur wenn die notwendige <strong>und</strong> die hinreichende Bedingung erfüllt sind, ist $x_0$ eine
           Extremstelle.
         </p>
       </InfoBox>
-      <InfoBox type="red">
+      <InfoBox color="red">
         <p>
           Wenn eine Funktion nur auf einem bestimmten Intervall definiert ist, muss man zusätzlich die Ränder des
           Integrals auf <strong>äußere Extremstellen</strong> untersuchen.
         </p>
       </InfoBox>
     </Subsection>
-    <info-box type="blue">
+    <info-box color="blue">
       🚦🔄
     </info-box>
     <Subsection title="Beispiele">
@@ -400,7 +400,7 @@ import MatrixTable from "../components/MatrixTable.vue";
 
   <ContentSection title="Wendestellen">
     <Subsection title="Definition">
-      <InfoBox type="green">
+      <InfoBox color="green">
         <p v-mathjax>
           Ist $f$ eine auf dem Intervall $I$ dreimal differenzierbare Funktion, so ist $x_0 \in I$ eine <strong>Wendestelle</strong>
           von $f$ falls gilt:
@@ -419,7 +419,7 @@ import MatrixTable from "../components/MatrixTable.vue";
           f''(x_0) \textsf{ hat an der Stelle } x_0 \textsf{ einen Vorzeichenwechsel}
         </MathDisplay>
       </InfoBox>
-      <InfoBox type="yellow">
+      <InfoBox color="yellow">
         <p v-mathjax>
           Ähnlich wie bei den Extremstellen muss man den Vorzeichenwechsel nur überprüfen, wenn $f'''(x_0) = 0$ ist.
         </p>
@@ -467,7 +467,7 @@ import MatrixTable from "../components/MatrixTable.vue";
   </ContentSection>
 
   <ContentSection title="Tangenten- und Normalengleichung">
-    <InfoBox type="green">
+    <InfoBox color="green">
       <Subsection title="Tangentengleichung">
         <p v-mathjax>für die Tangente $t$ and der Stelle $u$ des Funktionsgraphen von $f$ gilt:</p>
         <MathDisplay>
@@ -475,7 +475,7 @@ import MatrixTable from "../components/MatrixTable.vue";
         </MathDisplay>
       </Subsection>
     </InfoBox>
-    <InfoBox type="green">
+    <InfoBox color="green">
       <Subsection title="Normalengleichung">
         <p v-mathjax>für die Normale $n$ and der Stelle $u$ des Funktionsgraphen von $f$ gilt:</p>
         <MathDisplay>
@@ -483,7 +483,7 @@ import MatrixTable from "../components/MatrixTable.vue";
         </MathDisplay>
       </Subsection>
     </InfoBox>
-    <InfoBox type="blue">
+    <InfoBox color="blue">
       <p v-mathjax>
         Als kleine Erinnerung, die allgemeine Geradengleichung ist:
       </p>
@@ -536,7 +536,7 @@ import MatrixTable from "../components/MatrixTable.vue";
 
   <ContentSection title="Berührpunkte von Funktionsgraphen">
     <Subsection title="Definition">
-      <InfoBox type="green">
+      <InfoBox color="green">
         <p v-mathjax>
           Die Graphen der Funktionen $f$ und $g$ berühren sich ad der Stelle $u$, wenn gilt:
         </p>
@@ -659,7 +659,7 @@ import MatrixTable from "../components/MatrixTable.vue";
   </ContentSection>
 
   <ContentSection title="Eulersche Zahl und natürlicher Logarithmus">
-    <InfoBox type="green">
+    <InfoBox color="green">
       <p v-mathjax>
         Die eulersche Zahl $e \thickapprox 2{,}72$ ist die Zahl für die gilt:
       </p>
@@ -667,7 +667,7 @@ import MatrixTable from "../components/MatrixTable.vue";
         f(x) = e^x \qquad f'(x) = e^x \\
       </MathDisplay>
     </InfoBox>
-    <InfoBox type="green">
+    <InfoBox color="green">
       <p v-mathjax>
         Der natürliche Logarithmus $\ln$ ist der Logarithmus zur Basis $e$. Für den $\ln$ gilt:
       </p>
@@ -689,7 +689,7 @@ import MatrixTable from "../components/MatrixTable.vue";
   </ContentSection>
 
   <ContentSection title="Rechenregeln Potenzen und Logarithmen">
-    <InfoBox type="green">
+    <InfoBox color="green">
       <MultiColumnLayout :columns=2>
         <template #col-1>
           <MathDisplay>
@@ -743,7 +743,7 @@ import MatrixTable from "../components/MatrixTable.vue";
   </ContentSection>
 
   <ContentSection title="Verhalten von Exponentialfunktionen im Unendlichen">
-    <InfoBox type="green">
+    <InfoBox color="green">
       <p v-mathjax>
         Bei Funktionen der Form $f(x) = x^n \cdot e^{a\cdot x} \ (a \neq 0)$ bestimmt $e^{a \cdot x}$ das Verhalten für
         $x \rightarrow \pm \infty$. Der Faktor $x^n$ bestimmt das Vorzeichen.
@@ -755,7 +755,7 @@ import MatrixTable from "../components/MatrixTable.vue";
   </ContentSection>
 
   <ContentSection title="Symmetrie von Funktionsgraphen">
-    <InfoBox type="green">
+    <InfoBox color="green">
       <p v-mathjax>
         Der Graph von $f$ ist <strong>achsensymmetrisch zur y-Achse</strong>, wenn für alle $x \in D_f : f(-x) = f(x)$
       </p>
@@ -806,7 +806,7 @@ import MatrixTable from "../components/MatrixTable.vue";
         </template>
       </MultiColumnLayout>
     </Subsection>
-    <InfoBox type="yellow">
+    <InfoBox color="yellow">
       <p v-mathjax>
         Diese Methode funktioniert nur, um die Symmetrie zur y-Achse oder zum Ursprung zu bestimmen.
       </p>
@@ -815,7 +815,7 @@ import MatrixTable from "../components/MatrixTable.vue";
         Es wäre also keine Symmetrie bei $f$ erkennbar.
       </p>
     </InfoBox>
-    <InfoBox type="blue">
+    <InfoBox color="blue">
       <p v-mathjax>
         Es ist eine gute Idee, mit $f(-x)$ zu beginnen und diesen Ausdruck zu vereinfachen. Dadurch kommt man oft
         relativ schnell zu einer Lösung.
@@ -824,7 +824,7 @@ import MatrixTable from "../components/MatrixTable.vue";
   </ContentSection>
 
   <ContentSection title="Funktionsschar">
-    <InfoBox type="green">
+    <InfoBox color="green">
       <p v-mathjax>
         Enthält eine Funktion $f$ neben der Variable $x$ noch einen <strong>Parameter </strong>$k$ (oder a, b, t usw.),
         so gehört zu jedem $k$ eine Funktion $f_k$ - Alle Funktionen $f_k$ bilden eine <strong>Funktionsschar</strong>.
@@ -862,7 +862,7 @@ import MatrixTable from "../components/MatrixTable.vue";
 
   <ContentSection title="Umkehrfunktion">
     <Subsection title="Definition">
-      <InfoBox type="green">
+      <InfoBox color="green">
         <p v-mathjax>
           Eine Funktion $f$ mit der Definitionsmenge $D_f$ und der Wertemenge $W_f$ heißt <strong>umkehrbar</strong>,
           wenn
@@ -891,7 +891,7 @@ import MatrixTable from "../components/MatrixTable.vue";
           Die Graphen von $f$ und $\bar f$ sind achsensymmetrisch zur ersten Winkelhalbierenden ($y = x$).
         </p>
       </InfoBox>
-      <InfoBox type="blue">
+      <InfoBox color="blue">
         <p v-mathjax>
           Das Wichtige, was man aus dieser Definition mitnehmen sollte, ist: Wenn $f(x) = y$, dann ist $\bar f(y) = x$.
           Sowie, dass Definitions- und Wertemenge vertauscht sind.
@@ -899,7 +899,7 @@ import MatrixTable from "../components/MatrixTable.vue";
       </InfoBox>
     </Subsection>
     <Subsection title="Satz">
-      <InfoBox type="green">
+      <InfoBox color="green">
         <p v-mathjax>
           Ist eine Funktion $f$ streng monoton steigend oder fallend, so ist $f$ umkehrbar.
         </p>

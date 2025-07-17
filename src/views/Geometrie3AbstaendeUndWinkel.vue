@@ -9,14 +9,14 @@ import Subsection from "../components/Subsection.vue";
 
 <template>
   <ContentSection title="Abstandsberechnungen (Übersicht)">
-    <InfoBox type="green">
+    <InfoBox color="green">
       <img src="/images/Diagram_Abstandberechnung.png" alt="Diagramm_Abstandberechnung"
            style="max-width:100%; height:auto; display:block; margin:0 auto; border-radius: 5px"/>
     </InfoBox>
   </ContentSection>
 
   <ContentSection title="Hesse’sche Normal(en)form (HNF)">
-    <InfoBox type="green">
+    <InfoBox color="green">
       <p v-mathjax>
         Eine Ebenengleichung $E: (\vec x - \vec p) \circ \vec n_0 = 0$ heißt <strong>Hesse’sche Normal(en)form</strong>
         (HNF) von $E$. $\vec n_0$ heißt dabei <strong>Einheitsnormalenvektor</strong>.
@@ -28,7 +28,7 @@ import Subsection from "../components/Subsection.vue";
         d(E, Q) = |(\vec q - \vec p)\circ\vec n_0|
       </MathDisplay>
     </InfoBox>
-    <InfoBox type="green">
+    <InfoBox color="green">
       <p v-mathjax>
         Für die Koordinatengleichung von $E:a_1x_1+a_2x_2+a_3x_3=b$ gilt:
       </p>
@@ -113,7 +113,7 @@ import Subsection from "../components/Subsection.vue";
   </ContentSection>
 
   <ContentSection title="Abstand Punkt-Ebene">
-    <InfoBox type="green">
+    <InfoBox color="green">
       <p v-mathjax>
         Unter dem Abstand $d$ eines Punktes $P$ von der Ebene $E$ versteht man die kleinste Entfernung von $P$ zu $E$.
       </p>
@@ -192,7 +192,7 @@ import Subsection from "../components/Subsection.vue";
   </ContentSection>
 
   <ContentSection title="Abstand Punkt-Gerade">
-    <InfoBox type="green">
+    <InfoBox color="green">
       <Subsection title="Formel">
         <p v-mathjax>
           Für den Abstand eines Punktes $R$ zu einer Geraden $g: \vec x = \vec p + s \cdot \vec u$, gilt:
@@ -202,7 +202,7 @@ import Subsection from "../components/Subsection.vue";
         </MathDisplay>
       </Subsection>
     </InfoBox>
-    <InfoBox type="green">
+    <InfoBox color="green">
       <Subsection title="Algorithmus">
         <ol v-mathjax>
           <li>
@@ -309,7 +309,7 @@ import Subsection from "../components/Subsection.vue";
   <ContentSection title="Abstand Gerade-Gerade (Parallel)">
     <MultiColumnLayout :columns=2 image-layout :image-width=59>
       <template #col-1>
-        <InfoBox type="green">
+        <InfoBox color="green">
           <p v-mathjax>
             Um den Abstand zwei paralleler Geraden $g$ und $h$ zu berechnen, berechnet man den Abstand des Stützpunktes
             $R$ von $h$ zur Geraden $g$.
@@ -331,7 +331,7 @@ import Subsection from "../components/Subsection.vue";
   </ContentSection>
 
   <ContentSection title="Abstand Gerade-Gerade (Windschief)">
-    <InfoBox type="green">
+    <InfoBox color="green">
       <p v-mathjax>
         Gegeben sind die Geraden $g: \vec x = \vec p + r \cdot \vec u$ und $h: \vec x = \vec q + s \cdot \vec v$
       </p>
@@ -456,7 +456,7 @@ import Subsection from "../components/Subsection.vue";
   </ContentSection>
 
   <ContentSection title="Abstand Gerade-Ebene (Parallel)">
-    <InfoBox type="green">
+    <InfoBox color="green">
       <p v-mathjax>
         Um den Abstand der Ebene $E$ und der parallelen Gerade $g$ zu berechnen, nimmt man den Stützpunkt $Q$ von $g$.
         Dann gilt:
@@ -489,7 +489,7 @@ import Subsection from "../components/Subsection.vue";
   </ContentSection>
 
   <ContentSection title="Abstand Ebene-Ebene (Parallel)">
-    <InfoBox type="green">
+    <InfoBox color="green">
       <p v-mathjax>
         Um den Abstand der parallelen Ebenen $E$ und $F$ zu berechnen, bestimmt man einen Punkt $P$, der auf $F$ liegt.
         Dann gilt:
@@ -518,7 +518,7 @@ import Subsection from "../components/Subsection.vue";
   </ContentSection>
 
   <ContentSection title="Gemeinsames Lot windschiefer Geraden bestimmen">
-    <InfoBox type="green">
+    <InfoBox color="green">
       <p v-mathjax>
         Um das gemeinsame Lot zweier windschiefer Geraden $g$ und $h$ zu bestimmen, findet man Punkte $P$ auf $g$ und
         $Q$ auf $h$, sodass der Verbindungsvektor $\overrightarrow{PQ}$ sowohl senkrecht zu $g$ als auch senkrecht zu
@@ -617,7 +617,7 @@ import Subsection from "../components/Subsection.vue";
         }
       </MathDisplay>
     </Subsection>
-    <InfoBox type="blue">
+    <InfoBox color="blue">
       <p v-mathjax>
         Wenn die Fragestellung nach den Lotfußpunkten fragt, reicht es die Punkte $G$ und $H$ zu bestimmen.
         Wenn nach einer Geraden gefragt ist, muss man zusätzlich die Gerade durch $G$ und $H$ bestimmen.
@@ -628,7 +628,7 @@ import Subsection from "../components/Subsection.vue";
   <ContentSection title="Winkel zwischen Vektoren">
     <MultiColumnLayout :columns=2 image-layout :image-width=80>
       <template #col-1>
-        <InfoBox type="green">
+        <InfoBox color="green">
           <p v-mathjax>
             Für den Winkel $\alpha$ zwischen $\vec a$ und $\vec b$ gilt:
           </p>
@@ -697,7 +697,7 @@ import Subsection from "../components/Subsection.vue";
   <ContentSection title="Schnittwinkel Gerade-Gerade">
     <MultiColumnLayout :columns=2 image-layout :image-width=80>
       <template #col-1>
-        <InfoBox type="green">
+        <InfoBox color="green">
           <p v-mathjax>
             Für den Schnittwinkel zwischen zwei Geraden $g$ und $h$ mit Richtungsvektoren $\vec u$ und $\vec v$ gilt:
           </p>
@@ -767,7 +767,7 @@ import Subsection from "../components/Subsection.vue";
   <ContentSection title="Schnittwinkel Ebene-Ebene">
     <MultiColumnLayout :columns=2 image-layout :image-width=80>
       <template #col-1>
-        <InfoBox type="green">
+        <InfoBox color="green">
           <p v-mathjax>
             Für den Schnittwinkel zwischen zwei Ebenen $E$ und $F$ mit Normalenvektoren $\vec n_E$ und $\vec n_f$ gilt:
           </p>
@@ -792,7 +792,7 @@ import Subsection from "../components/Subsection.vue";
   <ContentSection title="Schnittwinkel Gerade-Ebene">
     <MultiColumnLayout :columns=2 image-layout :image-width=80>
       <template #col-1>
-        <InfoBox type="green">
+        <InfoBox color="green">
           <p v-mathjax>
             Für den Schnittwinkel zwischen einer Geraden mit Richtungsvektoren $\vec u$ und einer Ebene mit
             Normalenvektor $\vec n$ gilt:
@@ -863,7 +863,7 @@ import Subsection from "../components/Subsection.vue";
   <ContentSection title="Flächeninhalt Parallelogramm">
     <MultiColumnLayout :columns=2 image-layout :image-width=60>
       <template #col-1>
-        <InfoBox type="green">
+        <InfoBox color="green">
           <p v-mathjax>
             Für den Flächeninhalt $A$ eines Parallelogramms, dass von den Vektoren $\vec a$ und $\vec b$ aufgespannt
             wird, gilt:
@@ -914,7 +914,7 @@ import Subsection from "../components/Subsection.vue";
   <ContentSection title="Flächeninhalt Dreieck">
     <MultiColumnLayout :columns=2 image-layout :image-width=60>
       <template #col-1>
-        <InfoBox type="green">
+        <InfoBox color="green">
           <p v-mathjax>
             Für den Flächeninhalt $A$ eines Dreiecks, dass von den Vektoren $\vec a$ und $\vec b$ aufgespannt wird,
             gilt:
@@ -971,7 +971,7 @@ import Subsection from "../components/Subsection.vue";
   <ContentSection title="Volumen Spat">
     <MultiColumnLayout :columns=2 image-layout :image-width=60>
       <template #col-1>
-        <InfoBox type="green">
+        <InfoBox color="green">
           <p v-mathjax>
             Für das Volumen $V$ eines Spats, der von den Vektoren $\vec a, \vec b$ und $\vec c$ aufgespannt wird, gilt:
           </p>
@@ -1040,7 +1040,7 @@ import Subsection from "../components/Subsection.vue";
   <ContentSection title="Volumen Pyramide mit viereckiger Grundfläche">
     <MultiColumnLayout :columns=2 image-layout :image-width=60>
       <template #col-1>
-        <InfoBox type="green">
+        <InfoBox color="green">
           <p v-mathjax>
             Für das Volumen $V$ einer Pyramide mit viereckiger Grundfläche, die von den Vektoren $\vec a, \vec b$ und
             $\vec c$ aufgespannt wird, gilt:
@@ -1113,7 +1113,7 @@ import Subsection from "../components/Subsection.vue";
   <ContentSection title="Volumen Pyramide mit dreieckiger Grundfläche">
     <MultiColumnLayout :columns=2 image-layout :image-width=60>
       <template #col-1>
-        <InfoBox type="green">
+        <InfoBox color="green">
           <p v-mathjax>
             Für das Volumen $V$ einer Pyramide mit dreieckiger Grundfläche, die von den Vektoren $\vec a, \vec b$ und
             $\vec c$ aufgespannt wird, gilt:
@@ -1186,7 +1186,7 @@ import Subsection from "../components/Subsection.vue";
   <ContentSection title="Spiegelung an einem Punkt">
     <MultiColumnLayout :columns=2 image-layout :image-width=75>
       <template #col-1>
-        <InfoBox type="green">
+        <InfoBox color="green">
           <MathDisplay>
             \begin{align*}
             \overrightarrow{OP'} &=
@@ -1207,7 +1207,7 @@ import Subsection from "../components/Subsection.vue";
   <ContentSection title="Spiegelung an einer Geraden">
     <MultiColumnLayout :columns=2 image-layout :image-width=75>
       <template #col-1>
-        <InfoBox type="green">
+        <InfoBox color="green">
           <ol v-mathjax>
             <li>Stelle eine Hilfsebene $H$ auf, die durch $P$ verläuft und als Normalenvektor den Richtungsvektor von
               $g$ hat.
@@ -1226,7 +1226,7 @@ import Subsection from "../components/Subsection.vue";
   <ContentSection title="Spiegelung an einer Ebene">
     <MultiColumnLayout :columns=2 image-layout :image-width=75>
       <template #col-1>
-        <InfoBox type="green">
+        <InfoBox color="green">
           <ol v-mathjax>
             <li>Stelle eine Gerade $g$ auf, deren Richtungsvektor dem Normalenvektor von $E$ entspricht und $P$
               enthält.
@@ -1245,7 +1245,7 @@ import Subsection from "../components/Subsection.vue";
   <ContentSection title="Symmetrieebene bestimmen">
     <MultiColumnLayout :columns=2 image-layout :image-width=75>
       <template #col-1>
-        <InfoBox type="green">
+        <InfoBox color="green">
           <ol v-mathjax>
             <li>Berechne den Mittelpunkt $M$ von $P$ und $P’$.</li>
             <li>Stelle eine Gleichung für $E$ auf, sodass $M$ in $E$ liegt und $\overrightarrow{PP'}$ der

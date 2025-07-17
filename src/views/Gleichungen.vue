@@ -12,7 +12,7 @@ import MultiColumnLayout from "../components/MultiColumnLayout.vue";
   <ChapterTitle title="Gleichungen"/>
 
   <ContentSection title="Lösungsmenge">
-    <InfoBox type="green">
+    <InfoBox color="green">
       <p v-mathjax>
         Die Lösungsmenge $L$ einer (Un-)Gleichung enthält alle Werte der Variablen, welche die (Un-)Gleichung erfüllen.
       </p>
@@ -45,7 +45,7 @@ import MultiColumnLayout from "../components/MultiColumnLayout.vue";
   </ContentSection>
 
   <ContentSection title="Satz vom Nullprodukt">
-    <InfoBox type="green">
+    <InfoBox color="green">
       <p v-mathjax>
         Ein Produkt ist $0$, wenn mindestens einer der Faktoren $0$ ist.
       </p>
@@ -166,7 +166,7 @@ import MultiColumnLayout from "../components/MultiColumnLayout.vue";
           </MathDisplay>
         </template>
       </MultiColumnLayout>
-      <InfoBox type="red">
+      <InfoBox color="red">
         Probe machen
       </InfoBox>
     </Subsection>
@@ -183,7 +183,7 @@ import MultiColumnLayout from "../components/MultiColumnLayout.vue";
         x_1 = 3 \ \checkmark&\quad x_2 = \frac{7}{4} \ \times
         \end{align*}
       </MathDisplay>
-      <InfoBox type="red">
+      <InfoBox color="red">
         Probe machen
       </InfoBox>
     </Subsection>
@@ -275,7 +275,7 @@ import MultiColumnLayout from "../components/MultiColumnLayout.vue";
         \end{cases}
       </MathDisplay>
     </Subsection>
-    <InfoBox type="red">
+    <InfoBox color="red">
       <p>
         Bei Betragsgleichungen mit einer Variablen außerhalb der Betragsstriche: Probe machen.
       </p>
@@ -283,7 +283,7 @@ import MultiColumnLayout from "../components/MultiColumnLayout.vue";
   </ContentSection>
 
   <ContentSection title="Ungleichungen">
-    <InfoBox type="green">
+    <InfoBox color="green">
       Lässt sich wie eine normale Gleichung lösen, mit der Ausnahme, dass beim Multiplizieren/Dividieren mit einer
       negativen Zahl oder bei Logarithmen mit einer Basis kleiner als 1 das Ungleichheitszeichen umgedreht wird.
     </InfoBox>
@@ -404,10 +404,10 @@ import MultiColumnLayout from "../components/MultiColumnLayout.vue";
       \text{unendlich viele Lösungen }(\frac32;\frac72;-\frac12,...)
       \end{gather*}
     </MathDisplay>
-    <InfoBox type="yellow">
+    <InfoBox color="yellow">
       Bei Trigonometrischen Funktionen auf den Definitionsbereich achten.
     </InfoBox>
-    <InfoBox type="blue">
+    <InfoBox color="blue">
       Ich weiß, das zweite Beispiel kann erstmal überwältigend sein, aber versucht, es zu verstehen.
       Es kann sein, dass im Abi eine Aufgabe mit einer "komplizierten" Lösungsmenge vorkommt.
     </InfoBox>

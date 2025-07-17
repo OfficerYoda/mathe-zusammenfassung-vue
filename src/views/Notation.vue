@@ -23,7 +23,7 @@ import MultiColumnLayout from "../components/MultiColumnLayout.vue";
       Jeder dieser Beispielmengen enthält alle Elemente der Mengen, die in der Tabelle darüber liegen.
     </p>
     <DefinitionTable :items="setsContent"/>
-    <InfoBox type="yellow">
+    <InfoBox color="yellow">
       <p v-mathjax>
         Ob bei $\mathbb{N}/\mathbb{R}^+$ die $0$ enthalten ist, ist nicht klar definiert. Ich werde daher immer
         $\mathbb{N}_0/\mathbb{R}^+_0$ verwenden,
@@ -31,7 +31,7 @@ import MultiColumnLayout from "../components/MultiColumnLayout.vue";
         Im Abitur wird es klar gekennzeichnet sein, ob die $0$ enthalten ist oder nicht.
       </p>
     </InfoBox>
-    <InfoBox type="blue">
+    <InfoBox color="blue">
       <p v-mathjax>
         Was genau Mengen sind und welche Zahlenmengen ($\mathbb{N}$, $\mathbb{R}$, etc.) es gibt, ist nicht direkt
         abiturrelevant. Ich werde sie allerdings in manchen Notationen verwenden.

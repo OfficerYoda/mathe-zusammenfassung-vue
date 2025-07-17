@@ -10,7 +10,7 @@ import Subsection from "../components/Subsection.vue";
 <template>
   <ContentSection title="Skalarprodukt">
     <Subsection title="Definition">
-      <InfoBox type="green">
+      <InfoBox color="green">
         <p v-mathjax>
           Das Skalarprodukt zwischen $\vec a = \left(\begin{smallmatrix}
           a_1\\a_2\\a_3
@@ -27,7 +27,7 @@ import Subsection from "../components/Subsection.vue";
       </InfoBox>
     </Subsection>
     <Subsection title="Satz">
-      <InfoBox type="green">
+      <InfoBox color="green">
         <p v-mathjax>
           Zwei Vektoren $\vec a \neq \vec 0$ und $\vec b \neq \vec 0$ sind genau dann senkrecht zueinander, wenn
         </p>
@@ -37,7 +37,7 @@ import Subsection from "../components/Subsection.vue";
       </InfoBox>
     </Subsection>
     <Subsection title="Rechenregeln">
-      <InfoBox type="green">
+      <InfoBox color="green">
         <MathDisplay>
           \begin{align}
           \vec a \circ \vec b &=
@@ -85,7 +85,7 @@ import Subsection from "../components/Subsection.vue";
   <ContentSection title="Kreuzprodukt">
     <MultiColumnLayout :columns=2 image-layout :image-width=70>
       <template #col-1>
-        <InfoBox type="green">
+        <InfoBox color="green">
           <p v-mathjax>
             Das Kreuzprodukt zwischen $\vec a = \left(\begin{smallmatrix}
             a_1\\a_2\\a_3
@@ -116,7 +116,7 @@ import Subsection from "../components/Subsection.vue";
       </template>
     </MultiColumnLayout>
     <Subsection title="Satz">
-      <InfoBox type="green">
+      <InfoBox color="green">
         <p v-mathjax>
           Der resultierende Vektor aus $\vec a \times \vec b$ steht <strong>senkrecht </strong>auf $\vec a$ und $\vec
           b$.
@@ -166,7 +166,7 @@ import Subsection from "../components/Subsection.vue";
   </ContentSection>
 
   <ContentSection title="Geradengleichung">
-    <InfoBox type="green">
+    <InfoBox color="green">
       <p v-mathjax>
         Gegeben sind ein Punkt $P$ mit seinem Ortsvektor $\vec p$ und ein Vektor $\vec u \neq \vec 0$.
         Die Gerade durch den Punkt $P$ in Richtung $\vec u$ ist:
@@ -264,7 +264,7 @@ import Subsection from "../components/Subsection.vue";
   </ContentSection>
 
   <ContentSection title="Ebenengleichung: Parametergleichung">
-    <InfoBox type="green">
+    <InfoBox color="green">
       <p v-mathjax>
         Gegeben ist ein Stützvektor $\vec p$ und zwei Spannvektoren $\vec u$ und $\vec v$, die keine Vielfache
         voneinander sind.<br>
@@ -392,7 +392,7 @@ import Subsection from "../components/Subsection.vue";
   </ContentSection>
 
   <ContentSection title="Ebenengleichung: Normalengleichung">
-    <InfoBox type="green">
+    <InfoBox color="green">
       <p v-mathjax>
         Jede Ebene $E$ kann durch einen <strong>Normalenvektor </strong>$\vec n$ und einen <strong>Stützvektor</strong>
         $\vec p$ beschrieben werden:
@@ -498,7 +498,7 @@ import Subsection from "../components/Subsection.vue";
   </ContentSection>
 
   <ContentSection title="Ebenengleichung: Koordinatengleichung">
-    <InfoBox type="green">
+    <InfoBox color="green">
       <p v-mathjax>
         Jede Ebene $E$ kann durch eine <strong>Koordinatengleichung</strong> beschrieben werden:
       </p>
@@ -546,7 +546,7 @@ import Subsection from "../components/Subsection.vue";
         \end{matrix}\right)
         \end{array}
       </MathDisplay>
-      <InfoBox type="red">
+      <InfoBox color="red">
         <p v-mathjax>
           Probe machen: $\color{df5441}\vec n \circ \overrightarrow{AB} = 0$ und $\color{df5441}\vec n \circ
           \overrightarrow{AC} = 0$.
@@ -591,14 +591,14 @@ import Subsection from "../components/Subsection.vue";
   </ContentSection>
 
   <ContentSection title="Spurpunkte und Spurgeraden">
-    <InfoBox type="green">
+    <InfoBox color="green">
       <p v-mathjax>
         Um eine Ebene in einem Koordinatensystem zu veranschaulichen, zeichnet man einen Ausschnitt der Ebene. Dabei
         orientiert man sich an den jeweiligen Schnittpunkten der Ebene mit den Koordinatenachsen. Diese Punkte heißen
         <strong>Spurpunkte</strong>.
       </p>
     </InfoBox>
-    <InfoBox type="green">
+    <InfoBox color="green">
       <p v-mathjax>
         Die Gesamtheit aller Schnittpunkte einer Ebene mit einer Koordinatenebene heißen <strong>Spurgerade</strong>.
       </p>
@@ -638,7 +638,7 @@ import Subsection from "../components/Subsection.vue";
   </ContentSection>
 
   <ContentSection title="Achsenabschnittsform">
-    <InfoBox type="green">
+    <InfoBox color="green">
       <p v-mathjax>
         Wenn man alle Spurpunkte einer Ebene kennt, die nicht durch den Ursprung verläuft, so kann man direkt deren
         <strong>Achsenabschnittsform </strong>(eine spezielle Koordinatengleichung) anlegen.
@@ -664,7 +664,7 @@ import Subsection from "../components/Subsection.vue";
   </ContentSection>
 
   <ContentSection title="Gegenseitige Lage von Ebenen und Geraden">
-    <InfoBox type="green">
+    <InfoBox color="green">
       <ol v-mathjax>
         <li>Wenn der Normalenvektor der Ebene ein Vielfaches des Richtungsvektors ist, so schneidet die Gerade die Ebene
           orthogonal.

@@ -17,7 +17,7 @@ type BoxType = 'blue' | 'green' | 'yellow' | 'red';
 export default defineComponent({
   name: 'InfoBox',
   props: {
-    type: {
+    color: {
       type: String as PropType<BoxType>,
       required: true,
       // Validator ensures that only the allowed types are used
@@ -28,11 +28,11 @@ export default defineComponent({
     provide('insideInfoBox', true);
 
     // Computes the CSS class based on the type prop
-    const boxClass = computed(() => `info-box-${props.type}`);
+    const boxClass = computed(() => `info-box-${props.color}`);
 
     // Computes the icon based on the type prop
     const icon = computed(() => {
-      switch (props.type) {
+      switch (props.color) {
         case 'blue':
           return '💬';
         case 'green':
