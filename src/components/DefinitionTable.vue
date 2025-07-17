@@ -48,6 +48,10 @@ const props = defineProps<{
 }
 
 .definition-table tr:nth-child(even) {
+  background-color: #282828
+}
+
+.matrix-table tr:nth-child(odd) {
   background-color: var(--color-background-secondary);
 }
 

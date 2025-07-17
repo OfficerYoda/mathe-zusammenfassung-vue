@@ -5,6 +5,8 @@ import MultiColumnLayout from "../components/MultiColumnLayout.vue";
 import MathDisplay from "../components/MathDisplay.vue";
 import Subsection from "../components/Subsection.vue";
 import ContentSection from "../components/ContentSection.vue";
+import { trigonometricMatrix } from '../data/matrixTableContents';
+import MatrixTable from "../components/MatrixTable.vue";
 </script>
 
 <template>
@@ -639,6 +641,274 @@ import ContentSection from "../components/ContentSection.vue";
         A \approx 6366m^2
       </MathDisplay>
     </Subsection>
+  </ContentSection>
+
+  <ContentSection title="Eulersche Zahl und natürlicher Logarithmus">
+    <InfoBox type="green">
+      <p v-mathjax>
+        Die eulersche Zahl $e \thickapprox 2{,}72$ ist die Zahl für die gilt:
+      </p>
+      <MathDisplay>
+        f(x) = e^x \qquad f'(x) = e^x \\
+      </MathDisplay>
+    </InfoBox>
+    <InfoBox type="green">
+      <p v-mathjax>
+        Der natürliche Logarithmus $\ln$ ist der Logarithmus zur Basis $e$. Für den $\ln$ gilt:
+      </p>
+      <MathDisplay>
+        \begin{array}{l}
+        e^x = a \\
+        x = \ln(a)
+        \end{array}
+        \qquad \textsf{und} \qquad
+        \begin{align}
+        f(x) &= \ln(x) \\
+        f'(x) &= \frac1x
+        \end{align}
+      </MathDisplay>
+    </InfoBox>
+    <p v-mathjax>
+
+    </p>
+  </ContentSection>
+
+  <ContentSection title="Rechenregeln Potenzen und Logarithmen">
+    <InfoBox type="green">
+      <MultiColumnLayout :columns=2>
+        <template #col-1>
+          <MathDisplay>
+            \begin{align}
+            x^a \cdot x^b &= x^{a+b} \\
+            \frac{x^a}{x^b} &= x^{a-b} \\
+            x^{a^b} &= x^{a \cdot b}
+            \end{align}
+          </MathDisplay>
+        </template>
+        <template #col-2>
+          <MathDisplay>
+            \begin{align}
+            \ln(a \cdot b) &= \ln(a) + \ln(b) \\
+            \ln(\frac ab) &= \ln(a) - \ln(b) \\
+            \ln(a^b) &= b \cdot \ln(a)
+            \end{align}
+          </MathDisplay>
+        </template>
+      </MultiColumnLayout>
+      <p v-mathjax>
+        Die Logarithmusgesetze gelten für alle Logarithmusfunktionen, nicht nur für den natürlichen Logarithmus.
+      </p>
+    </InfoBox>
+    <Subsection title="Beispiele">
+    </Subsection>
+    <MultiColumnLayout :columns=2>
+      <template #col-1>
+        <MathDisplay>
+          \begin{align*}
+          \ln(\frac1e) &= \ln(1)-\ln(e) = -1
+          \\ \\
+          \ln(e^4 \cdot e^2)
+          &= \ln(e^4) + \ln(e^2) = 6\\
+          &= \ln(e^6) = 6
+          \end{align*}
+        </MathDisplay>
+      </template>
+      <template #col-2>
+        <MathDisplay>
+          \begin{align*}
+          \frac{8^{16}}{8^{6}} &= 8^6
+          \\ \\
+          e^{-2 \cdot \ln(4)}
+          &= (e^{\ln(4)})^{-2} &= 4^{-2} &= \frac1{16} \\
+          &= e^{\ln(4^{-2})} &= 4^{-2} &= \frac1{16}
+          \end{align*}
+        </MathDisplay>
+      </template>
+    </MultiColumnLayout>
+  </ContentSection>
+
+  <ContentSection title="Verhalten von Exponentialfunktionen im Unendlichen">
+    <InfoBox type="green">
+      <p v-mathjax>
+        Bei Funktionen der Form $f(x) = x^n \cdot e^{a\cdot x} \ (a \neq 0)$ bestimmt $e^{a \cdot x}$ das Verhalten für
+        $x \rightarrow \pm \infty$. Der Faktor $x^n$ bestimmt das Vorzeichen.
+      </p>
+    </InfoBox>
+    <Subsection title="Beispiele">
+    </Subsection>
+  </ContentSection>
+
+  <ContentSection title="Symmetrie von Funktionsgraphen">
+    <InfoBox type="green">
+      <p v-mathjax>
+        Der Graph von $f$ ist <strong>achsensymmetrisch zur y-Achse</strong>, wenn für alle $x \in D_f : f(-x) = f(x)$
+      </p>
+      <p v-mathjax>
+        Der Graph von $f$ ist <strong>punksymmetrisch um Ursprung</strong>, wenn für alle $x \in D_f : f(-x) = -f(x)$
+      </p>
+    </InfoBox>
+    <MultiColumnLayout :columns=2>
+      <template #col-1>
+        <Subsection title="Beispiele">
+        </Subsection>
+        <MathDisplay>
+          \begin{align*}
+          f(x) &= e^{x^2} + 4 \\
+          f(-x) &= e^{(-x)^2} + 4 \\
+          &= e^{x^2}+4 \\
+          &= f(x) \\
+          \Rightarrow
+          \textsf{Der Graph von } &f
+          \textsf{ ist achsensymmetrisch zur y-Achse}
+          \end{align*}
+        </MathDisplay>
+        <MathDisplay>
+          \begin{align*}
+          g(x) &=
+          \frac15 x \cdot e^{x^2} \\
+          g(-x) &=
+          \frac15 (-x) \cdot e^{(-x)^2} \\
+          &= -\frac15 x \cdot e^{x^2} \\
+          &= -g(x) \\
+          \Rightarrow
+          \textsf{Der Graph von } &f
+          \textsf{ ist punktsymmetrisch zum Ursprung}
+          \end{align*}
+        </MathDisplay>
+      </template>
+      <template #col-2>
+        <p v-mathjax>
+
+        </p>
+        <MathDisplay>
+          \begin{align*}
+          h(x) &= -x^2 \cdot e^x + 1 \\
+          h(-x) &= -(-x)^2 \cdot e^{-x} + 1 \\
+          &= -x^2 \cdot e^{-x} + 1\\
+          \Rightarrow
+          \textsf{keine Sy}
+          &\textsf{mmetrie \underline{erkennbar}}
+          \end{align*}
+        </MathDisplay>
+      </template>
+    </MultiColumnLayout>
+    <InfoBox type="green">
+      <p v-mathjax>
+        Diese Methode funktioniert nur, um die Symmetrie zur y-Achse oder zum Ursprung zu bestimmen.
+      </p>
+      <p v-mathjax>
+        $f(x) = (x-2)^2$ hat eine Achsensymmetrie zu $x=2$, diese kann aber durch diese Methode nicht bestimmt werden.
+        Es wäre also keine Symmetrie bei $f$ erkennbar.
+      </p>
+    </InfoBox>
+    <p v-mathjax>
+
+    </p>
+  </ContentSection>
+
+  <ContentSection title="Funktionsschar">
+    <InfoBox type="green">
+      <p v-mathjax>
+        Enthält eine Funktion $f$ neben der Variable $x$ noch einen <strong>Parameter </strong>$k$ (oder a, b, t usw.),
+        so gehört zu jedem $k$ eine Funktion $f_k$ - Alle Funktionen $f_k$ bilden eine <strong>Funktionsschar</strong>.
+      </p>
+    </InfoBox>
+    <MultiColumnLayout :columns=2>
+      <template #col-1>
+        <Subsection title="Beispiel">
+        </Subsection>
+        <MathDisplay>
+          \begin{align*}
+          f_k(x) = e^x + k \qquad
+          f'_k(x) = e^x \\
+          \\
+          f_0(x) = e^x \qquad f_1(x) = e^x + 1 \quad\textsf{usw.}
+          \end{align*}
+        </MathDisplay>
+        <p v-mathjax>
+          <strong>Nullstellen in Abhängigkeit von </strong>$k$<strong>:</strong>
+        </p>
+        <MathDisplay>
+          \begin{align*}
+          f_k(x) &= 0 \\
+          0 &= e^x + k \quad|-k \\
+          -k &= e^x \qquad \ \ \ |\ln, k < 0 \\
+          x &= \ln(-k), \quad k < 0
+
+          \end{align*}
+        </MathDisplay>
+      </template>
+      <template #col-2>
+      </template>
+    </MultiColumnLayout>
+    <p v-mathjax>
+
+    </p>
+  </ContentSection>
+
+  <ContentSection title="Umkehrfunktion">
+    <Subsection title="Definition">
+    </Subsection>
+    <InfoBox type="green">
+      <p v-mathjax>
+        Eine Funktion $f$ mit der Definitionsmenge $D_f$ und der Wertemenge $W_f$ heißt <strong>umkehrbar</strong>, wenn
+        es für jedes $y \in W_f$ genau <strong>ein</strong> $x \in D_f$ gibt, mit $f(x) = y$. Bei einer umkehrbaren
+        Funktion $f$ heißt die Funktion $\bar f$ mit $\bar f(y)=x$ die <strong>Umkehrfunktion</strong> von $f$.
+      </p>
+      <p v-mathjax>
+        Es gilt:
+      </p>
+      <MathDisplay>
+        \begin{align*}
+        D_{\bar f} &= W_f \\
+        W_{\bar f} &= D_f
+        \end{align*}
+        \qquad
+        \begin{align*}
+        f(\bar f(x)) &= x,
+        \textsf{ für alle }
+        x \in D_{\bar f}\\
+        \bar f(f(x)) &= x,
+        \textsf{ für alle }
+        x \in D_f
+        \end{align*}
+      </MathDisplay>
+      <p v-mathjax>
+        Die Graphen von $f$ und $\bar f$ sind achsensymmetrisch zur ersten Winkelhalbierenden ($y = x$).
+      </p>
+    </InfoBox>
+    <InfoBox type="green">
+      <p v-mathjax>
+        Das Wichtige, was man aus dieser Definition mitnehmen sollte, ist: Wenn $f(x) = y$, dann ist $\bar f(y) = x$.
+        Sowie, dass Definitions- und Wertemenge vertauscht sind.
+      </p>
+    </InfoBox>
+    <Subsection title="Satz">
+    </Subsection>
+    <InfoBox type="green">
+      <p v-mathjax>
+        Ist eine Funktion $f$ streng monoton steigend oder fallend, so ist $f$ umkehrbar.
+      </p>
+    </InfoBox>
+    <Subsection title="Beispiel">
+    </Subsection>
+    <MathDisplay>
+      \begin{align*}
+      f(x) &= \sqrt{4x-2}+1 \\\\
+      y &= f(x) \\
+      y &= \sqrt{4x-2}+1
+      \qquad{|-1} \quad |^2 \\
+      (y-1)^2 &= 4x-2
+      \quad \qquad \quad \ \ |+2 \quad |\cdot \frac14 \\
+      x &= \frac14(y-1)^2+\frac12 \\
+      \\
+      \Rightarrow \bar f(x) &= \frac14(x-1)^2+\frac12 \\
+      \\
+      D_f = W_{\bar f} = [1; \infty[ &
+      \quad W_f = D_{\bar f} = [\frac 12; \infty[
+      \end{align*}
+    </MathDisplay>
+    <MatrixTable :matrixData="trigonometricMatrix" />
   </ContentSection>
 </template>
 

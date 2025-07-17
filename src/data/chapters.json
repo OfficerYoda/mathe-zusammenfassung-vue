@@ -34,6 +34,12 @@
     "Tangenten- und Normalengleichung",
     "Berührpunkte von Funktionsgraphen",
     "Extremwertprobleme",
+    "Eulersche Zahl und natürlicher Logarithmus",
+    "Rechenregeln Potenzen und Logarithmen",
+    "Verhalten von Exponentialfunktionen im Unendlichen",
+    "Symmetrie von Funktionsgraphen",
+    "Funktionsschar",
+    "Umkehrfunktion",
     "Integrale"
   ],
   "Geometrie": [
@@ -70,7 +76,10 @@
     "Volumen Spat",
     "Volumen Pyramide mit viereckiger Grundfläche",
     "Volumen Pyramide mit dreieckiger Grundfläche",
-    "Spiegelung"
+    "Spiegelung an einem Punkt",
+    "Spiegelung an einer Geraden",
+    "Spiegelung an einer Ebene",
+    "Symmetrieebene bestimmen"
   ],
   "Stochastik": [
     "Gambling"
