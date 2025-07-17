@@ -285,7 +285,7 @@ export default defineComponent({
 
 .chapter-overview-link {
   color: var(--color-text-secondary);
-  line-height: 1.2rem;
+  line-height: 1rem;
   text-decoration: none;
   transition: color 0.2s, padding-right 0.2s, padding-left 0.2s;
   padding: 0.25rem 0.75rem 0.25rem 1.5rem;

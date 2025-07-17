@@ -57,29 +57,29 @@ import Subsection from "../components/Subsection.vue";
       </InfoBox>
     </Subsection>
     <Subsection title="Beispiele">
+      <MathDisplay>
+        \left(\begin{matrix}
+        -2 \\ 0 \\ 2
+        \end{matrix}\right)
+        \circ
+        \left(\begin{matrix}
+        1 \\ 2 \\ 4
+        \end{matrix}\right)
+        =
+        -2 \cdot 1 + 0 \cdot 2 + 2 \cdot 4 = 6
+      </MathDisplay>
+      <MathDisplay>
+        \left(\begin{matrix}
+        1 \\ -2 \\ -1
+        \end{matrix}\right)
+        \circ
+        \left(\begin{matrix}
+        3 \\ 1 \\ 1
+        \end{matrix}\right)
+        =
+        1 \cdot 3 + (-2) \cdot 1 + (-1) \cdot 1 = 0
+      </MathDisplay>
     </Subsection>
-    <MathDisplay>
-      \left(\begin{matrix}
-      -2 \\ 0 \\ 2
-      \end{matrix}\right)
-      \circ
-      \left(\begin{matrix}
-      1 \\ 2 \\ 4
-      \end{matrix}\right)
-      =
-      -2 \cdot 1 + 0 \cdot 2 + 2 \cdot 4 = 6
-    </MathDisplay>
-    <MathDisplay>
-      \left(\begin{matrix}
-      1 \\ -2 \\ -1
-      \end{matrix}\right)
-      \circ
-      \left(\begin{matrix}
-      3 \\ 1 \\ 1
-      \end{matrix}\right)
-      =
-      1 \cdot 3 + (-2) \cdot 1 + (-1) \cdot 1 = 0
-    </MathDisplay>
   </ContentSection>
 
   <ContentSection title="Kreuzprodukt">
@@ -127,44 +127,44 @@ import Subsection from "../components/Subsection.vue";
       </InfoBox>
     </Subsection>
     <Subsection title="Beispiele">
+      <MathDisplay>
+        \left(\begin{matrix}
+        3 \\ -5 \\ 1
+        \end{matrix}\right)
+        \times
+        \left(\begin{matrix}
+        -2 \\ 0 \\ 4
+        \end{matrix}\right)
+        =
+        \left(\begin{matrix}
+        -5 \cdot 4 - 1 \cdot 0\\
+        1 \cdot (-2) - 3 \cdot 4 \\
+        3 \cdot 0 - (-5) \cdot -2
+        \end{matrix}\right)
+        =
+        \left(\begin{matrix}
+        -20 \\ -14 \\ -10
+        \end{matrix}\right)
+      </MathDisplay>
+      <MathDisplay>
+        \left(\begin{matrix}
+        2 \\ 4 \\ -1
+        \end{matrix}\right)
+        \times
+        \left(\begin{matrix}
+        1 \\ -3 \\ 2
+        \end{matrix}\right)
+        =
+        \left(\begin{matrix}
+        4 \cdot 2 - (-1) \cdot (-3) \\
+        (-1) \cdot 1 - 2 \cdot 2 \\
+        2 \cdot (-3) - 4 \cdot 1\end{matrix}\right)
+        =
+        \left(\begin{matrix}
+        5 \\ -5 \\ -10
+        \end{matrix}\right)
+      </MathDisplay>
     </Subsection>
-    <MathDisplay>
-      \left(\begin{matrix}
-      3 \\ -5 \\ 1
-      \end{matrix}\right)
-      \times
-      \left(\begin{matrix}
-      -2 \\ 0 \\ 4
-      \end{matrix}\right)
-      =
-      \left(\begin{matrix}
-      -5 \cdot 4 - 1 \cdot 0\\
-      1 \cdot (-2) - 3 \cdot 4 \\
-      3 \cdot 0 - (-5) \cdot -2
-      \end{matrix}\right)
-      =
-      \left(\begin{matrix}
-      -20 \\ -14 \\ -10
-      \end{matrix}\right)
-    </MathDisplay>
-    <MathDisplay>
-      \left(\begin{matrix}
-      2 \\ 4 \\ -1
-      \end{matrix}\right)
-      \times
-      \left(\begin{matrix}
-      1 \\ -3 \\ 2
-      \end{matrix}\right)
-      =
-      \left(\begin{matrix}
-      4 \cdot 2 - (-1) \cdot (-3) \\
-      (-1) \cdot 1 - 2 \cdot 2 \\
-      2 \cdot (-3) - 4 \cdot 1\end{matrix}\right)
-      =
-      \left(\begin{matrix}
-      5 \\ -5 \\ -10
-      \end{matrix}\right)
-    </MathDisplay>
   </ContentSection>
 
   <ContentSection title="Geradengleichung">
@@ -642,22 +642,22 @@ import Subsection from "../components/Subsection.vue";
       </p>
     </InfoBox>
     <Subsection title="Beispiel">
+      <MathDisplay>
+        S_1 (5 \, | \, 0 \, | \, 0) \quad
+        S_2 (0 \, | \ {-2} \, | \, 0) \quad
+        S_3 (0 \, | \, 0 \, | \, 0{,}5)
+      </MathDisplay>
+      <MathDisplay>
+        \begin{align*}
+        \Rightarrow
+        E: \frac 15 x_1 -
+        \frac12 x_2 + 2x_3 &= 1
+        \quad | \cdot 10
+        \\
+        E: 2x_1 - 5x_2 + 20x_3 &= 10
+        \end{align*}
+      </MathDisplay>
     </Subsection>
-    <MathDisplay>
-      S_1 (5 \, | \, 0 \, | \, 0) \quad
-      S_2 (0 \, | \ {-2} \, | \, 0) \quad
-      S_3 (0 \, | \, 0 \, | \, 0{,}5)
-    </MathDisplay>
-    <MathDisplay>
-      \begin{align*}
-      \Rightarrow
-      E: \frac 15 x_1 -
-      \frac12 x_2 + 2x_3 &= 1
-      \quad | \cdot 10
-      \\
-      E: 2x_1 - 5x_2 + 20x_3 &= 10
-      \end{align*}
-    </MathDisplay>
   </ContentSection>
 
   <ContentSection title="Gegenseitige Lage von Ebenen und Geraden">
@@ -688,7 +688,7 @@ import Subsection from "../components/Subsection.vue";
     </MathDisplay>
     <MathDisplay>
       \begin{array}{c}
-      \text{Schneide } E \text{ & } g
+      \text{Schneide } E \& g
       \text{ (} g \text{ in } E \text{ einsetzen): }
       \\
       \begin{align*}

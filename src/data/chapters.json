@@ -51,7 +51,26 @@
     "Spurpunkte und Spurgeraden",
     "Achsenabschnittsform",
     "Gegenseitige Lage von Ebenen und Geraden",
-    "Gegenseitige Lage von Ebenen"
+    "Gegenseitige Lage von Ebenen",
+    "Abstandsberechnungen (Übersicht)",
+    "Hesse’sche Normal(en)form (HNF)",
+    "Abstand Punkt-Ebene",
+    "Abstand Punkt-Gerade",
+    "Abstand Gerade-Gerade (Parallel)",
+    "Abstand Gerade-Gerade (Windschief)",
+    "Abstand Gerade-Ebene (Parallel)",
+    "Abstand Ebene-Ebene (Parallel)",
+    "Gemeinsames Lot windschiefer Geraden bestimmen",
+    "Winkel zwischen Vektoren",
+    "Schnittwinkel Gerade-Gerade",
+    "Schnittwinkel Ebene-Ebene",
+    "Schnittwinkel Gerade-Ebene",
+    "Flächeninhalt Parallelogramm",
+    "Flächeninhalt Dreieck",
+    "Volumen Spat",
+    "Volumen Pyramide mit viereckiger Grundfläche",
+    "Volumen Pyramide mit dreieckiger Grundfläche",
+    "Spiegelung"
   ],
   "Stochastik": [
     "Gambling"
