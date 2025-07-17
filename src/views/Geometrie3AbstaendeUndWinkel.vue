@@ -340,8 +340,6 @@ import Subsection from "../components/Subsection.vue";
         <li>Stelle eine Hilfsebene $E$ mit Normalenvektor $\vec n = \vec u \times \vec v$ auf, die $P$ enthält. Dadurch
           ist $E$ parallel zu $h$ und enthält $g$.
         </li>
-      </ol>
-      <ol v-mathjax>
         <li>$d(g, h) = d(E, h) = \underbrace{d(E, Q)}_{\text{HNF}}$</li>
       </ol>
       <p v-mathjax>
@@ -1195,82 +1193,80 @@ import Subsection from "../components/Subsection.vue";
     </Subsection>
   </ContentSection>
 
-  <ContentSection title="Spiegelung">
-    <p v-mathjax>
-
-    </p>
+  <ContentSection title="Spiegelung an einem Punkt">
     <MultiColumnLayout :columns=2 image-layout :image-width=75>
       <template #col-1>
-        <Subsection title="An einem Punkt spiegeln">
-          <InfoBox type="green">
-            <MathDisplay>
-              \begin{align*}
-              \overrightarrow{OP'} &=
-              \overrightarrow{OP} + 2 \cdot \overrightarrow{PZ}\\
-              &=
-              \overrightarrow{OZ} +
-              \overrightarrow{PZ}
-              \end{align*}
-            </MathDisplay>
-          </InfoBox>
-        </Subsection>
+        <InfoBox type="green">
+          <MathDisplay>
+            \begin{align*}
+            \overrightarrow{OP'} &=
+            \overrightarrow{OP} + 2 \cdot \overrightarrow{PZ}\\
+            &=
+            \overrightarrow{OZ} +
+            \overrightarrow{PZ}
+            \end{align*}
+          </MathDisplay>
+        </InfoBox>
       </template>
       <template #col-2>
         <p/> <!-- Padding paragraph -->
         <img src="/images/Spiegelung_Punkt.png" alt="Spiegelung_Punkt">
       </template>
     </MultiColumnLayout>
+  </ContentSection>
+
+  <ContentSection title="Spiegelung an einer Geraden">
     <MultiColumnLayout :columns=2 image-layout :image-width=75>
       <template #col-1>
-        <Subsection title="An einer Geraden spiegeln">
-          <InfoBox type="green">
-            <ol v-mathjax>
-              <li>Stelle eine Hilfsebene $H$ auf, die durch $P$ verläuft und als Normalenvektor den Richtungsvektor von
-                $g$ hat.
-              </li>
-              <li>Erhalte den Punkt $F$ als Schnittpunkt von $g$ und $H$.</li>
-              <li>Punktspiegelung an $F$: $\overrightarrow{OP'} = \overrightarrow{OF} + \overrightarrow{PF}$</li>
-            </ol>
-          </InfoBox>
-        </Subsection>
+        <InfoBox type="green">
+          <ol v-mathjax>
+            <li>Stelle eine Hilfsebene $H$ auf, die durch $P$ verläuft und als Normalenvektor den Richtungsvektor von
+              $g$ hat.
+            </li>
+            <li>Erhalte den Punkt $F$ als Schnittpunkt von $g$ und $H$.</li>
+            <li>Punktspiegelung an $F$: $\overrightarrow{OP'} = \overrightarrow{OF} + \overrightarrow{PF}$</li>
+          </ol>
+        </InfoBox>
       </template>
       <template #col-2>
         <p/> <!-- Padding paragraph -->
         <img src="/images/Spiegelung_Gerade.png" alt="Spiegelung_Gerade">
       </template>
     </MultiColumnLayout>
+  </ContentSection>
+
+  <ContentSection title="Spiegelung an einer Ebene">
     <MultiColumnLayout :columns=2 image-layout :image-width=75>
       <template #col-1>
-        <Subsection title="An einer Ebene Spiegeln">
-          <InfoBox type="green">
-            <ol v-mathjax>
-              <li>Stelle eine Gerade $g$ auf, deren Richtungsvektor dem Normalenvektor von $E$ entspricht und $P$
-                enthält.
-              </li>
-              <li>Erhalte den Punkt $F$ als Schnittpunkt von $g$ und $E$.</li>
-              <li>Punktspiegelung an $F$: $\overrightarrow{OP'} = \overrightarrow{OF} + \overrightarrow{PF}$</li>
-            </ol>
-          </InfoBox>
-        </Subsection>
+        <InfoBox type="green">
+          <ol v-mathjax>
+            <li>Stelle eine Gerade $g$ auf, deren Richtungsvektor dem Normalenvektor von $E$ entspricht und $P$
+              enthält.
+            </li>
+            <li>Erhalte den Punkt $F$ als Schnittpunkt von $g$ und $E$.</li>
+            <li>Punktspiegelung an $F$: $\overrightarrow{OP'} = \overrightarrow{OF} + \overrightarrow{PF}$</li>
+          </ol>
+        </InfoBox>
       </template>
       <template #col-2>
         <p/> <!-- Padding paragraph -->
         <img src="/images/Spiegelung_Ebene.png" alt="Spiegelung_Ebene">
       </template>
     </MultiColumnLayout>
+  </ContentSection>
+
+  <ContentSection title="Symmetrieebene bestimmen">
     <MultiColumnLayout :columns=2 image-layout :image-width=75>
       <template #col-1>
-        <Subsection title="Symmetrieebene bestimmen">
-          <InfoBox type="green">
-            <ol v-mathjax>
-              <li>Berechne den Mittelpunkt $M$ von $P$ und $P’$.</li>
-              <li>Stelle eine Gleichung für $E$ auf, sodass $M$ in $E$ liegt und $\overrightarrow{PP'}$ der
-                Normalenvektor
-                von $E$ ist.
-              </li>
-            </ol>
-          </InfoBox>
-        </Subsection>
+        <InfoBox type="green">
+          <ol v-mathjax>
+            <li>Berechne den Mittelpunkt $M$ von $P$ und $P’$.</li>
+            <li>Stelle eine Gleichung für $E$ auf, sodass $M$ in $E$ liegt und $\overrightarrow{PP'}$ der
+              Normalenvektor
+              von $E$ ist.
+            </li>
+          </ol>
+        </InfoBox>
       </template>
       <template #col-2>
         <p/> <!-- Padding paragraph -->
