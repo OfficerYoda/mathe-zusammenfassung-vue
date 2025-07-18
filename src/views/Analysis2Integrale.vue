@@ -63,9 +63,6 @@ import {determineStemFunctions, stemFunctions1, stemFunctions2} from "../data/ma
         \tag{4}
       </MathDisplay>
     </InfoBox>
-    <p v-mathjax>
-
-    </p>
   </ContentSection>
 
   <ContentSection title="Stammfunktion">

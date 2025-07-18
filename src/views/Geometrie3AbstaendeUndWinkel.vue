@@ -325,7 +325,7 @@ import Subsection from "../components/Subsection.vue";
     </MultiColumnLayout>
     <Subsection title="Beispiel">
       <p v-mathjax>
-        Siehe Beispiel <a href="/geometrie#abstand-punkt-gerade">Abstand Punkt-Gerade.</a>
+        Siehe Beispiel <a href="/geometrie#abstand-punkt-gerade">Abstand Punkt-Gerade</a>.
       </p>
     </Subsection>
   </ContentSection>

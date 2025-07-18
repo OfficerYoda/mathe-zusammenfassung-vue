@@ -683,9 +683,6 @@ import MatrixTable from "../components/MatrixTable.vue";
         \end{align}
       </MathDisplay>
     </InfoBox>
-    <p v-mathjax>
-
-    </p>
   </ContentSection>
 
   <ContentSection title="Rechenregeln Potenzen und Logarithmen">
