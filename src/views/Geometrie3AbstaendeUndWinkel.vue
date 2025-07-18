@@ -5,13 +5,14 @@ import MultiColumnLayout from "../components/MultiColumnLayout.vue";
 import InfoBox from "../components/InfoBox.vue";
 import MathDisplay from "../components/MathDisplay.vue";
 import Subsection from "../components/Subsection.vue";
+import ClickableImage from "../components/ClickableImage.vue";
 </script>
 
 <template>
   <ContentSection title="Abstandsberechnungen (Übersicht)">
     <InfoBox color="green">
-      <img src="/images/Diagram_Abstandberechnung.png" alt="Diagramm_Abstandberechnung"
-           style="max-width:100%; height:auto; display:block; margin:0 auto; border-radius: 5px"/>
+      <ClickableImage src="/images/Diagram_Abstandberechnung.png" alt="Diagram_Abstandberechnung.png"
+                      style="max-width:100%; height:auto; display:block; margin:0 auto; border-radius: 5px"/>
     </InfoBox>
   </ContentSection>
 
@@ -320,7 +321,7 @@ import Subsection from "../components/Subsection.vue";
         </InfoBox>
       </template>
       <template #col-2>
-        <img src="/images/Graph_Abstand-Geraden-Parallel.png" alt="Graph_Abstand-Geraden-Parallel">
+        <ClickableImage src="/images/Graph_Abstand-Geraden-Parallel.png" alt="Graph_Abstand-Geraden-Parallel.png"/>
       </template>
     </MultiColumnLayout>
     <Subsection title="Beispiel">
@@ -348,8 +349,8 @@ import Subsection from "../components/Subsection.vue";
         $d(g, h) = \left | (\vec q - \vec p) \circ \vec n_0 \right |$
       </p>
     </InfoBox>
-    <img src="/images/3D_Abstand-Geraden-Windschief.png" alt="3D_Abstand-Geraden-Windschief"
-         style="max-width:50%; height:auto; display:block; margin:0 auto; padding-top: 1rem; border-radius: 5px;"/>
+    <ClickableImage src="/images/3D_Abstand-Geraden-Windschief.png" alt="3D_Abstand-Geraden-Windschief.png"
+                    style="max-width:50%; height:auto; display:block; margin:0 auto; padding-top: 1rem; border-radius: 5px;"/>
     <Subsection title="Beispiel">
       <MathDisplay>
         g: \vec x =
@@ -641,7 +642,7 @@ import Subsection from "../components/Subsection.vue";
         </InfoBox>
       </template>
       <template #col-2>
-        <img src="/images/Winkel_Vektoren.png" alt="Winkel_Vektoren">
+        <ClickableImage src="/images/Winkel_Vektoren.png" alt="Winkel_Vektoren.png"/>
       </template>
     </MultiColumnLayout>
     <Subsection title="Beispiel">
@@ -709,7 +710,7 @@ import Subsection from "../components/Subsection.vue";
         </InfoBox>
       </template>
       <template #col-2>
-        <img src="/images/Winkel_Gerade-Gerade.png" alt="Winkel_Gerade-Gerade">
+        <ClickableImage src="/images/Winkel_Gerade-Gerade.png" alt="Winkel_Gerade-Gerade.png"/>
       </template>
     </MultiColumnLayout>
     <Subsection title="Beispiel">
@@ -779,7 +780,7 @@ import Subsection from "../components/Subsection.vue";
         </InfoBox>
       </template>
       <template #col-2>
-        <img src="/images/Winkel_Ebene-Ebene.png" alt="Winkel_Ebene-Ebene">
+        <ClickableImage src="/images/Winkel_Ebene-Ebene.png" alt="Winkel_Ebene-Ebene.png"/>
       </template>
     </MultiColumnLayout>
     <Subsection title="Beispiel">
@@ -805,7 +806,7 @@ import Subsection from "../components/Subsection.vue";
         </InfoBox>
       </template>
       <template #col-2>
-        <img src="/images/Winkel_Ebene-Gerade.png" alt="Winkel_Ebene-Gerade">
+        <ClickableImage src="/images/Winkel_Ebene-Gerade.png" alt="Winkel_Ebene-Gerade.png"/>
       </template>
     </MultiColumnLayout>
     <Subsection title="Beispiel">
@@ -874,7 +875,7 @@ import Subsection from "../components/Subsection.vue";
         </InfoBox>
       </template>
       <template #col-2>
-        <img src="/images/Fläche_Parallelogramm.png" alt="Winkel_Parallelogram">
+        <ClickableImage src="/images/Fläche_Parallelogramm.png" alt="Fläche_Parallelogramm.png"/>
       </template>
     </MultiColumnLayout>
     <Subsection title="Beispiel">
@@ -926,7 +927,7 @@ import Subsection from "../components/Subsection.vue";
         </InfoBox>
       </template>
       <template #col-2>
-        <img src="/images/Fläche_Dreieck.png" alt="Winkel_Dreieck">
+        <ClickableImage src="/images/Fläche_Dreieck.png" alt="Fläche_Dreieck.png"/>
       </template>
     </MultiColumnLayout>
     <Subsection title="Beispiel">
@@ -983,7 +984,7 @@ import Subsection from "../components/Subsection.vue";
         </InfoBox>
       </template>
       <template #col-2>
-        <img src="/images/Volumen_Spat.png" alt="Volumen_Spat">
+        <ClickableImage src="/images/Volumen_Spat.png" alt="Volumen_Spat.png"/>
       </template>
     </MultiColumnLayout>
     <Subsection title="Beispiel">
@@ -1053,7 +1054,7 @@ import Subsection from "../components/Subsection.vue";
         </InfoBox>
       </template>
       <template #col-2>
-        <img src="/images/Volumen_Pyramide_Viereckig.png" alt="Volumen_Pyramide_Viereckig">
+        <ClickableImage src="/images/Volumen_Pyramide_Viereckig.png" alt="Volumen_Pyramide_Viereckig.png"/>
       </template>
     </MultiColumnLayout>
     <Subsection title="Beispiel">
@@ -1126,7 +1127,7 @@ import Subsection from "../components/Subsection.vue";
         </InfoBox>
       </template>
       <template #col-2>
-        <img src="/images/Volumen_Pyramide.png" alt="Volumen_Pyramide_Dreieckig">
+        <ClickableImage src="/images/Volumen_Pyramide.png" alt="Volumen_Pyramide.png"/>
       </template>
     </MultiColumnLayout>
     <Subsection title="Beispiel">
@@ -1199,7 +1200,7 @@ import Subsection from "../components/Subsection.vue";
         </InfoBox>
       </template>
       <template #col-2>
-        <img src="/images/Spiegelung_Punkt.png" alt="Spiegelung_Punkt">
+        <ClickableImage src="/images/Spiegelung_Punkt.png" alt="Spiegelung_Punkt.png"/>
       </template>
     </MultiColumnLayout>
   </ContentSection>
@@ -1218,7 +1219,7 @@ import Subsection from "../components/Subsection.vue";
         </InfoBox>
       </template>
       <template #col-2>
-        <img src="/images/Spiegelung_Gerade.png" alt="Spiegelung_Gerade">
+        <ClickableImage src="/images/Spiegelung_Gerade.png" alt="Spiegelung_Gerade.png"/>
       </template>
     </MultiColumnLayout>
   </ContentSection>
@@ -1237,7 +1238,7 @@ import Subsection from "../components/Subsection.vue";
         </InfoBox>
       </template>
       <template #col-2>
-        <img src="/images/Spiegelung_Ebene.png" alt="Spiegelung_Ebene">
+        <ClickableImage src="/images/Spiegelung_Ebene.png" alt="Spiegelung_Ebene.png"/>
       </template>
     </MultiColumnLayout>
   </ContentSection>
@@ -1256,7 +1257,7 @@ import Subsection from "../components/Subsection.vue";
         </InfoBox>
       </template>
       <template #col-2>
-        <img src="/images/Spiegelung_Symmetrieebene.png" alt="Spiegelung_Symmetrieebene">
+        <ClickableImage src="/images/Spiegelung_Symmetrieebene.png" alt="Spiegelung_Symmetrieebene.png"/>
       </template>
     </MultiColumnLayout>
   </ContentSection>

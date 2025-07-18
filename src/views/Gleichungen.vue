@@ -92,9 +92,9 @@ import ClickableImage from "../components/ClickableImage.vue";
       </MultiColumnLayout>
     </Subsection>
     <Subsection title="Nicht (analytisch) Lösbar">
-          <MathDisplay>
-            x^3-7x^2+5=0
-          </MathDisplay>
+      <MathDisplay>
+        x^3-7x^2+5=0
+      </MathDisplay>
     </Subsection>
   </ContentSection>
 
@@ -359,10 +359,7 @@ import ClickableImage from "../components/ClickableImage.vue";
         </Subsection>
       </template>
       <template #col-2>
-        <ClickableImage
-          src="/images/Graph_SinCos.png"
-          alt="Graph von Sinus und Cosinus"
-        />
+        <ClickableImage src="/images/Graph_SinCos.png" alt="Graph_SinCos.png"/>
       </template>
     </MultiColumnLayout>
     <MathDisplay>
@@ -370,31 +367,25 @@ import ClickableImage from "../components/ClickableImage.vue";
       \ \ x \in \mathbb{R}
     </MathDisplay>
     <MathDisplay>
-      \begin{align*}
-      \\
-      \text{Substitution}
-      \end{align*}
-    </MathDisplay>
-    <MathDisplay>
+      \begin{array}{c}
+      \text{Substitution} \\
       \begin{align*}
       u &= \pi x \\
       \Rightarrow \sin(u) &= -1 \\
       \Rightarrow u &= \frac{3}{2}\pi + k\cdot2\pi,
-      \ \ k \in \mathbb{Z}
+      \ \ k \ in \mathbb{Z}
       \end{align*}
+      \end{array}
     </MathDisplay>
     <MathDisplay>
-      \begin{align*}
-      \\
-      \text{Rücksubstitution}
-      \end{align*}
-    </MathDisplay>
-    <MathDisplay>
+      \begin{array}{c}
+      \text{Rücksubstitution} \\
       \begin{align*}
       \pi x &= \frac{3}{2}\pi + k\cdot2\pi
       \quad | {: \pi}\\
       x &= \frac{3}{2} + 2k
       \end{align*}
+      \end{array}
     </MathDisplay>
     <MathDisplay>
       \begin{gather*}

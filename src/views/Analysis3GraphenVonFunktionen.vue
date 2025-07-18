@@ -7,6 +7,7 @@ import MathDisplay from "../components/MathDisplay.vue";
 import MultiColumnLayout from "../components/MultiColumnLayout.vue";
 import MatrixTable from "../components/MatrixTable.vue";
 import {horizontalAsymptotes} from "../data/matrixTableContents.ts";
+import ClickableImage from "../components/ClickableImage.vue";
 </script>
 
 <template>
@@ -98,7 +99,7 @@ import {horizontalAsymptotes} from "../data/matrixTableContents.ts";
           </p>
         </template>
         <template #col-2>
-          <img src="/images/Graph_SinCos.png" alt="/images/Graph_SinCos">
+          <ClickableImage src="/images/Graph_SinCos.png" alt="Graph_SinCos.png"/>
         </template>
       </MultiColumnLayout>
     </Subsection>
@@ -263,7 +264,7 @@ import {horizontalAsymptotes} from "../data/matrixTableContents.ts";
           </p>
         </template>
         <template #col-2>
-          <img src="/images/Graph_Graphenzuordnung.png" alt="Graph_Graphenzuordnung">
+          <ClickableImage src="/images/Graph_Graphenzuordnung.png" alt="Graph_Graphenzuordnung.png"/>
         </template>
       </MultiColumnLayout>
       <p v-mathjax>

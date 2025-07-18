@@ -5,6 +5,7 @@ import MultiColumnLayout from "../components/MultiColumnLayout.vue";
 import InfoBox from "../components/InfoBox.vue";
 import MathDisplay from "../components/MathDisplay.vue";
 import Subsection from "../components/Subsection.vue";
+import ClickableImage from "../components/ClickableImage.vue";
 </script>
 
 <template>
@@ -112,7 +113,7 @@ import Subsection from "../components/Subsection.vue";
         </InfoBox>
       </template>
       <template #col-2>
-        <img src="/images/Kreuzprodukt-Eselsbrücke.png" alt="Kreuzprodukt-Eselsbrücke">
+        <ClickableImage src="/images/Kreuzprodukt-Eselsbrücke.png" alt="Kreuzprodukt-Eselsbrücke.png"/>
       </template>
     </MultiColumnLayout>
     <Subsection title="Satz">
@@ -431,7 +432,7 @@ import Subsection from "../components/Subsection.vue";
           </MathDisplay>
         </template>
         <template #col-2>
-          <img src="/images/3D_Ebene-Normalengleichung.png" alt="3d_Ebene-Normalengleichung">
+          <ClickableImage src="/images/3D_Ebene-Normalengleichung.png" alt="3D_Ebene-Normalengleichung.png"/>
         </template>
       </MultiColumnLayout>
     </Subsection>
@@ -614,7 +615,7 @@ import Subsection from "../components/Subsection.vue";
       </template>
       <template #col-2>
         <p/>
-        <img src="/images/3D_Spurpunkte-3.png" alt="3D_Spurpunkte-3">
+        <ClickableImage src="/images/3D_Spurpunkte-3.png" alt="3D_Spurpunkte-3.png"/>
       </template>
     </MultiColumnLayout>
     <MultiColumnLayout :columns=2 image-layout :image-width=130>
@@ -623,7 +624,7 @@ import Subsection from "../components/Subsection.vue";
       </template>
       <template #col-2>
         <p/>
-        <img src="/images/3D_Spurpunkte-2.png" alt="3D_Spurpunkte-2">
+        <ClickableImage src="/images/3D_Spurpunkte-2.png" alt="3D_Spurpunkte-2.png"/>
       </template>
     </MultiColumnLayout>
     <MultiColumnLayout :columns=2 image-layout :image-width=130>
@@ -632,7 +633,7 @@ import Subsection from "../components/Subsection.vue";
       </template>
       <template #col-2>
         <p/>
-        <img src="/images/3D_Spurpunkte-1.png" alt="3D_Spurpunkte-1">
+        <ClickableImage src="/images/3D_Spurpunkte-1.png" alt="3D_Spurpunkte-1.png"/>
       </template>
     </MultiColumnLayout>
   </ContentSection>
@@ -711,7 +712,6 @@ import Subsection from "../components/Subsection.vue";
       t=4 \text{ in } g \text{ einsetzen:}
       \\
       \boxed{
-      \Rightarrow
       S(-5 \, | \, 10 \, | 12)
       }
       \end{array}
@@ -722,7 +722,7 @@ import Subsection from "../components/Subsection.vue";
     <MultiColumnLayout :columns=2 image-layout :image-columns="[1, 2]">
       <template #col-1>
         <Subsection title="Identisch" style="padding-top: 0rem; margin-top: 0">
-          <img src="/images/3D_Ebenen-Identisch.png" alt="3D_Ebenen-Identisch">
+          <ClickableImage src="/images/3D_Ebenen-Identisch.png" alt="3D_Ebenen-Identisch.png"/>
           <p v-mathjax>
             Normalenvektoren und Koordinatengleichungen sind Vielfache voneinander.
           </p>
@@ -730,7 +730,7 @@ import Subsection from "../components/Subsection.vue";
       </template>
       <template #col-2>
         <Subsection title="Parallel">
-          <img src="/images/3D_Ebenen-Parallel.png" alt="3D_Ebenen-Parallel">
+          <ClickableImage src="/images/3D_Ebenen-Parallel.png" alt="3D_Ebenen-Parallel.png"/>
           <p v-mathjax>
             Normalenvektoren sind Vielfache voneinander, aber Koordinatengleichungen sind keine vielfache voneinander.
           </p>
@@ -747,7 +747,7 @@ import Subsection from "../components/Subsection.vue";
           </MathDisplay>
         </template>
         <template #col-2>
-          <img src="/images/3D_Ebenen-Schneiden.png" alt="3D_Ebene-Schneidend">
+          <ClickableImage src="/images/3D_Ebenen-Schneiden.png" alt="3D_Ebenen-Schneiden.png"/>
         </template>
       </MultiColumnLayout>
       <MultiColumnLayout :columns=2>

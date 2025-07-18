@@ -6,6 +6,7 @@ import Subsection from "../components/Subsection.vue";
 import MathDisplay from "../components/MathDisplay.vue";
 import MatrixTable from "../components/MatrixTable.vue";
 import {determineStemFunctions, stemFunctions1, stemFunctions2} from "../data/matrixTableContents.ts";
+import ClickableImage from "../components/ClickableImage.vue";
 </script>
 
 <template>
@@ -32,7 +33,7 @@ import {determineStemFunctions, stemFunctions1, stemFunctions2} from "../data/ma
           </p>
         </template>
         <template #col-2>
-          <img src="/images/Graph_Integral-Perfect.png" alt="Graph_Integral">
+          <ClickableImage src="/images/Graph_Integral-Perfect.png" alt="Graph_Integral-Perfect.png"/>
         </template>
       </MultiColumnLayout>
     </Subsection>
@@ -165,7 +166,7 @@ import {determineStemFunctions, stemFunctions1, stemFunctions2} from "../data/ma
           </MathDisplay>
         </template>
         <template #col-2>
-          <img src="/images/Graph_Fläche-zw-Graphen.png" alt="Graph_Fläche-zw-Graphen">
+          <ClickableImage src="/images/Graph_Fläche-zw-Graphen.png" alt="Graph_Fläche-zw-Graphen.png"/>
         </template>
       </MultiColumnLayout>
     </Subsection>
@@ -200,7 +201,7 @@ import {determineStemFunctions, stemFunctions1, stemFunctions2} from "../data/ma
           </MathDisplay>
         </template>
         <template #col-2>
-          <img src="/images/3D_Rotationskörper.png" alt="3D_Rotationskörper">
+          <ClickableImage src="/images/3D_Rotationskörper.png" alt="3D_Rotationskörper.png"/>
           <sub>links der Graph, rechts der Rotationskörper</sub>
         </template>
       </MultiColumnLayout>

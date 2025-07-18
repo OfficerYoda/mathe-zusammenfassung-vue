@@ -7,6 +7,7 @@ import Subsection from "../components/Subsection.vue";
 import ContentSection from "../components/ContentSection.vue";
 import {behaviorInTheInfinite} from '../data/matrixTableContents';
 import MatrixTable from "../components/MatrixTable.vue";
+import ClickableImage from "../components/ClickableImage.vue";
 </script>
 
 <template>
@@ -309,7 +310,7 @@ import MatrixTable from "../components/MatrixTable.vue";
           </p>
         </template>
         <template #col-2>
-          <img src="/images/Graph_Wendestelle.png" alt="Graph_Wendestelle.png">
+          <ClickableImage src="/images/Graph_Wendestelle.png" alt="Graph_Wendestelle.png"/>
         </template>
       </MultiColumnLayout>
     </Subsection>
@@ -391,7 +392,7 @@ import MatrixTable from "../components/MatrixTable.vue";
           </MathDisplay>
         </template>
         <template #col-2>
-          <img src="/images/Graph_Extremstellen.png" alt="Graph_Extremstellen">
+          <ClickableImage src="/images/Graph_Extremstellen.png" alt="Graph_Extremstellen.png"/>
         </template>
       </MultiColumnLayout>
     </Subsection>
@@ -459,7 +460,7 @@ import MatrixTable from "../components/MatrixTable.vue";
           </MathDisplay>
         </template>
         <template #col-2>
-          <img src="/images/Graph_Wendestelle.png" alt="Graph_Wendestelle.png">
+          <ClickableImage src="/images/Graph_Wendestelle.png" alt="Graph_Wendestelle.png"/>
         </template>
       </MultiColumnLayout>
     </Subsection>
@@ -527,7 +528,7 @@ import MatrixTable from "../components/MatrixTable.vue";
           </MathDisplay>
         </template>
         <template #col-2>
-          <img src="/images/Graph_Tangente+Normale.png" alt="Graph_Tangente+Normale.png">
+          <ClickableImage src="/images/Graph_Tangente+Normale.png" alt="Graph_Tangente+Normale.png"/>
         </template>
       </MultiColumnLayout>
     </Subsection>
@@ -594,7 +595,7 @@ import MatrixTable from "../components/MatrixTable.vue";
           </MathDisplay>
         </template>
         <template #col-2>
-          <img src="/images/Graph_Berührpunkte.png" alt="Graph_Berührpunkte.png">
+          <ClickableImage src="/images/Graph_Berührpunkte.png" alt="Graph_Berührpunkte.png"/>
         </template>
       </MultiColumnLayout>
     </Subsection>
@@ -610,7 +611,7 @@ import MatrixTable from "../components/MatrixTable.vue";
           </p>
         </template>
         <template #col-2>
-          <img src="/images/Diagram_Stadion.png" alt="Diagram_Stadion.png">
+          <ClickableImage src="/images/Diagram_Stadion.png" alt="Diagram_Stadion.png"/>
         </template>
       </MultiColumnLayout>
       <p>1. Aufstellen eines Terms der möglichst groß/klein werden soll</p>
@@ -798,7 +799,7 @@ import MatrixTable from "../components/MatrixTable.vue";
           </MathDisplay>
         </template>
         <template #col-2>
-          <img src="/images/Graph_Symmetrie.png" alt="Graph_Symmetrie">
+          <ClickableImage src="/images/Graph_Symmetrie.png" alt="Graph_Symmetrie.png"/>
         </template>
       </MultiColumnLayout>
     </Subsection>
@@ -850,7 +851,7 @@ import MatrixTable from "../components/MatrixTable.vue";
           </MathDisplay>
         </template>
         <template #col-2>
-          <img src="/images/Graph_Funktionsschar.png" alt="Graph_Funktionsschar">
+          <ClickableImage src="/images/Graph_Funktionsschar.png" alt="Graph_Funktionsschar.png"/>
         </template>
       </MultiColumnLayout>
     </Subsection>
