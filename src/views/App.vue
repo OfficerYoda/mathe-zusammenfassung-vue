@@ -1,12 +1,14 @@
 <script lang="ts">
-import {defineComponent, ref, computed} from 'vue';
+import {defineComponent, ref, computed, provide} from 'vue';
 import ContentSection from '../components/ContentSection.vue';
 import InfoBox from '../components/InfoBox.vue';
 import MathDisplay from '../components/MathDisplay.vue';
+import ImageLightbox from '../components/ImageLightbox.vue';
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 import {useRoute} from "vue-router";
 import chaptersData from '../data/chapters.json';
 import {kebabUriCase} from "../utils/string.ts";
+import {useImageLightbox} from "../composables/useImageLightbox.ts";
 
 export default defineComponent({
   name: 'App',
@@ -16,6 +18,7 @@ export default defineComponent({
     ContentSection,
     InfoBox,
     MathDisplay,
+    ImageLightbox,
   },
   setup() {
     const chapters = ref([
@@ -75,13 +78,23 @@ export default defineComponent({
       }
     }
 
+    // Image lightbox functionality
+    const { isLightboxOpen, currentImageSrc, currentImageAlt, openLightbox, closeLightbox } = useImageLightbox();
+
+    // Provide lightbox functionality to all child components
+    provide('lightbox', { openLightbox });
+
     return {
       chapters,
       handleReportClick,
       currentChapter,
       currentTopics,
       getTopicLink,
-      smoothScrollToHash
+      smoothScrollToHash,
+      isLightboxOpen,
+      currentImageSrc,
+      currentImageAlt,
+      closeLightbox
     };
   }
 });
@@ -139,6 +152,14 @@ export default defineComponent({
         <span>Chapter Overview (select a chapter)</span>
       </div>
     </aside>
+
+    <!-- Global Image Lightbox -->
+    <ImageLightbox
+      :is-open="isLightboxOpen"
+      :image-src="currentImageSrc"
+      :image-alt="currentImageAlt"
+      @close="closeLightbox"
+    />
   </div>
 </template>
 

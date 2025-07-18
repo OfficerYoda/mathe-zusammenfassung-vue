@@ -1,11 +1,19 @@
 <script setup lang="ts">
-
+import { inject } from 'vue';
 import ContentSection from "../components/ContentSection.vue";
 import MathDisplay from "../components/MathDisplay.vue";
 import ChapterTitle from "../components/ChapterTitle.vue";
 import InfoBox from "../components/InfoBox.vue";
 import Subsection from "../components/Subsection.vue";
 import MultiColumnLayout from "../components/MultiColumnLayout.vue";
+import ClickableImage from "../components/ClickableImage.vue";
+
+// Inject lightbox functionality
+const lightbox = inject('lightbox') as { openLightbox: (src: string, alt: string) => void };
+
+const handleImageClick = (src: string, alt: string) => {
+  lightbox.openLightbox(src, alt);
+};
 </script>
 
 <template>
@@ -359,7 +367,11 @@ import MultiColumnLayout from "../components/MultiColumnLayout.vue";
         </Subsection>
       </template>
       <template #col-2>
-        <img src="/images/Graph_SinCos.png" alt="Graph von Sinus und Cosinus">
+        <ClickableImage
+          src="/images/Graph_SinCos.png"
+          alt="Graph von Sinus und Cosinus"
+          @click="handleImageClick"
+        />
       </template>
     </MultiColumnLayout>
     <MathDisplay>
@@ -396,9 +408,9 @@ import MultiColumnLayout from "../components/MultiColumnLayout.vue";
     <MathDisplay>
       \begin{gather*}
       \Rightarrow L =
-      \{x \in \mathbb R \ | \
+      \{x \ in \mathbb R \ | \
       x = \frac32 + 2k,\
-      k \in \mathbb Z
+      k \ in \mathbb Z
       \} \\
       \Rightarrow
       \text{unendlich viele Lösungen }(\frac32;\frac72;-\frac12,...)
