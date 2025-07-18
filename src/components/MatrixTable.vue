@@ -26,23 +26,32 @@ const tableData = computed(() => {
     topLeftCell: props.topLeftCell
   };
 });
+
+const hasColumnHeaders = computed(() => tableData.value.columnHeaders && tableData.value.columnHeaders.length > 0);
+const hasRowHeaders = computed(() => tableData.value.rowHeaders && tableData.value.rowHeaders.length > 0);
 </script>
 
 <template>
   <table class="matrix-table">
-    <thead>
+    <thead v-if="hasColumnHeaders">
     <tr>
-      <th class="top-left-cell">{{ tableData.topLeftCell || '' }}</th>
+      <th v-if="hasRowHeaders" class="top-left-cell">{{ tableData.topLeftCell || '' }}</th>
       <th v-for="header in tableData.columnHeaders" :key="header" v-mathjax>
         <span v-mathjax v-html="header"></span>
       </th>
     </tr>
     </thead>
     <tbody>
-    <tr v-for="(rowData, rowIndex) in tableData.data" :key="tableData.rowHeaders[rowIndex]">
-      <th class="row-header" v-mathjax>
+    <tr v-for="(rowData, rowIndex) in tableData.data" :key="hasRowHeaders ? tableData.rowHeaders[rowIndex] : rowIndex">
+      <th v-if="hasRowHeaders" class="row-header" v-mathjax>
         <span v-mathjax v-html="tableData.rowHeaders[rowIndex]"></span>
       </th>
+      <td v-for="(cellData, colIndex) in rowData" :key="colIndex" v-mathjax class="data-cell">
+        <span v-mathjax v-html="cellData"></span>
+      </td>
+    </tr>
+    <!-- If no row headers and no column headers, just render data rows -->
+    <tr v-if="!hasRowHeaders && !hasColumnHeaders" v-for="(rowData, rowIndex) in tableData.data" :key="rowIndex">
       <td v-for="(cellData, colIndex) in rowData" :key="colIndex" v-mathjax class="data-cell">
         <span v-mathjax v-html="cellData"></span>
       </td>

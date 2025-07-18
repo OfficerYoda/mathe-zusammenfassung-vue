@@ -86,7 +86,7 @@ function resetForm() {
   <ContentSection title="Fehler melden">
     <form @submit.prevent="submit" v-if="!submitted" class="report-form">
       <label>
-        <span>Großkapitel:</span>
+        <span>Überkapitel:</span>
         <select v-model="majorChapter">
           <option value="" disabled>Bitte wählen…</option>
           <option v-for="chapter in chapters" :key="chapter.name" :value="chapter.name">
