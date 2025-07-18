@@ -288,7 +288,7 @@ export default defineComponent({
   line-height: 1rem;
   text-decoration: none;
   transition: color 0.2s, padding-right 0.2s, padding-left 0.2s;
-  padding: 0.25rem 0.75rem 0.25rem 1.5rem;
+  padding: 0.25rem 0.25rem 0.25rem 1.5rem;
   border-radius: 4px;
   display: block;
   text-align: right;
@@ -299,8 +299,8 @@ export default defineComponent({
 
 .chapter-overview-link:hover {
   color: var(--color-text-primary);
-  padding-right: 1.75rem;
-  padding-left: 0.5rem;
+  padding-right: 1.5rem;
+  padding-left: 0.25rem;
   background-color: var(--color-surface);
 }
 
