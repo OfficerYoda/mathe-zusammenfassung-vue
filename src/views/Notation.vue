@@ -2,15 +2,15 @@
 import ContentSection from "../components/ContentSection.vue";
 import ChapterTitle from "../components/ChapterTitle.vue";
 import Subsection from "../components/Subsection.vue";
-import DefinitionTable from "../components/DefinitionTable.vue";
+import MatrixTable from "../components/MatrixTable.vue";
 import InfoBox from "../components/InfoBox.vue";
 import {
-  definitionsContent,
-  intervalsContent,
-  limesContent,
-  setNotationContent,
-  setsContent
-} from "../data/notationTableContents.ts";
+  definitionsMatrixData,
+  intervalsMatrixData,
+  limesMatrixData,
+  setNotationMatrixData,
+  setsMatrixData
+} from "../data/matrixTableContents.ts";
 import MathDisplay from "../components/MathDisplay.vue";
 import MultiColumnLayout from "../components/MultiColumnLayout.vue";
 </script>
@@ -22,12 +22,12 @@ import MultiColumnLayout from "../components/MultiColumnLayout.vue";
     <p>
       Jeder dieser Beispielmengen enthält alle Elemente der Mengen, die in der Tabelle darüber liegen.
     </p>
-    <DefinitionTable :items="setsContent"/>
+    <MatrixTable :matrix-data="setsMatrixData"/>
     <InfoBox color="yellow">
       <p v-mathjax>
         Ob bei $\mathbb{N}/\mathbb{R}^+$ die $0$ enthalten ist, ist nicht klar definiert. Ich werde daher immer
         $\mathbb{N}_0/\mathbb{R}^+_0$ verwenden,
-        um die Null klar zu kennzeichnen. <br>
+        um die Null klar zu kennzeichnen.<br>
         Im Abitur wird es klar gekennzeichnet sein, ob die $0$ enthalten ist oder nicht.
       </p>
     </InfoBox>
@@ -43,19 +43,19 @@ import MultiColumnLayout from "../components/MultiColumnLayout.vue";
     <p v-mathjax>
       Intervalle sind ebenfalls Mengen. So enthält $[0; 1]$ alle reellen Zahlen von $0$ bis $1$.
     </p>
-    <DefinitionTable :items="intervalsContent"/>
+    <MatrixTable :matrix-data="intervalsMatrixData"/>
   </ContentSection>
 
   <ContentSection title="Mengennotation">
-    <DefinitionTable :items="setNotationContent"/>
+    <MatrixTable :matrix-data="setNotationMatrixData"/>
   </ContentSection>
 
   <ContentSection title="Definitionsbereiche">
-    <DefinitionTable :items="definitionsContent"/>
+    <MatrixTable :matrix-data="definitionsMatrixData"/>
   </ContentSection>
 
   <ContentSection title="Limes">
-    <DefinitionTable :items="limesContent"/>
+    <MatrixTable :matrix-data="limesMatrixData"/>
   </ContentSection>
 
   <ContentSection title="Summenzeichen">

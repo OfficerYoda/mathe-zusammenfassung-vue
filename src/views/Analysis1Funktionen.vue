@@ -219,8 +219,7 @@ import MatrixTable from "../components/MatrixTable.vue";
     <Subsection title="Definition">
       <InfoBox color="green">
         <p v-mathjax>
-          Gegeben ist eine Funktion $f$ auf dem Intervall $I$.
-          <br>
+          Gegeben ist eine Funktion $f$ auf dem Intervall $I$.<br>
           $f$ heißt...
         </p>
         <ul v-mathjax>
