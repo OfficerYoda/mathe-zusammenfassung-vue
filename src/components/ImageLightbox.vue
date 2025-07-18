@@ -132,12 +132,12 @@ watch(() => props.isOpen, (isOpen) => {
   background: none;
   border: none;
   color: white;
-  font-size: 2rem;
+  font-size: 1.8rem;
   cursor: pointer;
   padding: 0.5rem;
   border-radius: 50%;
-  width: 3rem;
-  height: 3rem;
+  width: 2.2rem;
+  height: 2.2rem;
   display: flex;
   align-items: center;
   justify-content: center;
