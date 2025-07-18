@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { inject } from 'vue';
 import ContentSection from "../components/ContentSection.vue";
 import MathDisplay from "../components/MathDisplay.vue";
 import ChapterTitle from "../components/ChapterTitle.vue";
@@ -7,13 +6,6 @@ import InfoBox from "../components/InfoBox.vue";
 import Subsection from "../components/Subsection.vue";
 import MultiColumnLayout from "../components/MultiColumnLayout.vue";
 import ClickableImage from "../components/ClickableImage.vue";
-
-// Inject lightbox functionality
-const lightbox = inject('lightbox') as { openLightbox: (src: string, alt: string) => void };
-
-const handleImageClick = (src: string, alt: string) => {
-  lightbox.openLightbox(src, alt);
-};
 </script>
 
 <template>
@@ -370,7 +362,6 @@ const handleImageClick = (src: string, alt: string) => {
         <ClickableImage
           src="/images/Graph_SinCos.png"
           alt="Graph von Sinus und Cosinus"
-          @click="handleImageClick"
         />
       </template>
     </MultiColumnLayout>

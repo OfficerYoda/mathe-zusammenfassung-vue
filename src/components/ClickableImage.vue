@@ -1,33 +1,35 @@
 <template>
   <img
-    :src="src"
-    :alt="alt"
-    class="clickable-image"
-    @click="handleClick"
-    @keydown.enter="handleClick"
-    @keydown.space.prevent="handleClick"
-    tabindex="0"
-    role="button"
-    :aria-label="`Click to view ${alt} in full size`"
-    v-bind="$attrs"
+      :src="src"
+      :alt="alt"
+      class="clickable-image"
+      @click="handleClick"
+      @keydown.enter="handleClick"
+      @keydown.space.prevent="handleClick"
+      tabindex="0"
+      role="button"
+      :aria-label="`Click to view ${alt} in full size`"
+      v-bind="$attrs"
   />
 </template>
 
 <script setup lang="ts">
+import {inject} from 'vue'
+
 interface Props {
   src: string
   alt: string
 }
 
-interface Emits {
-  (e: 'click', src: string, alt: string): void
-}
-
 const props = defineProps<Props>()
-const emit = defineEmits<Emits>()
+
+// Inject lightbox functionality directly in the component
+const lightbox = inject('lightbox') as { openLightbox: (src: string, alt: string) => void }
 
 const handleClick = () => {
-  emit('click', props.src, props.alt)
+  if (lightbox) {
+    lightbox.openLightbox(props.src, props.alt)
+  }
 }
 </script>
 
@@ -44,8 +46,7 @@ const handleClick = () => {
 }
 
 .clickable-image:focus {
-  outline: 2px solid var(--color-primary, #007acc);
-  outline-offset: 2px;
+  outline: 2px solid#007acc;
 }
 
 .clickable-image:active {
