@@ -19,7 +19,7 @@ export default defineComponent({
       required: false,
     },
   },
-  setup(props, { slots }) {
+  setup(props, {slots}) {
     const processedLatex = ref('');
     const instance = getCurrentInstance();
 
@@ -38,7 +38,7 @@ export default defineComponent({
       }
       await nextTick();
       if (window.MathJax && instance?.proxy) {
-        window.MathJax.typesetPromise([instance.proxy.$el]);
+        window.MathJax?.typeset?.([instance.proxy.$el]);
       }
     };
 

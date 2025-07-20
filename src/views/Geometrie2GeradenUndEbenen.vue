@@ -721,7 +721,7 @@ import ClickableImage from "../components/ClickableImage.vue";
   <ContentSection title="Gegenseitige Lage von Ebenen">
     <MultiColumnLayout :columns=2 image-layout :image-columns="[1, 2]">
       <template #col-1>
-        <Subsection title="Identisch" style="padding-top: 0rem; margin-top: 0">
+        <Subsection title="Identisch">
           <ClickableImage src="/images/3D_Ebenen-Identisch.png" alt="3D_Ebenen-Identisch.png"/>
           <p v-mathjax>
             Normalenvektoren und Koordinatengleichungen sind Vielfache voneinander.
