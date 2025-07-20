@@ -8,6 +8,7 @@
         @focus="hovered = true"
         @blur="hovered = false"
         tabindex="0"
+        v-mathjax
     >
       {{ title }}
       <img

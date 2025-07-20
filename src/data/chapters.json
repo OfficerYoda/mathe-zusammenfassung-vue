@@ -95,6 +95,19 @@
     "Symmetrieebene bestimmen"
   ],
   "Stochastik": [
-    "Gambling"
+  "Grundbegriffe der Wahrscheinlichkeitsrechnung",
+    "Ziehen mit Zurücklegen",
+    "Ziehen ohne Zurücklegen",
+    "Ziehen mit einem Griff",
+    "Erwartungswert, Varianz und Standardabweichung",
+    "Bedingte Wahrscheinlichkeit",
+    "Stochastische Unabhängigkeit",
+    "Bernoulli-Experiment und Bernoulli-Kette",
+    "Die Formel von Bernoulli",
+    "Standardabweichung einer Binomialverteilung",
+    "Zweiseitiger Hypothesentest",
+    "Einseitiger Hypothesentest",
+    "Fehler 1. und 2. Art",
+    "Wahl der Nullhypothese"
   ]
 }

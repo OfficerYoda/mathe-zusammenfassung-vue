@@ -15,9 +15,9 @@ const mathJaxLoadCallback = () => {
 
 if (!window.MathJax && !document.getElementById('MathJax-script')) {
     window.MathJax = {
-        loader: {load: ['[tex]/color']},
+        loader: {load: ['[tex]/color', '[tex]/cancel']},
         tex: {
-            packages: {'[+]': ['color']},
+            packages: {'[+]': ['color', 'cancel']},
             inlineMath: [['$', '$'], ['\\(', '\\)']],
             displayMath: [['$$', '$$'], ['\\[', '\\]']]
         },

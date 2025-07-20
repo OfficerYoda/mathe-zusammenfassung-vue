@@ -111,3 +111,40 @@ export const horizontalAsymptotes: MatrixTableData = {
         ['$y = \\frac{4}{3}$', '$y = 4$<br>nicht y=0 wegen der +4', 'keine, da Zählergrad > Nennergrad', '$y = -1$']
     ]
 }
+
+export const probabilityDistribution: MatrixTableData = {
+    columnHeaders: [],
+    rowHeaders: ['Gewinn $k$', '$P(X = k)$'],
+    data: [
+        ['$-1$', '$0$', '$4$'],
+        ['$\\frac{9}{16}$', '$\\frac{7}{16}$', '$\\frac{1}{16}$'],
+    ]
+}
+
+export const leftSidedTest: MatrixTableData = {
+    columnHeaders: ['$g_1$', '$P^{50}_\\frac12(X \\leq g_1)$', ''],
+    rowHeaders: [],
+    data: [
+        ['$\\mathbf{17}$', '$\\mathbf{0{,}016}$', '<strong>kleiner als $\\mathbf{2{,}5\\%}$</strong>'],
+        ['$18$', '$0{,}032$', 'größer als $2{,}5\\%$']
+    ]
+}
+
+export const rightSidedTest: MatrixTableData = {
+    columnHeaders: ['$g_2\\color{red}-1$', '$P^{50}_\\frac12(X \\ {\\color{red}\\leq} \\ g_2 {\\color{red}-1})$', ''],
+    rowHeaders: [],
+    data: [
+        ['$31$', '$0{,}968$', 'kleiner als $97{,}5\\%$'],
+        ['$\\mathbf{32}$', '$\\mathbf{0{,}984}$', '<strong>größer als $\\mathbf{97{,}5\\%}$</strong>']
+    ]
+}
+
+export const firstAndSecondError: MatrixTableData = {
+    columnHeaders: ['$H_0$ ist wahr', '$H_0$ ist falsch'],
+    rowHeaders: ['$H_0$ wird verworfen', '$H_0$ wird nicht verworfen'],
+    data: [
+        ['Fehler 1. Art', '$\\checkmark$'],
+        ['Fehler 1. Art', '$\\checkmark$'],
+        ['$\\checkmark$', 'Fehler 2. Art']
+    ]
+}

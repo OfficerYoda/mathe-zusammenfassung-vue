@@ -8,7 +8,7 @@ const insideInfoBox = inject('insideInfoBox', false);
 
 <template>
   <!-- Only use subsection-title class when outside an InfoBox. This is because it makes the parsing from Notion easier -->
-  <h3 :class="!insideInfoBox ? 'subsection-title' : ''">{{ title }}</h3>
+  <h3 :class="!insideInfoBox ? 'subsection-title' : ''" v-mathjax>{{ title }}</h3>
   <slot/>
 </template>
 
