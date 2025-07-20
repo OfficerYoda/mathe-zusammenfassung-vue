@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {defineProps, computed} from "vue";
-import type { MatrixTableData } from "../data/matrixTableContents";
+import type {MatrixTableData} from "../data/matrixTableContents";
 
 const props = defineProps<{
   // Option 1: Direct props
@@ -65,7 +65,7 @@ const hasRowHeaders = computed(() => tableData.value.rowHeaders && tableData.val
   width: 100%;
   border-collapse: collapse;
   margin-top: 1rem;
-  background-color: var(--color-background-secondary);
+/*  background-color: rgba(from var(--color-background-secondary) r g b, 0.8); */
   color: var(--color-text-primary);
 }
 
@@ -78,26 +78,26 @@ const hasRowHeaders = computed(() => tableData.value.rowHeaders && tableData.val
 }
 
 .matrix-table th {
-  background-color: var(--color-background);
+  background-color: rgb(from var(--color-background) r g b / 0.8);
   font-weight: bold;
 }
 
 .top-left-cell {
-  background-color: var(--color-background);
+  background-color: rgb(from var(--color-background) r g b / 0.8);
 }
 
 .row-header {
-  background-color: var(--color-background);
+  background-color: rgb(from var(--color-background) r g b / 0.8);
   text-align: left;
   font-weight: bold;
 }
 
-.matrix-table tbody tr:nth-child(even) {
-  background-color: #282828;
+.matrix-table tbody tr:nth-child(even) .data-cell {
+  background-color: rgb(from #282828 r g b / 0.8);
 }
 
-.matrix-table tbody tr:nth-child(odd) {
-  background-color: var(--color-background-secondary);
+.matrix-table tbody tr:nth-child(odd) .data-cell {
+  background-color: rgb(from var(--color-background-secondary) r g b / 0.8);
 }
 
 .data-cell {
