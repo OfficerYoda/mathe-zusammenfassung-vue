@@ -184,7 +184,7 @@ textarea {
 button {
   padding: 0.7rem 1.5rem;
   border: none;
-  background: color-mix(in srgb, var(--color-error) 85%, transparent);
+  background: color-mix(in srgb, var(--color-error) 80%, transparent);
   color: var(--color-text-primary);
   border-radius: 4px;
   cursor: pointer;
@@ -195,7 +195,7 @@ button {
 }
 
 button:hover {
-  background: var(--color-accent);
+  background-color: var(--color-error);
   color: var(--color-text-headings);
 }
 
