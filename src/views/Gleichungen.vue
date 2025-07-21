@@ -143,7 +143,7 @@ import ClickableImage from "../components/ClickableImage.vue";
 
   <ContentSection title="Bruchgleichungen">
     <Subsection title="Beispiele">
-      <MultiColumnLayout>
+      <MultiColumnLayout :columns=2>
         <template #col-1>
           <MathDisplay>
             \begin{align*}
@@ -288,7 +288,7 @@ import ClickableImage from "../components/ClickableImage.vue";
       negativen Zahl oder bei Logarithmen mit einer Basis kleiner als 1 das Ungleichheitszeichen umgedreht wird.
     </InfoBox>
     <Subsection title="Beispiele">
-      <MultiColumnLayout>
+      <MultiColumnLayout :columns=2>
         <template #col-1>
           <MathDisplay>
             \begin{align*}
@@ -309,7 +309,7 @@ import ClickableImage from "../components/ClickableImage.vue";
           </MathDisplay>
         </template>
       </MultiColumnLayout>
-      <MultiColumnLayout>
+      <MultiColumnLayout :columns=2>
         <template #col-1>
           <MathDisplay>
             \begin{alignat*} {3}
@@ -343,7 +343,7 @@ import ClickableImage from "../components/ClickableImage.vue";
   </ContentSection>
 
   <ContentSection title="Trigonometrische Gleichungen">
-    <MultiColumnLayout image-layout>
+    <MultiColumnLayout :columns=2 image-layout>
       <template #col-1>
         <Subsection title="Beispiele">
           <MathDisplay>

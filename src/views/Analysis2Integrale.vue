@@ -33,7 +33,7 @@ import ClickableImage from "../components/ClickableImage.vue";
           </p>
         </template>
         <template #col-2>
-          <ClickableImage src="/images/Graph_Integral-Perfect.png" alt="Graph_Integral-Perfect.png"/>
+          <ClickableImage src="/images/Graph_Integral-Perfekt.png" alt="Graph_Integral-Perfekt.png"/>
         </template>
       </MultiColumnLayout>
     </Subsection>

@@ -294,7 +294,7 @@ import ClickableImage from "../components/ClickableImage.vue";
       </p>
     </InfoBox>
     <Subsection title="Beispiel">
-      <MultiColumnLayout image-layout :image-width=70>
+      <MultiColumnLayout :columns=2 image-layout :image-width=70>
         <template #col-1>
           <MathDisplay>
             \begin{align*}
@@ -426,7 +426,7 @@ import ClickableImage from "../components/ClickableImage.vue";
       </InfoBox>
     </Subsection>
     <Subsection title="Beispiele">
-      <MultiColumnLayout image-layout :image-width=70>
+      <MultiColumnLayout :columns=2 image-layout :image-width=70>
         <template #col-1>
           <p v-mathjax>$f'''$ ist eine Konstante und außerhalb des sichtbaren Bereichs der Grafik.</p>
           <MathDisplay>
@@ -496,7 +496,7 @@ import ClickableImage from "../components/ClickableImage.vue";
       </p>
     </InfoBox>
     <Subsection title="Beispiel">
-      <MultiColumnLayout image-layout>
+      <MultiColumnLayout :columns=2 image-layout>
         <template #col-1>
           <MathDisplay>
             \begin{array}{}
@@ -546,9 +546,9 @@ import ClickableImage from "../components/ClickableImage.vue";
       </InfoBox>
     </Subsection>
     <Subsection title="Beispiel">
-      <MultiColumnLayout image-layout :image-width=70>
+      <MultiColumnLayout :columns=2 image-layout :image-width=70>
         <template #col-1>
-          <MultiColumnLayout>
+          <MultiColumnLayout :columns=2>
             <template #col-1>
               <MathDisplay>
                 \begin{align*}
@@ -603,7 +603,7 @@ import ClickableImage from "../components/ClickableImage.vue";
 
   <ContentSection title="Extremwertprobleme">
     <Subsection title="Beispiel">
-      <MultiColumnLayout image-layout>
+      <MultiColumnLayout :columns=2 image-layout>
         <template #col-1>
           <p v-mathjax>
             Eine Sportstadion mit einer Laufbahn von 400m Länge soll so angelegt werden, dass die Fläche $A$ für das

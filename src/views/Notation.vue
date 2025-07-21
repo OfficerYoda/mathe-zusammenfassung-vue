@@ -75,7 +75,7 @@ import MultiColumnLayout from "../components/MultiColumnLayout.vue";
   </ContentSection>
 
   <ContentSection title="Vektoren">
-    <MultiColumnLayout>
+    <MultiColumnLayout :columns=2>
       <template #col-1>
         <Subsection title="Schreibweise">
           <MathDisplay>
@@ -102,7 +102,7 @@ import MultiColumnLayout from "../components/MultiColumnLayout.vue";
       </template>
     </MultiColumnLayout>
 
-    <MultiColumnLayout>
+    <MultiColumnLayout :columns=2>
       <template #col-1>
         <Subsection title="Skalarprodukt">
           <MathDisplay>
@@ -133,7 +133,7 @@ import MultiColumnLayout from "../components/MultiColumnLayout.vue";
       </template>
     </MultiColumnLayout>
 
-    <MultiColumnLayout>
+    <MultiColumnLayout :columns=2>
       <template #col-1>
         <Subsection title="Länge">
           <MathDisplay>
