@@ -148,3 +148,19 @@ export const firstAndSecondError: MatrixTableData = {
         ['$\\checkmark$', 'Fehler 2. Art']
     ]
 }
+
+export const exampleMeasurements: MatrixTableData = {
+    columnHeaders: [],
+    rowHeaders: ['Messwerte'],
+    data: [['$11$', '$13$', '$15$', '$12$', '$14$', '$12$']]
+}
+
+export const sigmaRules: MatrixTableData = {
+    columnHeaders: ['Intervall $I$', '$P(X \\in I)$'],
+    rowHeaders: [],
+    data: [
+        ['$[\\mu - \\sigma; \\mu + \\sigma]$', '$\\approx 0{,}683$'],
+        ['$[\\mu - 2 \\sigma; \\mu + 2 \\sigma]$', '$\\approx 0{,}954$'],
+        ['$[\\mu - 3 \\sigma; \\mu + 3 \\sigma]$', '$\\approx 0{,}997$'],
+    ]
+}
