@@ -12,7 +12,6 @@ import {useImageLightbox} from "../composables/useImageLightbox.ts";
 
 export default defineComponent({
   name: 'App',
-  methods: {kebabUriCase},
   components: {
     FontAwesomeIcon,
     ContentSection,
@@ -79,10 +78,10 @@ export default defineComponent({
     }
 
     // Image lightbox functionality
-    const { isLightboxOpen, currentImageSrc, currentImageAlt, openLightbox, closeLightbox } = useImageLightbox();
+    const {isLightboxOpen, currentImageSrc, currentImageAlt, openLightbox, closeLightbox} = useImageLightbox();
 
     // Provide lightbox functionality to all child components
-    provide('lightbox', { openLightbox });
+    provide('lightbox', {openLightbox});
 
     return {
       chapters,
@@ -104,41 +103,44 @@ export default defineComponent({
   <div class="app-layout">
     <aside class="sidebar left-sidebar">
       <div class="sidebar-top-section">
-        <div class="search-icon-wrapper">
-          <button class="search-button">
-            <font-awesome-icon icon="fa-solid fa-magnifying-glass"/>
+        <div class="icon-row">
+          <RouterLink to="/" class="icon-btn home-btn">
+            <FontAwesomeIcon icon="fa-house"/>
+          </RouterLink>
+          <button class="icon-btn search-btn">
+            <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" style="padding-right: 0.5rem"/>
           </button>
         </div>
         <nav class="chapter-navigation">
           <ul>
             <li v-for="chapter in chapters" :key="chapter.path">
-              <router-link
+              <RouterLink
                   :to="chapter.path"
                   class="chapter-link"
                   active-class="chapter-link--active"
                   exact-active-class="chapter-link--active"
               >
                 {{ chapter.name }}
-              </router-link>
+              </RouterLink>
             </li>
           </ul>
         </nav>
       </div>
       <div class="sidebar-bottom-section">
-        <router-link to="/report" class="report-error-button" @click="handleReportClick">
+        <RouterLink to="/report" class="report-error-button" @click="handleReportClick">
           Fehler melden
-        </router-link>
+        </RouterLink>
       </div>
     </aside>
     <main class="content-area">
       <div id="app-container">
-        <router-view></router-view>
+        <RouterView/>
       </div>
     </main>
     <aside class="sidebar right-sidebar">
       <div v-if="currentChapter" class="chapter-overview">
         <h2 class="chapter-overview-title">Unterkapitel</h2>
-        <router-link
+        <RouterLink
             v-for="topic in currentTopics"
             :key="topic"
             :to="getTopicLink(topic)"
@@ -146,7 +148,7 @@ export default defineComponent({
             @click.native.prevent="smoothScrollToHash(getTopicLink(topic).split('#')[1] ? '#' + getTopicLink(topic).split('#')[1] : '')"
         >
           {{ topic }}
-        </router-link>
+        </RouterLink>
       </div>
       <div v-else class="placeholder-content">
         <span>Chapter Overview (select a chapter)</span>
@@ -155,10 +157,10 @@ export default defineComponent({
 
     <!-- Global Image Lightbox -->
     <ImageLightbox
-      :is-open="isLightboxOpen"
-      :image-src="currentImageSrc"
-      :image-alt="currentImageAlt"
-      @close="closeLightbox"
+        :is-open="isLightboxOpen"
+        :image-src="currentImageSrc"
+        :image-alt="currentImageAlt"
+        @close="closeLightbox"
     />
   </div>
 </template>
@@ -187,28 +189,44 @@ export default defineComponent({
   z-index: 2;
 }
 
-.search-icon-wrapper {
-  text-align: center;
+.icon-row {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  display: flex;
+  align-items: center;
+  width: 100%;
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
 
-.search-button {
+.icon-btn {
   background: none;
-  border: none;
   color: var(--color-text-headings);
   cursor: pointer;
   padding: 0.5rem;
   font-size: 1.5rem;
-  transition: color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
 }
 
-.search-button:hover {
-  color: var(--color-accent);
-}
-
-.search-button:focus {
+.icon-btn:focus {
   outline: none;
+}
+
+.icon-btn:hover {
+  background-color: var(--color-surface);
+  color: var(--color-text-headings);
+}
+
+.home-btn {
+  margin-right: 0.5rem;
+}
+
+.search-btn {
+  flex: 1;
+  justify-content: flex-start;
 }
 
 .chapter-navigation ul {
@@ -367,17 +385,10 @@ export default defineComponent({
     align-items: center;
   }
 
-  .search-icon-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  .icon-row {
     width: 100%;
     margin-top: 0.5rem;
     margin-bottom: 1rem;
-  }
-
-  .search-button {
-    margin: 0;
   }
 
   .chapter-navigation ul {

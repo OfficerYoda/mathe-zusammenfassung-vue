@@ -1,5 +1,5 @@
 import {createRouter, createWebHistory} from 'vue-router';
-import App from '../views/App.vue';
+import Home from '../views/Home.vue'
 import ReportView from '../views/Report.vue';
 import NotationView from '../views/Notation.vue';
 import GleichungenView from '../views/Gleichungen.vue';
@@ -8,7 +8,7 @@ import GeometrieView from '../views/Geometrie.vue';
 import StochastikView from '../views/Stochastik.vue';
 
 const routes = [
-    {path: '/', name: 'home', component: App},
+    {path: '/', name: 'home', component: Home},
     {path: '/report', name: 'report', component: ReportView},
     {path: '/notation', name: 'notation', component: NotationView},
     {path: '/gleichungen', name: 'gleichungen', component: GleichungenView},
