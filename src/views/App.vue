@@ -491,9 +491,9 @@ export default defineComponent({
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 1rem;
+  margin-bottom: 1em;
   flex-shrink: 0;
-  padding: 1.5rem 1.5rem 0.5rem;
+  padding: 1.5em 1.5em 0.5em;
 }
 
 .search-popup-input-container {
@@ -503,21 +503,21 @@ export default defineComponent({
   background-color: var(--color-background);
   border: 2px solid var(--color-surface);
   border-radius: 8px;
-  padding: 0.5rem 1rem;
+  padding: 0.5em 1em;
 }
 
 .search-popup-icon {
-  font-size: 1.2rem;
+  font-size: 1.2em;
   color: var(--color-text-headings);
-  margin-right: 0.5rem;
-  margin-left: 0.5rem;
+  margin-right: 0.5em;
+  margin-left: 0.5em;
 }
 
 .search-popup-input {
   background: transparent;
   border: none;
   color: var(--color-text-primary);
-  font-size: 1.2rem;
+  font-size: 1.2em;
   outline: none;
   flex: 1;
 }
@@ -531,20 +531,20 @@ export default defineComponent({
   border: none;
   color: var(--color-text-headings);
   cursor: pointer;
-  font-size: 1.5rem;
+  font-size: 1.5em;
 }
 
 .search-popup-content {
   flex: 1;
   overflow-y: auto;
   min-height: 0;
-  padding-bottom: 1.5rem;
+  padding-bottom: 1.5em;
 }
 
 .search-result-item {
-  margin-left: 1.5rem;
-  margin-right: 1.5rem;
-  padding: 0.5rem 1rem;
+  margin-left: 1.5em;
+  margin-right: 1.5em;
+  padding: 0.5em 1em;
   cursor: pointer;
   transition: background-color 0.2s;
   border-radius: 4px;
@@ -559,18 +559,18 @@ export default defineComponent({
 }
 
 .search-result-chapter {
-  font-size: 0.9rem;
+  font-size: 0.9em;
   color: var(--color-text-secondary);
 }
 
 .search-result-empty {
-  padding: 0.5rem 1rem;
+  padding: 0.5em 1em;
   text-align: center;
   color: var(--color-text-secondary);
 }
 
 .search-result-placeholder {
-  padding: 0.5rem 1rem;
+  padding: 0.5em 1em;
   text-align: center;
   color: var(--color-text-secondary);
   opacity: 0.7;
@@ -617,14 +617,17 @@ export default defineComponent({
   }
 
   .home-btn {
-    margin-right: 0.5rem;
+    padding-left: 0;
+    margin-right: 1rem;
+    font-size: 2rem;
   }
 
   .search-bar {
     flex: 1;
     min-width: 0;
     padding: 0.5rem 0.75rem;
-    height: 2.2rem;
+    margin-right: 9rem;
+    height: 3.2rem;
   }
 
   .chapter-navigation ul {
@@ -669,6 +672,10 @@ export default defineComponent({
     padding: 0.8rem;
     height: auto;
     min-height: 0;
+  }
+
+  .search-popup-overlay {
+    font-size: 2rem;
   }
 }
 </style>

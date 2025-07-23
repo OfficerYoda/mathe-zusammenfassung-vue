@@ -13,7 +13,7 @@ const chapters = [
 </script>
 
 <template>
-  <ChapterTitle title="Math ABI"/>
+  <ChapterTitle title="Mathe ABI"/>
 
   <ContentSection title="Übersicht">
     <div class="chapter-tiles">
