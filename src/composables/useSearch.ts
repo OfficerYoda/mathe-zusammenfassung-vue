@@ -73,7 +73,7 @@ export function useSearch() {
     const lowercaseQuery = query.toLowerCase();
     searchResults.value = allTopics.value.filter(item =>
       item.topic.toLowerCase().includes(lowercaseQuery)
-    ).slice(0, 10); // Limit to 10 results
+    )
   }
 
   // Watch search query and perform search
@@ -86,7 +86,7 @@ export function useSearch() {
     isSearchActive.value = true;
     // Focus the input after DOM update
     setTimeout(() => {
-      const input = document.querySelector('.search-input') as HTMLInputElement;
+      const input = document.querySelector('.search-popup-input') as HTMLInputElement;
       if (input) input.focus();
     }, 0);
   }
@@ -127,7 +127,6 @@ export function useSearch() {
     activateSearch,
     deactivateSearch,
     handleSearchResultClick,
-    handleSearchKeydown,
-    performSearch
+    handleSearchKeydown
   };
 }

@@ -134,13 +134,13 @@ export default defineComponent({
           <div class="search-bar" @click="activateSearch">
             <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" class="search-bar-icon"/>
             <input
-              v-if="isSearchActive"
-              v-model="searchQuery"
-              class="search-input"
-              type="text"
-              placeholder="Suchen..."
-              @blur="deactivateSearch"
-              @keydown="handleSearchKeydown"
+                v-if="isSearchActive"
+                v-model="searchQuery"
+                class="search-input"
+                type="text"
+                placeholder="Suchen..."
+                @blur="deactivateSearch"
+                @keydown="handleSearchKeydown"
             />
             <span v-else class="search-bar-text">Suchen</span>
           </div>
@@ -198,25 +198,40 @@ export default defineComponent({
     />
 
     <!-- Search Results Dropdown -->
-    <div v-if="isSearchActive" class="search-results-dropdown">
-      <div class="search-results-header">
-        <span class="search-results-title">Suchergebnisse</span>
-        <button class="search-results-close" @click="deactivateSearch">
-          <FontAwesomeIcon icon="fa-solid fa-xmark"/>
-        </button>
-      </div>
-      <div class="search-results-content">
-        <div
-            v-for="result in searchResults"
-            :key="result.link"
-            class="search-result-item"
-            @click="handleSearchResultClick(result.link)"
-        >
-          <span class="search-result-topic">{{ result.topic }}</span>
-          <span class="search-result-chapter">{{ result.chapter }}</span>
+    <div v-if="isSearchActive" class="search-popup-overlay" @click="deactivateSearch">
+      <div class="search-popup" @click.stop>
+        <div class="search-popup-header">
+          <div class="search-popup-input-container">
+            <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" class="search-popup-icon"/>
+            <input
+                v-model="searchQuery"
+                class="search-popup-input"
+                type="text"
+                placeholder="Suchen..."
+                @keydown="handleSearchKeydown"
+                ref="searchInput"
+            />
+          </div>
+          <button class="search-popup-close" @click="deactivateSearch">
+            <FontAwesomeIcon icon="fa-solid fa-xmark"/>
+          </button>
         </div>
-        <div v-if="searchResults.length === 0" class="search-result-empty">
-          Keine Ergebnisse gefunden.
+        <div class="search-popup-content">
+          <div
+              v-for="result in searchResults"
+              :key="result.link"
+              class="search-result-item"
+              @click="handleSearchResultClick(result.link)"
+          >
+            <span class="search-result-topic">{{ result.topic }} </span>
+            <span class="search-result-chapter">&nbsp;{{ result.chapter }}</span>
+          </div>
+          <div v-if="searchQuery && searchResults.length === 0" class="search-result-empty">
+            Keine Ergebnisse gefunden.
+          </div>
+          <div v-if="!searchQuery" class="search-result-placeholder">
+            Geben Sie einen Suchbegriff ein...
+          </div>
         </div>
       </div>
     </div>
@@ -262,7 +277,7 @@ export default defineComponent({
   color: var(--color-text-headings);
   cursor: pointer;
   padding: 0.5rem;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   transition: background-color 0.3s ease, color 0.3s ease;
   display: flex;
   align-items: center;
@@ -286,18 +301,24 @@ export default defineComponent({
   flex: 1;
   display: flex;
   align-items: center;
-  border: 2px solid var(--color-surface, #333);
+  border: 2px solid var(--color-surface);
   border-radius: 6px;
   padding: 0.5rem 1rem;
-  background: var(--color-background, #222);
+  background: var(--color-background);
   min-width: 0;
   height: 2.5rem;
   box-sizing: border-box;
   cursor: pointer;
+  transition: 0.3s background, 0.3s border-color;
+}
+
+.search-bar:hover {
+  background: var(--color-surface);
+  border-color: var(--color-background-secondary);
 }
 
 .search-bar-icon {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   color: var(--color-text-headings);
   margin-right: 0.75rem;
 }
@@ -447,47 +468,84 @@ export default defineComponent({
 }
 
 /* --- Search Results Dropdown --- */
-.search-results-dropdown {
+.search-popup-overlay {
   position: fixed;
-  top: 1rem;
-  left: 21rem;
-  width: 600px;
-  max-width: 80vw;
-  background-color: rgba(30, 30, 30, 0.95);
-  color: #e0e0e0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 10vh;
+  padding-bottom: 10vh;
+  z-index: 1000;
+}
+
+.search-popup {
+  background-color: var(--color-background);
   border-radius: 8px;
+  padding: 1.5rem;
+  width: 90%;
+  max-width: 600px;
+  max-height: 80vh;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  z-index: 10;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
 }
 
-.search-results-header {
-  padding: 0.75rem 1rem;
-  background-color: var(--color-surface);
+.search-popup-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 1rem;
+  flex-shrink: 0;
 }
 
-.search-results-title {
+.search-popup-input-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  background-color: var(--color-background, #222);
+  border: 2px solid var(--color-surface, #333);
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+}
+
+.search-popup-icon {
   font-size: 1.2rem;
-  font-weight: 500;
+  color: var(--color-text-headings);
+  margin-right: 0.5rem;
 }
 
-.search-results-close {
+.search-popup-input {
+  background: transparent;
+  border: none;
+  color: var(--color-text-primary);
+  font-size: 1.2rem;
+  outline: none;
+  flex: 1;
+}
+
+.search-popup-input::placeholder {
+  color: var(--color-text-secondary);
+}
+
+.search-popup-close {
   background: none;
   border: none;
   color: var(--color-text-headings);
   cursor: pointer;
   font-size: 1.5rem;
+  margin-left: 1rem;
 }
 
-.search-results-content {
-  max-height: 300px;
+.search-popup-content {
+  flex: 1;
   overflow-y: auto;
   padding: 0.5rem 0;
+  min-height: 0;
 }
 
 .search-result-item {
@@ -513,7 +571,13 @@ export default defineComponent({
   padding: 0.5rem 1rem;
   text-align: center;
   color: var(--color-text-secondary);
-  font-size: 0.9rem;
+}
+
+.search-result-placeholder {
+  padding: 0.5rem 1rem;
+  text-align: center;
+  color: var(--color-text-secondary);
+  opacity: 0.7;
 }
 
 /* --- Responsive Design --- */
@@ -565,10 +629,6 @@ export default defineComponent({
     min-width: 0;
     padding: 0.5rem 0.75rem;
     height: 2.2rem;
-  }
-
-  .search-bar-text {
-    font-size: 1rem;
   }
 
   .chapter-navigation ul {
