@@ -95,7 +95,10 @@ export default defineComponent({
       handleSearchResultClick,
       handleSearchKeydown,
       setSearchHelpers,
-      activeResultIndex
+      activeResultIndex,
+      hoveredResultIndex,
+      setHoveredResultIndex,
+      clearHoveredResultIndex
     } = useSearch();
 
     setSearchHelpers(smoothScrollToHash, router);
@@ -123,7 +126,10 @@ export default defineComponent({
       deactivateSearch,
       handleSearchResultClick: onSearchResultClick,
       handleSearchKeydown,
-      activeResultIndex
+      activeResultIndex,
+      hoveredResultIndex,
+      setHoveredResultIndex,
+      clearHoveredResultIndex,
     };
   }
 });
@@ -222,12 +228,15 @@ export default defineComponent({
             <FontAwesomeIcon icon="fa-solid fa-xmark"/>
           </button>
         </div>
-        <div class="search-popup-content">
+        <div class="search-popup-content"
+             @mouseleave="clearHoveredResultIndex()">
           <div
               v-for="(result, idx) in searchResults"
               :key="result.link"
               class="search-result-item"
-              :class="{ 'search-result-item--active': idx === activeResultIndex }"
+              :class="{ 'search-result-item--active': hoveredResultIndex === idx ? true : (hoveredResultIndex === -1 && idx === activeResultIndex) }"
+              @mouseenter="setHoveredResultIndex(idx)"
+              @mouseleave="clearHoveredResultIndex()"
               @click="handleSearchResultClick(result.link)"
           >
             <span class="search-result-topic">{{ result.topic }} </span>
@@ -562,7 +571,7 @@ export default defineComponent({
   border-radius: 4px;
 }
 
-.search-result-item:hover, .search-result-item--active {
+.search-result-item--active {
   background-color: var(--color-surface);
 }
 

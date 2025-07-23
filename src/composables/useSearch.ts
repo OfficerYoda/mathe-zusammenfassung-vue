@@ -19,6 +19,7 @@ export function useSearch() {
     const searchQuery = ref('');
     const searchResults = ref<SearchResult[]>([]);
     const activeResultIndex = ref(-1);
+    const hoveredResultIndex = ref(-1);
 
     // Chapter definitions
     const chapters: Chapter[] = [
@@ -123,20 +124,34 @@ export function useSearch() {
         }
     }
 
+    function setHoveredResultIndex(idx: number) {
+        hoveredResultIndex.value = idx;
+        activeResultIndex.value = idx;
+    }
+    function clearHoveredResultIndex() {
+        hoveredResultIndex.value = -1;
+        // Do not reset activeResultIndex, keep last hovered
+    }
+
     function handleSearchKeydown(event: KeyboardEvent) {
         if (event.key === 'Escape') {
             isSearchActive.value = false;
             searchQuery.value = '';
             searchResults.value = [];
             activeResultIndex.value = -1;
+            hoveredResultIndex.value = -1;
         } else if (event.key === 'ArrowDown') {
             if (searchResults.value.length > 0) {
-                activeResultIndex.value = (activeResultIndex.value + 1) % searchResults.value.length;
+                const nextIdx = (activeResultIndex.value + 1) % searchResults.value.length;
+                activeResultIndex.value = nextIdx;
+                hoveredResultIndex.value = nextIdx;
             }
             event.preventDefault();
         } else if (event.key === 'ArrowUp') {
             if (searchResults.value.length > 0) {
-                activeResultIndex.value = (activeResultIndex.value - 1 + searchResults.value.length) % searchResults.value.length;
+                const nextIdx = (activeResultIndex.value - 1 + searchResults.value.length) % searchResults.value.length;
+                activeResultIndex.value = nextIdx;
+                hoveredResultIndex.value = nextIdx;
             }
             event.preventDefault();
         } else if (event.key === 'Enter') {
@@ -148,17 +163,18 @@ export function useSearch() {
     }
 
     return {
-        // State
         isSearchActive,
         searchQuery,
         searchResults,
         activeResultIndex,
-
-        // Methods
+        hoveredResultIndex,
         activateSearch,
         deactivateSearch,
         setSearchHelpers,
         handleSearchResultClick,
-        handleSearchKeydown
+        handleSearchKeydown,
+        performSearch,
+        setHoveredResultIndex,
+        clearHoveredResultIndex,
     };
 }
