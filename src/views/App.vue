@@ -147,6 +147,11 @@ export default defineComponent({
             <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" class="search-bar-icon"/>
             <span class="search-bar-text">Suchen</span>
           </div>
+          <div class="report-error-button--mobile">
+            <RouterLink to="/report" class="report-error-button" @click="handleReportClick">
+              Fehler melden
+            </RouterLink>
+          </div>
         </div>
         <nav class="chapter-navigation">
           <ul>
@@ -371,6 +376,7 @@ export default defineComponent({
 }
 
 .sidebar-bottom-section {
+  display: inline-block;
   margin-top: auto;
   padding: 1.5rem;
   border-top: 1px solid var(--color-surface);
@@ -391,6 +397,10 @@ export default defineComponent({
 .report-error-button:hover {
   background-color: var(--color-error);
   color: var(--color-text-headings);
+}
+
+.report-error-button--mobile {
+  display: none;
 }
 
 /* ---Center Area--- */
@@ -626,7 +636,7 @@ export default defineComponent({
     flex: 1;
     min-width: 0;
     padding: 0.5rem 0.75rem;
-    margin-right: 9rem;
+    margin-right: 1rem;
     height: 3.2rem;
   }
 
@@ -655,17 +665,11 @@ export default defineComponent({
   }
 
   .sidebar-bottom-section {
-    margin-top: 0;
-    padding: 0;
-    border-top: none;
-    text-align: center;
-    position: absolute;
-    top: 0.5rem;
-    right: 1rem;
+    display: none;
   }
 
-  .report-error-button {
-    margin-top: 0.5rem;
+  .report-error-button--mobile {
+    display: inline-block;
   }
 
   .content-area {
