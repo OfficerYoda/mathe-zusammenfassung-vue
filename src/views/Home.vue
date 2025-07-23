@@ -4,6 +4,8 @@ import ContentSection from "../components/ContentSection.vue";
 import MultiColumnLayout from "../components/MultiColumnLayout.vue";
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 import {useSearch} from '../composables/useSearch.ts';
+import Subsection from "../components/Subsection.vue";
+import InfoBox from "../components/InfoBox.vue";
 
 const {activateSearch} = useSearch();
 
@@ -95,6 +97,57 @@ const chapters = [
         </template>
       </MultiColumnLayout>
     </div>
+    <InfoBox color="blue" style="margin-top: 2.5rem">
+      <p>
+        Der Inhalt dieser Zusammenfassung basiert auf dem Bildungsplan für das ABI 25. Meines Wissens nach hat sich für
+        das ABI 26 nichts geändert. Falls dies doch der Fall ist bitte ich euch mich zu kontaktieren (siehe unten),
+        damit ich den Inhalt aktualisieren kann.<br>
+        Die paar wenigen Taschenrechner-Befehle beziehen sich auf den TI-30X Pl
+      </p>
+    </InfoBox>
+  </ContentSection>
+
+  <ContentSection title="Downloads">
+    <p><i>Coming soon...</i></p>
+  </ContentSection>
+
+  <ContentSection title="Sonstiges">
+    <Subsection title="Weiter Zusammenfassungen">
+      <p>
+        <strong>Geo: </strong><a href="https://geo.officeryoda.de" target="_blank" rel="noopener">geo.officeryoda.de</a><br>
+        <strong>Deutsch: </strong><a href="https://deutsch.officeryoda.de" target="_blank" rel="noopener">deutsch.officeryoda.de</a><br>
+        <strong>Mathe (alt): </strong><a href="https://mathe.archive.officeryoda.dev" target="_blank" rel="noopener">mathe.archive.officeryoda.dev</a><br>
+      </p>
+      <InfoBox color="yellow">
+        Diese Zusammenfassungen entsprechen nicht dem Standard dieser Seite und können Fehler enthalten.<br>
+        Die Geo-Zusammenfassung ist zudem nicht vollständig, da ich Themen weggelassen habe, die ich für offensichtlich
+        gehalten habe.<br>
+        Die Deutsch-Zusammenfassung hingegen sollte alles enthalten (sofern ihr die gleichen Bücher habt und sich sonst
+        auch nichts geändert hat) und basiert
+        auf der Zusammenfassung von Lea.<br>
+      </InfoBox>
+    </Subsection>
+    <MultiColumnLayout :columns=2>
+      <template #col-1>
+        <Subsection title="Kontakt">
+          <p>
+            <strong>Autor: </strong>Liam Verzano<br>
+            <strong>E-Mail: </strong>contact@officeryoda.dev<br>
+            <strong>GitHub: </strong><a href="https://github.com/OfficerYoda/mathe-zusammenfassung-vue" target="_blank"
+                                        rel="noopener">OfficerYoda/mathe-zusammenfassung-vue</a><br>
+          </p>
+        </Subsection>
+      </template>
+      <template #col-2>
+        <Subsection title="Lizenz">
+          <p>
+            Diese Seite und ihre Inhalte stehen unter der Creative Commons Attribution 4.0 International (CC BY 4.0)
+            Lizenz.<br>
+            Der vollständige Lizenztext ist <a href="/LICENSE.txt">hier</a> verfügbar.
+          </p>
+        </Subsection>
+      </template>
+    </MultiColumnLayout>
   </ContentSection>
 </template>
 
@@ -180,7 +233,7 @@ const chapters = [
 
 .home-search-text {
   font-size: 2rem;
-  color: var(--color-text-secondary, #ccc);
+  color: var(--color-text-secondary);
   font-weight: 500;
 }
 </style>
