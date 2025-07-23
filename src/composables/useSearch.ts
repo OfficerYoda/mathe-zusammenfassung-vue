@@ -13,7 +13,10 @@ interface Chapter {
     path: string;
 }
 
-export function useSearch() {
+// Singleton to be access same instance from App.vue and Home.vue
+let searchState: ReturnType<typeof createSearchState> | null = null;
+
+function createSearchState() {
     // Search state
     const isSearchActive = ref(false);
     const searchQuery = ref('');
@@ -165,6 +168,7 @@ export function useSearch() {
         searchResults,
         activeResultIndex,
         hoveredResultIndex,
+        chapters,
         activateSearch,
         deactivateSearch,
         setSearchHelpers,
@@ -174,4 +178,11 @@ export function useSearch() {
         setHoveredResultIndex,
         clearHoveredResultIndex,
     };
+}
+
+export function useSearch() {
+    if (!searchState) {
+        searchState = createSearchState();
+    }
+    return searchState;
 }

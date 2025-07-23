@@ -321,12 +321,12 @@ export default defineComponent({
   height: 2.5rem;
   box-sizing: border-box;
   cursor: pointer;
-  transition: 0.2s background, 0.2s border-color;
+  transition: box-shadow 0.2s, border-color 0.2s;
 }
 
 .search-bar:hover {
-  background: var(--color-surface);
-  border-color: var(--color-background-secondary);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.18);
+  border-color: var(--color-text-secondary);
 }
 
 .search-bar-icon {

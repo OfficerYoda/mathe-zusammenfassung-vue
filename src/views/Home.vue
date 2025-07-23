@@ -2,6 +2,10 @@
 import ChapterTitle from "../components/ChapterTitle.vue";
 import ContentSection from "../components/ContentSection.vue";
 import MultiColumnLayout from "../components/MultiColumnLayout.vue";
+import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
+import {useSearch} from '../composables/useSearch.ts';
+
+const {activateSearch} = useSearch();
 
 const chapters = [
   {name: 'Analysis', route: '/analysis', color: '#4f6bf7', bgImage: 'url(/images/cover_analysis.webp)'},
@@ -16,6 +20,10 @@ const chapters = [
   <ChapterTitle title="Mathe ABI"/>
 
   <ContentSection title="Übersicht">
+    <div class="home-search-bar" @click="activateSearch">
+      <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" class="home-search-icon"/>
+      <span class="home-search-text">Suchen...</span>
+    </div>
     <div class="chapter-tiles">
       <MultiColumnLayout :columns=3>
         <template #col-1>
@@ -94,7 +102,7 @@ const chapters = [
 .chapter-tiles {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 2rem;
   margin-top: 1.5rem;
 }
 
@@ -140,5 +148,39 @@ const chapters = [
   padding: 0 1rem 0.5rem;
   z-index: 1;
   text-decoration: none;
+}
+
+.home-search-bar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background: var(--color-background);
+  border: 3px solid var(--color-surface);
+  border-radius: 16px;
+  padding: 1.5rem 2rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  font-size: 2rem;
+  color: var(--color-text-headings);
+  cursor: pointer;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.10);
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+.home-search-bar:hover {
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18);
+  border-color: var(--color-text-secondary);
+}
+
+.home-search-icon {
+  margin-right: 1.5rem;
+  display: flex;
+  align-items: center;
+}
+
+.home-search-text {
+  font-size: 2rem;
+  color: var(--color-text-secondary, #ccc);
+  font-weight: 500;
 }
 </style>
