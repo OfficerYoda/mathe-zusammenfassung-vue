@@ -112,7 +112,7 @@ watch(() => props.isOpen, (isOpen) => {
   justify-content: center;
   z-index: 1000;
   padding: 2rem;
-  animation: fadeIn 0.3s ease-out;
+  animation: fadeIn 0.2s ease-out;
 }
 
 .lightbox-content {
@@ -122,7 +122,7 @@ watch(() => props.isOpen, (isOpen) => {
   display: flex;
   flex-direction: column;
   align-items: center;
-  animation: slideIn 0.3s ease-out;
+  animation: slideIn 0.2s ease-out;
 }
 
 .lightbox-close {

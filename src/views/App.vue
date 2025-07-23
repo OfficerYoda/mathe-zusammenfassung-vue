@@ -285,7 +285,7 @@ export default defineComponent({
   cursor: pointer;
   padding: 0.5rem;
   font-size: 1.3rem;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.2s ease, color 0.2s ease;
   display: flex;
   align-items: center;
   border-radius: 4px;
@@ -316,7 +316,7 @@ export default defineComponent({
   height: 2.5rem;
   box-sizing: border-box;
   cursor: pointer;
-  transition: 0.3s background, 0.3s border-color;
+  transition: 0.2s background, 0.2s border-color;
 }
 
 .search-bar:hover {
@@ -356,7 +356,7 @@ export default defineComponent({
   color: var(--color-text-primary);
   text-decoration: none;
   border-radius: 4px;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .chapter-link:hover {
