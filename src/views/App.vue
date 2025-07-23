@@ -145,16 +145,7 @@ export default defineComponent({
           </RouterLink>
           <div class="search-bar" @click="activateSearch">
             <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" class="search-bar-icon"/>
-            <input
-                v-if="isSearchActive"
-                v-model="searchQuery"
-                class="search-input"
-                type="text"
-                placeholder="Suchen..."
-                @blur="deactivateSearch"
-                @keydown="handleSearchKeydown"
-            />
-            <span v-else class="search-bar-text">Suchen</span>
+            <span class="search-bar-text">Suchen</span>
           </div>
         </div>
         <nav class="chapter-navigation">
@@ -345,20 +336,6 @@ export default defineComponent({
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-}
-
-.search-input {
-  background: transparent;
-  border: none;
-  color: var(--color-text-primary);
-  font-size: 1.1rem;
-  outline: none;
-  flex: 1;
-  min-width: 0;
-}
-
-.search-input::placeholder {
-  color: var(--color-text-secondary);
 }
 
 .chapter-navigation ul {

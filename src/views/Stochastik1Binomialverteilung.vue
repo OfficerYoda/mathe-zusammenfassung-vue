@@ -689,7 +689,7 @@ import {
         → Die Firma wirft gute Batterien weg.
       </p>
     </Subsection>
-    <Subsection title="Berechnen von $\mathbf{\alpha}$ und $\mathbf{\beta}$" math-jax-title>
+    <Subsection title="Berechnen von $\mathbf{\alpha}$ und $\mathbf{\beta}$">
       <MathDisplay>
         \begin{array}{c}
         n = 50 \quad \hat\alpha = 5\% \\

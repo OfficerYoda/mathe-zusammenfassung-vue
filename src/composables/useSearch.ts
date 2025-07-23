@@ -95,10 +95,11 @@ export function useSearch() {
     }
 
     function deactivateSearch() {
-        if (!searchQuery.value.trim()) {
-            isSearchActive.value = false;
-            searchResults.value = [];
-        }
+        isSearchActive.value = false;
+        searchQuery.value = '';
+        searchResults.value = [];
+        activeResultIndex.value = -1;
+        hoveredResultIndex.value = -1;
     }
 
     const scrollFnRef = ref<(hash: string) => void>();
@@ -135,11 +136,7 @@ export function useSearch() {
 
     function handleSearchKeydown(event: KeyboardEvent) {
         if (event.key === 'Escape') {
-            isSearchActive.value = false;
-            searchQuery.value = '';
-            searchResults.value = [];
-            activeResultIndex.value = -1;
-            hoveredResultIndex.value = -1;
+            deactivateSearch()
         } else if (event.key === 'ArrowDown') {
             if (searchResults.value.length > 0) {
                 const nextIdx = (activeResultIndex.value + 1) % searchResults.value.length;
