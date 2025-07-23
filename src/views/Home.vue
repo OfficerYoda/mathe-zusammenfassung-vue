@@ -5,7 +5,7 @@ import ContentSection from "../components/ContentSection.vue";
 </script>
 
 <template>
-  <ChapterTitle title="Home"/>
+  <ChapterTitle title="Math ABI"/>
 
   <ContentSection title="Übersicht"/>
 </template>

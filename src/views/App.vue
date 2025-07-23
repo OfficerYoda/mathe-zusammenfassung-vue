@@ -479,7 +479,6 @@ export default defineComponent({
 .search-popup {
   background-color: var(--color-background);
   border-radius: 8px;
-  padding: 1.5rem;
   width: 90%;
   max-width: 600px;
   max-height: 80vh;
@@ -494,6 +493,7 @@ export default defineComponent({
   align-items: center;
   margin-bottom: 1rem;
   flex-shrink: 0;
+  padding: 1.5rem 1.5rem 0.5rem;
 }
 
 .search-popup-input-container {
@@ -537,11 +537,13 @@ export default defineComponent({
 .search-popup-content {
   flex: 1;
   overflow-y: auto;
-  padding: 0.5rem 0;
   min-height: 0;
+  padding-bottom: 1.5rem;
 }
 
 .search-result-item {
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
   padding: 0.5rem 1rem;
   cursor: pointer;
   transition: background-color 0.2s;
