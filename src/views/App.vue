@@ -93,12 +93,16 @@ export default defineComponent({
       activateSearch,
       deactivateSearch,
       handleSearchResultClick,
-      handleSearchKeydown
+      handleSearchKeydown,
+      setSearchHelpers,
+      activeResultIndex
     } = useSearch();
+
+    setSearchHelpers(smoothScrollToHash, router);
 
     // Wrapper for search result click to pass smoothScrollToHash
     function onSearchResultClick(link: string) {
-      handleSearchResultClick(link, smoothScrollToHash, router);
+      handleSearchResultClick(link);
     }
 
     return {
@@ -118,7 +122,8 @@ export default defineComponent({
       activateSearch,
       deactivateSearch,
       handleSearchResultClick: onSearchResultClick,
-      handleSearchKeydown
+      handleSearchKeydown,
+      activeResultIndex
     };
   }
 });
@@ -219,9 +224,10 @@ export default defineComponent({
         </div>
         <div class="search-popup-content">
           <div
-              v-for="result in searchResults"
+              v-for="(result, idx) in searchResults"
               :key="result.link"
               class="search-result-item"
+              :class="{ 'search-result-item--active': idx === activeResultIndex }"
               @click="handleSearchResultClick(result.link)"
           >
             <span class="search-result-topic">{{ result.topic }} </span>
@@ -556,7 +562,7 @@ export default defineComponent({
   border-radius: 4px;
 }
 
-.search-result-item:hover {
+.search-result-item:hover, .search-result-item--active {
   background-color: var(--color-surface);
 }
 

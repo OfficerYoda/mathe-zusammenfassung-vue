@@ -40,7 +40,7 @@ export const setNotationMatrixData: MatrixTableData = {
         ['$a \\in \\mathbb{Z}$', '$a$ ist ein Element der ganzen Zahlen. Das heißt $a$ ist eine ganze Zahl.'],
         ['$b \\in \\mathbb{R} \\setminus \\{0\\}$', '$b$ ist ein Element der reellen Zahlen ohne die Zahl $0$. $b$ kann also jeden reellen Wert außer $0$ annehmen.'],
         ['$[0; 1] = \\{x \\in \\mathbb{R} \\mid 0 \\leq x \\leq 1\\}$', 'Das Intervall $[0; 1]$ enthält alle Werte $x$ der reellen Zahlen, für die $0 \\leq x \\leq 1$ gilt.'],
-        ['$]{-}\\infty; c[ = \\{x \\in \\mathbb{R} \\mid x < c\\}$', 'Das Intervall $]{-}\\infty; c]$ enthält alle reellen Zahlen, welche kleiner gleich $c$ sind.'],
+        ['$]{-}\\infty; c[ \\; = \\{x \\in \\mathbb{R} \\mid x < c\\}$', 'Das Intervall $]{-}\\infty; c]$ enthält alle reellen Zahlen, welche kleiner gleich $c$ sind.'],
         ['$\\{x \\mid x = 2k, k \\in \\mathbb{Z}\\}$', 'Die Menge enthält alle geraden Zahlen.']
     ]
 }
