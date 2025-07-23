@@ -10,6 +10,7 @@ import chaptersData from '../data/chapters.json';
 import {kebabUriCase} from "../utils/string.ts";
 import {useImageLightbox} from "../composables/useImageLightbox.ts";
 import {useSearch} from "../composables/useSearch.ts";
+import router from "../router";
 
 export default defineComponent({
   name: 'App',
@@ -97,7 +98,7 @@ export default defineComponent({
 
     // Wrapper for search result click to pass smoothScrollToHash
     function onSearchResultClick(link: string) {
-      handleSearchResultClick(link, smoothScrollToHash);
+      handleSearchResultClick(link, smoothScrollToHash, router);
     }
 
     return {
@@ -507,8 +508,8 @@ export default defineComponent({
   flex: 1;
   display: flex;
   align-items: center;
-  background-color: var(--color-background, #222);
-  border: 2px solid var(--color-surface, #333);
+  background-color: var(--color-background);
+  border: 2px solid var(--color-surface);
   border-radius: 8px;
   padding: 0.5rem 1rem;
 }
@@ -517,6 +518,7 @@ export default defineComponent({
   font-size: 1.2rem;
   color: var(--color-text-headings);
   margin-right: 0.5rem;
+  margin-left: 0.5rem;
 }
 
 .search-popup-input {
@@ -538,7 +540,6 @@ export default defineComponent({
   color: var(--color-text-headings);
   cursor: pointer;
   font-size: 1.5rem;
-  margin-left: 1rem;
 }
 
 .search-popup-content {
@@ -552,6 +553,7 @@ export default defineComponent({
   padding: 0.5rem 1rem;
   cursor: pointer;
   transition: background-color 0.2s;
+  border-radius: 4px;
 }
 
 .search-result-item:hover {

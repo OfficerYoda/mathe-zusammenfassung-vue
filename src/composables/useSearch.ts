@@ -98,13 +98,21 @@ export function useSearch() {
     }
   }
 
-  function handleSearchResultClick(link: string, smoothScrollToHash: (hash: string) => void) {
+  function handleSearchResultClick(link: string, smoothScrollToHash: (hash: string) => void, router: any) {
     isSearchActive.value = false;
     searchQuery.value = '';
     searchResults.value = [];
+
     // Navigate to the result
-    const hash = link.split('#')[1];
-    if (hash) {
+    const [path, hash] = link.split('#');
+
+    if (path && hash) {
+      // Navigate to the chapter first, then scroll to the hash
+      router.push(path).then(() => {
+        setTimeout(() => smoothScrollToHash('#' + hash), 100);
+      });
+    } else if (hash) {
+      // If we're already on the right page, just scroll
       setTimeout(() => smoothScrollToHash('#' + hash), 100);
     }
   }
