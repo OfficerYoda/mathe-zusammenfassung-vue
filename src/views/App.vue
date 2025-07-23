@@ -1,5 +1,5 @@
 <script lang="ts">
-import {defineComponent, ref, computed, provide} from 'vue';
+import {defineComponent, ref, computed, provide, watch} from 'vue';
 import ContentSection from '../components/ContentSection.vue';
 import InfoBox from '../components/InfoBox.vue';
 import MathDisplay from '../components/MathDisplay.vue';
@@ -83,6 +83,100 @@ export default defineComponent({
     // Provide lightbox functionality to all child components
     provide('lightbox', {openLightbox});
 
+    // Search functionality
+    const isSearchActive = ref(false);
+    const searchQuery = ref('');
+    const searchResults = ref<{topic: string, chapter: string, link: string}[]>([]);
+
+    // All available topics from all chapters for search
+    const allTopics = computed(() => {
+      const topics: {topic: string, chapter: string, link: string}[] = [];
+      chapters.value.forEach(chapter => {
+        const chapterName = chapter.name;
+        // Get topics from main chapter
+        if (chaptersData[chapterName as keyof typeof chaptersData]) {
+          chaptersData[chapterName as keyof typeof chaptersData].forEach(topic => {
+            if (topic) {
+              topics.push({
+                topic,
+                chapter: chapterName,
+                link: `${chapter.path}#${kebabUriCase(topic)}`
+              });
+            }
+          });
+        }
+        // Get topics from subchapters
+        Object.keys(chaptersData).forEach(key => {
+          if (key.startsWith(chapterName) && key !== chapterName) {
+            chaptersData[key as keyof typeof chaptersData].forEach(topic => {
+              if (topic) {
+                topics.push({
+                  topic,
+                  chapter: chapterName,
+                  link: `${chapter.path}#${kebabUriCase(topic)}`
+                });
+              }
+            });
+          }
+        });
+      });
+      return topics;
+    });
+
+    // Search logic
+    function performSearch(query: string) {
+      if (!query.trim()) {
+        searchResults.value = [];
+        return;
+      }
+
+      const lowercaseQuery = query.toLowerCase();
+      searchResults.value = allTopics.value.filter(item =>
+        item.topic.toLowerCase().includes(lowercaseQuery)
+      ).slice(0, 10); // Limit to 10 results
+    }
+
+    // Watch search query and perform search
+    watch(searchQuery, (newQuery) => {
+      performSearch(newQuery);
+    });
+
+    // Search bar handlers
+    function activateSearch() {
+      isSearchActive.value = true;
+      // Focus the input after DOM update
+      setTimeout(() => {
+        const input = document.querySelector('.search-input') as HTMLInputElement;
+        if (input) input.focus();
+      }, 0);
+    }
+
+    function deactivateSearch() {
+      if (!searchQuery.value.trim()) {
+        isSearchActive.value = false;
+        searchResults.value = [];
+      }
+    }
+
+    function handleSearchResultClick(link: string) {
+      isSearchActive.value = false;
+      searchQuery.value = '';
+      searchResults.value = [];
+      // Navigate to the result
+      const hash = link.split('#')[1];
+      if (hash) {
+        setTimeout(() => smoothScrollToHash('#' + hash), 100);
+      }
+    }
+
+    function handleSearchKeydown(event: KeyboardEvent) {
+      if (event.key === 'Escape') {
+        isSearchActive.value = false;
+        searchQuery.value = '';
+        searchResults.value = [];
+      }
+    }
+
     return {
       chapters,
       handleReportClick,
@@ -93,7 +187,14 @@ export default defineComponent({
       isLightboxOpen,
       currentImageSrc,
       currentImageAlt,
-      closeLightbox
+      closeLightbox,
+      isSearchActive,
+      searchQuery,
+      searchResults,
+      activateSearch,
+      deactivateSearch,
+      handleSearchResultClick,
+      handleSearchKeydown
     };
   }
 });
@@ -107,9 +208,19 @@ export default defineComponent({
           <RouterLink to="/" class="icon-btn home-btn">
             <FontAwesomeIcon icon="fa-house"/>
           </RouterLink>
-          <button class="icon-btn search-btn">
-            <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" style="padding-right: 0.5rem"/>
-          </button>
+          <div class="search-bar" @click="activateSearch">
+            <FontAwesomeIcon icon="fa-solid fa-magnifying-glass" class="search-bar-icon"/>
+            <input
+              v-if="isSearchActive"
+              v-model="searchQuery"
+              class="search-input"
+              type="text"
+              placeholder="Suchen..."
+              @blur="deactivateSearch"
+              @keydown="handleSearchKeydown"
+            />
+            <span v-else class="search-bar-text">Suchen</span>
+          </div>
         </div>
         <nav class="chapter-navigation">
           <ul>
@@ -162,6 +273,30 @@ export default defineComponent({
         :image-alt="currentImageAlt"
         @close="closeLightbox"
     />
+
+    <!-- Search Results Dropdown -->
+    <div v-if="isSearchActive" class="search-results-dropdown">
+      <div class="search-results-header">
+        <span class="search-results-title">Suchergebnisse</span>
+        <button class="search-results-close" @click="deactivateSearch">
+          <FontAwesomeIcon icon="fa-solid fa-xmark"/>
+        </button>
+      </div>
+      <div class="search-results-content">
+        <div
+            v-for="result in searchResults"
+            :key="result.link"
+            class="search-result-item"
+            @click="handleSearchResultClick(result.link)"
+        >
+          <span class="search-result-topic">{{ result.topic }}</span>
+          <span class="search-result-chapter">{{ result.chapter }}</span>
+        </div>
+        <div v-if="searchResults.length === 0" class="search-result-empty">
+          Keine Ergebnisse gefunden.
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -224,9 +359,46 @@ export default defineComponent({
   margin-right: 0.5rem;
 }
 
-.search-btn {
+.search-bar {
   flex: 1;
-  justify-content: flex-start;
+  display: flex;
+  align-items: center;
+  border: 2px solid var(--color-surface, #333);
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  background: var(--color-background, #222);
+  min-width: 0;
+  height: 2.5rem;
+  box-sizing: border-box;
+  cursor: pointer;
+}
+
+.search-bar-icon {
+  font-size: 1.5rem;
+  color: var(--color-text-headings);
+  margin-right: 0.75rem;
+}
+
+.search-bar-text {
+  color: var(--color-text-secondary);
+  font-size: 1.1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.search-input {
+  background: transparent;
+  border: none;
+  color: var(--color-text-primary);
+  font-size: 1.1rem;
+  outline: none;
+  flex: 1;
+  min-width: 0;
+}
+
+.search-input::placeholder {
+  color: var(--color-text-secondary);
 }
 
 .chapter-navigation ul {
@@ -351,6 +523,76 @@ export default defineComponent({
   opacity: 0.7;
 }
 
+/* --- Search Results Dropdown --- */
+.search-results-dropdown {
+  position: fixed;
+  top: 4rem;
+  right: 2rem;
+  width: 300px;
+  max-width: 80vw;
+  background-color: rgba(30, 30, 30, 0.95);
+  color: #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.search-results-header {
+  padding: 0.75rem 1rem;
+  background-color: var(--color-surface);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.search-results-title {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+.search-results-close {
+  background: none;
+  border: none;
+  color: var(--color-text-headings);
+  cursor: pointer;
+  font-size: 1.5rem;
+}
+
+.search-results-content {
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 0.5rem 0;
+}
+
+.search-result-item {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.search-result-item:hover {
+  background-color: var(--color-surface);
+}
+
+.search-result-topic {
+  font-weight: 500;
+}
+
+.search-result-chapter {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+}
+
+.search-result-empty {
+  padding: 0.5rem 1rem;
+  text-align: center;
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+}
+
 /* --- Responsive Design --- */
 
 /* Hide right sidebar below 1100px */
@@ -389,6 +631,21 @@ export default defineComponent({
     width: 100%;
     margin-top: 0.5rem;
     margin-bottom: 1rem;
+  }
+
+  .home-btn {
+    margin-right: 0.5rem;
+  }
+
+  .search-bar {
+    flex: 1;
+    min-width: 0;
+    padding: 0.5rem 0.75rem;
+    height: 2.2rem;
+  }
+
+  .search-bar-text {
+    font-size: 1rem;
   }
 
   .chapter-navigation ul {
