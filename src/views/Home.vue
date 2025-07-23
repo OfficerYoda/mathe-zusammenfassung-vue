@@ -4,11 +4,11 @@ import ContentSection from "../components/ContentSection.vue";
 import MultiColumnLayout from "../components/MultiColumnLayout.vue";
 
 const chapters = [
-  {name: 'Analysis', route: '/analysis', color: '#F78E4F', bgImage: 'url(/images/cover_analysis.webp)'},
-  {name: 'Geometrie', route: '/geometrie', color: '#4F8EF7', bgImage: 'url(/images/cover_geometrie.webp)'},
-  {name: 'Stochastik', route: '/stochastik', color: '#F74F8E', bgImage: 'url(/images/cover_stochastik.webp)'},
+  {name: 'Analysis', route: '/analysis', color: '#4f6bf7', bgImage: 'url(/images/cover_analysis.webp)'},
+  {name: 'Geometrie', route: '/geometrie', color: '#dc2b71', bgImage: 'url(/images/cover_geometrie.webp)'},
+  {name: 'Stochastik', route: '/stochastik', color: '#8E4FF7', bgImage: 'url(/images/cover_stochastik.webp)'},
   {name: 'Notation', route: '/notation', color: '#4FF78E', bgImage: 'url(/images/cover_notation.webp)'},
-  {name: 'Gleichungen', route: '/gleichungen', color: '#8E4FF7', bgImage: 'url(/images/cover_gleichungen.webp)'},
+  {name: 'Gleichungen', route: '/gleichungen', color: '#F78E4F', bgImage: 'url(/images/cover_gleichungen.webp)'},
 ];
 </script>
 
@@ -115,6 +115,7 @@ const chapters = [
   padding: 1rem;
   position: relative;
   overflow: hidden;
+  text-decoration: none;
 }
 
 .chapter-tile--wide {
@@ -123,7 +124,7 @@ const chapters = [
 
 .chapter-tile:hover {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.16);
-  transform: translateY(-2px) scale(1.02);
+  transform: scale(1.02);
 }
 
 .chapter-tile__name {
@@ -138,5 +139,6 @@ const chapters = [
   box-shadow: 0 0 0.75rem rgba(0, 0, 2, .5);
   padding: 0 1rem 0.5rem;
   z-index: 1;
+  text-decoration: none;
 }
 </style>
