@@ -111,6 +111,21 @@ const chapters = [
     <p><i>Coming soon...</i></p>
   </ContentSection>
 
+  <ContentSection title="Infoboxen">
+    <InfoBox color="blue">
+      <p>Blaue Boxen sind Kommentare meinerseits.</p>
+    </InfoBox>
+    <InfoBox color="green">
+      <p>Grüne Boxen sind Definitionen, Sätze oder Merksätze.</p>
+    </InfoBox>
+    <InfoBox color="yellow">
+      <p>Gelbe Boxen sind Hinweise auf die man achten sollte.</p>
+    </InfoBox>
+    <InfoBox color="red">
+      <p>Rote Boxen sind Sachen, die man unbedingt machen muss.</p>
+    </InfoBox>
+  </ContentSection>
+
   <ContentSection title="Sonstiges">
     <Subsection title="Weiter Zusammenfassungen">
       <p>
