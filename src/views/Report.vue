@@ -43,7 +43,8 @@ function submit() {
   const title = `Fehler in "${majorChapter.value} - ${minorChapter.value}"`
   const body =
       `### Kapitel
-       ${majorChapter.value} - ${minorChapter.value}
+       **${majorChapter.value}**<br>
+       ${minorChapter.value}
 
        ### Beschreibung
        ${description.value}
@@ -174,6 +175,14 @@ input:focus, textarea:focus, select:focus {
   border: 2px solid var(--color-surface);
   outline: none;
   background: var(--color-background);
+}
+
+select option:hover {
+  background-color: var(--color-surface);
+}
+
+select option:checked {
+  background-color: var(--color-surface);
 }
 
 textarea {

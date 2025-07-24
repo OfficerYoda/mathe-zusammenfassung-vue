@@ -100,7 +100,7 @@ export const createGithubIssue = onCall(
 
             try {
                 await transporter.sendMail(mailOptions);
-                logger.info('Report email sent successfully.');
+                logger.info('Report email sent successfully.\nBody:\n', body);
             } catch (emailError) {
                 logger.error('Failed to send report email.', emailError);
                 // Do not throw here to avoid failing the whole function
