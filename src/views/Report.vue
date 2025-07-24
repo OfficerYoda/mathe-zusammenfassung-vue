@@ -84,7 +84,7 @@ function resetForm() {
 
 <template>
   <ContentSection title="Fehler melden">
-    <form @submit.prevent="submit" v-if="!submitted" class="report-form">
+    <form @submit.prevent="submit" v-if="submitted" class="report-form">
       <label>
         <span>Überkapitel:</span>
         <select v-model="majorChapter">
@@ -171,7 +171,7 @@ input, textarea, select {
 }
 
 input:focus, textarea:focus, select:focus {
-  border: 2px solid var(--color-accent);
+  border: 2px solid var(--color-surface);
   outline: none;
   background: var(--color-background);
 }
@@ -223,13 +223,13 @@ button:hover {
 }
 
 .chapter-link {
-  color: color-mix(in srgb, var(--color-accent) 80%, transparent);
+  color: color-mix(in srgb, var(--color-text-primary) 80%, transparent);
   text-decoration: underline;
   font-size: 1.05rem;
 }
 
 .chapter-link:hover {
-  color: var(--color-accent);
+  color: var(--color-text-secondary);
 }
 
 .error-message {

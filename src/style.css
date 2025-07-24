@@ -27,10 +27,6 @@
     /* Brightest text color for main headings */
     --color-text-headings: #E0E0E0;
 
-    /* --- Accent Colors --- */
-    /* The main brand/accent color (muted green) */
-    --color-accent: #72b758;
-
     /* --- Semantic Colors --- */
     /* For informational messages and alerts (calm blue) */
     --color-info: #4A85A4;

@@ -180,8 +180,8 @@ export default defineComponent({
       </div>
     </main>
     <aside class="sidebar right-sidebar">
+      <h2 class="chapter-overview-title">Unterkapitel</h2>
       <div v-if="currentChapter" class="chapter-overview">
-        <h2 class="chapter-overview-title">Unterkapitel</h2>
         <RouterLink
             v-for="topic in currentTopics"
             :key="topic"
@@ -193,7 +193,7 @@ export default defineComponent({
         </RouterLink>
       </div>
       <div v-else class="placeholder-content">
-        <span>Chapter Overview (select a chapter)</span>
+        <span><i>Wähl ein Überkapitel aus...</i></span>
       </div>
     </aside>
 
@@ -371,8 +371,13 @@ export default defineComponent({
 
 /* Used dynamically as active-class by Vue Router */
 .chapter-link--active {
-  background-color: var(--color-accent) !important;
-  color: var(--color-background) !important;
+  background-color: var(--color-surface);
+  color: var(--color-text-headings);
+  transition: background-color 0.2s ease;
+}
+
+.chapter-link--active:hover {
+  background-color: #444;
 }
 
 .sidebar-bottom-section {
@@ -432,6 +437,8 @@ export default defineComponent({
   text-align: left;
   color: var(--color-text-primary);
   padding: 1rem;
+  max-height: 100vh;
+  overflow-y: auto;
 }
 
 .chapter-overview-title {
@@ -446,7 +453,7 @@ export default defineComponent({
   line-height: 1rem;
   text-decoration: none;
   transition: color 0.2s, padding-right 0.2s, padding-left 0.2s;
-  padding: 0.25rem 0.25rem 0.25rem 1.5rem;
+  padding: 0.25rem 0.25rem 0.5rem 1.5rem;
   border-radius: 4px;
   display: block;
   text-align: right;
