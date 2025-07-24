@@ -16,6 +16,27 @@ const chapters = [
   {name: 'Notation', route: '/notation', color: '#4FF78E', bgImage: 'url(/images/cover_notation.webp)'},
   {name: 'Gleichungen', route: '/gleichungen', color: '#F78E4F', bgImage: 'url(/images/cover_gleichungen.webp)'},
 ];
+
+// 3D tilt effect handlers
+const handleMouseMove = (event: MouseEvent) => {
+  const card = event.currentTarget as HTMLElement;
+  const rect = card.getBoundingClientRect();
+  const centerX = rect.left + rect.width / 2;
+  const centerY = rect.top + rect.height / 2;
+
+  const mouseX = event.clientX - centerX;
+  const mouseY = event.clientY - centerY;
+
+  const rotateX = (mouseY / rect.height) * -20; // Max 30 degrees
+  const rotateY = (mouseX / rect.width) * 20;
+
+  card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+};
+
+const handleMouseLeave = (event: MouseEvent) => {
+  const card = event.currentTarget as HTMLElement;
+  card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+};
 </script>
 
 <template>
@@ -37,6 +58,8 @@ const chapters = [
               borderColor: chapters[0].color,
               backgroundImage: chapters[0].bgImage
         }"
+              @mousemove="handleMouseMove"
+              @mouseleave="handleMouseLeave"
           >
             <span class="chapter-tile__name">{{ chapters[0].name }}</span>
           </RouterLink>
@@ -50,6 +73,8 @@ const chapters = [
               borderColor: chapters[1].color,
               backgroundImage: chapters[1].bgImage
         }"
+              @mousemove="handleMouseMove"
+              @mouseleave="handleMouseLeave"
           >
             <span class="chapter-tile__name">{{ chapters[1].name }}</span>
           </RouterLink>
@@ -63,6 +88,8 @@ const chapters = [
               borderColor: chapters[2].color,
               backgroundImage: chapters[2].bgImage
         }"
+              @mousemove="handleMouseMove"
+              @mouseleave="handleMouseLeave"
           >
             <span class="chapter-tile__name">{{ chapters[2].name }}</span>
           </RouterLink>
@@ -78,6 +105,8 @@ const chapters = [
               borderColor: chapters[3].color,
               backgroundImage: chapters[3].bgImage
         }"
+              @mousemove="handleMouseMove"
+              @mouseleave="handleMouseLeave"
           >
             <span class="chapter-tile__name">{{ chapters[3].name }}</span>
           </RouterLink>
@@ -91,6 +120,8 @@ const chapters = [
               borderColor: chapters[4].color,
               backgroundImage: chapters[4].bgImage
         }"
+              @mousemove="handleMouseMove"
+              @mouseleave="handleMouseLeave"
           >
             <span class="chapter-tile__name">{{ chapters[4].name }}</span>
           </RouterLink>
@@ -172,6 +203,7 @@ const chapters = [
   flex-direction: column;
   gap: 2rem;
   margin-top: 1.5rem;
+  perspective: 1000px;
 }
 
 .chapter-tile {
@@ -186,12 +218,14 @@ const chapters = [
   background-position: center;
   background-repeat: no-repeat;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  transition: box-shadow 0.2s, transform 0.2s;
+  transition: box-shadow 0.3s ease-out, transform 0.2s ease-out;
   cursor: pointer;
   padding: 1rem;
   position: relative;
   overflow: hidden;
   text-decoration: none;
+  transform-style: preserve-3d;
+  transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1);
 }
 
 .chapter-tile--wide {
@@ -199,8 +233,7 @@ const chapters = [
 }
 
 .chapter-tile:hover {
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.16);
-  transform: scale(1.02);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.24);
 }
 
 .chapter-tile__name {
@@ -212,10 +245,11 @@ const chapters = [
   border-radius: 12px;
   -moz-box-shadow: 0 0 0.75rem rgba(0, 0, 0, .5);
   -webkit-box-shadow: 0 0 0.75rem rgba(0, 0, 0, .5);
-  box-shadow: 0 0 0.75rem rgba(0, 0, 2, .5);
+  box-shadow: 0 0 0.75rem rgba(0, 0, 0, .5);
   padding: 0 1rem 0.5rem;
   z-index: 1;
   text-decoration: none;
+  transform: translateZ(20px);
 }
 
 .home-search-bar {
