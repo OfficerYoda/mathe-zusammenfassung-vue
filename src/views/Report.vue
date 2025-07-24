@@ -48,7 +48,7 @@ function submit() {
        ### Beschreibung
        ${description.value}
 
-       [Zum gemeldeten Kapitel](https://officeryoda.dev/${kebabUriCase(majorChapter.value)}#${kebabUriCase(minorChapter.value)})
+       [Zum gemeldeten Kapitel](https://mathe.officeryoda.de/${kebabUriCase(majorChapter.value)}#${kebabUriCase(minorChapter.value)})
 
        ${name.value ? `Gefunden von **${name.value}**` : ''}
        `.replace(/^[ \t]+/gm, ''); // Remove leading indentation
@@ -84,7 +84,7 @@ function resetForm() {
 
 <template>
   <ContentSection title="Fehler melden">
-    <form @submit.prevent="submit" v-if="submitted" class="report-form">
+    <form @submit.prevent="submit" v-if="!submitted" class="report-form">
       <label>
         <span>Überkapitel:</span>
         <select v-model="majorChapter">
