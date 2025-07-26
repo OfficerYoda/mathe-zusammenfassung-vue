@@ -147,6 +147,10 @@ export default defineComponent({
                         <FontAwesomeIcon class="search-bar-icon" icon="fa-solid fa-magnifying-glass"/>
                         <span class="search-bar-text">Suchen</span>
                     </div>
+                    <div class="icon-btn theme-toggle">
+                        <FontAwesomeIcon icon="fa-moon"/>
+<!--                        <FontAwesomeIcon icon="fa-sun"/>-->
+                    </div>
                     <div class="report-error-button--mobile">
                         <RouterLink class="report-error-button" to="/report" @click="handleReportClick">
                             Fehler melden
@@ -286,6 +290,7 @@ export default defineComponent({
     width: 100%;
     margin-top: 1rem;
     margin-bottom: 1rem;
+    gap: 0.5rem
 }
 
 .icon-btn {
@@ -309,8 +314,10 @@ export default defineComponent({
     color: var(--color-text-headings);
 }
 
-.home-btn {
-    margin-right: 0.5rem;
+.theme-toggle {
+    justify-content: center;
+    width: 2em;
+    height: 2em;
 }
 
 .search-bar {
