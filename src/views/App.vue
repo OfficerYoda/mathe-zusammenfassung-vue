@@ -137,7 +137,7 @@ export default defineComponent({
 
 <template>
     <div class="app-layout">
-        <aside class="sidebar left-sidebar">
+        <aside class="sidebar">
             <div class="sidebar-top-section">
                 <div class="icon-row">
                     <RouterLink class="icon-btn home-btn" to="/">
@@ -170,19 +170,23 @@ export default defineComponent({
             </div>
             <div class="sidebar-middle-section">
                 <h2 class="chapter-overview-title">Unterkapitel</h2>
-                <div v-if="currentChapter" class="chapter-overview">
-                    <RouterLink
-                        v-for="topic in currentTopics"
-                        :key="topic"
-                        :to="getTopicLink(topic)"
-                        class="chapter-overview-link"
-                        @click.native.prevent="smoothScrollToHash(getTopicLink(topic).split('#')[1] ? '#' + getTopicLink(topic).split('#')[1] : '')"
-                    >
-                        {{ topic }}
-                    </RouterLink>
-                </div>
-                <div v-else class="placeholder-content">
-                    <span><i>Wähl ein Überkapitel aus...</i></span>
+                <div class="chapter-overview-scroll">
+                    <div class="scroll-content">
+                        <div v-if="currentChapter" class="chapter-overview">
+                            <RouterLink
+                                v-for="topic in currentTopics"
+                                :key="topic"
+                                :to="getTopicLink(topic)"
+                                class="chapter-overview-link"
+                                @click.native.prevent="smoothScrollToHash(getTopicLink(topic).split('#')[1] ? '#' + getTopicLink(topic).split('#')[1] : '')"
+                            >
+                                {{ topic }}
+                            </RouterLink>
+                        </div>
+                        <div v-else class="placeholder-content">
+                            <span><i>Wähl ein Überkapitel aus...</i></span>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="sidebar-bottom-section">
@@ -384,10 +388,10 @@ export default defineComponent({
     border-top: 1px solid var(--color-surface);
     text-align: left;
     color: var(--color-text-primary);
-    max-height: 100vh;
-    overflow-y: auto;
-    padding-right: 1rem;
-    padding-left: 1rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
 }
 
 .chapter-overview-title {
@@ -395,6 +399,17 @@ export default defineComponent({
     font-size: 1.5rem;
     margin-top: 0.5rem;
     margin-bottom: 0.5rem;
+}
+
+.chapter-overview-scroll {
+    padding-right: 1rem;
+    padding-left: 0.5rem;
+    overflow-y: auto;
+    direction: rtl; /* Moves the scrollbar to the left */
+}
+
+.scroll-content {
+    direction: ltr; /* Resets text direction for the content */;
 }
 
 .chapter-overview-link {
@@ -602,7 +617,7 @@ export default defineComponent({
         min-height: 100vh;
     }
 
-    .sidebar.left-sidebar {
+    .sidebar {
         width: 100vw;
         min-width: 0;
         max-width: none;
@@ -617,6 +632,10 @@ export default defineComponent({
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+
+    .sidebar-middle-section {
+        display: none;
     }
 
     .icon-row {
