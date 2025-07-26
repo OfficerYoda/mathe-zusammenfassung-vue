@@ -258,7 +258,7 @@ export default defineComponent({
     overflow: hidden;
 }
 
-/* ---Left Sidebar--- */
+/* ---Sidebar--- */
 .sidebar {
     width: 15vw;
     min-width: 180px;
@@ -380,6 +380,51 @@ export default defineComponent({
     background-color: #444;
 }
 
+.sidebar-middle-section {
+    border-top: 1px solid var(--color-surface);
+    text-align: left;
+    color: var(--color-text-primary);
+    max-height: 100vh;
+    overflow-y: auto;
+    padding-right: 1rem;
+    padding-left: 1rem;
+}
+
+.chapter-overview-title {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.chapter-overview-link {
+    color: var(--color-text-secondary);
+    line-height: 1rem;
+    text-decoration: none;
+    transition: color 0.2s, padding-right 0.2s, padding-left 0.2s;
+    padding: 0.25rem 1.25rem 0.5rem 0.5rem;
+    border-radius: 4px;
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.chapter-overview-link:hover {
+    color: var(--color-text-primary);
+    padding-left: 1.5rem;
+    padding-right: 0.25rem;
+    background-color: var(--color-surface);
+}
+
+.placeholder-content {
+    color: var(--color-text-secondary);
+    font-size: 1.1rem;
+    text-align: center;
+    padding: 1rem;
+    opacity: 0.7;
+}
+
 .sidebar-bottom-section {
     display: inline-block;
     margin-top: auto;
@@ -430,51 +475,6 @@ export default defineComponent({
     max-width: 1024px;
     width: 100%;
     height: 100%;
-}
-
-/* ---Right Sidebar--- */
-.right-sidebar {
-    text-align: left;
-    color: var(--color-text-primary);
-    padding: 1rem;
-    max-height: 100vh;
-    overflow-y: auto;
-}
-
-.chapter-overview-title {
-    text-align: center;
-    font-size: 1.5rem;
-    margin-top: 0.5rem;
-    margin-bottom: 1.5rem;
-}
-
-.chapter-overview-link {
-    color: var(--color-text-secondary);
-    line-height: 1rem;
-    text-decoration: none;
-    transition: color 0.2s, padding-right 0.2s, padding-left 0.2s;
-    padding: 0.25rem 0.25rem 0.5rem 1.5rem;
-    border-radius: 4px;
-    display: block;
-    text-align: right;
-    width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.chapter-overview-link:hover {
-    color: var(--color-text-primary);
-    padding-right: 1.5rem;
-    padding-left: 0.25rem;
-    background-color: var(--color-surface);
-}
-
-.placeholder-content {
-    color: var(--color-text-secondary);
-    font-size: 1.1rem;
-    text-align: center;
-    padding: 1rem;
-    opacity: 0.7;
 }
 
 /* --- Search Results Dropdown --- */
@@ -594,14 +594,6 @@ export default defineComponent({
 }
 
 /* --- Responsive Design --- */
-
-/* Hide right sidebar below 1100px */
-@media (max-width: 1100px) {
-    .right-sidebar {
-        display: none;
-    }
-}
-
 /* Stack left sidebar on top and content below at 700px and below */
 @media (max-width: 700px) {
     .app-layout {
