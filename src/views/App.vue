@@ -273,8 +273,8 @@ export default defineComponent({
     max-width: 320px;
     display: flex;
     flex-direction: column;
-    background-color: #1a1a1a;
-    color: #e0e0e0;
+    background-color: var(--color-sidebar);
+    color: var(--color-text-primary);
     /* Make sidebar fixed */
     height: 100vh;
     position: sticky;
@@ -388,7 +388,7 @@ export default defineComponent({
 }
 
 .chapter-link--active:hover {
-    background-color: #444;
+    background-color: color-mix(in srgb, var(--color-surface) 90%, #fff 10%); /* A slightly brighter color */
 }
 
 .sidebar-middle-section {

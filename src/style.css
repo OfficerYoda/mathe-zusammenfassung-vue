@@ -5,36 +5,27 @@
 
     color-scheme: light dark;
     color: rgba(255, 255, 255, 0.87);
-    background-color: #242424;
 
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 
-    /* --- Base & Text Colors --- */
-    /* The main background for the page */
+    /* --- Default colors (dark theme) --- */
     --color-background: #1E1E1E;
-    /* Darker background for elements like tables or code blocks */
     --color-background-secondary: #252525;
-    /* The darkest shade, for borders or subtle UI elements */
     --color-surface: #333333;
+    --color-sidebar: #1A1A1A;
+    --color-matrix-secondary: #282828;
 
-    /* Primary text color for paragraphs */
     --color-text-primary: #CCCCCC;
-    /* Secondary text color for less important details or placeholders */
     --color-text-secondary: #888888;
-    /* Brightest text color for main headings */
     --color-text-headings: #E0E0E0;
 
     /* --- Semantic Colors --- */
-    /* For informational messages and alerts (calm blue) */
     --color-info: #4A85A4;
-    /* For warnings that need attention (golden yellow) */
     --color-warning: #D1A74D;
-    /* For success messages (uses the main accent for consistency) */
     --color-success: #5D9977;
-    /* For errors and danger actions (muted red) */
     --color-error: #be4a4a;
 }
 

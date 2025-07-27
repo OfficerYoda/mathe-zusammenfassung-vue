@@ -94,7 +94,7 @@ const hasRowHeaders = computed(() => tableData.value.rowHeaders && tableData.val
 }
 
 .matrix-table tbody tr:nth-child(even) .data-cell {
-    background-color: rgb(from #282828 r g b / 0.8);
+    background-color: rgb(from var(--color-matrix-secondary) r g b / 0.8);
 }
 
 .matrix-table tbody tr:nth-child(odd) .data-cell {
