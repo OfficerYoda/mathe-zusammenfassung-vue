@@ -10,6 +10,7 @@ import chaptersData from '../data/chapters.json';
 import {kebabUriCase} from "../utils/string.ts";
 import {useImageLightbox} from "../composables/useImageLightbox.ts";
 import {useSearch} from "../composables/useSearch.ts";
+import {useTheme} from "../composables/useTheme.ts";
 import router from "../router";
 
 export default defineComponent({
@@ -31,6 +32,9 @@ export default defineComponent({
         ]);
 
         const route = useRoute();
+
+        // Theme functionality
+        const {isDarkTheme, toggleTheme} = useTheme();
 
         function handleReportClick(event: MouseEvent) {
             if (route.path === '/report') {
@@ -130,6 +134,9 @@ export default defineComponent({
             hoveredResultIndex,
             setHoveredResultIndex,
             clearHoveredResultIndex,
+            // Theme toggle
+            isDarkTheme,
+            toggleTheme,
         };
     }
 });
@@ -147,9 +154,8 @@ export default defineComponent({
                         <FontAwesomeIcon class="search-bar-icon" icon="fa-solid fa-magnifying-glass"/>
                         <span class="search-bar-text">Suchen</span>
                     </div>
-                    <div class="icon-btn theme-toggle">
-                        <FontAwesomeIcon icon="fa-moon"/>
-<!--                        <FontAwesomeIcon icon="fa-sun"/>-->
+                    <div class="icon-btn theme-toggle" @click="toggleTheme">
+                        <FontAwesomeIcon :icon="isDarkTheme ? 'fa-moon' : 'fa-sun'"/>
                     </div>
                     <div class="report-error-button--mobile">
                         <RouterLink class="report-error-button" to="/report" @click="handleReportClick">
@@ -289,9 +295,9 @@ export default defineComponent({
     display: flex;
     align-items: center;
     width: 100%;
-    margin-top: 1rem;
-    margin-bottom: 1rem;
-    gap: 0.5rem
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    gap: 0.5rem;
 }
 
 .icon-btn {
@@ -299,11 +305,14 @@ export default defineComponent({
     color: var(--color-text-headings);
     cursor: pointer;
     padding: 0.5rem;
-    font-size: 1.3rem;
     transition: background-color 0.2s ease, color 0.2s ease;
     display: flex;
     align-items: center;
     border-radius: 4px;
+    width: 2.5rem;
+    height: 2.5rem;
+    justify-content: center;
+    font-size: 1.6rem;
 }
 
 .icon-btn:focus {
@@ -313,12 +322,6 @@ export default defineComponent({
 .icon-btn:hover {
     background-color: var(--color-surface);
     color: var(--color-text-headings);
-}
-
-.theme-toggle {
-    justify-content: center;
-    width: 2em;
-    height: 2em;
 }
 
 .search-bar {
@@ -618,7 +621,7 @@ export default defineComponent({
 
 /* --- Responsive Design --- */
 /* Stack left sidebar on top and content below at 700px and below */
-@media (max-width: 700px) {
+@media (max-width: 850px) {
     .app-layout {
         flex-direction: column;
         height: auto;
@@ -652,9 +655,10 @@ export default defineComponent({
         margin-bottom: 1rem;
     }
 
-    .home-btn {
-        padding-left: 0;
-        margin-right: 1rem;
+    .icon-btn {
+        width: 3rem;
+        height: 3rem;
+        justify-content: center;
         font-size: 2rem;
     }
 
@@ -662,7 +666,6 @@ export default defineComponent({
         flex: 1;
         min-width: 0;
         padding: 0.5rem 0.75rem;
-        margin-right: 1rem;
         height: 3.2rem;
     }
 

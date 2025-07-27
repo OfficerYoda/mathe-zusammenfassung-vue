@@ -246,17 +246,15 @@ const handleMouseLeave = (event: MouseEvent) => {
 .chapter-tile__name {
     font-size: 2rem;
     font-weight: 700;
-    color: var(--color-text-headings);
+    color: #e0e0e0; /* hardcoded color (dark mode heading color) because light mode color is hard to read */
+    border-radius: 12px;
     background-color: rgba(0, 0, 0, 0.25);
     text-shadow: 0 2px 8px rgba(0, 0, 0, 0.45);
-    border-radius: 12px;
     -moz-box-shadow: 0 0 0.75rem rgba(0, 0, 0, .5);
     -webkit-box-shadow: 0 0 0.75rem rgba(0, 0, 0, .5);
     box-shadow: 0 0 0.75rem rgba(0, 0, 0, .5);
     padding: 0 1rem 0.5rem;
     z-index: 1;
-    text-decoration: none;
-    transform: translateZ(20px);
 }
 
 .home-search-bar {
