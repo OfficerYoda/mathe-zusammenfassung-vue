@@ -12,11 +12,7 @@ defineProps<{
 
 <style scoped>
 .chapter-title {
-    background: linear-gradient(to bottom, var(--color-text-headings), var(--color-text-headings) 50%, var(--color-background) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    color: transparent;
+    color: var(--color-text-headings);
     font-size: 5rem;
     margin-top: 0;
     margin-bottom: 2rem;
