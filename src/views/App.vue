@@ -273,13 +273,14 @@ export default defineComponent({
     max-width: 320px;
     display: flex;
     flex-direction: column;
-    background-color: var(--color-sidebar);
+    background-color: var(--color-background);
     color: var(--color-text-primary);
     /* Make sidebar fixed */
     height: 100vh;
     position: sticky;
     top: 0;
     z-index: 2;
+    border-right: 1px solid var(--color-surface);
 }
 
 .icon-row {
