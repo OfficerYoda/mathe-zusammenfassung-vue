@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 import ChapterTitle from "../components/ChapterTitle.vue";
 import ContentSection from "../components/ContentSection.vue";
-import MultiColumnLayout from "../components/MultiColumnLayout.vue";
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 import {useSearch} from '../composables/useSearch.ts';
 import Subsection from "../components/Subsection.vue";
 import InfoBox from "../components/InfoBox.vue";
+import MultiColumnLayout from "../components/MultiColumnLayout.vue";
 
 const {activateSearch} = useSearch();
 
@@ -49,100 +49,20 @@ const handleMouseLeave = (event: MouseEvent) => {
             <span class="home-search-text">Suchen...</span>
         </div>
         <div class="chapter-tiles">
-            <MultiColumnLayout :columns=3>
-                <template #col-1>
-                    <RouterLink
-                        :key="chapters[0].route"
-                        :style="{
-              borderColor: chapters[0].color,
-              backgroundImage: chapters[0].bgImage
-        }"
-                        :to="chapters[0].route"
-                        class="chapter-tile"
-                        @mouseleave="handleMouseLeave"
-                        @mousemove="handleMouseMove"
-                    >
-                        <span class="chapter-tile__name">{{ chapters[0].name }}</span>
-                    </RouterLink>
-                </template>
-                <template #col-2>
-                    <RouterLink
-                        :key="chapters[1].route"
-                        :style="{
-              borderColor: chapters[1].color,
-              backgroundImage: chapters[1].bgImage
-        }"
-                        :to="chapters[1].route"
-                        class="chapter-tile"
-                        @mouseleave="handleMouseLeave"
-                        @mousemove="handleMouseMove"
-                    >
-                        <span class="chapter-tile__name">{{ chapters[1].name }}</span>
-                    </RouterLink>
-                </template>
-                <template #col-3>
-                    <RouterLink
-                        :key="chapters[2].route"
-                        :style="{
-              borderColor: chapters[2].color,
-              backgroundImage: chapters[2].bgImage
-        }"
-                        :to="chapters[2].route"
-                        class="chapter-tile"
-                        @mouseleave="handleMouseLeave"
-                        @mousemove="handleMouseMove"
-                    >
-                        <span class="chapter-tile__name">{{ chapters[2].name }}</span>
-                    </RouterLink>
-                </template>
-            </MultiColumnLayout>
-            <MultiColumnLayout :columns=3>
-                <template #col-1>
-                    <RouterLink
-                        :key="chapters[3].route"
-                        :style="{
-              borderColor: chapters[3].color,
-              backgroundImage: chapters[3].bgImage
-        }"
-                        :to="chapters[3].route"
-                        class="chapter-tile chapter-tile--wide"
-                        @mouseleave="handleMouseLeave"
-                        @mousemove="handleMouseMove"
-                    >
-                        <span class="chapter-tile__name">{{ chapters[3].name }}</span>
-                    </RouterLink>
-                </template>
-                <template #col-2>
-                    <RouterLink
-                        :key="chapters[4].route"
-                        :style="{
-              borderColor: chapters[4].color,
-              backgroundImage: chapters[4].bgImage
-        }"
-                        :to="chapters[4].route"
-                        class="chapter-tile chapter-tile--wide"
-                        @mouseleave="handleMouseLeave"
-                        @mousemove="handleMouseMove"
-                    >
-                        <span class="chapter-tile__name">{{ chapters[4].name }}</span>
-                    </RouterLink>
-                </template>
-                <template #col-3>
-                    <RouterLink
-                        :key="chapters[5].route"
-                        :style="{
-              borderColor: chapters[5].color,
-              backgroundImage: chapters[5].bgImage
-        }"
-                        :to="chapters[5].route"
-                        class="chapter-tile chapter-tile--wide"
-                        @mouseleave="handleMouseLeave"
-                        @mousemove="handleMouseMove"
-                    >
-                        <span class="chapter-tile__name">{{ chapters[5].name }}</span>
-                    </RouterLink>
-                </template>
-            </MultiColumnLayout>
+            <RouterLink
+                v-for="chapter in chapters"
+                :key="chapter.route"
+                :style="{
+                    borderColor: chapter.color,
+                    backgroundImage: chapter.bgImage
+                }"
+                :to="chapter.route"
+                class="chapter-tile"
+                @mouseleave="handleMouseLeave"
+                @mousemove="handleMouseMove"
+            >
+                <span class="chapter-tile-title">{{ chapter.name }}</span>
+            </RouterLink>
         </div>
         <InfoBox color="blue" style="margin-top: 2.5rem">
             <p>
@@ -222,8 +142,8 @@ const handleMouseLeave = (event: MouseEvent) => {
 
 <style scoped>
 .chapter-tiles {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
     margin-top: 1.5rem;
     perspective: 1000px;
@@ -251,15 +171,11 @@ const handleMouseLeave = (event: MouseEvent) => {
     transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1);
 }
 
-.chapter-tile--wide {
-    min-height: 280px;
-}
-
 .chapter-tile:hover {
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.24);
 }
 
-.chapter-tile__name {
+.chapter-tile-title {
     font-size: 2rem;
     font-weight: 700;
     color: #e0e0e0; /* hardcoded color (dark mode heading color) because light mode color is hard to read */
@@ -271,6 +187,18 @@ const handleMouseLeave = (event: MouseEvent) => {
     box-shadow: 0 0 0.75rem rgba(0, 0, 0, .5);
     padding: 0 1rem 0.5rem;
     z-index: 1;
+}
+
+@media (max-width: 700px) {
+    .chapter-tile-title {
+        font-size: 3rem;
+    }
+}
+
+@media (max-width: 1024px) {
+    .chapter-tiles {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 .home-search-bar {
