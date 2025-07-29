@@ -17,13 +17,14 @@ const excludedFiles = [
     'Report.vue'
 ];
 
+const majorChapters = ["Notation", "Gleichungen", "Analysis", "Geometrie", "Stochastik", "Zusatz"];
+
 function getAllVueFiles(dir) {
     try {
         const files = fs.readdirSync(dir);
-        const vueFiles = files
+        return files
             .filter(f => vueFilePattern.test(f) && !excludedFiles.includes(f))
             .map(f => path.join(dir, f));
-        return vueFiles;
     } catch (error) {
         console.error(`Error reading directory ${dir}:`, error.message);
         throw error;
@@ -75,7 +76,6 @@ function main() {
         });
 
         const finalTitles = {};
-        const majorChapters = ["Notation", "Gleichungen", "Analysis", "Geometrie", "Stochastik"];
         for (const mj of majorChapters) {
             // Find all minor chapters whose name starts with mj
             const minorChapters = Object.keys(allTitles)
