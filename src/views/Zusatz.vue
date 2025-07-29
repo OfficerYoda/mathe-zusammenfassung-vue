@@ -8,9 +8,18 @@ import ChapterTitle from "../components/ChapterTitle.vue";
 </script>
 
 <template>
-    <ChapterTitle title="Apokryphen"/>
+    <ChapterTitle title="Zusatz"/>
+
+    <InfoBox color="blue">
+        <p>
+            Die Kapitel hier sind entweder nicht Abiturrelevant oder Abiturrelevant (deutlich gekennzeichnet) aber so
+            irrelevant, dass man sie eigentlich nicht braucht, selbst wenn man 15 Punkte schreiben will.
+        </p>
+    </InfoBox>
+    <br>
 
     <ContentSection title="Integralfunktion">
+        <InfoBox color="blue"><p>Theoretisch Abiturrelevant</p></InfoBox>
         <InfoBox color="green">
             <p v-mathjax>
                 Die <strong>Integralfunktion</strong> $J_u(x)$ zu einer integrierbaren Funktion $f$ ist definiert als:
@@ -49,7 +58,6 @@ import ChapterTitle from "../components/ChapterTitle.vue";
             </MathDisplay>
         </Subsection>
     </ContentSection>
-
 </template>
 
 <style scoped>

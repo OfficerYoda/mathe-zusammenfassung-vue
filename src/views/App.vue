@@ -29,6 +29,7 @@ export default defineComponent({
             {name: 'Stochastik', path: '/stochastik'},
             {name: 'Notation', path: '/notation'},
             {name: 'Gleichungen', path: '/gleichungen'},
+            {name: 'Zusatz', path: '/zusatz'},
         ]);
 
         const route = useRoute();
@@ -295,8 +296,8 @@ export default defineComponent({
     display: flex;
     align-items: center;
     width: 100%;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     gap: 0.5rem;
 }
 

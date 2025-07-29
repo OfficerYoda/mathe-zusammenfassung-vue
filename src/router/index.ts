@@ -6,6 +6,7 @@ import GleichungenView from '../views/Gleichungen.vue';
 import AnalysisView from '../views/Analysis.vue';
 import GeometrieView from '../views/Geometrie.vue';
 import StochastikView from '../views/Stochastik.vue';
+import ZusatzView from '../views/Zusatz.vue';
 
 const routes = [
     {path: '/', name: 'home', component: Home},
@@ -15,6 +16,7 @@ const routes = [
     {path: '/analysis', name: 'analysis', component: AnalysisView},
     {path: '/geometrie', name: 'geometrie', component: GeometrieView},
     {path: '/stochastik', name: 'stochastik', component: StochastikView},
+    {path: '/zusatz', name: 'Ergänzungen', component: ZusatzView},
 ];
 
 const router = createRouter({

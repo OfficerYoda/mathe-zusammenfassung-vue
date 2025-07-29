@@ -15,6 +15,7 @@ const chapters = [
     {name: 'Stochastik', route: '/stochastik', color: '#8E4FF7', bgImage: 'url(/images/cover_stochastik.webp)'},
     {name: 'Notation', route: '/notation', color: '#4FF78E', bgImage: 'url(/images/cover_notation.webp)'},
     {name: 'Gleichungen', route: '/gleichungen', color: '#F78E4F', bgImage: 'url(/images/cover_gleichungen.webp)'},
+    {name: 'Zusatz', route: '/zusatz', color: '#F78E4F', bgImage: 'url(/images/cover_zusatz.webp)'},
 ];
 
 // 3D tilt effect handlers
@@ -95,7 +96,7 @@ const handleMouseLeave = (event: MouseEvent) => {
                     </RouterLink>
                 </template>
             </MultiColumnLayout>
-            <MultiColumnLayout :columns=2>
+            <MultiColumnLayout :columns=3>
                 <template #col-1>
                     <RouterLink
                         :key="chapters[3].route"
@@ -124,6 +125,21 @@ const handleMouseLeave = (event: MouseEvent) => {
                         @mousemove="handleMouseMove"
                     >
                         <span class="chapter-tile__name">{{ chapters[4].name }}</span>
+                    </RouterLink>
+                </template>
+                <template #col-3>
+                    <RouterLink
+                        :key="chapters[5].route"
+                        :style="{
+              borderColor: chapters[5].color,
+              backgroundImage: chapters[5].bgImage
+        }"
+                        :to="chapters[5].route"
+                        class="chapter-tile chapter-tile--wide"
+                        @mouseleave="handleMouseLeave"
+                        @mousemove="handleMouseMove"
+                    >
+                        <span class="chapter-tile__name">{{ chapters[5].name }}</span>
                     </RouterLink>
                 </template>
             </MultiColumnLayout>
