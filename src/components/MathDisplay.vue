@@ -1,18 +1,18 @@
 <template>
-    <div class="math-display" v-html="processedLatex"></div>
+    <ScrollableContainer>
+        <div class="math-display" v-html="processedLatex"></div>
+    </ScrollableContainer>
 </template>
 
 <script lang="ts">
 import {defineComponent, getCurrentInstance, nextTick, ref, watch} from 'vue';
-
-declare global {
-    interface Window {
-        MathJax: any;
-    }
-}
+import ScrollableContainer from './ScrollableContainer.vue';
 
 export default defineComponent({
     name: 'MathDisplay',
+    components: {
+        ScrollableContainer,
+    },
     props: {
         latex: {
             type: String,
@@ -56,5 +56,7 @@ export default defineComponent({
     margin: 0;
     padding: 0.05rem;
     color: var(--color-text-primary);
+    /* Prevent math from shrinking below content width */
+    min-width: max-content;
 }
 </style>

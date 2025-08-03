@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import {computed, defineProps} from "vue";
 import type {MatrixTableData} from "../data/matrixTableContents";
+import ScrollableContainer from "./ScrollableContainer.vue";
 
 const props = defineProps<{
     // Option 1: Direct props
@@ -32,7 +33,7 @@ const hasRowHeaders = computed(() => tableData.value.rowHeaders && tableData.val
 </script>
 
 <template>
-    <div class="table-container">
+    <ScrollableContainer class="table-wrapper">
         <table class="matrix-table">
             <thead v-if="hasColumnHeaders">
             <tr>
@@ -60,38 +61,15 @@ const hasRowHeaders = computed(() => tableData.value.rowHeaders && tableData.val
             </tr>
             </tbody>
         </table>
-    </div>
+    </ScrollableContainer>
 </template>
 
 <style scoped>
-.table-container {
-    overflow-x: auto;
-    margin-top: 1rem;
-    scrollbar-width: thin;
-    scrollbar-color: var(--color-surface) transparent;
-}
-
-.table-container::-webkit-scrollbar {
-    height: 8px;
-}
-
-.table-container::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-.table-container::-webkit-scrollbar-thumb {
-    background-color: var(--color-surface);
-    border-radius: 4px;
-}
-
-.table-container::-webkit-scrollbar-thumb:hover {
-    background-color: var(--color-text-secondary);
-}
 
 .matrix-table {
+    margin-top: 1rem;
     width: 100%;
     border-collapse: collapse;
-    /* Remove margin-top since container now has it */
     color: var(--color-text-primary);
     /* Prevent table from shrinking below content width */
     min-width: max-content;
