@@ -601,6 +601,7 @@ export default defineComponent({
     margin-bottom: 1em;
     flex-shrink: 0;
     padding: 1.5em 1.5em 0.5em;
+    gap: 1em;
 }
 
 .search-popup-input-container {
@@ -684,7 +685,7 @@ export default defineComponent({
 }
 
 /* --- Responsive Design --- */
-/* Stack left sidebar on top and content below at 700px and below */
+/* Stack left sidebar on top and content below at 850px and below */
 @media (max-width: 850px) {
     .app-layout {
         flex-direction: column;
@@ -772,7 +773,7 @@ export default defineComponent({
     }
 
     .search-popup-overlay {
-        font-size: 2rem;
+        font-size: 1.5rem;
     }
 }
 </style>

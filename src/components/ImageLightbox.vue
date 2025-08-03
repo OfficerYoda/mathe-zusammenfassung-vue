@@ -209,7 +209,7 @@ watch(() => props.isOpen, (isOpen) => {
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 850px) {
     .lightbox-overlay {
         padding: 1rem;
     }
