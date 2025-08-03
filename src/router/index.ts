@@ -1,12 +1,13 @@
 import {createRouter, createWebHistory} from 'vue-router';
 import Home from '../views/Home.vue'
-import ReportView from '../views/Report.vue';
-import NotationView from '../views/Notation.vue';
-import GleichungenView from '../views/Gleichungen.vue';
-import AnalysisView from '../views/Analysis.vue';
-import GeometrieView from '../views/Geometrie.vue';
-import StochastikView from '../views/Stochastik.vue';
-import ZusatzView from '../views/Zusatz.vue';
+
+const ReportView = () => import('../views/Report.vue');
+const NotationView = () => import('../views/Notation.vue');
+const GleichungenView = () => import('../views/Gleichungen.vue');
+const AnalysisView = () => import('../views/Analysis.vue');
+const GeometrieView = () => import('../views/Geometrie.vue');
+const StochastikView = () => import('../views/Stochastik.vue');
+const ZusatzView = () => import('../views/Zusatz.vue');
 
 const routes = [
     {path: '/', name: 'home', component: Home},

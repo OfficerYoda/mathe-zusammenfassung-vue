@@ -1,9 +1,10 @@
 <script lang="ts">
-import {computed, defineComponent, provide, ref} from 'vue';
+import {computed, defineComponent, provide, ref, watch} from 'vue';
 import ContentSection from '../components/ContentSection.vue';
 import InfoBox from '../components/InfoBox.vue';
 import MathDisplay from '../components/MathDisplay.vue';
 import ImageLightbox from '../components/ImageLightbox.vue';
+import SkeletonScreen from './SkeletonScreen.vue';
 import {FontAwesomeIcon} from "@fortawesome/vue-fontawesome";
 import {useRoute} from "vue-router";
 import chaptersData from '../data/chapters.json';
@@ -21,6 +22,7 @@ export default defineComponent({
         InfoBox,
         MathDisplay,
         ImageLightbox,
+        SkeletonScreen,
     },
     setup() {
         const chapters = ref([
@@ -33,6 +35,27 @@ export default defineComponent({
         ]);
 
         const route = useRoute();
+
+        // Manual loading state for route transitions
+        const isRouteLoading = ref(false);
+        const loadingTimeout = ref<number | null>(null);
+
+        // Watch for route changes and show loading
+        watch(() => route.path, (newPath, oldPath) => {
+            if (newPath !== oldPath) {
+                isRouteLoading.value = true;
+
+                // Clear any existing timeout
+                if (loadingTimeout.value) {
+                    clearTimeout(loadingTimeout.value);
+                }
+
+                // Show skeleton for at least 500ms to ensure it's visible
+                loadingTimeout.value = setTimeout(() => {
+                    isRouteLoading.value = false;
+                }, 500);
+            }
+        });
 
         // Theme functionality
         const {isDarkTheme, toggleTheme} = useTheme();
@@ -138,6 +161,8 @@ export default defineComponent({
             // Theme toggle
             isDarkTheme,
             toggleTheme,
+            // Loading state
+            isRouteLoading,
         };
     }
 });
@@ -208,7 +233,13 @@ export default defineComponent({
         </aside>
         <main class="content-area">
             <div id="app-container">
-                <RouterView/>
+                <SkeletonScreen v-if="isRouteLoading"/>
+                <Suspense v-else>
+                    <template #fallback>
+                        <SkeletonScreen/>
+                    </template>
+                    <RouterView/>
+                </Suspense>
             </div>
         </main>
 
