@@ -17,7 +17,7 @@ const excludedFiles = [
     'Report.vue'
 ];
 
-const majorChapters = ["Notation", "Gleichungen", "Analysis", "Geometrie", "Stochastik", "Zusatz"];
+const majorChapters = ["Analysis", "Geometrie", "Stochastik", "Notation", "Gleichungen", "Zusatz"];
 
 function getAllVueFiles(dir) {
     try {

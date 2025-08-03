@@ -1,25 +1,4 @@
 {
-  "Notation": [
-    "Mengen",
-    "Intervalle",
-    "Mengennotation",
-    "Definitionsbereiche",
-    "Limes",
-    "Summenzeichen",
-    "Vektoren"
-  ],
-  "Gleichungen": [
-    "Lösungsmenge",
-    "Satz vom Nullprodukt",
-    "(spezielle) kubische Gleichungen",
-    "Biquadratische Gleichungen",
-    "Bruchgleichungen",
-    "Wurzelgleichungen",
-    "Exponentialgleichungen",
-    "Betragsgleichungen",
-    "Ungleichungen",
-    "Trigonometrische Gleichungen"
-  ],
   "Analysis": [
     "Ganzrationale Funktionen",
     "Definitions- und Wertemenge",
@@ -114,6 +93,27 @@
     "Umkehrung der Normalverteilung",
     "Normalverteilung zur Annäherung einer diskreten Zufallsgröße",
     "Sigma-Regeln"
+  ],
+  "Notation": [
+    "Mengen",
+    "Intervalle",
+    "Mengennotation",
+    "Definitionsbereiche",
+    "Limes",
+    "Summenzeichen",
+    "Vektoren"
+  ],
+  "Gleichungen": [
+    "Lösungsmenge",
+    "Satz vom Nullprodukt",
+    "(spezielle) kubische Gleichungen",
+    "Biquadratische Gleichungen",
+    "Bruchgleichungen",
+    "Wurzelgleichungen",
+    "Exponentialgleichungen",
+    "Betragsgleichungen",
+    "Ungleichungen",
+    "Trigonometrische Gleichungen"
   ],
   "Zusatz": [
     "Integralfunktion"
