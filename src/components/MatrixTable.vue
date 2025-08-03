@@ -32,42 +32,69 @@ const hasRowHeaders = computed(() => tableData.value.rowHeaders && tableData.val
 </script>
 
 <template>
-    <table class="matrix-table">
-        <thead v-if="hasColumnHeaders">
-        <tr>
-            <th v-if="hasRowHeaders" class="top-left-cell">{{ tableData.topLeftCell || '' }}</th>
-            <th v-for="header in tableData.columnHeaders" :key="header" v-mathjax>
-                <span v-mathjax v-html="header"></span>
-            </th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr v-for="(rowData, rowIndex) in tableData.data"
-            :key="hasRowHeaders ? tableData.rowHeaders[rowIndex] : rowIndex">
-            <th v-if="hasRowHeaders" v-mathjax class="row-header">
-                <span v-mathjax v-html="tableData.rowHeaders[rowIndex]"></span>
-            </th>
-            <td v-for="(cellData, colIndex) in rowData" :key="colIndex" v-mathjax class="data-cell">
-                <span v-mathjax v-html="cellData"></span>
-            </td>
-        </tr>
-        <!-- If no row headers and no column headers, just render data rows -->
-        <tr v-for="(rowData, rowIndex) in tableData.data" v-if="!hasRowHeaders && !hasColumnHeaders" :key="rowIndex">
-            <td v-for="(cellData, colIndex) in rowData" :key="colIndex" v-mathjax class="data-cell">
-                <span v-mathjax v-html="cellData"></span>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+    <div class="table-container">
+        <table class="matrix-table">
+            <thead v-if="hasColumnHeaders">
+            <tr>
+                <th v-if="hasRowHeaders" class="top-left-cell">{{ tableData.topLeftCell || '' }}</th>
+                <th v-for="header in tableData.columnHeaders" :key="header" v-mathjax>
+                    <span v-mathjax v-html="header"></span>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="(rowData, rowIndex) in tableData.data"
+                :key="hasRowHeaders ? tableData.rowHeaders[rowIndex] : rowIndex">
+                <th v-if="hasRowHeaders" v-mathjax class="row-header">
+                    <span v-mathjax v-html="tableData.rowHeaders[rowIndex]"></span>
+                </th>
+                <td v-for="(cellData, colIndex) in rowData" :key="colIndex" v-mathjax class="data-cell">
+                    <span v-mathjax v-html="cellData"></span>
+                </td>
+            </tr>
+            <!-- If no row headers and no column headers, just render data rows -->
+            <tr v-for="(rowData, rowIndex) in tableData.data" v-if="!hasRowHeaders && !hasColumnHeaders" :key="rowIndex">
+                <td v-for="(cellData, colIndex) in rowData" :key="colIndex" v-mathjax class="data-cell">
+                    <span v-mathjax v-html="cellData"></span>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </template>
 
 <style scoped>
+.table-container {
+    overflow-x: auto;
+    margin-top: 1rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-surface) transparent;
+}
+
+.table-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.table-container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+    background-color: var(--color-surface);
+    border-radius: 4px;
+}
+
+.table-container::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-text-secondary);
+}
+
 .matrix-table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 1rem;
-    /*  background-color: rgba(from var(--color-background-secondary) r g b, 0.8); */
+    /* Remove margin-top since container now has it */
     color: var(--color-text-primary);
+    /* Prevent table from shrinking below content width */
+    min-width: max-content;
 }
 
 .matrix-table th,
