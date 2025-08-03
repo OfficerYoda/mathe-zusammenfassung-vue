@@ -81,7 +81,7 @@ function createSearchState() {
 
     // Preprocess to allow for greek letter typing and hyphens
     const preprocess = (text: string) => text.toLowerCase()
-        .replace(/m(y|ü|u)/g, 'μ')
+        .replace(/m([yüu])/g, 'μ')
         .replace(/sigma/g, 'σ')
         .replace(/-/g, ' ');
 

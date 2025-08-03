@@ -8,6 +8,13 @@
 import {defineComponent, getCurrentInstance, nextTick, ref, watch} from 'vue';
 import ScrollableContainer from './ScrollableContainer.vue';
 
+// Needed for TypeScript/Firebase to properly deploy
+declare global {
+    interface Window {
+        MathJax: any;
+    }
+}
+
 export default defineComponent({
     name: 'MathDisplay',
     components: {
