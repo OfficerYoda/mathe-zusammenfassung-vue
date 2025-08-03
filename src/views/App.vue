@@ -40,9 +40,30 @@ export default defineComponent({
         const isRouteLoading = ref(false);
         const loadingTimeout = ref<number | null>(null);
 
+        // Store scroll positions for each route
+        const scrollPositions = ref<Record<string, number>>({});
+
+        // Track navigation type
+        let isHistoryNavigation = false;
+
+        // Listen for popstate events (back/forward navigation)
+        if (typeof window !== 'undefined') {
+            window.addEventListener('popstate', () => {
+                isHistoryNavigation = true;
+            });
+        }
+
         // Watch for route changes and show loading
         watch(() => route.path, (newPath, oldPath) => {
             if (newPath !== oldPath) {
+                // Save current scroll position before leaving
+                if (oldPath) {
+                    const contentArea = document.querySelector('.content-area');
+                    if (contentArea) {
+                        scrollPositions.value[oldPath] = contentArea.scrollTop;
+                    }
+                }
+
                 isRouteLoading.value = true;
 
                 // Clear any existing timeout
@@ -50,10 +71,26 @@ export default defineComponent({
                     clearTimeout(loadingTimeout.value);
                 }
 
-                // Show skeleton for at least 500ms to ensure it's visible
                 loadingTimeout.value = setTimeout(() => {
                     isRouteLoading.value = false;
-                }, 500);
+
+                    // Handle scroll position after loading
+                    setTimeout(() => {
+                        const contentArea = document.querySelector('.content-area');
+                        if (contentArea) {
+                            if (isHistoryNavigation && scrollPositions.value[newPath] !== undefined) {
+                                // Restore scroll position for history navigation
+                                contentArea.scrollTop = scrollPositions.value[newPath];
+                            } else {
+                                // Reset scroll position for new navigation
+                                contentArea.scrollTop = 0;
+                            }
+                        }
+
+                        // Reset history navigation flag
+                        isHistoryNavigation = false;
+                    }, 50); // Small delay to ensure content is rendered
+                }, 250);
             }
         });
 
@@ -234,12 +271,7 @@ export default defineComponent({
         <main class="content-area">
             <div id="app-container">
                 <SkeletonScreen v-if="isRouteLoading"/>
-                <Suspense v-else>
-                    <template #fallback>
-                        <SkeletonScreen/>
-                    </template>
-                    <RouterView/>
-                </Suspense>
+                <RouterView v-else/>
             </div>
         </main>
 

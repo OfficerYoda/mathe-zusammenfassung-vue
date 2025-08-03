@@ -45,15 +45,15 @@ import ContentSection from "../components/ContentSection.vue";
 }
 
 .loading-delay-1::before {
-    animation-delay: 1s;
+    animation-delay: 0s;
 }
 
 .loading-delay-2::before {
-    animation-delay: 1.3s;
+    animation-delay: 0.3s;
 }
 
 .loading-delay-3::before {
-    animation-delay: 1.6s;
+    animation-delay: 0.6s;
 }
 
 @keyframes loadingBar {
