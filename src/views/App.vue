@@ -441,6 +441,7 @@ export default defineComponent({
     text-decoration: none;
     border-radius: 4px;
     transition: background-color 0.2s ease, color 0.2s ease;
+    font-weight: 640;
 }
 
 .chapter-link:hover {
