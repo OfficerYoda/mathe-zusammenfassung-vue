@@ -92,6 +92,10 @@ body, html {
     :root {
         font-size: 0.5rem;
     }
+
+    ul, ol {
+        padding-left: 2rem;
+    }
 }
 
 /* Custom Scrollbar Styling */
