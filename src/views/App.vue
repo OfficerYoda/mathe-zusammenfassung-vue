@@ -499,6 +499,7 @@ export default defineComponent({
     width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-weight: 550;
 }
 
 .chapter-overview-link:hover {

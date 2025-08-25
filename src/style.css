@@ -10,6 +10,7 @@
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    -moz-font-feature-settings: "kern" 1;
 
     /* --- Default colors (dark theme) --- */
     --color-background: #1E1E1E;
@@ -74,8 +75,8 @@ body, html {
     margin: 0;
     padding: 0;
 
-    /* Scrollbar styles for Webkit browsers */
-    scrollbar-color: var(--color-surface);
+    /* Firefox scrollbar styles */
+    scrollbar-color: var(--color-surface) transparent;
     scrollbar-width: thin;
 }
 
@@ -94,7 +95,7 @@ body, html {
     }
 
     ul, ol {
-        padding-left: 2rem;
+        padding-left: 10%;
     }
 }
 
@@ -115,4 +116,29 @@ body, html {
 ::-webkit-scrollbar-track {
     background: transparent;
     border-radius: 8px;
+}
+
+/* For Firefox - Enhanced scrollbar support */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-surface) transparent;
+}
+
+/* Firefox-specific smooth scrolling */
+@supports (scroll-behavior: smooth) {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+/* Firefox-specific selection styling */
+::-moz-selection {
+    background: var(--color-info);
+    color: white;
+}
+
+/* Cross-browser selection styling */
+::selection {
+    background: var(--color-info);
+    color: white;
 }

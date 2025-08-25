@@ -1,0 +1,15 @@
+# Browsers that we support
+
+# Firefox - Support last 3 major versions and ESR
+Firefox >= 67
+Firefox ESR
+
+# Other browsers
+> 1%
+last 2 Chrome versions
+last 2 Safari versions
+last 2 Edge versions
+
+# Avoid dead browsers
+not IE 11
+not dead
