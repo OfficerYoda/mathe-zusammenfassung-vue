@@ -105,7 +105,7 @@ const handleMouseLeave = (event: MouseEvent) => {
             </template>
         </MultiColumnLayout>
         <Subsection title="Vorlage zum ausdrucken">
-            <div class="download-buttons">
+            <div class="download-buttons-templates">
                 <DownloadButton
                     v-for="chapter in chapters"
                     :key="chapter.route"
@@ -177,6 +177,7 @@ const handleMouseLeave = (event: MouseEvent) => {
 </template>
 
 <style scoped>
+
 .chapter-tiles {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -274,6 +275,13 @@ const handleMouseLeave = (event: MouseEvent) => {
 .download-buttons {
     display: flex;
     flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.download-buttons-templates {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
     margin-top: 1.5rem;
 }
