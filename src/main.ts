@@ -1,10 +1,10 @@
 import {createApp} from 'vue';
-import App from './views/App.vue';
+import App from './views/EmptyApp.vue';
 import router from './router';
 import vMathJax from './directives/mathjax';
 import {library} from '@fortawesome/fontawesome-svg-core'
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
-import {faHouse, faMagnifyingGlass, faMoon, faSun, faXmark} from '@fortawesome/free-solid-svg-icons'
+import {faHouse, faMagnifyingGlass, faMoon, faSun, faXmark, faFilePdf, faSpinner} from '@fortawesome/free-solid-svg-icons'
 import './style.css';
 
 // Firefox compatibility polyfills
@@ -28,9 +28,11 @@ if (!CSS.supports('scroll-behavior', 'smooth')) {
 
 library.add(faMagnifyingGlass)
 library.add(faHouse)
-library.add(faXmark)
 library.add(faMoon)
 library.add(faSun)
+library.add(faXmark)
+library.add(faFilePdf)
+library.add(faSpinner)
 
 const app = createApp(App);
 

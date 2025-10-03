@@ -53,3 +53,5 @@ test-results/
 *.iml
 /.firebase/hosting.ZGlzdA.cache
 /src/firebase/firebaseConfig.private.ts
+
+/pdfs
