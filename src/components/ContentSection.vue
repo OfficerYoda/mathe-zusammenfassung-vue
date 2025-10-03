@@ -83,9 +83,10 @@ export default defineComponent({
 .content-section {
     background-color: var(--color-background-secondary);
     padding: 2rem;
-    margin-bottom: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Comment out the following for pdf-export */
+    //margin-bottom: 2rem;
+    //border-radius: 8px;
+    //box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 .section-title {

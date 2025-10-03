@@ -1,5 +1,5 @@
 import {createApp} from 'vue';
-import App from './views/EmptyApp.vue';
+import PdfExportApp from './views/PdfExportApp.vue';
 import router from './router';
 import vMathJax from './directives/mathjax';
 import {library} from '@fortawesome/fontawesome-svg-core'
@@ -34,7 +34,7 @@ library.add(faXmark)
 library.add(faFilePdf)
 library.add(faSpinner)
 
-const app = createApp(App);
+const app = createApp(PdfExportApp);
 
 app.use(router)
 app.directive('mathjax', vMathJax);

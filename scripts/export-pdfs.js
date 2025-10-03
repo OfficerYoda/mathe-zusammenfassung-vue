@@ -147,6 +147,33 @@ async function exportContentSectionsToPDF() {
                     // Wait a bit more for any remaining image loading
                     await new Promise(resolve => setTimeout(resolve, 1000));
 
+                    // Get the dimensions of the content section
+                    const sectionDimensions = await page.evaluate((targetId) => {
+                        const section = document.getElementById(targetId);
+                        if (!section) return null;
+
+                        const rect = section.getBoundingClientRect();
+                        return {
+                            width: section.scrollWidth,
+                            height: section.scrollHeight,
+                            x: rect.x,
+                            y: rect.y
+                        };
+                    }, section.id);
+
+                    if (!sectionDimensions) {
+                        console.error(`    ✗ Could not get dimensions for section "${section.title}"`);
+                        continue;
+                    }
+
+                    // A4 portrait dimensions in points (72 points = 1 inch)
+                    // A4: 210mm x 297mm = 595.28pt x 841.89pt
+                    const a4WidthPt = 595; // Round to integer
+
+                    // Calculate height based on content, but scale to fit A4 width
+                    const contentAspectRatio = sectionDimensions.height / sectionDimensions.width;
+                    const pdfHeight = Math.round(a4WidthPt * contentAspectRatio);
+
                     // Generate PDF
                     const sanitizedTitle = section.title.replace(/[^\w\s-]/g, '').replace(/\s+/g, '_');
                     const filename = `${route.name}_${sanitizedTitle}.pdf`;
@@ -154,18 +181,19 @@ async function exportContentSectionsToPDF() {
 
                     await page.pdf({
                         path: filepath,
-                        format: 'A4',
+                        width: `${a4WidthPt}`,
+                        height: `${pdfHeight}`,
                         margin: {
-                            top: '20mm',
-                            right: '15mm',
-                            bottom: '20mm',
-                            left: '15mm'
+                            top: '0mm',
+                            right: '0mm',
+                            bottom: '0mm',
+                            left: '0mm'
                         },
                         printBackground: true,
                         preferCSSPageSize: false
                     });
 
-                    console.log(`    ✓ Saved: ${filename}`);
+                    console.log(`    ✓ Saved: ${filename} (${a4WidthPt}x${pdfHeight}pt)`);
 
                 } catch (sectionError) {
                     console.error(`    ✗ Error exporting section "${section.title}":`, sectionError.message);
