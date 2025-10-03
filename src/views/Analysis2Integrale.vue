@@ -41,7 +41,7 @@ import ClickableImage from "../components/ClickableImage.vue";
         </Subsection>
     </ContentSection>
 
-    <ContentSection title="Rechenregeln Integrale ">
+    <ContentSection title="Rechenregeln Integrale">
         <InfoBox color="green">
             <MathDisplay>
                 \int_a^b f(x) \,dx +

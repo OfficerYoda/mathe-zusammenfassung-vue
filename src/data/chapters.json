@@ -20,7 +20,7 @@
     "Funktionsschar",
     "Umkehrfunktion",
     "Das Integral",
-    "Rechenregeln Integrale ",
+    "Rechenregeln Integrale",
     "Stammfunktion",
     "Stammfunktionen bestimmen",
     "Hauptsatz der Differenzial- und Integralrechnung",
@@ -116,6 +116,8 @@
     "Trigonometrische Gleichungen"
   ],
   "Zusatz": [
-    "Integralfunktion"
+    "Integralfunktion",
+    "Differentialquotient",
+    "Quotientenregel"
   ]
 }
