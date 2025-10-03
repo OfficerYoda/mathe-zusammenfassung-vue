@@ -1,21 +1,30 @@
 import {createApp} from 'vue';
-import PdfExportApp from './views/PdfExportApp.vue';
+import PdfExportApp from './views/App.vue';
 import router from './router';
 import vMathJax from './directives/mathjax';
 import {library} from '@fortawesome/fontawesome-svg-core'
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
-import {faHouse, faMagnifyingGlass, faMoon, faSun, faXmark, faFilePdf, faSpinner} from '@fortawesome/free-solid-svg-icons'
+import {
+    faHouse,
+    faMagnifyingGlass,
+    faMoon,
+    faSun,
+    faXmark,
+    faFilePdf,
+    faSpinner,
+    faDownload
+} from '@fortawesome/free-solid-svg-icons'
 import './style.css';
 
 // Firefox compatibility polyfills
 if (!window.requestIdleCallback) {
-    window.requestIdleCallback = function(cb: IdleRequestCallback) {
+    window.requestIdleCallback = function (cb: IdleRequestCallback) {
         return setTimeout(cb, 1);
     };
 }
 
 if (!window.cancelIdleCallback) {
-    window.cancelIdleCallback = function(id: number) {
+    window.cancelIdleCallback = function (id: number) {
         clearTimeout(id);
     };
 }
@@ -26,14 +35,16 @@ if (!CSS.supports('scroll-behavior', 'smooth')) {
     document.documentElement.style.scrollBehavior = 'smooth';
 }
 
-library.add(faMagnifyingGlass)
-library.add(faHouse)
-library.add(faMoon)
-library.add(faSun)
-library.add(faXmark)
-library.add(faFilePdf)
-library.add(faSpinner)
-
+library.add(
+    faMagnifyingGlass,
+    faHouse,
+    faMoon,
+    faSun,
+    faXmark,
+    faFilePdf,
+    faSpinner,
+    faDownload
+)
 const app = createApp(PdfExportApp);
 
 app.use(router)

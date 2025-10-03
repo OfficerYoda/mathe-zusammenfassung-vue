@@ -6,6 +6,7 @@ import {useSearch} from '../composables/useSearch.ts';
 import Subsection from "../components/Subsection.vue";
 import InfoBox from "../components/InfoBox.vue";
 import MultiColumnLayout from "../components/MultiColumnLayout.vue";
+import DownloadButton from "../components/DownloadButton.vue";
 
 const {activateSearch} = useSearch();
 
@@ -77,7 +78,42 @@ const handleMouseLeave = (event: MouseEvent) => {
     </ContentSection>
 
     <ContentSection title="Downloads">
-        <p><i>Coming soon...</i></p>
+        <MultiColumnLayout :columns=2>
+            <template #col-1>
+                <Subsection title="Dark mode">
+                    <div class="download-buttons">
+                        <DownloadButton
+                            v-for="chapter in chapters"
+                            :key="chapter.route"
+                            :title="chapter.name"
+                            :filePath="`pdfs/dark/${chapter.name}_dark.pdf`"
+                        />
+                    </div>
+                </Subsection>
+            </template>
+            <template #col-2>
+                <Subsection title="Light mode">
+                    <div class="download-buttons">
+                        <DownloadButton
+                            v-for="chapter in chapters"
+                            :key="chapter.route"
+                            :title="chapter.name"
+                            :filePath="`pdfs/light/${chapter.name}_light.pdf`"
+                        />
+                    </div>
+                </Subsection>
+            </template>
+        </MultiColumnLayout>
+        <Subsection title="Vorlage zum ausdrucken">
+            <div class="download-buttons">
+                <DownloadButton
+                    v-for="chapter in chapters"
+                    :key="chapter.route"
+                    :title="chapter.name"
+                    :filePath="`pdfs/concatenated/${chapter.name}_concatenated_a4.pdf`"
+                />
+            </div>
+        </Subsection>
     </ContentSection>
 
     <ContentSection title="Infoboxen">
@@ -233,5 +269,18 @@ const handleMouseLeave = (event: MouseEvent) => {
     font-size: 2rem;
     color: var(--color-text-secondary);
     font-weight: 500;
+}
+
+.download-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+@media (max-width: 768px) {
+    .download-buttons {
+        gap: 1rem;
+    }
 }
 </style>
