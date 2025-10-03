@@ -17,12 +17,12 @@ if (!fs.existsSync(OUTPUT_DIR)) {
 
 // Routes to export (add more as needed)
 const ROUTES_TO_EXPORT = [
-    // { path: '/notation', name: 'Notation' },
+    { path: '/notation', name: 'Notation' },
     {path: '/analysis', name: 'Analysis'},
-    // { path: '/geometrie', name: 'Geometrie' },
-    // { path: '/stochastik', name: 'Stochastik' },
-    // { path: '/gleichungen', name: 'Gleichungen' },
-    // { path: '/zusatz', name: 'Zusatz' }
+    { path: '/geometrie', name: 'Geometrie' },
+    { path: '/stochastik', name: 'Stochastik' },
+    { path: '/gleichungen', name: 'Gleichungen' },
+    { path: '/zusatz', name: 'Zusatz' }
 ];
 
 async function exportContentSectionsToPDF() {

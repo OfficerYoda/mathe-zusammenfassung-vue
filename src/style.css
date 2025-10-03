@@ -3,6 +3,7 @@
     line-height: 1.5;
     font-weight: 400;
 
+
     color-scheme: light dark;
     color: rgba(255, 255, 255, 0.87);
 
@@ -31,18 +32,18 @@
 [data-theme="light"] {
     /* --- Inverted colors (light theme) --- */
     --color-background: #F4F5F7;
-    --color-background-secondary: #FFFFFF;
+    --color-background-secondary: #ffffff;
     --color-surface: #D9D9D9;
 
-    --color-text-primary: #212529;
-    --color-text-secondary: #6c757d;
-    --color-text-headings: #252525;
+    --color-text-primary: #393f45;
+    --color-text-secondary: #8f9da5;
+    --color-text-headings: #3b3b3b;
 
     /* --- Semantic Colors --- */
     --color-info: #3B71CA;
-    --color-warning: #B8860B;
-    --color-success: #4C8567;
-    --color-error: #B04040;
+    --color-warning: #e5a923;
+    --color-success: #4aa479;
+    --color-error: #d33131;
 }
 
 h1, h2, h3, h4, h5, h6 {

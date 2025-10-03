@@ -243,7 +243,7 @@ export default defineComponent({
     overflow-y: auto;
     scrollbar-width: none;
     -ms-overflow-style: none;
-    background: #FFFFFF;
+    background: #ff0080;
 }
 
 .content-area::-webkit-scrollbar {
