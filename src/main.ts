@@ -15,6 +15,7 @@ import {
     faDownload
 } from '@fortawesome/free-solid-svg-icons'
 import './style.css';
+import { initGoogleAnalytics } from './utils/analytics';
 
 // Firefox compatibility polyfills
 if (!window.requestIdleCallback) {
@@ -50,5 +51,8 @@ const app = createApp(PdfExportApp);
 app.use(router)
 app.directive('mathjax', vMathJax);
 app.component('font-awesome-icon', FontAwesomeIcon)
+
+// Initialize Google Analytics
+initGoogleAnalytics();
 
 app.mount('#app');
