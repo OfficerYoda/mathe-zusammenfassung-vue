@@ -1,6 +1,7 @@
 import {computed, ref, watch} from 'vue';
 import chaptersData from '../data/chapters.json';
 import {kebabUriCase} from '../utils/string.ts';
+import { trackSearch } from '../utils/analytics';
 
 interface SearchResult {
     topic: string;
@@ -189,6 +190,12 @@ function createSearchState() {
     }
 
     function handleSearchResultClick(link: string) {
+        // Track search result click before handling the navigation
+        const selectedResult = searchResults.value.find(result => result.link === link);
+        if (selectedResult && searchQuery.value.trim()) {
+            trackSearch(selectedResult.topic);
+        }
+
         isSearchActive.value = false;
         searchQuery.value = '';
         searchResults.value = [];

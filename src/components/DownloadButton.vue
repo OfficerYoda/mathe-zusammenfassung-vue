@@ -3,6 +3,7 @@
         :href="filePath"
         :download="fileName"
         class="download-button"
+        @click="handleDownloadClick"
     >
         <div class="left-content">
             <FontAwesomeIcon class="pdf-icon" icon="fa-solid fa-file-pdf"/>
@@ -15,6 +16,7 @@
 <script lang="ts" setup>
 import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome';
 import {computed} from 'vue';
+import { trackPdfDownload } from '../utils/analytics';
 
 interface Props {
     title: string;
@@ -24,6 +26,12 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {});
 
 const fileName = computed(() => props.filePath.split('/').pop() ?? 'download.pdf');
+
+function handleDownloadClick() {
+    // Track PDF download with Google Analytics
+    trackPdfDownload(fileName.value);
+    console.log('PDF download tracked:', fileName.value);
+}
 </script>
 
 <style scoped>
