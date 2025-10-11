@@ -15,7 +15,7 @@ import ClickableImage from "../components/ClickableImage.vue";
         <InfoBox color="green">
             <p v-mathjax>
                 Der Graph der Funktion $g$ mit $g(x) = a \cdot f(x-c) +d,
-                \ a, c, d \in \R, a \neq 0$. entsteht aus dem Graphen von $f$ durch:
+                \ a, c, d \in \mathbb{R}, a \neq 0$. entsteht aus dem Graphen von $f$ durch:
             </p>
             <ol v-mathjax>
                 <li>Verschiebung entlang der x-Achse um $c$</li>

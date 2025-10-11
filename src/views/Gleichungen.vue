@@ -322,9 +322,13 @@ import ClickableImage from "../components/ClickableImage.vue";
                         x \ &\;{\color{red}>} \ \log_{\frac56}(0{,}1) \\
                         x &\approx 12{,}63
                         \\
-                        \frac56 < 1, \text{des}&\text{halb '<' umdrehen}
                         \end{alignat*}
                     </MathDisplay>
+                    <InfoBox color="yellow">
+                        <MathDisplay>
+                            \frac56 < 1, \text{deshalb '<' umdrehen}
+                        </MathDisplay>
+                    </InfoBox>
                 </template>
                 <template #col-2>
                     <MathDisplay>

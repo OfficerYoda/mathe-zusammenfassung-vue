@@ -44,28 +44,27 @@ import ClickableImage from "../components/ClickableImage.vue";
     <ContentSection title="Rechenregeln Integrale">
         <InfoBox color="green">
             <MathDisplay>
+                \begin{align*}
                 \int_a^b f(x) \,dx +
-                \int_b^c f(x) \,dx =
+                \int_b^c f(x) \,dx &=
                 \int_a^c f(x) \,dx
-                \tag{1}
-            </MathDisplay>
-            <MathDisplay>
-                \int_a^b c\cdot f(x) \,dx=
+                \\\\
+
+                \int_a^b c\cdot f(x) \,dx &=
                 c\cdot \int_a^b f(x) \,dx
-                \tag{2}
-            </MathDisplay>
-            <MathDisplay>
-                \int_a^b f(x) + g(x) \,dx =
+                \\\\
+
+                \int_a^b f(x) + g(x) \,dx &=
                 \int_a^b f(x) \,dx +
                 \int_a^b g(x) \,dx
-                \tag{3}
-            </MathDisplay>
-            <MathDisplay>
-                \int_b^a f(x) \,dx =
+                \\\\
+
+                \int_b^a f(x) \,dx &=
                 -\int_a^b f(x) \,dx
-                \tag{4}
+                \end{align*}
             </MathDisplay>
         </InfoBox>
+
     </ContentSection>
 
     <ContentSection title="Stammfunktion">

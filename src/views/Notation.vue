@@ -25,7 +25,7 @@ import MultiColumnLayout from "../components/MultiColumnLayout.vue";
         <MatrixTable :matrix-data="setsMatrixData"/>
         <InfoBox color="yellow">
             <p v-mathjax>
-                Ob bei $\mathbb{N}/\mathbb{R}^+$ die $0$ enthalten ist, ist nicht klar definiert. Ich werde daher immer
+                Ob bei $\mathbb{N}/\mathbb{R}^+$ die $0$ enthalten ist, ist in der Mathematik nicht klar definiert. Ich werde daher immer
                 $\mathbb{N}_0/\mathbb{R}^+_0$ verwenden,
                 um die Null klar zu kennzeichnen.<br>
                 Im Abitur wird es klar gekennzeichnet sein, ob die $0$ enthalten ist oder nicht.
