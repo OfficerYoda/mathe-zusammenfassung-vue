@@ -436,7 +436,7 @@ export default defineComponent({
 
 .chapter-link {
     display: block;
-    padding: 0.75rem 1rem;
+    padding: 0.5rem 0.75rem;
     margin-left: 0.75rem;
     margin-right: 0.75rem;
     color: var(--color-text-primary);
@@ -495,7 +495,7 @@ export default defineComponent({
     line-height: 1rem;
     text-decoration: none;
     transition: color 0.2s, padding-right 0.2s, padding-left 0.2s;
-    padding: 0.25rem 1.25rem 0.5rem 0.5rem;
+    padding: 0.3rem 1.25rem 0.5rem 0.5rem;
     border-radius: 4px;
     display: block;
     width: 100%;
