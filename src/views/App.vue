@@ -46,6 +46,10 @@ export default defineComponent({
         // Track navigation type
         let isHistoryNavigation = false;
 
+        // Track target hash for scroll adjustment after image loads
+        const targetScrollHash = ref<string>('');
+        const scrollAdjustmentTimeout = ref<number | null>(null);
+
         // Listen for popstate events (back/forward navigation)
         if (typeof window !== 'undefined') {
             window.addEventListener('popstate', () => {
@@ -87,9 +91,14 @@ export default defineComponent({
                             }
                         }
 
+                        // Scroll to hash if present
+                        if (window.location.hash) {
+                            smoothScrollToHash(window.location.hash);
+                        }
+
                         // Reset history navigation flag
                         isHistoryNavigation = false;
-                    }, 50); // Small delay to ensure content is rendered
+                    }, 100); // Small delay to ensure content is rendered
                 }, 250);
             }
         });
@@ -134,13 +143,50 @@ export default defineComponent({
             return `${currentChapter.value.path}#${kebabUriCase(topic)}`;
         }
 
-        // Smooth scroll to element by hash
+        // Smooth scroll to element by hash with layout shift compensation
         function smoothScrollToHash(hash: string) {
             if (!hash) return;
             const id = hash.replace(/^#/, '');
             const el = document.getElementById(id);
             if (el) {
+                // Store the target hash for potential re-adjustment
+                targetScrollHash.value = hash;
+
+                // Clear any existing scroll adjustment timeout
+                if (scrollAdjustmentTimeout.value) {
+                    clearTimeout(scrollAdjustmentTimeout.value);
+                }
+
+                // Initial scroll
                 el.scrollIntoView({behavior: 'smooth', block: 'start'});
+
+                // Set up re-adjustment timer in case images load and cause layout shifts
+                scrollAdjustmentTimeout.value = setTimeout(() => {
+                    // Re-check and adjust scroll position after images have had time to load
+                    const targetEl = document.getElementById(id);
+                    if (targetEl) {
+                        const rect = targetEl.getBoundingClientRect();
+                        const contentArea = document.querySelector('.content-area');
+
+                        // If the element is not properly positioned at the top, scroll again
+                        if (contentArea && Math.abs(rect.top) > 50) { // 50px tolerance
+                            targetEl.scrollIntoView({behavior: 'smooth', block: 'start'});
+                        }
+                    }
+                    targetScrollHash.value = '';
+                }, 2000); // Wait 2 seconds for images to load
+            }
+        }
+
+        // Handle layout shifts from image loading
+        function handleImageLayoutShift() {
+            if (targetScrollHash.value) {
+                const id = targetScrollHash.value.replace(/^#/, '');
+                const el = document.getElementById(id);
+                if (el) {
+                    // Re-adjust scroll position immediately
+                    el.scrollIntoView({behavior: 'smooth', block: 'start'});
+                }
             }
         }
 
@@ -149,6 +195,9 @@ export default defineComponent({
 
         // Provide lightbox functionality to all child components
         provide('lightbox', {openLightbox});
+
+        // Provide layout shift handler to all child components
+        provide('layoutShiftHandler', {handleImageLayoutShift});
 
         // Search functionality
         const {
@@ -180,6 +229,7 @@ export default defineComponent({
             currentTopics,
             getTopicLink,
             smoothScrollToHash,
+            handleImageLayoutShift,
             isLightboxOpen,
             currentImageSrc,
             currentImageAlt,

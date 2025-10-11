@@ -28,7 +28,7 @@
 </template>
 
 <script lang="ts" setup>
-import { inject, ref, onMounted, onUnmounted } from 'vue'
+import { inject, ref, onMounted, onUnmounted, nextTick } from 'vue'
 
 interface Props {
     src: string
@@ -37,13 +37,23 @@ interface Props {
 
 const props = defineProps<Props>()
 
+// Emit events for layout shift tracking
+const emit = defineEmits<{
+    imageLoaded: []
+    layoutShift: []
+}>()
+
 // Inject lightbox functionality directly in the component
 const lightbox = inject('lightbox') as { openLightbox: (src: string, alt: string) => void }
+
+// Inject layout shift handler
+const layoutShiftHandler = inject('layoutShiftHandler') as { handleImageLayoutShift: () => void }
 
 const containerRef = ref<HTMLElement>()
 const inView = ref(false)
 const imageLoaded = ref(false)
 let observer: IntersectionObserver | null = null
+let previousHeight = 0
 
 const handleClick = () => {
     if (lightbox && imageLoaded.value) {
@@ -51,8 +61,18 @@ const handleClick = () => {
     }
 }
 
-const onImageLoad = () => {
+const onImageLoad = async () => {
+    const currentHeight = containerRef.value?.offsetHeight || 0
+    const hasLayoutShift = Math.abs(currentHeight - previousHeight) > 5 // 5px threshold
+
     imageLoaded.value = true
+    emit('imageLoaded')
+
+    if (hasLayoutShift) {
+        await nextTick()
+        emit('layoutShift')
+        layoutShiftHandler.handleImageLayoutShift() // Notify layout shift
+    }
 }
 
 const onImageError = () => {
@@ -62,6 +82,9 @@ const onImageError = () => {
 
 onMounted(() => {
     if (!containerRef.value) return
+
+    // Track initial height for layout shift detection
+    previousHeight = containerRef.value.offsetHeight
 
     observer = new IntersectionObserver(
         (entries) => {
@@ -94,7 +117,9 @@ onUnmounted(() => {
 .clickable-image-container {
     position: relative;
     display: inline-block;
-    min-height: 100px; /* Prevent layout shift */
+    min-height: 200px; /* Increased minimum height for better estimation */
+    width: 100%;
+    max-width: 100%;
 }
 
 .clickable-image {
@@ -103,6 +128,9 @@ onUnmounted(() => {
     border-radius: 4px;
     opacity: 0;
     animation: fadeIn 0.3s ease-in-out forwards;
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 .clickable-image:hover {
@@ -122,16 +150,19 @@ onUnmounted(() => {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 100px;
+    min-height: 200px; /* Match container min-height */
+    width: 100%;
     background-color: #f5f5f5;
     border: 1px dashed #ccc;
     border-radius: 4px;
     color: #666;
+    box-sizing: border-box;
 }
 
 .placeholder-content {
     text-align: center;
     padding: 1rem;
+    background-color: var(--color-background);
 }
 
 .loading .image-placeholder {
