@@ -268,6 +268,7 @@ export default defineComponent({
                 </RouterLink>
             </div>
         </aside>
+
         <main class="content-area">
             <div id="app-container">
                 <SkeletonScreen v-if="isRouteLoading"/>
@@ -412,6 +413,7 @@ export default defineComponent({
     font-size: 1.3rem;
     color: var(--color-text-headings);
     margin-right: 0.75rem;
+    margin-left: -0.25rem;
 }
 
 .search-bar-text {
