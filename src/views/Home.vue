@@ -142,12 +142,9 @@ const handleMouseLeave = (event: MouseEvent) => {
             <InfoBox color="yellow">
                 Diese Zusammenfassungen entsprechen nicht dem Standard dieser Seite und können Fehler enthalten.<br>
                 Die Geo-Zusammenfassung ist zudem nicht vollständig, da ich Themen weggelassen habe, die ich für
-                offensichtlich
-                gehalten habe.<br>
+                offensichtlich gehalten habe.<br>
                 Die Deutsch-Zusammenfassung hingegen sollte alles enthalten (sofern ihr die gleichen Bücher habt und
-                sich sonst
-                auch nichts geändert hat) und basiert
-                auf der Zusammenfassung von Lea.<br>
+                sich sonst auch nichts geändert hat) und basiert auf der Zusammenfassung von Lea.<br>
             </InfoBox>
         </Subsection>
         <MultiColumnLayout :columns=2>
@@ -273,8 +270,8 @@ const handleMouseLeave = (event: MouseEvent) => {
 }
 
 .download-buttons {
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
     gap: 1.5rem;
     margin-top: 1.5rem;
 }
@@ -284,11 +281,5 @@ const handleMouseLeave = (event: MouseEvent) => {
     grid-template-columns: repeat(3, 1fr);
     gap: 1.5rem;
     margin-top: 1.5rem;
-}
-
-@media (max-width: 768px) {
-    .download-buttons {
-        gap: 1rem;
-    }
 }
 </style>

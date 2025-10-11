@@ -39,7 +39,7 @@ const fileName = computed(() => props.filePath.split('/').pop() ?? 'download.pdf
     font-weight: 500;
     transition: all 0.2s ease;
     border: 2px solid var(--color-text-primary);
-    min-width: 200px;
+    width: 100%;
 }
 
 .download-button:hover {
