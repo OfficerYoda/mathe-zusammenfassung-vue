@@ -1,50 +1,50 @@
-import {createApp} from 'vue';
+import { createApp } from 'vue';
 import PdfExportApp from './views/App.vue';
 import router from './router';
 import vMathJax from './directives/mathjax';
-import {library} from '@fortawesome/fontawesome-svg-core'
-import {FontAwesomeIcon} from '@fortawesome/vue-fontawesome'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import {
-    faHouse,
-    faMagnifyingGlass,
-    faMoon,
-    faSun,
-    faXmark,
-    faFilePdf,
-    faSpinner,
-    faDownload
+  faHouse,
+  faMagnifyingGlass,
+  faMoon,
+  faSun,
+  faXmark,
+  faFilePdf,
+  faSpinner,
+  faDownload
 } from '@fortawesome/free-solid-svg-icons'
 import './style.css';
 import { initGoogleAnalytics } from './utils/analytics';
 
 // Firefox compatibility polyfills
 if (!window.requestIdleCallback) {
-    window.requestIdleCallback = function (cb: IdleRequestCallback) {
-        return setTimeout(cb, 1);
-    };
+  window.requestIdleCallback = function (cb: IdleRequestCallback) {
+    return setTimeout(cb, 1);
+  };
 }
 
 if (!window.cancelIdleCallback) {
-    window.cancelIdleCallback = function (id: number) {
-        clearTimeout(id);
-    };
+  window.cancelIdleCallback = function (id: number) {
+    clearTimeout(id);
+  };
 }
 
 // Firefox smooth scrolling polyfill
 if (!CSS.supports('scroll-behavior', 'smooth')) {
-    // Add smooth scroll polyfill for older Firefox versions
-    document.documentElement.style.scrollBehavior = 'smooth';
+  // Add smooth scroll polyfill for older Firefox versions
+  document.documentElement.style.scrollBehavior = 'smooth';
 }
 
 library.add(
-    faMagnifyingGlass,
-    faHouse,
-    faMoon,
-    faSun,
-    faXmark,
-    faFilePdf,
-    faSpinner,
-    faDownload
+  faMagnifyingGlass,
+  faHouse,
+  faMoon,
+  faSun,
+  faXmark,
+  faFilePdf,
+  faSpinner,
+  faDownload
 )
 const app = createApp(PdfExportApp);
 
