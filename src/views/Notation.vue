@@ -63,15 +63,15 @@ import MultiColumnLayout from "../components/MultiColumnLayout.vue";
   <ContentSection title="Summenzeichen">
     <Subsection title="Beispiele">
       <MathDisplay>
-        \sum_{k=1}^n a_k =
-        a_1 + a_2 +...+ a_n
+        \sum_{k=1}^n k =
+        1 + 2 + ... + \ n
       </MathDisplay>
       <MathDisplay>
-        \sum_{i=1}^n i \cdot \ln(i) =
-        1 \cdot \ln(1) +
-        2 \cdot \ln(2) +
+        \sum_{b=3}^8 b \cdot \ln(b) =
+        3 \cdot \ln(3) +
+        4 \cdot \ln(4) +
         ... +
-        n \cdot \ln(n)
+        8 \cdot \ln(8)
       </MathDisplay>
     </Subsection>
   </ContentSection>
