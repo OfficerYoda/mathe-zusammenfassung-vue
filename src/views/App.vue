@@ -298,17 +298,15 @@ export default defineComponent({
       <div class="sidebar-middle-section">
         <h2 class="chapter-overview-title">Unterkapitel</h2>
         <div class="chapter-overview-scroll">
-          <div class="scroll-content">
-            <div v-if="currentChapter" class="chapter-overview">
-              <RouterLink v-for="topic in currentTopics" :key="topic" :to="getTopicLink(topic)"
-                class="chapter-overview-link"
-                @click.native.prevent="smoothScrollToHash(getTopicLink(topic).split('#')[1] ? '#' + getTopicLink(topic).split('#')[1] : '')">
-                {{ topic }}
-              </RouterLink>
-            </div>
-            <div v-else class="placeholder-content">
-              <span><i>Wähl ein Überkapitel aus...</i></span>
-            </div>
+          <div v-if="currentChapter" class="chapter-overview">
+            <RouterLink v-for="topic in currentTopics" :key="topic" :to="getTopicLink(topic)"
+              class="chapter-overview-link"
+              @click.native.prevent="smoothScrollToHash(getTopicLink(topic).split('#')[1] ? '#' + getTopicLink(topic).split('#')[1] : '')">
+              {{ topic }}
+            </RouterLink>
+          </div>
+          <div v-else class="placeholder-content">
+            <span><i>Wähl ein Überkapitel aus...</i></span>
           </div>
         </div>
       </div>
@@ -519,21 +517,15 @@ export default defineComponent({
   padding-left: 0.5rem;
   overflow-y: auto;
   direction: rtl;
-  /* Moves the scrollbar to the left */
-}
-
-.scroll-content {
   direction: ltr;
-  /* Resets text direction for the content */
-  ;
 }
 
 .chapter-overview-link {
   color: var(--color-text-secondary);
-  line-height: 1rem;
+  line-height: 1.2rem;
   text-decoration: none;
   transition: color 0.2s, padding-right 0.2s, padding-left 0.2s;
-  padding: 0.3rem 1.25rem 0.5rem 0.5rem;
+  padding: 0.3rem 1.25rem 0.3rem 0.5rem;
   border-radius: 4px;
   display: block;
   width: 100%;
@@ -553,7 +545,7 @@ export default defineComponent({
   color: var(--color-text-secondary);
   font-size: 1.1rem;
   text-align: center;
-  padding: 1rem;
+  padding: 0rem;
   opacity: 0.7;
 }
 
