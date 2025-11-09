@@ -1,69 +1,69 @@
 <template>
-    <ScrollableContainer>
-        <div class="math-display" v-html="processedLatex"></div>
-    </ScrollableContainer>
+  <ScrollableContainer>
+    <div class="math-display" v-html="processedLatex"></div>
+  </ScrollableContainer>
 </template>
 
 <script lang="ts">
-import {defineComponent, getCurrentInstance, nextTick, ref, watch} from 'vue';
+import { defineComponent, getCurrentInstance, nextTick, ref, watch } from 'vue';
 import ScrollableContainer from './ScrollableContainer.vue';
 
 // Needed for TypeScript/Firebase to properly deploy
 declare global {
-    interface Window {
-        MathJax: any;
-    }
+  interface Window {
+    MathJax: any;
+  }
 }
 
 export default defineComponent({
-    name: 'MathDisplay',
-    components: {
-        ScrollableContainer,
+  name: 'MathDisplay',
+  components: {
+    ScrollableContainer,
+  },
+  props: {
+    latex: {
+      type: String,
+      required: false,
     },
-    props: {
-        latex: {
-            type: String,
-            required: false,
-        },
-    },
-    setup(props, {slots}) {
-        const processedLatex = ref('');
-        const instance = getCurrentInstance();
+  },
+  setup(props, { slots }) {
+    const processedLatex = ref('');
+    const instance = getCurrentInstance();
 
-        const renderMath = async () => {
-            if (props.latex !== undefined) {
-                processedLatex.value = `$$${props.latex}$$`;
-            } else if (slots.default) {
-                // Join all slot VNodes as a string
-                const slotContent = slots.default().map(vnode => {
-                    if (typeof vnode.children === 'string') return vnode.children;
-                    return '';
-                }).join('');
-                processedLatex.value = `$$${slotContent}$$`;
-            } else {
-                processedLatex.value = '';
-            }
-            await nextTick();
-            if (window.MathJax && instance?.proxy) {
-                window.MathJax?.typeset?.([instance.proxy.$el]);
-            }
-        };
+    const renderMath = async () => {
+      if (props.latex !== undefined) {
+        processedLatex.value = `$$${props.latex}$$`;
+      } else if (slots.default) {
+        // Join all slot VNodes as a string
+        const slotContent = slots.default().map(vnode => {
+          if (typeof vnode.children === 'string') return vnode.children;
+          return '';
+        }).join('');
+        processedLatex.value = `$$${slotContent}$$`;
+      } else {
+        processedLatex.value = '';
+      }
+      await nextTick();
+      if (window.MathJax && instance?.proxy) {
+        window.MathJax?.typeset?.([instance.proxy.$el]);
+      }
+    };
 
-        watch(() => props.latex, renderMath, {immediate: true});
-        watch(() => slots.default && slots.default(), renderMath);
+    watch(() => props.latex, renderMath, { immediate: true });
+    watch(() => slots.default && slots.default(), renderMath);
 
-        return {processedLatex};
-    },
+    return { processedLatex };
+  },
 });
 </script>
 
 <style scoped>
 .math-display {
-    text-align: center;
-    margin: 0;
-    padding: 0.05rem;
-    color: var(--color-text-primary);
-    /* Prevent math from shrinking below content width */
-    min-width: max-content;
+  text-align: center;
+  margin: 0;
+  padding: 0.05rem;
+  color: var(--color-text-primary);
+  /* Prevent math from shrinking below content width */
+  min-width: max-content;
 }
 </style>

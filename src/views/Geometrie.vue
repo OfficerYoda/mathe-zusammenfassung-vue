@@ -6,13 +6,11 @@ import Geometrie3AbstaendeUndWinkel from "./Geometrie3AbstaendeUndWinkel.vue";
 </script>
 
 <template>
-    <ChapterTitle title="Geometrie"/>
+  <ChapterTitle title="Geometrie" />
 
-    <Geometrie1LGS/>
-    <Geometrie2GeradenUndEbenen/>
-    <Geometrie3AbstaendeUndWinkel/>
+  <Geometrie1LGS />
+  <Geometrie2GeradenUndEbenen />
+  <Geometrie3AbstaendeUndWinkel />
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

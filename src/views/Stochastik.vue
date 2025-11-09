@@ -6,12 +6,10 @@ import Stochastik2Normalverteilung from "./Stochastik2Normalverteilung.vue";
 </script>
 
 <template>
-    <ChapterTitle title="Stochastik"/>
+  <ChapterTitle title="Stochastik" />
 
-    <Stochastik1Binomialverteilung/>
-    <Stochastik2Normalverteilung/>
+  <Stochastik1Binomialverteilung />
+  <Stochastik2Normalverteilung />
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

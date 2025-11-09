@@ -6,13 +6,11 @@ import Analysis3GraphenVonFunktionen from "./Analysis3GraphenVonFunktionen.vue";
 </script>
 
 <template>
-    <ChapterTitle title="Analysis"/>
+  <ChapterTitle title="Analysis" />
 
-    <Analysis1Funktionen/>
-    <Analysis2Integrale/>
-    <Analysis3GraphenVonFunktionen/>
+  <Analysis1Funktionen />
+  <Analysis2Integrale />
+  <Analysis3GraphenVonFunktionen />
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
