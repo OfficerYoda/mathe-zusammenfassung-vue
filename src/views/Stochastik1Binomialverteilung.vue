@@ -642,9 +642,9 @@ import {
       </p>
     </InfoBox>
     <p /> <!-- Padding Paragraph -->
-    <MultiColumnLayout :columns=2 :image-columns=[1, 2] image-layout>
+    <MultiColumnLayout :columns=2 :image-columns="[1, 2]" image-layout>
       <template #col-1>
-        <ClickableImage alt="Graph_Linksseitiger-Hypothesentest.png"
+        <ClickableImage alt=" Graph_Linksseitiger-Hypothesentest.png"
           src="/images/Graph_Linksseitiger-Hypothesentest.png" />
       </template>
       <template #col-2>
