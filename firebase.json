@@ -10,43 +10,28 @@
         "firebase-debug.*.log",
         "*.local"
       ],
-      "predeploy": [
-        "npm --prefix \"$RESOURCE_DIR\" run build"
-      ]
+      "predeploy": ["npm --prefix \"$RESOURCE_DIR\" run build"]
     }
   ],
   "hosting": [
     {
-      "target": "mz-old",
-      "public": "dist",
-      "ignore": [
-        "firebase.json",
-        "**/.*",
-        "**/node_modules/**"
-      ],
-      "rewrites": [
-        {
-          "source": "**",
-          "destination": "/index.html"
-        }
-      ]
-    },
-    {
       "target": "mz-vue",
       "public": "./dist",
-      "ignore": [
-        "firebase.json",
-        "**/.*",
-        "**/node_modules/**"
-      ],
+      "ignore": ["firebase.json", "**/node_modules/**"],
       "rewrites": [
         {
           "source": "**",
           "destination": "/index.html"
         }
       ],
-      "predeploy": [
-        "npm run build"
+      "headers": [
+        {
+          "source": "/.well-known/matrix/*",
+          "headers": [
+            { "key": "Content-Type", "value": "application/json" },
+            { "key": "Access-Control-Allow-Origin", "value": "*" }
+          ]
+        }
       ]
     }
   ]
