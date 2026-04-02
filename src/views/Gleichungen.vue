@@ -158,7 +158,7 @@ import ClickableImage from "../components/ClickableImage.vue";
         <template #col-2>
           <MathDisplay>
             \begin{align*}
-            \frac{1}{x^2}++\frac{5}{x}&=0
+            \frac{1}{x^2}+\frac{5}{x}&=0
             \qquad|\cdot x^2\\
             1+5x&=0
             \qquad|-1 \quad|:5\\

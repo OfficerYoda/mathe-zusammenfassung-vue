@@ -37,14 +37,14 @@ import MultiColumnLayout from "../components/MultiColumnLayout.vue";
         $J_u'(x) = f(x)$, d.h. $J_u$ ist eine Stammfunktion von $f$.
       </p>
       <p v-mathjax>
-        $J_u(u) = 0$, d.h. jede Integralfunktion<strong> </strong>hat eine Nullstelle.
+        $J_u(u) = 0$, d.h. jede Integralfunktion hat eine Nullstelle bei $x=u$.
       </p>
     </InfoBox>
     <InfoBox color="green">
       <p v-mathjax>
         $f(x) = x \ \ \Rightarrow \ \ F(x) = \frac12x^2 + 10$ hat keine Nullstelle und ist daher keine
         Integralfunktion
-        (aber trotzdem eine Stammfunktion von $f$).
+        (aber trotzdem eine Stammfunktion) von $f$.
       </p>
     </InfoBox>
     <Subsection title="Beispiel">
@@ -81,8 +81,8 @@ import MultiColumnLayout from "../components/MultiColumnLayout.vue";
           <MathDisplay>
             \begin{array}{}
             f(x) &= \sqrt x \\
-            f(0) &= 0\
-            \end{array}{}
+            f(0) &= 0
+            \end{array}
             \quad\Rightarrow\quad
             \begin{align*}
             f'(x) &= \frac1{2\sqrt x}\\

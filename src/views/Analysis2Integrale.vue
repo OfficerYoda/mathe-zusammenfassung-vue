@@ -73,7 +73,7 @@ import ClickableImage from "../components/ClickableImage.vue";
         Für eine Funktion $f$ mit einer Stammfunktion $F$ gilt: $f = F'$
       </p>
       <p v-mathjax>
-        Zwei Stammfunktionen $F$ und $G$ unterscheiden sich nur um eine Konstante $c$: $F(X) = G(X) +c, \, c\in
+        Zwei Stammfunktionen $F$ und $G$ unterscheiden sich nur um eine Konstante $c$: $F(x) = G(x) + c, \, c\in
         \mathbb{R}$
       </p>
     </InfoBox>

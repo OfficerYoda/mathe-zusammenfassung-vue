@@ -572,7 +572,7 @@ import ClickableImage from "../components/ClickableImage.vue";
           <MathDisplay>
             \begin{align*}
             \left(\begin{matrix}
-            7+4r \\ 7-5r-(1+s) \\ 2s-(2+s)
+            7+4r \\ 7-5r-(1+s) \\ 2r-(2+s)
             \end{matrix}\right)
             \circ
             \left(\begin{matrix}
@@ -580,12 +580,12 @@ import ClickableImage from "../components/ClickableImage.vue";
             \end{matrix}\right)
             &= 0
             \\
-            28+16r-35+25r+5+5s+4r-4+2s &= 0
+            28+16r-35+25r+5+5s+4r-4-2s &= 0
             \\
             -6 + 45r + 3s &= 0
             \\
             \Rightarrow
-            s = 2-&15r
+            s = 2-15r
             \\
             \xrightarrow {\text{In ander gleichung einsetzen}}
             \end{align*}

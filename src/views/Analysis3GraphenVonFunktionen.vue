@@ -130,8 +130,8 @@ import ClickableImage from "../components/ClickableImage.vue";
       <Subsection title="Satz 4 ">
         <p v-mathjax>
           Gegeben sein eine ganzrationale Funktion $f$ mit $f(x) = (x-a)^k \cdot g(x),
-          \ g(a) \neq 0, k \in \mathbb{N}$.
-          Dann gilt:
+          \ g(a) \neq 0, k \in \mathbb{N}$. <br>
+          Dann hat $f$ bei $x = a$ eine $k$-fache Nullstelle.
         </p>
       </Subsection>
       <Subsection title="Definition ">
@@ -182,7 +182,7 @@ import ClickableImage from "../components/ClickableImage.vue";
   <ContentSection title="Gebrochenrationale Funktionen, Polstellen und senkrechte Asymptoten">
     <InfoBox color="green">
       <p v-mathjax>
-        Eine Funktion $h$ mit ganzrationalen Funktionen $g$ und $h$
+        Eine Funktion $f$ mit ganzrationalen Funktionen $g$ und $h$
       </p>
       <MathDisplay>
         f(x) = \frac{g(x)}{h(x)}
@@ -310,7 +310,7 @@ import ClickableImage from "../components/ClickableImage.vue";
             $h:D$
           </p>
           <ul v-mathjax>
-            <li>einfache Nullstellen bei $x_1= 1, x_2=0, x_3=1$</li>
+            <li>einfache Nullstellen bei $x_1= -1, x_2= 0, x_3= 1$</li>
             <li>Verhalten im Unendlichen:</li>
             <ul>
               <li>$x \rightarrow +\infty: f \rightarrow +\infty$</li>

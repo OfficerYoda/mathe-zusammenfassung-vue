@@ -374,7 +374,7 @@ import {
         = \frac 29
         \neq P(F \cap A)
         \\
-        \Rightarrow F \textsf{ und } A \textsf{ sind stochastisch abhänigig}
+        \Rightarrow F \textsf{ und } A \textsf{ sind stochastisch abhängig}
         \end{array}
       </MathDisplay>
     </Subsection>

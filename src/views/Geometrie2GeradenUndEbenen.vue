@@ -635,7 +635,7 @@ import ClickableImage from "../components/ClickableImage.vue";
     </MultiColumnLayout>
     <MultiColumnLayout :columns=2 :image-width=130 image-layout>
       <template #col-1>
-        <h2>Ein Spurpunkte</h2>
+        <h2>Ein Spurpunkt</h2>
       </template>
       <template #col-2>
         <p />

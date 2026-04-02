@@ -27,9 +27,9 @@ import InfoBox from "../components/InfoBox.vue";
     <Subsection title="Beispiel">
       <MathDisplay>
         \begin{alignat*} {5}
-        3 &x_1+ &6 &x_2- &2 &x_3= 4 \\
-        3 &x_1+ &2 &x_2+ &&x_3= 0 \\
-        1{,}5 &x_1+ &5 &x_2- &5 &x_3= -9
+        3 &x_1     + &6 &x_2 - &2 &x_3 = -4 \\
+        3 &x_1     + &2 &x_2 + &  &x_3 =  0 \\
+        1{,}5 &x_1 + &5 &x_2 - &5 &x_3 = -9
         \end{alignat*}
       </MathDisplay>
       <h4 v-mathjax><strong>Schritt 1:</strong></h4>
@@ -143,7 +143,7 @@ import InfoBox from "../components/InfoBox.vue";
         Lineare Gleichungssysteme können…
       </p>
       <ol v-mathjax>
-        <li>…eindeutig Lösbar sein.</li>
+        <li>…eindeutig lösbar sein.</li>
         <li>…unlösbar sein (z.B. mit der Zeile $0 \ 0 \ 0 \ | \ 2$).</li>
         <li>…unendlich viele Lösungen haben (Nullzeile $0 \ 0 \ 0 \ | \ 0$ ⇒ Parameter einführen)</li>
       </ol>
@@ -193,7 +193,7 @@ import InfoBox from "../components/InfoBox.vue";
       </MathDisplay>
       <MathDisplay>
         \boxed{
-        \Rightarrow L_t = \{({\color{purple}1+t}; {\color{darkgreen}2-t}; {\color{orange}t}:)\}
+        \Rightarrow L_t = \{({\color{purple}1+t}; {\color{darkgreen}2-t}; {\color{orange}t})\}
         }
       </MathDisplay>
     </Subsection>

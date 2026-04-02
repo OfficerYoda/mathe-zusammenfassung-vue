@@ -281,7 +281,7 @@ import ClickableImage from "../components/ClickableImage.vue";
     </Subsection>
     <Subsection title="Satz">
       <InfoBox color="green">
-        <p v-mathjax>Ist die Funktion $f$ auf $i$ zweimal differenzierbar, so gilt:</p>
+        <p v-mathjax>Ist die Funktion $f$ auf $I$ zweimal differenzierbar, so gilt:</p>
         <ul v-mathjax>
           <li>
             $f''(x) > 0$ für alle $x \in I\quad\Rightarrow\quad $der Graph von $f$ ist
@@ -310,7 +310,7 @@ import ClickableImage from "../components/ClickableImage.vue";
           <p v-mathjax>
             $f''$ hat bei $x = -0,5$ ihre einzige Nullstelle.<br>
             Links von der Nullstelle ist $f'' < 0$ und Rechts davon ist $f''>0$.<br>
-              $f$ ist demnach links von $0{,}5$ rechtsgekrümmt und rechts von $0{,}5$ linksgekrümmt.
+              $f$ ist demnach links von $-0{,}5$ rechtsgekrümmt und rechts von $-0{,}5$ linksgekrümmt.
           </p>
         </template>
         <template #col-2>
@@ -649,17 +649,19 @@ import ClickableImage from "../components/ClickableImage.vue";
         \begin{align*}
         A(0) &= A(200) = 0 \\
         \\
-        A'(x) &= \frac{-4}{\pi}x + \frac{400}{\pi} \\
-        A'(x) &= 0 \\
-        0 &= \frac{-4}{\pi}x + \frac{400}{\pi}
-        \quad |\cdot \frac{\pi}4 \\
-        0 &= -x + 100 \qquad |+x \\
-        x &= 100
+        A'(y) &= -2\pi \cdot 2 + 400 = 400 - 4\pi y \\
+        A'(y) &= 0 \\
+        0 &= 400 - 4\pi y
+        \quad |+4\pi y \\
+        4\pi y &= 400 \qquad |:4\pi \\
+        y &= \frac{400}{4\pi} = \frac{100}{\pi} \\
+        y &\approx 31{,}8m
         \end{align*}
       </MathDisplay>
+      <p>Durch Nebenbedingung</p>
       <MathDisplay>
         \Rightarrow
-        y \approx 31{,8}m \quad
+        x = 100m \quad
         A \approx 6366m^2
       </MathDisplay>
     </Subsection>
@@ -700,7 +702,7 @@ import ClickableImage from "../components/ClickableImage.vue";
             \begin{align}
             x^a \cdot x^b &= x^{a+b} \\
             \frac{x^a}{x^b} &= x^{a-b} \\
-            x^{a^b} &= x^{a \cdot b}
+            (x^a)^b &= x^{a \cdot b}
             \end{align}
           </MathDisplay>
         </template>
