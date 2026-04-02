@@ -352,7 +352,7 @@ import {
     </Subsection>
     <Subsection title="Beispiel">
       <p v-mathjax>
-        In einem Betrieb hat 570 Mitarbeiter. Davon fahren $\frac 23$ mit einem Pkw zur Arbeit. Von den 190
+        Ein Betrieb hat 570 Mitarbeiter. Davon fahren $\frac 23$ mit einem Pkw zur Arbeit. Von den 190
         auswärtigen
         Mitarbeitern kommen 177 mit einem Pkw. Untersuche
         F: „Fährt mit einem Pkw“ und A: „Kommt von Auswärts“
