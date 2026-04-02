@@ -18,6 +18,15 @@ interface Chapter {
 let searchState: ReturnType<typeof createSearchState> | null = null;
 
 function createSearchState() {
+  // Platform detection
+  const isMac = computed(() => {
+    if (typeof navigator === 'undefined') return false;
+    return /Mac|iPhone|iPod|iPad/i.test(navigator.platform) || 
+           /Mac|iPhone|iPod|iPad/i.test(navigator.userAgent);
+  });
+
+  const searchHotkey = computed(() => isMac.value ? '⌘K' : 'Ctrl+K');
+
   // Search state
   const isSearchActive = ref(false);
   const searchQuery = ref('');
@@ -223,14 +232,24 @@ function createSearchState() {
   function handleSearchKeydown(event: KeyboardEvent) {
     if (event.key === 'Escape') {
       deactivateSearch()
-    } else if (event.key === 'ArrowDown') {
+    } else if (
+      event.key === 'ArrowDown' || 
+      (event.key === 'j' && event.ctrlKey) || 
+      (event.key === 'Tab' && !event.shiftKey)
+    ) {
+      // Navigate to next result
       if (searchResults.value.length > 0) {
         const nextIdx = (activeResultIndex.value + 1) % searchResults.value.length;
         activeResultIndex.value = nextIdx;
         hoveredResultIndex.value = nextIdx;
       }
       event.preventDefault();
-    } else if (event.key === 'ArrowUp') {
+    } else if (
+      event.key === 'ArrowUp' || 
+      (event.key === 'k' && event.ctrlKey) ||
+      (event.key === 'Tab' && event.shiftKey)
+    ) {
+      // Navigate to previous result
       if (searchResults.value.length > 0) {
         const nextIdx = (activeResultIndex.value - 1 + searchResults.value.length) % searchResults.value.length;
         activeResultIndex.value = nextIdx;
@@ -238,9 +257,13 @@ function createSearchState() {
       }
       event.preventDefault();
     } else if (event.key === 'Enter') {
-      if (activeResultIndex.value >= 0 && activeResultIndex.value < searchResults.value.length) {
-        const selectedResult = searchResults.value[activeResultIndex.value];
-        handleSearchResultClick(selectedResult.link);
+      if (searchResults.value.length > 0) {
+        // If no result is actively selected, select the first one
+        const indexToSelect = activeResultIndex.value >= 0 ? activeResultIndex.value : 0;
+        if (indexToSelect < searchResults.value.length) {
+          const selectedResult = searchResults.value[indexToSelect];
+          handleSearchResultClick(selectedResult.link);
+        }
       }
     }
   }
@@ -260,6 +283,8 @@ function createSearchState() {
     performSearch,
     setHoveredResultIndex,
     clearHoveredResultIndex,
+    isMac,
+    searchHotkey,
   };
 }
 

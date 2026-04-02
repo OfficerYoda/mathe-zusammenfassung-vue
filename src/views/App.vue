@@ -1,5 +1,5 @@
 <script lang="ts">
-import { computed, defineComponent, provide, ref, watch } from 'vue';
+import { computed, defineComponent, onBeforeUnmount, onMounted, provide, ref, watch } from 'vue';
 import ContentSection from '../components/ContentSection.vue';
 import InfoBox from '../components/InfoBox.vue';
 import MathDisplay from '../components/MathDisplay.vue';
@@ -220,10 +220,31 @@ export default defineComponent({
       activeResultIndex,
       hoveredResultIndex,
       setHoveredResultIndex,
-      clearHoveredResultIndex
+      clearHoveredResultIndex,
+      searchHotkey,
     } = useSearch();
 
     setSearchHelpers(smoothScrollToHash, router);
+
+    // Global keyboard shortcut for opening search (Ctrl+K / Cmd+K)
+    const handleGlobalKeydown = (event: KeyboardEvent) => {
+      // Check for Ctrl+K (Windows/Linux) or Cmd+K (macOS)
+      if (event.key === 'k' && (event.ctrlKey || event.metaKey)) {
+        event.preventDefault();
+        if (!isSearchActive.value) {
+          activateSearch();
+        }
+      }
+    };
+
+    // Set up global keyboard listener
+    onMounted(() => {
+      window.addEventListener('keydown', handleGlobalKeydown);
+    });
+
+    onBeforeUnmount(() => {
+      window.removeEventListener('keydown', handleGlobalKeydown);
+    });
 
     // Wrapper for search result click to pass smoothScrollToHash
     function onSearchResultClick(link: string) {
@@ -253,6 +274,7 @@ export default defineComponent({
       hoveredResultIndex,
       setHoveredResultIndex,
       clearHoveredResultIndex,
+      searchHotkey,
       // Theme toggle
       isDarkTheme,
       toggleTheme,
@@ -274,6 +296,7 @@ export default defineComponent({
           <div class="search-bar" @click="activateSearch">
             <FontAwesomeIcon class="search-bar-icon" icon="fa-solid fa-magnifying-glass" />
             <span class="search-bar-text">Suchen</span>
+            <span class="search-bar-hint">{{ searchHotkey }}</span>
           </div>
           <div class="icon-btn theme-toggle" @click="toggleTheme">
             <FontAwesomeIcon :icon="isDarkTheme ? 'fa-moon' : 'fa-sun'" />
@@ -384,6 +407,8 @@ export default defineComponent({
   top: 0;
   z-index: 2;
   border-right: 1px solid var(--color-surface);
+  container-type: inline-size;
+  container-name: sidebar;
 }
 
 .icon-row {
@@ -428,6 +453,7 @@ export default defineComponent({
   border: 2px solid var(--color-surface);
   border-radius: 6px;
   padding: 0.5rem 1rem;
+  padding-right: 0.2rem;
   background: var(--color-background);
   min-width: 0;
   height: 2.5rem;
@@ -454,6 +480,30 @@ export default defineComponent({
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  flex: 1;
+  min-width: 0;
+}
+
+.search-bar-hint {
+  margin-left: 0.1rem;
+  color: var(--color-text-secondary);
+  font-size: 0.85rem;
+  font-weight: 600;
+  padding: 0.2rem 0.5rem;
+  border: 1px solid var(--color-surface);
+  border-radius: 4px;
+  background-color: var(--color-surface);
+  opacity: 0.7;
+  white-space: nowrap;
+  flex-shrink: 0;
+  display: none; /* Hide by default */
+}
+
+/* Only show hint when sidebar is wide enough */
+@container sidebar (min-width: 250px) {
+  .search-bar-hint {
+    display: block;
+  }
 }
 
 .chapter-navigation ul {
@@ -666,6 +716,19 @@ export default defineComponent({
 
 .search-popup-input::placeholder {
   color: var(--color-text-secondary);
+}
+
+.search-popup-hint {
+  margin-left: 0.5em;
+  color: var(--color-text-secondary);
+  font-size: 0.85em;
+  font-weight: 600;
+  padding: 0.2em 0.5em;
+  border: 1px solid var(--color-surface);
+  border-radius: 4px;
+  background-color: var(--color-surface);
+  opacity: 0.7;
+  white-space: nowrap;
 }
 
 .search-popup-close {
